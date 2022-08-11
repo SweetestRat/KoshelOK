@@ -7,5 +7,5 @@ target 'Wallet' do
 
   pod 'SwiftLint', '0.48.0'
   pod 'SnapKit', '~> 5.6.0'
-  
+  pod 'WalletDesignKit', :path => 'WalletDesignKit/WalletDesignKit.podspec'
 end
