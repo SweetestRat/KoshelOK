@@ -23,8 +23,28 @@ public extension UIColor {
         return .init(named: "InactiveButtonBackground", in: bundle, compatibleWith: nil)
     }
     
+    static var activeTextPrimaryColor: UIColor? {
+        let bundle = Bundle.walletDesignKit
+        return .init(named: "ActiveTextPrimaryColor", in: bundle, compatibleWith: nil)
+    }
+    
+    static var inactiveTextPrimaryColor: UIColor? {
+        let bundle = Bundle.walletDesignKit
+        return .init(named: "InactiveTextPrimaryColor", in: bundle, compatibleWith: nil)
+    }
+    
     static var incomeColor: UIColor? {
         let bundle = Bundle.walletDesignKit
         return .init(named: "IncomeColor", in: bundle, compatibleWith: nil)
+    }
+    
+    static var inputPlaceholderColor: UIColor? {
+        let bundle = Bundle.walletDesignKit
+        return .init(named: "InputPlaceholderColor", in: bundle, compatibleWith: nil)
+    }
+    
+    static var strokeColor: UIColor? {
+        let bundle = Bundle.walletDesignKit
+        return .init(named: "StrokeColor", in: bundle, compatibleWith: nil)
     }
 }

@@ -8,34 +8,51 @@
 import UIKit
 
 public class BaseButton: UIButton {
-//    var isChecked: Bool = false {
-//        didSet {
-//            if isChecked == true {
-//                self.setImage(.checkBoxIcon, for: .normal)
-//            } else {
-//                self.setImage(nil, for: .normal)
-//            }
-//        }
-//    }
-    
-//    var isActive: Bool {
-//        didSet {
-//            if isActive == true {
-//
-//            }
-//        }
-//    }
-    
-    let activeColor = UIColor.activeButtonBackground
-    let inactiveColor = UIColor.inactiveButtonBackground
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        self.backgroundColor = activeColor
+    public var isActive: Bool? {
+        didSet {
+            if isActive == true {
+                self.backgroundColor = activeBackgroundColor
+                self.setTitleColor(activeTextColor, for: .normal)
+            } else {
+                self.backgroundColor = inactiveBackgroundColor
+                self.setTitleColor(inactiveTextColor, for: .normal)
+            }
+        }
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    var text: String?
+    
+    let activeBackgroundColor = UIColor.activeButtonBackground
+    let inactiveBackgroundColor = UIColor.inactiveButtonBackground
+    let activeTextColor = UIColor.activeTextPrimaryColor
+    let inactiveTextColor = UIColor.inactiveTextPrimaryColor
+
+    public convenience init(title: String? = nil, active: Bool? = true) {
+        self.init(type: .custom)
+        
+        if active == active {
+            isActive = active
+        }
+        
+        if title == title {
+            text = title
+        }
+        
+        setup()
+    }
+    
+    private func setup() {
+        self.setTitle(text, for: .normal)
+        self.titleLabel?.font = .SFProRegular(size: 17)
+        
+        if isActive == true {
+            self.backgroundColor = activeBackgroundColor
+            self.setTitleColor(activeTextColor, for: .normal)
+        } else {
+            self.backgroundColor = inactiveBackgroundColor
+            self.setTitleColor(inactiveTextColor, for: .normal)
+        }
+        
+        self.layer.cornerRadius = 16
     }
 }

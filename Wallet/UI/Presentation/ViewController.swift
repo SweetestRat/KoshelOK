@@ -11,9 +11,17 @@ import WalletDesignKit
 
 class ViewController: UIViewController {
 
+    let textfield = BaseInputTextField(placeholder: "напишите текст")
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        view.backgroundColor = .incomeColor
+        view.addSubview(textfield)
+        
+        textfield.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(2)
+            make.height.equalTo(50)
+        }
     }
 }
