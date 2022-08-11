@@ -32,7 +32,7 @@ TODO: Add long description of the pod here.
   s.source_files = 'WalletDesignKit/Classes/**/*'
   
   s.resource_bundles = {
-    'WalletDesignKitResources' => ['WalletDesignKit/Assets/*.{xcassests}']
+    'WalletDesignKitResources' => ['WalletDesignKit/Assets/**/*']
   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'

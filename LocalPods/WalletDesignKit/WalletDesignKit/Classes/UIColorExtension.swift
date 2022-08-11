@@ -9,18 +9,22 @@ import UIKit
 
 public extension UIColor {
     static var background: UIColor? {
-        .init(named: "BackgroundColor")
+        let bundle = Bundle.walletDesignKit
+        return .init(named: "BackgroundColor", in: bundle, compatibleWith: nil)
     }
     
     static var activeButtonBackground: UIColor? {
-        .init(named: "ActiveButtonBackground")
+        let bundle = Bundle.walletDesignKit
+        return .init(named: "ActiveButtonBackground", in: bundle, compatibleWith: nil)
     }
     
     static var inactiveButtonBackground: UIColor? {
-        .init(named: "InactiveButtonBackground")
+        let bundle = Bundle.walletDesignKit
+        return .init(named: "InactiveButtonBackground", in: bundle, compatibleWith: nil)
     }
     
     static var incomeColor: UIColor? {
-        .init(named: "IncomeColor")
+        let bundle = Bundle.walletDesignKit
+        return .init(named: "IncomeColor", in: bundle, compatibleWith: nil)
     }
 }
