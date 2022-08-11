@@ -1,3 +1,5 @@
+import Foundation
+
 public let viewKitString = "viewKitString"
 
 public struct BaseView {

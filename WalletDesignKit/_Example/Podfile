@@ -1,6 +1,0 @@
-use_frameworks!
-target 'WalletDesignKit_Tests' do
-  pod 'WalletDesignKit', :path => '../'
-  
-  
-end

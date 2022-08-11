@@ -13,9 +13,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(viewKitString)
-        let bw = BaseView(x: "")
         // Do any additional setup after loading the view.
     }
 }
