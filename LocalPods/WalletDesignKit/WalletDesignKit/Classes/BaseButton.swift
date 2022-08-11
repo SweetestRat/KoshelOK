@@ -24,8 +24,8 @@ public class BaseButton: UIButton {
     
     let activeBackgroundColor = UIColor.activeButtonBackground
     let inactiveBackgroundColor = UIColor.inactiveButtonBackground
-    let activeTextColor = UIColor.activeTextPrimaryColor
-    let inactiveTextColor = UIColor.inactiveTextPrimaryColor
+    let activeTextColor = UIColor.lightTextPrimaryColor
+    let inactiveTextColor = UIColor.darkTextPrimaryColor
 
     public convenience init(title: String? = nil, active: Bool? = true) {
         self.init(type: .custom)
@@ -53,6 +53,7 @@ public class BaseButton: UIButton {
             self.setTitleColor(inactiveTextColor, for: .normal)
         }
         
+        self.layer.cornerCurve = .continuous
         self.layer.cornerRadius = 16
     }
 }
