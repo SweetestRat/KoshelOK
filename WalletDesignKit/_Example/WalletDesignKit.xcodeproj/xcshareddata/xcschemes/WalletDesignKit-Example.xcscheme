@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACCF1AFB9204008FA782"
                BuildableName = "WalletDesignKit_Example.app"
-               BlueprintName = "WalletDesignKit"
+               BlueprintName = "WalletDesignKit_Example"
                ReferencedContainer = "container:WalletDesignKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -40,16 +40,8 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "WalletDesignKit_Example.app"
-            BlueprintName = "WalletDesignKit"
-            ReferencedContainer = "container:WalletDesignKit.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -62,11 +54,23 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
+            BuildableName = "WalletDesignKit_Example.app"
+            BlueprintName = "WalletDesignKit_Example"
+            ReferencedContainer = "container:WalletDesignKit.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -79,10 +83,12 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
             BuildableName = "WalletDesignKit_Example.app"
-            BlueprintName = "WalletDesignKit"
+            BlueprintName = "WalletDesignKit_Example"
             ReferencedContainer = "container:WalletDesignKit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -96,7 +102,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
             BuildableName = "WalletDesignKit_Example.app"
-            BlueprintName = "WalletDesignKit"
+            BlueprintName = "WalletDesignKit_Example"
             ReferencedContainer = "container:WalletDesignKit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
