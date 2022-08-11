@@ -65,9 +65,9 @@ public class BaseInputTextField: UITextField {
     }
     
     public override func editingRect(forBounds bounds: CGRect) -> CGRect {
-        return super.editingRect(forBounds: bounds.inset(by: UIEdgeInsets(top: GFloat(MediumPadding),
-                                                                          left: GFloat(MediumPadding),
-                                                                          bottom: GFloat(SmallPadding),
-                                                                          right: GFloat(MediumPadding))))
+        return super.editingRect(forBounds: bounds.inset(by: UIEdgeInsets(top: CGFloat(MediumPadding),
+                                                                          left: CGFloat(MediumPadding),
+                                                                          bottom: CGFloat(SmallPadding),
+                                                                          right: CGFloat(MediumPadding))))
     }
 }
