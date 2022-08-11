@@ -51,7 +51,8 @@ public class BaseInputTextField: UITextField {
         stroke.snp.makeConstraints { make in
             make.width.equalToSuperview()
             make.height.equalTo(2)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(MediumPadding)
+            make.bottom.equalToSuperview()
         }
     }
 }
