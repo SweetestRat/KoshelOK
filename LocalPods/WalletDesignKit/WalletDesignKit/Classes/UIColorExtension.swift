@@ -19,4 +19,8 @@ public extension UIColor {
     static var inactiveButtonBackground: UIColor? {
         .init(named: "InactiveButtonBackground")
     }
+    
+    static var incomeColor: UIColor? {
+        .init(named: "IncomeColor")
+    }
 }

@@ -18,13 +18,13 @@ public class BaseButton: UIButton {
 //        }
 //    }
     
-    var isActive: Bool {
-        didSet {
-            if isActive == true {
-                
-            }
-        }
-    }
+//    var isActive: Bool {
+//        didSet {
+//            if isActive == true {
+//
+//            }
+//        }
+//    }
     
     let activeColor = UIColor.activeButtonBackground
     let inactiveColor = UIColor.inactiveButtonBackground
