@@ -12,12 +12,6 @@ public class BaseInputTextField: UITextField {
     var placeholderText: String?
     var title: String?
     
-    private lazy var stroke: UIView = {
-        let view = UIView()
-        view.backgroundColor = .strokeColor
-        return view
-    }()
-    
     public convenience init(placeholder: String? = nil, title: String? = nil) {
         self.init()
         
@@ -30,7 +24,6 @@ public class BaseInputTextField: UITextField {
         }
         
         setup()
-        setConstraints()
     }
     
     private func setup() {
@@ -43,31 +36,23 @@ public class BaseInputTextField: UITextField {
         textColor = .darkTextPrimaryColor
         font = .SFProRegular(size: 17)
         backgroundColor = .none
-        
-        self.addSubview(stroke)
-    }
-    
-    private func setConstraints() {
-        stroke.snp.makeConstraints { make in
-            make.width.equalToSuperview()
-            make.height.equalTo(2)
-            make.width.equalToSuperview().inset(MediumPadding)
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
+        self.layer.cornerCurve = .continuous
+        layer.cornerRadius = 16
+        layer.borderWidth = 2
+        layer.borderColor = UIColor.inactiveButtonBackground?.cgColor
     }
     
     public override func textRect(forBounds bounds: CGRect) -> CGRect {
         return super.textRect(forBounds: bounds.inset(by: UIEdgeInsets(top: CGFloat(MediumPadding),
                                                                        left: CGFloat(MediumPadding),
-                                                                       bottom: CGFloat(SmallPadding),
+                                                                       bottom: CGFloat(MediumPadding),
                                                                        right: CGFloat(MediumPadding))))
     }
-    
+
     public override func editingRect(forBounds bounds: CGRect) -> CGRect {
         return super.editingRect(forBounds: bounds.inset(by: UIEdgeInsets(top: CGFloat(MediumPadding),
                                                                           left: CGFloat(MediumPadding),
-                                                                          bottom: CGFloat(SmallPadding),
+                                                                          bottom: CGFloat(MediumPadding),
                                                                           right: CGFloat(MediumPadding))))
     }
 }
