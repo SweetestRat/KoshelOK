@@ -51,8 +51,16 @@ public class BaseInputTextField: UITextField {
         stroke.snp.makeConstraints { make in
             make.width.equalToSuperview()
             make.height.equalTo(2)
-            make.leading.trailing.equalToSuperview().inset(MediumPadding)
+            make.width.equalToSuperview().inset(MediumPadding)
+            make.centerX.equalToSuperview()
             make.bottom.equalToSuperview()
         }
+    }
+    
+    public override func textRect(forBounds bounds: CGRect) -> CGRect {
+        return super.textRect(forBounds: bounds.inset(by: UIEdgeInsets(top: CGFloat(MediumPadding),
+                                                                       left: CGFloat(MediumPadding),
+                                                                       bottom: CGFloat(MediumPadding),
+                                                                       right: CGFloat(MediumPadding))))
     }
 }
