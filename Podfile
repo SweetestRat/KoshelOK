@@ -4,8 +4,9 @@
 target 'Wallet' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
+  platform :ios, '13.0'
+  
   pod 'SwiftLint', '0.48.0'
   pod 'SnapKit', '~> 5.6.0'
-  
+  pod 'WalletDesignKit', :path => 'LocalPods/WalletDesignKit/WalletDesignKit.podspec'
 end
