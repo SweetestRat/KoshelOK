@@ -35,11 +35,12 @@ public class BaseInputTextField: UITextField {
     
     private func setup() {
         text = title
+        guard let color = UIColor.inputPlaceholderColor else { return }
         attributedPlaceholder = NSAttributedString(
             string: placeholderText ?? "",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.inputPlaceholderColor]
+            attributes: [NSAttributedString.Key.foregroundColor: color]
         )
-        textColor = .inactiveTextPrimaryColor
+        textColor = .darkTextPrimaryColor
         font = .SFProRegular(size: 17)
         backgroundColor = .none
         

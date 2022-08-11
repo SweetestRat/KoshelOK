@@ -23,12 +23,12 @@ public extension UIColor {
         return .init(named: "InactiveButtonBackground", in: bundle, compatibleWith: nil)
     }
     
-    static var activeTextPrimaryColor: UIColor? {
+    static var lightTextPrimaryColor: UIColor? {
         let bundle = Bundle.walletDesignKit
         return .init(named: "ActiveTextPrimaryColor", in: bundle, compatibleWith: nil)
     }
     
-    static var inactiveTextPrimaryColor: UIColor? {
+    static var darkTextPrimaryColor: UIColor? {
         let bundle = Bundle.walletDesignKit
         return .init(named: "InactiveTextPrimaryColor", in: bundle, compatibleWith: nil)
     }
