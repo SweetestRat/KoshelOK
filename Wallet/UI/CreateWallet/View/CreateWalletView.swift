@@ -20,6 +20,11 @@ class CreateWalletView: UIView {
         return view
     }()
     
+    private lazy var nextButton: UIButton = {
+        let button = BaseButton(title: "Далее", active: false)
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -32,20 +37,26 @@ class CreateWalletView: UIView {
     }
     
     private func addSubviews() {
-        [nameTextField, currencyView].forEach { addSubview($0) }
+        [nameTextField, currencyView, nextButton].forEach { addSubview($0) }
     }
     
     private func setConstraints() {
         nameTextField.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(70)
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(50)
+            make.leading.trailing.equalToSuperview().inset(MediumPadding)
+            make.height.equalTo(50)
         }
         
         currencyView.snp.makeConstraints { make in
             make.top.equalTo(nameTextField.snp.bottom)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(70)
+        }
+        
+        nextButton.snp.makeConstraints { make in
+            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(MediumPadding)
+            make.leading.trailing.equalToSuperview().inset(MediumPadding)
+            make.height.equalTo(ActionButtonHeight)
         }
     }
 }
