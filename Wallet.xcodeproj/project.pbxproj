@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D43E1A128A5419F00947040 /* CreateWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D43E1A028A5419F00947040 /* CreateWalletViewController.swift */; };
+		2D43E1A328A541A900947040 /* CreateWalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D43E1A228A541A900947040 /* CreateWalletView.swift */; };
 		68F646E9289D3BAE00DAAE91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F646E8289D3BAE00DAAE91 /* AppDelegate.swift */; };
 		68F646EB289D3BAE00DAAE91 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F646EA289D3BAE00DAAE91 /* SceneDelegate.swift */; };
 		68F646ED289D3BAE00DAAE91 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F646EC289D3BAE00DAAE91 /* ViewController.swift */; };
@@ -17,6 +19,8 @@
 
 /* Begin PBXFileReference section */
 		1A84D4897DE1B568819F927D /* Pods_Wallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D43E1A028A5419F00947040 /* CreateWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWalletViewController.swift; sourceTree = "<group>"; };
+		2D43E1A228A541A900947040 /* CreateWalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWalletView.swift; sourceTree = "<group>"; };
 		68F646E5289D3BAE00DAAE91 /* Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68F646E8289D3BAE00DAAE91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68F646EA289D3BAE00DAAE91 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +59,47 @@
 				1A84D4897DE1B568819F927D /* Pods_Wallet.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2D43E19B28A5416A00947040 /* CreateWallet */ = {
+			isa = PBXGroup;
+			children = (
+				2D43E19C28A5417200947040 /* Model */,
+				2D43E19D28A5417600947040 /* View */,
+				2D43E19E28A5417D00947040 /* Presenter */,
+				2D43E19F28A5418300947040 /* Router */,
+			);
+			path = CreateWallet;
+			sourceTree = "<group>";
+		};
+		2D43E19C28A5417200947040 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2D43E19D28A5417600947040 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2D43E1A028A5419F00947040 /* CreateWalletViewController.swift */,
+				2D43E1A228A541A900947040 /* CreateWalletView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2D43E19E28A5417D00947040 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		2D43E19F28A5418300947040 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		68F646DC289D3BAE00DAAE91 = {
@@ -99,6 +144,7 @@
 		68F6A284289D3DA900DAAE91 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				2D43E19B28A5416A00947040 /* CreateWallet */,
 				68F6A285289D3DAD00DAAE91 /* Presentation */,
 			);
 			path = UI;
@@ -247,6 +293,8 @@
 			files = (
 				68F646ED289D3BAE00DAAE91 /* ViewController.swift in Sources */,
 				68F646E9289D3BAE00DAAE91 /* AppDelegate.swift in Sources */,
+				2D43E1A328A541A900947040 /* CreateWalletView.swift in Sources */,
+				2D43E1A128A5419F00947040 /* CreateWalletViewController.swift in Sources */,
 				68F646EB289D3BAE00DAAE91 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,7 +435,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 54MQ4J5X52;
+				DEVELOPMENT_TEAM = LB6HJ44JRX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Wallet/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -400,7 +448,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.tinkoff.Wallet;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.tinkoff.Wallet1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -416,7 +464,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 54MQ4J5X52;
+				DEVELOPMENT_TEAM = LB6HJ44JRX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Wallet/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -429,7 +477,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.tinkoff.Wallet;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.tinkoff.Wallet1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
