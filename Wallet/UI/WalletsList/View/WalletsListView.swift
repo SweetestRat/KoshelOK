@@ -8,7 +8,13 @@
 import UIKit
 import WalletDesignKit
 
+protocol WalletsScreenViewDelegate: AnyObject {
+    func didTapWallet()
+}
+
 class WalletsScreenView: UIView {
+    weak var delegate: WalletsScreenViewDelegate?
+    private var walletsList: [Wallet]?
     
     private lazy var actionButton: BaseButton = {
         let button = BaseButton(title: "Создать кошелёк")
@@ -27,7 +33,7 @@ class WalletsScreenView: UIView {
     private lazy var commonBalanceLabel: UILabel = {
         let view = UILabel()
         view.text = "Общий баланс"
-        view.font = .designSFProRegular13
+        view.font = .designSFProMedium16
         view.textColor = .lightTextPrimaryColor
         view.alpha = 0.8
         return view
@@ -42,7 +48,6 @@ class WalletsScreenView: UIView {
     }()
     
     private lazy var commonIncomeLabel: UIView = dottedText(color: .incomeColor, text: "Общий доход", textFont: .designSFProRegular13)
-
     private lazy var commonIncomeValue: UILabel = {
         let view = UILabel()
         view.text = "1000062 $"
@@ -61,6 +66,14 @@ class WalletsScreenView: UIView {
         return view
     }()
     
+    private lazy var walletsListView: UITableView = {
+        let view = UITableView()
+        view.register(WalletsListCell.self, forCellReuseIdentifier: "WalletsListCell")
+        view.dataSource = self
+        view.delegate = self
+        view.backgroundColor = nil
+        return view
+    }()
     private func dottedText(color: UIColor?, text: String, textFont: UIFont) -> UIView {
         let view = UIView()
         let dot = UIView()
@@ -94,7 +107,7 @@ class WalletsScreenView: UIView {
         
         return view
     }
-
+    
     init() {
         super.init(frame: .zero)
         backgroundColor = .background
@@ -106,9 +119,15 @@ class WalletsScreenView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    func updateWalletsList(wallets: [Wallet]) {
+        update(list: wallets)
+        walletsListView.reloadData()
+    }
     
     private func addSubviews() {
         [
+            walletsListView,
             actionButton,
             headerView
         ].forEach { self.addSubview($0) }
@@ -133,12 +152,13 @@ class WalletsScreenView: UIView {
         
         commonBalanceLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(MediumPadding)
-            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(LargePadding * 2)
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(LargePadding)
         }
         
         commonBalanceValue.snp.makeConstraints { make in
             make.leading.equalTo(commonBalanceLabel.snp.leading)
-            make.top.equalTo(commonBalanceLabel.snp.bottom).offset(SmallPadding)
+            make.top.equalTo(commonBalanceLabel.snp.bottom)
+
         }
         
         commonIncomeLabel.snp.makeConstraints { make in
@@ -166,5 +186,42 @@ class WalletsScreenView: UIView {
             make.top.equalToSuperview()
             make.bottom.equalTo(commonIncomeValue.snp.bottom).offset(MediumPadding)
         }
+        
+        walletsListView.snp.makeConstraints { make in
+            make.top.equalTo(headerView.snp.bottom)
+            make.leading.trailing.equalTo(self)
+            make.bottom.equalTo(actionButton.snp.top).offset(MediumPadding)
+        }
     }
+}
+
+extension WalletsScreenView: UITableViewDataSource, UITableViewDelegate {
+    
+    public func update(list: [Wallet]) {
+        walletsList = list
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.didTapWallet()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        CGFloat(TableViewCellHeight)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        walletsList?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WalletsListCell", for: indexPath) as? WalletsListCell else {
+            return WalletsListCell()
+        }
+        cell.title.text = walletsList?[indexPath.row].name
+        cell.balance.text = walletsList?[indexPath.row].balance.toString()
+        cell.backgroundColor = .background
+        
+        return cell
+    }
+    
 }

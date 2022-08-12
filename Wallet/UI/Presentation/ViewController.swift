@@ -20,6 +20,5 @@ class ViewController: UIViewController {
         v.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        // Do any additional setup after loading the view.
     }
 }
