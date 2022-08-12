@@ -38,6 +38,11 @@ public extension UIColor {
         return .init(named: "IncomeColor", in: bundle, compatibleWith: nil)
     }
     
+    static var designRedColor: UIColor? {
+        let bundle = Bundle.walletDesignKit
+        return .init(named: "ExpansesColor", in: bundle, compatibleWith: nil)
+    }
+    
     static var inputPlaceholderColor: UIColor? {
         let bundle = Bundle.walletDesignKit
         return .init(named: "InputPlaceholderColor", in: bundle, compatibleWith: nil)

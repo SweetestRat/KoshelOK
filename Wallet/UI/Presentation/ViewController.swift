@@ -10,7 +10,7 @@ import SnapKit
 import WalletDesignKit
 
 class ViewController: UIViewController {
-    
+
     let test = CreateWalletView()
     
     override func viewDidLoad() {
@@ -23,5 +23,4 @@ class ViewController: UIViewController {
             make.edges.equalToSuperview()
         }
     }
-
 }
