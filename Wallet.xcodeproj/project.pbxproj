@@ -130,10 +130,42 @@
 		4C77E20C28A65489002DE431 /* StartScreen */ = {
 			isa = PBXGroup;
 			children = (
+				4C9745AF28A678680069685F /* Router */,
+				4C9745AE28A6785F0069685F /* Presenter */,
+				4C9745AD28A678500069685F /* Model */,
+				4C9745AC28A678470069685F /* View */,
+			);
+			path = StartScreen;
+			sourceTree = "<group>";
+		};
+		4C9745AC28A678470069685F /* View */ = {
+			isa = PBXGroup;
+			children = (
 				4C77E20D28A654AA002DE431 /* StartScreenViewController.swift */,
 				4C77E20F28A654B8002DE431 /* StartScreenView.swift */,
 			);
-			path = StartScreen;
+			path = View;
+			sourceTree = "<group>";
+		};
+		4C9745AD28A678500069685F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4C9745AE28A6785F0069685F /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		4C9745AF28A678680069685F /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		68F646DC289D3BAE00DAAE91 = {

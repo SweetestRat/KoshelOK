@@ -11,7 +11,7 @@ import SnapKit
 public class BaseTextCellWithSelection: UIView {
     private lazy var title: UILabel = {
         let label = UILabel()
-        label.font = .SFProRegular(size: 17)
+        label.font = .designSFProRegular17
         label.textColor = .darkTextPrimaryColor
         label.textAlignment = .left
         return label
@@ -31,7 +31,7 @@ public class BaseTextCellWithSelection: UIView {
     
     private lazy var rightButtonDescription: UILabel = {
         let label = UILabel()
-        label.font = .SFProRegular(size: 17)
+        label.font = .designSFProRegular17
         label.textColor = .inputPlaceholderColor
         return label
     }()
