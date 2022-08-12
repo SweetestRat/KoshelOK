@@ -27,18 +27,15 @@ class StartScreenView: UIView {
         label.numberOfLines = 2
         label.font = .designSFProMedium32
         label.textColor = .black
-        
         return label
     }()
     
     private lazy var infoText: UILabel = {
-        
         let label = UILabel()
         label.text = "Тут вы можете контролировать свои доходы и расходы"
         label.numberOfLines = 2
         label.font = .designSFProMedium16
         label.textColor = .black
-        
         return label
     }()
     
@@ -87,5 +84,6 @@ class StartScreenView: UIView {
             make.leading.trailing.equalToSuperview().inset(MediumPadding)
             make.top.equalTo(welcomeText.snp.bottom).offset(SmallPadding)
         }
+        
     }
 }
