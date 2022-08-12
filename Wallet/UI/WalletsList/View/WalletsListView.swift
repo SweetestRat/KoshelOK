@@ -9,6 +9,7 @@ import UIKit
 import WalletDesignKit
 
 class WalletsScreenView: UIView {
+    private var listDataSource: WalletsListDataSource?
     
     private lazy var actionButton: BaseButton = {
         let button = BaseButton(title: "Создать кошелёк")
@@ -27,7 +28,7 @@ class WalletsScreenView: UIView {
     private lazy var commonBalanceLabel: UILabel = {
         let view = UILabel()
         view.text = "Общий баланс"
-        view.font = .designSFProRegular13
+        view.font = .designSFProMedium16
         view.textColor = .lightTextPrimaryColor
         view.alpha = 0.8
         return view
@@ -58,6 +59,14 @@ class WalletsScreenView: UIView {
         view.text = "-1001 $"
         view.font = .designSFProMedium16
         view.textColor = .lightTextPrimaryColor
+        return view
+    }()
+    
+    private lazy var walletsListView: UITableView = {
+        let view = UITableView()
+        view.register(WalletsListCell.self, forCellReuseIdentifier: "WalletsListCell")
+        listDataSource = WalletsListDataSource()
+        view.dataSource = listDataSource
         return view
     }()
     
@@ -107,8 +116,14 @@ class WalletsScreenView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func updateWalletsList(wallets: [Wallet]) {
+        listDataSource?.update(list: wallets)
+        walletsListView.reloadData()
+    }
+    
     private func addSubviews() {
         [
+            walletsListView,
             actionButton,
             headerView
         ].forEach { self.addSubview($0) }
@@ -133,12 +148,12 @@ class WalletsScreenView: UIView {
         
         commonBalanceLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(MediumPadding)
-            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(LargePadding * 2)
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(LargePadding)
         }
         
         commonBalanceValue.snp.makeConstraints { make in
             make.leading.equalTo(commonBalanceLabel.snp.leading)
-            make.top.equalTo(commonBalanceLabel.snp.bottom).offset(SmallPadding)
+            make.top.equalTo(commonBalanceLabel.snp.bottom)
         }
         
         commonIncomeLabel.snp.makeConstraints { make in
@@ -166,5 +181,32 @@ class WalletsScreenView: UIView {
             make.top.equalToSuperview()
             make.bottom.equalTo(commonIncomeValue.snp.bottom).offset(MediumPadding)
         }
+        
+        walletsListView.snp.makeConstraints { make in
+            make.top.equalTo(headerView.snp.bottom)
+            make.leading.trailing.bottom.equalTo(self.safeAreaLayoutGuide)
+        }
     }
+}
+
+class WalletsListDataSource: NSObject, UITableViewDataSource {
+    private var walletsList: [Wallet]?
+    
+    public func update(list: [Wallet]) {
+        walletsList = list
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        walletsList?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WalletsListCell", for: indexPath) as? WalletsListCell else {
+            return WalletsListCell()
+        }
+        cell.textLabel?.text = walletsList?[indexPath.row].name
+        
+        return cell
+    }
+    
 }
