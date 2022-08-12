@@ -42,7 +42,7 @@ class CurrencySeletionViewController: UIViewController, CurrencySeletionViewProt
     }
     
     private func setupNavigationBar() {
-        navigationController?.navigationBar.topItem?.title = "Выбор валюты"
+        navigationItem.title = "Выбор валюты"
     }
 }
 

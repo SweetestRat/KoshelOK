@@ -20,6 +20,7 @@ class CreateWalletViewController: UIViewController, CreateWalletViewProtocol {
         super.viewDidLoad()
         
         setup()
+        setNavigationBar()
     }
     
     private func setup() {
@@ -30,6 +31,10 @@ class CreateWalletViewController: UIViewController, CreateWalletViewProtocol {
         }
         
         createWalletView.addButtonTarget(self, action: #selector(openWalletsList), for: .touchUpInside)
+    }
+    
+    private func setNavigationBar() {
+        navigationItem.title = "Создание кошелька"
     }
     
     @objc private func openWalletsList() {
