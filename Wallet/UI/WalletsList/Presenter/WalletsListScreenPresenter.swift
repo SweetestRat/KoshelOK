@@ -21,5 +21,9 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
     func createWalletClicked() {
         
     }
+    
+    func didTapWallet() {
+        
+    }
 
 }

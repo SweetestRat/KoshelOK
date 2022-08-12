@@ -7,5 +7,6 @@
 
 protocol WalletsListPresenterProtocol {
     func createWalletClicked()
+    func didTapWallet()
     func controllerLoaded()
 }

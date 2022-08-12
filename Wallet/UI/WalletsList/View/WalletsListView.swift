@@ -8,8 +8,14 @@
 import UIKit
 import WalletDesignKit
 
+protocol WalletsScreenViewDelegate: AnyObject {
+    func didTapWallet()
+}
+
 class WalletsScreenView: UIView {
-    private var listDataSourceDelegate: WalletsListDataSource?
+    weak var delegate: WalletsScreenViewDelegate?
+    private var walletsList: [Wallet]?
+    
     private lazy var actionButton: BaseButton = {
         let button = BaseButton(title: "Создать кошелёк")
         return button
@@ -42,7 +48,7 @@ class WalletsScreenView: UIView {
     }()
     
     private lazy var commonIncomeLabel: UIView = dottedText(color: .incomeColor, text: "Общий доход", textFont: .designSFProRegular13)
-
+    
     private lazy var commonIncomeValue: UILabel = {
         let view = UILabel()
         view.text = "1000062 $"
@@ -64,9 +70,8 @@ class WalletsScreenView: UIView {
     private lazy var walletsListView: UITableView = {
         let view = UITableView()
         view.register(WalletsListCell.self, forCellReuseIdentifier: "WalletsListCell")
-        listDataSourceDelegate = WalletsListDataSource()
-        view.dataSource = listDataSourceDelegate
-        view.delegate = listDataSourceDelegate
+        view.dataSource = self
+        view.delegate = self
         view.backgroundColor = nil
         return view
     }()
@@ -104,7 +109,7 @@ class WalletsScreenView: UIView {
         
         return view
     }
-
+    
     init() {
         super.init(frame: .zero)
         backgroundColor = .background
@@ -118,7 +123,7 @@ class WalletsScreenView: UIView {
     }
     
     func updateWalletsList(wallets: [Wallet]) {
-        listDataSourceDelegate?.update(list: wallets)
+        update(list: wallets)
         walletsListView.reloadData()
     }
     
@@ -137,7 +142,7 @@ class WalletsScreenView: UIView {
             commonExpansesLabel,
             commonExpansesValue
         ].forEach { headerView.addSubview($0) }
-
+        
     }
     
     private func setConstraints() {
@@ -191,11 +196,14 @@ class WalletsScreenView: UIView {
     }
 }
 
-class WalletsListDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
-    private var walletsList: [Wallet]?
+extension WalletsScreenView: UITableViewDataSource, UITableViewDelegate {
     
     public func update(list: [Wallet]) {
         walletsList = list
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.didTapWallet()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

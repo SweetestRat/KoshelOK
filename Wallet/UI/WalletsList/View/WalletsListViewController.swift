@@ -9,11 +9,13 @@ import UIKit
 import SnapKit
 import WalletDesignKit
 
-class WalletsListViewController: UIViewController, WalletsListControllerProtocol {
-    var presenter = WalletsListScreenPresenter()
+class WalletsListViewController: UIViewController, WalletsListControllerProtocol, WalletsScreenViewDelegate {
+    var presenter: WalletsListScreenPresenter?
     
     lazy var screenView: WalletsScreenView = {
-        WalletsScreenView()
+        let view = WalletsScreenView()
+        view.delegate = self
+        return view
     }()
     
     func updateWalletsList(wallets: [Wallet]) {
@@ -36,7 +38,11 @@ class WalletsListViewController: UIViewController, WalletsListControllerProtocol
         screenView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        presenter.controller = self
-        presenter.controllerLoaded()
+        presenter?.controller = self
+        presenter?.controllerLoaded()
+    }
+    
+    func didTapWallet() {
+        presenter?.didTapWallet()
     }
 }
