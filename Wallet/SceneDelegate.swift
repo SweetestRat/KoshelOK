@@ -16,7 +16,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: sceneDelegate)
         
-        let rootViewController = CreateWalletViewController()
+        let rootViewController = ViewController()
+        
         let navigationController = UINavigationController(rootViewController: rootViewController)
         
         window?.rootViewController = navigationController
