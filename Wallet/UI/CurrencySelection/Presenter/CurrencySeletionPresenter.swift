@@ -12,9 +12,23 @@ class CurrencySeletionPresenter: CurrencySeletionPresenterProtocol {
     private var router: CurrencySeletionRouterProtocol?
     private weak var view: CurrencySeletionViewProtocol?
     
+    private var selectedIndexPathRow: Int = 0
+    
     init(model: CurrencySeletionModelProtocol, router: CurrencySeletionRouterProtocol, view: CurrencySeletionViewProtocol) {
         self.model = model
         self.router = router
         self.view = view
+    }
+    
+    func getSelectedRow() -> Int? {
+        return selectedIndexPathRow
+    }
+    
+    func setSelectedRow(row: Int) {
+        selectedIndexPathRow = row
+    }
+    
+    func controllerLoaded() {
+        model?.getData()
     }
 }

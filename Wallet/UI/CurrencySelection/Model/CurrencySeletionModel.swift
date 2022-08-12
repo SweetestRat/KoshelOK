@@ -10,4 +10,7 @@ import Foundation
 class CurrencySeletionModel: CurrencySeletionModelProtocol {
     var presenter: CurrencySeletionPresenterProtocol?
     
+    func getData() {
+        // call get 
+    }
 }

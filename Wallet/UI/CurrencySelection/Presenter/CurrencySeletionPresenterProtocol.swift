@@ -8,5 +8,7 @@
 import Foundation
 
 protocol CurrencySeletionPresenterProtocol {
-    
+    func getSelectedRow() -> Int?
+    func setSelectedRow(row: Int)
+    func controllerLoaded()
 }
