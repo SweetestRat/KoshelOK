@@ -14,7 +14,7 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) { [weak self] in
             self?.controller?.updateWalletsList(
                 wallets: Array(repeating:
-                                Wallet(name: "Wallet Name", icon: "", balance: Balance(value: 125, currency: Currency(symbol: "$"))), count: 30))
+                                Wallet(name: "Wallet Name", icon: "", balance: Balance(value: 125, currency: Currency(symbol: "en_US"))), count: 30))
         }
     }
     
