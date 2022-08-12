@@ -8,9 +8,10 @@
 import UIKit
 
 public class BaseButton: UIButton {
-    public var isActive: Bool? {
+    
+    override public var isEnabled: Bool {
         didSet {
-            if isActive == true {
+            if isEnabled == true {
                 self.backgroundColor = activeBackgroundColor
                 self.setTitleColor(activeTextColor, for: .normal)
                 self.isUserInteractionEnabled = true
@@ -32,11 +33,9 @@ public class BaseButton: UIButton {
     public convenience init(title: String? = nil, active: Bool? = true) {
         self.init(type: .custom)
         
-        if active == active {
-            isActive = active
-        }
+        isEnabled = active ?? true
         
-        if title == title {
+        if title != nil {
             text = title
         }
         
@@ -47,7 +46,7 @@ public class BaseButton: UIButton {
         self.setTitle(text, for: .normal)
         self.titleLabel?.font = .SFProRegular(size: 17)
         
-        if isActive == true {
+        if isEnabled == true {
             self.backgroundColor = activeBackgroundColor
             self.setTitleColor(activeTextColor, for: .normal)
         } else {
