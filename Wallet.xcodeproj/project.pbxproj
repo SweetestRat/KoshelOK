@@ -9,17 +9,6 @@
 /* Begin PBXBuildFile section */
 		2D43E1A128A5419F00947040 /* CreateWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D43E1A028A5419F00947040 /* CreateWalletViewController.swift */; };
 		2DA96D9828A69492005F791F /* CreateWalletViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA96D9728A69492005F791F /* CreateWalletViewProtocol.swift */; };
-		2DA96DAA28A6949D005F791F /* CurrencySelectionAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA96D9B28A6949C005F791F /* CurrencySelectionAssembly.swift */; };
-		2DA96DAB28A6949D005F791F /* CurrencySeletionPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA96D9D28A6949C005F791F /* CurrencySeletionPresenterProtocol.swift */; };
-		2DA96DAC28A6949D005F791F /* CurrencySeletionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA96D9E28A6949C005F791F /* CurrencySeletionPresenter.swift */; };
-		2DA96DAD28A6949D005F791F /* CurrencySeletionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA96DA028A6949C005F791F /* CurrencySeletionModel.swift */; };
-		2DA96DAE28A6949D005F791F /* CurrencySeletionModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA96DA128A6949C005F791F /* CurrencySeletionModelProtocol.swift */; };
-		2DA96DAF28A6949D005F791F /* CurrencySeletionViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA96DA328A6949C005F791F /* CurrencySeletionViewProtocol.swift */; };
-		2DA96DB028A6949D005F791F /* CurrencySelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA96DA428A6949C005F791F /* CurrencySelectionTableViewCell.swift */; };
-		2DA96DB128A6949D005F791F /* CurrencySeletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA96DA528A6949C005F791F /* CurrencySeletionView.swift */; };
-		2DA96DB228A6949D005F791F /* CurrencySeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA96DA628A6949C005F791F /* CurrencySeletionViewController.swift */; };
-		2DA96DB328A6949D005F791F /* CurrencySeletionRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA96DA828A6949C005F791F /* CurrencySeletionRouterProtocol.swift */; };
-		2DA96DB428A6949D005F791F /* CurrencySeletionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA96DA928A6949C005F791F /* CurrencySeletionRouter.swift */; };
 		2DA96DB728A694BC005F791F /* CreateWalletModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA96DB528A694BC005F791F /* CreateWalletModel.swift */; };
 		2DA96DB828A694BC005F791F /* CreateWalletModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA96DB628A694BC005F791F /* CreateWalletModelProtocol.swift */; };
 		2DA96DBB28A694C3005F791F /* CreateWalletPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA96DB928A694C3005F791F /* CreateWalletPresenter.swift */; };
@@ -52,17 +41,6 @@
 		1A84D4897DE1B568819F927D /* Pods_Wallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D43E1A028A5419F00947040 /* CreateWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWalletViewController.swift; sourceTree = "<group>"; };
 		2DA96D9728A69492005F791F /* CreateWalletViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWalletViewProtocol.swift; sourceTree = "<group>"; };
-		2DA96D9B28A6949C005F791F /* CurrencySelectionAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionAssembly.swift; sourceTree = "<group>"; };
-		2DA96D9D28A6949C005F791F /* CurrencySeletionPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySeletionPresenterProtocol.swift; sourceTree = "<group>"; };
-		2DA96D9E28A6949C005F791F /* CurrencySeletionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySeletionPresenter.swift; sourceTree = "<group>"; };
-		2DA96DA028A6949C005F791F /* CurrencySeletionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySeletionModel.swift; sourceTree = "<group>"; };
-		2DA96DA128A6949C005F791F /* CurrencySeletionModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySeletionModelProtocol.swift; sourceTree = "<group>"; };
-		2DA96DA328A6949C005F791F /* CurrencySeletionViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySeletionViewProtocol.swift; sourceTree = "<group>"; };
-		2DA96DA428A6949C005F791F /* CurrencySelectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionTableViewCell.swift; sourceTree = "<group>"; };
-		2DA96DA528A6949C005F791F /* CurrencySeletionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySeletionView.swift; sourceTree = "<group>"; };
-		2DA96DA628A6949C005F791F /* CurrencySeletionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySeletionViewController.swift; sourceTree = "<group>"; };
-		2DA96DA828A6949C005F791F /* CurrencySeletionRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySeletionRouterProtocol.swift; sourceTree = "<group>"; };
-		2DA96DA928A6949C005F791F /* CurrencySeletionRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySeletionRouter.swift; sourceTree = "<group>"; };
 		2DA96DB528A694BC005F791F /* CreateWalletModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWalletModel.swift; sourceTree = "<group>"; };
 		2DA96DB628A694BC005F791F /* CreateWalletModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWalletModelProtocol.swift; sourceTree = "<group>"; };
 		2DA96DB928A694C3005F791F /* CreateWalletPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWalletPresenter.swift; sourceTree = "<group>"; };
@@ -172,64 +150,6 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
-		2DA96D9928A6949C005F791F /* CurrencySelection */ = {
-			isa = PBXGroup;
-			children = (
-				2DA96D9A28A6949C005F791F /* Assembly */,
-				2DA96D9C28A6949C005F791F /* Presenter */,
-				2DA96D9F28A6949C005F791F /* Model */,
-				2DA96DA228A6949C005F791F /* View */,
-				2DA96DA728A6949C005F791F /* Router */,
-			);
-			path = CurrencySelection;
-			sourceTree = "<group>";
-		};
-		2DA96D9A28A6949C005F791F /* Assembly */ = {
-			isa = PBXGroup;
-			children = (
-				2DA96D9B28A6949C005F791F /* CurrencySelectionAssembly.swift */,
-			);
-			path = Assembly;
-			sourceTree = "<group>";
-		};
-		2DA96D9C28A6949C005F791F /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				2DA96D9D28A6949C005F791F /* CurrencySeletionPresenterProtocol.swift */,
-				2DA96D9E28A6949C005F791F /* CurrencySeletionPresenter.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		2DA96D9F28A6949C005F791F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				2DA96DA028A6949C005F791F /* CurrencySeletionModel.swift */,
-				2DA96DA128A6949C005F791F /* CurrencySeletionModelProtocol.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		2DA96DA228A6949C005F791F /* View */ = {
-			isa = PBXGroup;
-			children = (
-				2DA96DA328A6949C005F791F /* CurrencySeletionViewProtocol.swift */,
-				2DA96DA428A6949C005F791F /* CurrencySelectionTableViewCell.swift */,
-				2DA96DA528A6949C005F791F /* CurrencySeletionView.swift */,
-				2DA96DA628A6949C005F791F /* CurrencySeletionViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		2DA96DA728A6949C005F791F /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				2DA96DA828A6949C005F791F /* CurrencySeletionRouterProtocol.swift */,
-				2DA96DA928A6949C005F791F /* CurrencySeletionRouter.swift */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
 		2DA96DC128A694D3005F791F /* Asembly */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,7 +241,6 @@
 		68F6A284289D3DA900DAAE91 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				2DA96D9928A6949C005F791F /* CurrencySelection */,
 				4C77E20C28A65489002DE431 /* StartScreen */,
 				83AF6EE428A57CBF00BB91CB /* WalletsList */,
 				2D43E19B28A5416A00947040 /* CreateWallet */,
@@ -536,11 +455,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DA96DAF28A6949D005F791F /* CurrencySeletionViewProtocol.swift in Sources */,
-				2DA96DAA28A6949D005F791F /* CurrencySelectionAssembly.swift in Sources */,
 				83AF6EF028A6351600BB91CB /* WalletsListCell.swift in Sources */,
 				2DA96D9828A69492005F791F /* CreateWalletViewProtocol.swift in Sources */,
-				2DA96DB328A6949D005F791F /* CurrencySeletionRouterProtocol.swift in Sources */,
 				2DA96DBF28A694C9005F791F /* CreateWalletRouter.swift in Sources */,
 				68F646ED289D3BAE00DAAE91 /* ViewController.swift in Sources */,
 				2DA96DC028A694C9005F791F /* CreateWalletRouterProtocol.swift in Sources */,
@@ -551,26 +467,18 @@
 				2DA96DB728A694BC005F791F /* CreateWalletModel.swift in Sources */,
 				83AF6EEA28A57D5A00BB91CB /* WalletsListViewController.swift in Sources */,
 				2DA96DBB28A694C3005F791F /* CreateWalletPresenter.swift in Sources */,
-				2DA96DAD28A6949D005F791F /* CurrencySeletionModel.swift in Sources */,
 				83AF6EEC28A57E1500BB91CB /* WalletsListView.swift in Sources */,
 				68F646E9289D3BAE00DAAE91 /* AppDelegate.swift in Sources */,
-				2DA96DB028A6949D005F791F /* CurrencySelectionTableViewCell.swift in Sources */,
 				83AF6EF228A640C800BB91CB /* Wallet.swift in Sources */,
 				83AF6EF628A641E200BB91CB /* WalletsListScreenPresenter.swift in Sources */,
-				2DA96DAC28A6949D005F791F /* CurrencySeletionPresenter.swift in Sources */,
 				83AF6F0028A64D2800BB91CB /* WalletsListPresenterProtocol.swift in Sources */,
 				83AF6F0228A6534100BB91CB /* WalletsListControllerProtocol.swift in Sources */,
-				2DA96DB128A6949D005F791F /* CurrencySeletionView.swift in Sources */,
-				2DA96DAE28A6949D005F791F /* CurrencySeletionModelProtocol.swift in Sources */,
 				2DA96DC328A694D3005F791F /* CreateWalletAssembly.swift in Sources */,
 				83AF6EFC28A644B800BB91CB /* Currency.swift in Sources */,
 				2D43E1A128A5419F00947040 /* CreateWalletViewController.swift in Sources */,
 				68F646EB289D3BAE00DAAE91 /* SceneDelegate.swift in Sources */,
 				4C77E20E28A654AA002DE431 /* StartScreenViewController.swift in Sources */,
-				2DA96DB428A6949D005F791F /* CurrencySeletionRouter.swift in Sources */,
-				2DA96DAB28A6949D005F791F /* CurrencySeletionPresenterProtocol.swift in Sources */,
 				83AF6EFA28A6447C00BB91CB /* Balance.swift in Sources */,
-				2DA96DB228A6949D005F791F /* CurrencySeletionViewController.swift in Sources */,
 				2DA96DBC28A694C3005F791F /* CreateWalletPresenterProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
