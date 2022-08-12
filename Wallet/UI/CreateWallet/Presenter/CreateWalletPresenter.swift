@@ -25,4 +25,8 @@ class CreateWalletPresenter: CreateWalletPresenterProtocol {
     func openWalletsList() {
         router?.openWalletsList()
     }
+    
+    func cellCurrencyInfoDidTap() {
+        router?.openCurrencySelection()
+    }
 }

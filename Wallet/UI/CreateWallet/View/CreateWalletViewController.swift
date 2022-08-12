@@ -12,6 +12,7 @@ class CreateWalletViewController: UIViewController, CreateWalletViewProtocol {
     
     private lazy var createWalletView: CreateWalletView = {
         let view = CreateWalletView()
+        view.delegate = self
         return view
     }()
     
@@ -33,5 +34,11 @@ class CreateWalletViewController: UIViewController, CreateWalletViewProtocol {
     
     @objc private func openWalletsList() {
         presenter?.createWallet()
+    }
+}
+
+extension CreateWalletViewController: CreateWalletViewDelegate {
+    func cellCurrencyInfoDidTap() {
+        presenter?.cellCurrencyInfoDidTap()
     }
 }
