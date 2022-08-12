@@ -13,10 +13,10 @@ public class BaseInputTextField: UITextField {
     var title: String?
     
     private lazy var stroke: UIView = {
-        let view = UIView()
-        view.backgroundColor = .strokeColor
-        return view
-    }()
+       let view = UIView()
+       view.backgroundColor = .inactiveButtonBackground
+       return view
+   }()
     
     public convenience init(placeholder: String? = nil, title: String? = nil) {
         self.init()
@@ -43,7 +43,6 @@ public class BaseInputTextField: UITextField {
         textColor = .darkTextPrimaryColor
         font = .designSFProRegular17
         backgroundColor = .none
-        
         self.addSubview(stroke)
     }
     
@@ -63,7 +62,7 @@ public class BaseInputTextField: UITextField {
                                                                        bottom: CGFloat(SmallPadding),
                                                                        right: CGFloat(MediumPadding))))
     }
-    
+
     public override func editingRect(forBounds bounds: CGRect) -> CGRect {
         return super.editingRect(forBounds: bounds.inset(by: UIEdgeInsets(top: CGFloat(MediumPadding),
                                                                           left: CGFloat(MediumPadding),
