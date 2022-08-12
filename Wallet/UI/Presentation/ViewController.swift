@@ -10,7 +10,7 @@ import SnapKit
 import WalletDesignKit
 
 class ViewController: UIViewController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

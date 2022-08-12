@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		2D43E1A128A5419F00947040 /* CreateWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D43E1A028A5419F00947040 /* CreateWalletViewController.swift */; };
 		2D43E1A328A541A900947040 /* CreateWalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D43E1A228A541A900947040 /* CreateWalletView.swift */; };
+		4C77E20A28A65460002DE431 /* WalletsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C77E20828A65460002DE431 /* WalletsListViewController.swift */; };
+		4C77E20B28A65460002DE431 /* WalletsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C77E20928A65460002DE431 /* WalletsListView.swift */; };
+		4C77E20E28A654AA002DE431 /* StartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C77E20D28A654AA002DE431 /* StartScreenViewController.swift */; };
+		4C77E21028A654B8002DE431 /* StartScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C77E20F28A654B8002DE431 /* StartScreenView.swift */; };
 		68F646E9289D3BAE00DAAE91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F646E8289D3BAE00DAAE91 /* AppDelegate.swift */; };
 		68F646EB289D3BAE00DAAE91 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F646EA289D3BAE00DAAE91 /* SceneDelegate.swift */; };
 		68F646ED289D3BAE00DAAE91 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F646EC289D3BAE00DAAE91 /* ViewController.swift */; };
@@ -31,6 +35,10 @@
 		1A84D4897DE1B568819F927D /* Pods_Wallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D43E1A028A5419F00947040 /* CreateWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWalletViewController.swift; sourceTree = "<group>"; };
 		2D43E1A228A541A900947040 /* CreateWalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWalletView.swift; sourceTree = "<group>"; };
+		4C77E20828A65460002DE431 /* WalletsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletsListViewController.swift; sourceTree = "<group>"; };
+		4C77E20928A65460002DE431 /* WalletsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletsListView.swift; sourceTree = "<group>"; };
+		4C77E20D28A654AA002DE431 /* StartScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
+		4C77E20F28A654B8002DE431 /* StartScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenView.swift; sourceTree = "<group>"; };
 		68F646E5289D3BAE00DAAE91 /* Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68F646E8289D3BAE00DAAE91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68F646EA289D3BAE00DAAE91 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +130,64 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		4C77E20628A65460002DE431 /* WalletsList */ = {
+			isa = PBXGroup;
+			children = (
+				4C77E20728A65460002DE431 /* View */,
+			);
+			path = WalletsList;
+			sourceTree = "<group>";
+		};
+		4C77E20728A65460002DE431 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4C77E20828A65460002DE431 /* WalletsListViewController.swift */,
+				4C77E20928A65460002DE431 /* WalletsListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4C77E20C28A65489002DE431 /* StartScreen */ = {
+			isa = PBXGroup;
+			children = (
+				4C9745AF28A678680069685F /* Router */,
+				4C9745AE28A6785F0069685F /* Presenter */,
+				4C9745AD28A678500069685F /* Model */,
+				4C9745AC28A678470069685F /* View */,
+			);
+			path = StartScreen;
+			sourceTree = "<group>";
+		};
+		4C9745AC28A678470069685F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4C77E20D28A654AA002DE431 /* StartScreenViewController.swift */,
+				4C77E20F28A654B8002DE431 /* StartScreenView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4C9745AD28A678500069685F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4C9745AE28A6785F0069685F /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		4C9745AF28A678680069685F /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		68F646DC289D3BAE00DAAE91 = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +230,7 @@
 		68F6A284289D3DA900DAAE91 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4C77E20C28A65489002DE431 /* StartScreen */,
 				83AF6EE428A57CBF00BB91CB /* WalletsList */,
 				2D43E19B28A5416A00947040 /* CreateWallet */,
 				68F6A285289D3DAD00DAAE91 /* Presentation */,
@@ -379,6 +446,7 @@
 			files = (
 				83AF6EF028A6351600BB91CB /* WalletsListCell.swift in Sources */,
 				68F646ED289D3BAE00DAAE91 /* ViewController.swift in Sources */,
+				4C77E21028A654B8002DE431 /* StartScreenView.swift in Sources */,
 				83AF6F0628A6869000BB91CB /* WalletsListsControllerAssembly.swift in Sources */,
 				83AF6EEA28A57D5A00BB91CB /* WalletsListViewController.swift in Sources */,
 				83AF6EEC28A57E1500BB91CB /* WalletsListView.swift in Sources */,
@@ -391,6 +459,7 @@
 				83AF6EFC28A644B800BB91CB /* Currency.swift in Sources */,
 				2D43E1A128A5419F00947040 /* CreateWalletViewController.swift in Sources */,
 				68F646EB289D3BAE00DAAE91 /* SceneDelegate.swift in Sources */,
+				4C77E20E28A654AA002DE431 /* StartScreenViewController.swift in Sources */,
 				83AF6EFA28A6447C00BB91CB /* Balance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

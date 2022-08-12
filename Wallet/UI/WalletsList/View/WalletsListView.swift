@@ -48,7 +48,6 @@ class WalletsScreenView: UIView {
     }()
     
     private lazy var commonIncomeLabel: UIView = dottedText(color: .incomeColor, text: "Общий доход", textFont: .designSFProRegular13)
-    
     private lazy var commonIncomeValue: UILabel = {
         let view = UILabel()
         view.text = "1000062 $"
@@ -75,7 +74,6 @@ class WalletsScreenView: UIView {
         view.backgroundColor = nil
         return view
     }()
-    
     private func dottedText(color: UIColor?, text: String, textFont: UIFont) -> UIView {
         let view = UIView()
         let dot = UIView()
@@ -121,7 +119,7 @@ class WalletsScreenView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func updateWalletsList(wallets: [Wallet]) {
         update(list: wallets)
         walletsListView.reloadData()
@@ -142,7 +140,7 @@ class WalletsScreenView: UIView {
             commonExpansesLabel,
             commonExpansesValue
         ].forEach { headerView.addSubview($0) }
-        
+
     }
     
     private func setConstraints() {
@@ -160,6 +158,7 @@ class WalletsScreenView: UIView {
         commonBalanceValue.snp.makeConstraints { make in
             make.leading.equalTo(commonBalanceLabel.snp.leading)
             make.top.equalTo(commonBalanceLabel.snp.bottom)
+
         }
         
         commonIncomeLabel.snp.makeConstraints { make in

@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: sceneDelegate)
         
-        let rootViewController = WalletsListsControllerAssembly().assembly()
+        let rootViewController = StartScreenViewController()
         let navigationController = UINavigationController(rootViewController: rootViewController)
         
         window?.rootViewController = navigationController
