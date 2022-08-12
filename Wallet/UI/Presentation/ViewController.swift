@@ -11,13 +11,15 @@ import WalletDesignKit
 
 class ViewController: UIViewController {
 
+    let test = CreateWalletView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
         
-        let v = WalletsScreenView()
+        view.addSubview(test)
         
-        view.addSubview(v)
-        v.snp.makeConstraints { make in
+        test.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
