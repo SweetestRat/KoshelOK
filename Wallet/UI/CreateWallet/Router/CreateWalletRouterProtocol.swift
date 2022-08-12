@@ -9,4 +9,5 @@ import Foundation
 
 protocol CreateWalletRouterProtocol {
     func openWalletsList()
+    func openCurrencySelection()
 }
