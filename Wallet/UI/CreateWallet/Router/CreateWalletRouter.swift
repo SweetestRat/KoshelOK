@@ -16,7 +16,9 @@ class CreateWalletRouter: CreateWalletRouterProtocol {
     }
     
     func openWalletsList() {
-        // call WalletsList Assembly
+        guard let vc = view as? UIViewController else { return }
+        
+        vc.navigationController?.popViewController(animated: true)
     }
     
     func openCurrencySelection() {

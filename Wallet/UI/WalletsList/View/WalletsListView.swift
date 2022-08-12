@@ -193,6 +193,10 @@ class WalletsScreenView: UIView {
             make.bottom.equalTo(actionButton.snp.top).offset(MediumPadding)
         }
     }
+    
+    func addButtonTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
+        actionButton.addTarget(target, action: action, for: controlEvents)
+    }
 }
 
 extension WalletsScreenView: UITableViewDataSource, UITableViewDelegate {

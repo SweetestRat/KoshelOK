@@ -38,11 +38,20 @@ class WalletsListViewController: UIViewController, WalletsListControllerProtocol
         screenView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        presenter?.controller = self
+        presenter?.view = self
         presenter?.controllerLoaded()
+        addTargets()
     }
     
     func didTapWallet() {
         presenter?.didTapWallet()
+    }
+    
+    private func addTargets() {
+        screenView.addButtonTarget(self, action: #selector(screenViewButtonDidTap), for: .touchUpInside)
+    }
+    
+    @objc private func screenViewButtonDidTap() {
+        presenter?.createWalletClicked()
     }
 }
