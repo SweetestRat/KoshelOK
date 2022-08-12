@@ -8,9 +8,10 @@
 import UIKit
 
 public extension UIFont {
-    static func SFProRegular(size: CGFloat) -> UIFont {
-        return systemFont(ofSize: size, weight: .regular)
-    }
+
+    static let designSFProRegular13 = systemFont(ofSize: 13, weight: .regular)
+    
+    static let designSFProRegular17 = systemFont(ofSize: 17, weight: .regular)
     
     static func SFProBold(size: CGFloat) -> UIFont {
         return systemFont(ofSize: size, weight: .bold)
@@ -20,10 +21,10 @@ public extension UIFont {
         return systemFont(ofSize: size, weight: .semibold)
     }
     
-    static func SFProMedium(size: CGFloat) -> UIFont {
-        return systemFont(ofSize: size, weight: .medium)
-    }
+    static let designSFProMedium16 = systemFont(ofSize: 16, weight: .medium)
     
+    static let designSFProMedium32 = systemFont(ofSize: 32, weight: .medium)
+
     static func SFProLight(size: CGFloat) -> UIFont {
         return systemFont(ofSize: size, weight: .light)
     }
