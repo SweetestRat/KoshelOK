@@ -8,4 +8,8 @@
 struct Balance {
     let value: Int
     let currency: Currency
+    
+    func toString() -> String {
+        return String(value) + currency.symbol
+    }
 }

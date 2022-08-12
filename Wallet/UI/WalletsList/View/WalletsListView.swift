@@ -9,8 +9,7 @@ import UIKit
 import WalletDesignKit
 
 class WalletsScreenView: UIView {
-    private var listDataSource: WalletsListDataSource?
-    
+    private var listDataSourceDelegate: WalletsListDataSource?
     private lazy var actionButton: BaseButton = {
         let button = BaseButton(title: "Создать кошелёк")
         return button
@@ -65,8 +64,10 @@ class WalletsScreenView: UIView {
     private lazy var walletsListView: UITableView = {
         let view = UITableView()
         view.register(WalletsListCell.self, forCellReuseIdentifier: "WalletsListCell")
-        listDataSource = WalletsListDataSource()
-        view.dataSource = listDataSource
+        listDataSourceDelegate = WalletsListDataSource()
+        view.dataSource = listDataSourceDelegate
+        view.delegate = listDataSourceDelegate
+        view.backgroundColor = nil
         return view
     }()
     
@@ -117,7 +118,7 @@ class WalletsScreenView: UIView {
     }
     
     func updateWalletsList(wallets: [Wallet]) {
-        listDataSource?.update(list: wallets)
+        listDataSourceDelegate?.update(list: wallets)
         walletsListView.reloadData()
     }
     
@@ -184,16 +185,21 @@ class WalletsScreenView: UIView {
         
         walletsListView.snp.makeConstraints { make in
             make.top.equalTo(headerView.snp.bottom)
-            make.leading.trailing.bottom.equalTo(self.safeAreaLayoutGuide)
+            make.leading.trailing.equalTo(self)
+            make.bottom.equalTo(actionButton.snp.top).offset(MediumPadding)
         }
     }
 }
 
-class WalletsListDataSource: NSObject, UITableViewDataSource {
+class WalletsListDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     private var walletsList: [Wallet]?
     
     public func update(list: [Wallet]) {
         walletsList = list
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        CGFloat(TableViewCellHeight)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -204,7 +210,9 @@ class WalletsListDataSource: NSObject, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "WalletsListCell", for: indexPath) as? WalletsListCell else {
             return WalletsListCell()
         }
-        cell.textLabel?.text = walletsList?[indexPath.row].name
+        cell.title.text = walletsList?[indexPath.row].name
+        cell.balance.text = walletsList?[indexPath.row].balance.toString()
+        cell.backgroundColor = .background
         
         return cell
     }

@@ -11,8 +11,10 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
     weak var controller: WalletsListControllerProtocol?
     
     func controllerLoaded() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) { [weak self] in
-            self?.controller?.updateWalletsList(wallets: Array(repeating: Wallet(name: "Wallet Name"), count: 10))
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) { [weak self] in
+            self?.controller?.updateWalletsList(
+                wallets: Array(repeating:
+                                Wallet(name: "Wallet Name", icon: "", balance: Balance(value: 125, currency: Currency(symbol: "$"))), count: 30))
         }
     }
     

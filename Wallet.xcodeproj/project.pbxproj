@@ -191,9 +191,7 @@
 		83AF6EE528A57D0400BB91CB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				83AF6EF128A640C800BB91CB /* Wallet.swift */,
-				83AF6EF928A6447C00BB91CB /* Balance.swift */,
-				83AF6EFB28A644B800BB91CB /* Currency.swift */,
+				83AF6F0328A677A500BB91CB /* Data */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -223,6 +221,16 @@
 			children = (
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		83AF6F0328A677A500BB91CB /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				83AF6EF128A640C800BB91CB /* Wallet.swift */,
+				83AF6EF928A6447C00BB91CB /* Balance.swift */,
+				83AF6EFB28A644B800BB91CB /* Currency.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

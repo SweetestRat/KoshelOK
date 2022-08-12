@@ -7,4 +7,6 @@
 
 struct Wallet {
     let name: String
+    let icon: String
+    let balance: Balance
 }
