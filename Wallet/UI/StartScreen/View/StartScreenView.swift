@@ -84,6 +84,9 @@ class StartScreenView: UIView {
             make.leading.trailing.equalToSuperview().inset(MediumPadding)
             make.top.equalTo(welcomeText.snp.bottom).offset(SmallPadding)
         }
-        
+    }
+    
+    func addButtonTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
+        actionButton.addTarget(target, action: action, for: controlEvents)
     }
 }

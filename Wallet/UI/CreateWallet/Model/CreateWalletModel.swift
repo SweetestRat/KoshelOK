@@ -8,7 +8,7 @@
 import UIKit
 
 class CreateWalletModel: CreateWalletModelProtocol {
-    var presenter: CreateWalletPresenterProtocol?
+    weak var presenter: CreateWalletPresenterProtocol?
     
     func createWallet() {
         // call api to create wallet

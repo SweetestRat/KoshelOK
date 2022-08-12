@@ -9,7 +9,8 @@ import UIKit
 import SnapKit
 import WalletDesignKit
 
-class StartScreenViewController: UIViewController {
+class StartScreenViewController: UIViewController, StartScreenViewProtocol {
+    var presenter: StartScreenPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,5 +19,11 @@ class StartScreenViewController: UIViewController {
         startView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        startView.addButtonTarget(self, action: #selector(actionButtonDidTap), for: .touchUpInside)
+    }
+    
+    @objc private func actionButtonDidTap() {
+        presenter?.actionButtonDidTap()
     }
 }

@@ -13,6 +13,7 @@ class CurrencySelectionTableViewCell: UITableViewCell {
     private(set) lazy var title: UILabel = {
         let label = UILabel()
         label.font = .designSFProRegular17
+        label.textColor = .darkTextPrimaryColor
         return label
     }()
     

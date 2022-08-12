@@ -9,9 +9,13 @@ import UIKit
 
 class WalletsListsControllerAssembly {
     func assembly() -> UIViewController {
-        let presenter = WalletsListScreenPresenter()
+        let model = WalletsListModel()
         let controller = WalletsListViewController()
+        let router = WalletsListRouter(view: controller)
+        let presenter = WalletsListScreenPresenter(model: model, view: controller, router: router)
+        
         controller.presenter = presenter
+        model.presenter = presenter
         return controller
     }
 }
