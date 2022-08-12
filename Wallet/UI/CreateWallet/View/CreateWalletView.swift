@@ -9,7 +9,13 @@ import UIKit
 import SnapKit
 import WalletDesignKit
 
+protocol CreateWalletViewDelegate: AnyObject {
+    func cellCurrencyInfoDidTap()
+}
+
 class CreateWalletView: UIView {
+    weak var delegate: CreateWalletViewDelegate?
+    
     private lazy var nameTextField: UITextField = {
         let textField = BaseInputTextField(placeholder: "Название")
         textField.returnKeyType = .done
@@ -78,7 +84,7 @@ class CreateWalletView: UIView {
     }
     
     @objc private func currencyInfoDidTap() {
-        
+        delegate?.cellCurrencyInfoDidTap()
     }
     
     func addButtonTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {

@@ -12,7 +12,7 @@ import WalletDesignKit
 class CurrencySelectionTableViewCell: UITableViewCell {
     private(set) lazy var title: UILabel = {
         let label = UILabel()
-        label.font = .SFProRegular(size: 17)
+        label.font = .designSFProRegular17
         return label
     }()
     

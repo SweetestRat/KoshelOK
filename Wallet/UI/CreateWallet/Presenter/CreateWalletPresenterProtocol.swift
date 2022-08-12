@@ -10,4 +10,5 @@ import UIKit
 protocol CreateWalletPresenterProtocol {
     func createWallet()
     func openWalletsList()
+    func cellCurrencyInfoDidTap()
 }
