@@ -13,9 +13,11 @@ public class BaseButton: UIButton {
             if isActive == true {
                 self.backgroundColor = activeBackgroundColor
                 self.setTitleColor(activeTextColor, for: .normal)
+                self.isUserInteractionEnabled = true
             } else {
                 self.backgroundColor = inactiveBackgroundColor
                 self.setTitleColor(inactiveTextColor, for: .normal)
+                self.isUserInteractionEnabled = false
             }
         }
     }

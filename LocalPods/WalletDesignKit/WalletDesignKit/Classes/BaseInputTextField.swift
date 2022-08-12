@@ -70,3 +70,10 @@ public class BaseInputTextField: UITextField {
                                                                           right: CGFloat(MediumPadding))))
     }
 }
+
+extension BaseInputTextField: UITextFieldDelegate {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
