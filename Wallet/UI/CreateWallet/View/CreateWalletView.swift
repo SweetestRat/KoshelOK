@@ -17,7 +17,7 @@ class CreateWalletView: UIView {
         return textField
     }()
     
-    private lazy var currencyView: UIView = {
+    private lazy var currencyView: BaseTextCellWithSelection = {
         let view = BaseTextCellWithSelection(title: "Валюта", buttonDescriontion: "Российский рубль")
         return view
     }()
@@ -66,14 +66,19 @@ class CreateWalletView: UIView {
     
     private func addTargets() {
         nameTextField.addTarget(self, action: #selector(textFieldDidChangeValue), for: .editingChanged)
+        currencyView.addTarget(self, action: #selector(currencyInfoDidTap), for: .touchUpInside)
     }
     
     @objc func textFieldDidChangeValue() {
         if let text = nameTextField.text, !text.isEmpty {
-            nextButton.isActive = true
+            nextButton.isEnabled = true
         } else {
-            nextButton.isActive = false
+            nextButton.isEnabled = false
         }
+    }
+    
+    @objc private func currencyInfoDidTap() {
+        
     }
     
     func addButtonTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
