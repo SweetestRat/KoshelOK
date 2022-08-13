@@ -1,0 +1,6 @@
+use_frameworks!
+target 'WalletNetworkKit_Tests' do
+  pod 'WalletNetworkKit', :path => '../'
+  
+  
+end
