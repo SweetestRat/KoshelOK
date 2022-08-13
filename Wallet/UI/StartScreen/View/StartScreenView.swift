@@ -25,7 +25,7 @@ class StartScreenView: UIView {
         let label = UILabel()
         label.text = "Добро пожаловать в КошелОК"
         label.numberOfLines = 2
-        label.font = .designSFProMedium32
+        label.font = .SFProMedium32
         label.textColor = .black
         return label
     }()
@@ -34,7 +34,7 @@ class StartScreenView: UIView {
         let label = UILabel()
         label.text = "Тут вы можете контролировать свои доходы и расходы"
         label.numberOfLines = 2
-        label.font = .designSFProMedium16
+        label.font = .SFProMedium16
         label.textColor = .black
         return label
     }()

@@ -8,24 +8,25 @@
 import UIKit
 
 public extension UIFont {
+    
+    static let SFProLight13 = systemFont(ofSize: 13, weight: .light)
+    static let SFProLight16 = systemFont(ofSize: 16, weight: .light)
+    static let SFProLight32 = systemFont(ofSize: 32, weight: .light)
 
-    static let designSFProRegular13 = systemFont(ofSize: 13, weight: .regular)
+    static let SFProRegular13 = systemFont(ofSize: 13, weight: .regular)
+    static let SFProRegular16 = systemFont(ofSize: 16, weight: .regular)
+    static let SFProRegular32 = systemFont(ofSize: 32, weight: .regular)
     
-    static let designSFProRegular17 = systemFont(ofSize: 17, weight: .regular)
+    static let SFProMedium13 = systemFont(ofSize: 13, weight: .medium)
+    static let SFProMedium16 = systemFont(ofSize: 16, weight: .medium)
+    static let SFProMedium32 = systemFont(ofSize: 32, weight: .medium)
     
-    static func SFProBold(size: CGFloat) -> UIFont {
-        return systemFont(ofSize: size, weight: .bold)
-    }
+    static let SFProSemiBold13 = systemFont(ofSize: 13, weight: .semibold)
+    static let SFProSemiBold16 = systemFont(ofSize: 16, weight: .semibold)
+    static let SFProSemiBold32 = systemFont(ofSize: 32, weight: .semibold)
     
-    static func SFProSemiBold(size: CGFloat) -> UIFont {
-        return systemFont(ofSize: size, weight: .semibold)
-    }
-    
-    static let designSFProMedium16 = systemFont(ofSize: 16, weight: .medium)
-    
-    static let designSFProMedium32 = systemFont(ofSize: 32, weight: .medium)
+    static let SFProBold13 = systemFont(ofSize: 13, weight: .bold)
+    static let SFProBold16 = systemFont(ofSize: 16, weight: .bold)
+    static let SFProBold32 = systemFont(ofSize: 32, weight: .bold)
 
-    static func SFProLight(size: CGFloat) -> UIFont {
-        return systemFont(ofSize: size, weight: .light)
-    }
 }

@@ -20,13 +20,13 @@ class WalletsListCell: UITableViewCell {
     
     lazy var title: UILabel = {
         let view = UILabel()
-        view.font = .designSFProRegular17
+        view.font = .SFProRegular16
         return view
     }()
     
     lazy var balance: UILabel = {
         let view = UILabel()
-        view.font = .designSFProRegular17
+        view.font = .SFProRegular16
         return view
     }()
     
