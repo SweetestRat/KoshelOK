@@ -44,7 +44,7 @@ public class BaseButton: UIButton {
     
     private func setup() {
         self.setTitle(text, for: .normal)
-        self.titleLabel?.font = .designSFProRegular17
+        self.titleLabel?.font = .SFProMedium16
         
         if isEnabled == true {
             self.backgroundColor = activeBackgroundColor

@@ -33,7 +33,7 @@ class WalletsScreenView: UIView {
     private lazy var commonBalanceLabel: UILabel = {
         let view = UILabel()
         view.text = "Общий баланс"
-        view.font = .designSFProMedium16
+        view.font = .SFProMedium16
         view.textColor = .lightTextPrimaryColor
         view.alpha = 0.8
         return view
@@ -41,27 +41,30 @@ class WalletsScreenView: UIView {
     
     private lazy var commonBalanceValue: UILabel = {
         let view = UILabel()
-        view.text = "9999129 $"
-        view.font = .designSFProMedium32
+//        let formatter = NumberFormatter()
+//        formatter.numberStyle = .currency
+//        formatter.locale = Locale(identifier: currency.symbol)
+        view.text = "9 999 129 $"
+        view.font = .SFProSemiBold32
         view.textColor = .lightTextPrimaryColor
         return view
     }()
     
-    private lazy var commonIncomeLabel: UIView = dottedText(color: .incomeColor, text: "Общий доход", textFont: .designSFProRegular13)
+    private lazy var commonIncomeLabel: UIView = dottedText(color: .incomeColor, text: "Общий доход", textFont: .SFProRegular13)
     private lazy var commonIncomeValue: UILabel = {
         let view = UILabel()
-        view.text = "1000062 $"
-        view.font = .designSFProMedium16
+        view.text = "1 000 062 $"
+        view.font = .SFProMedium16
         view.textColor = .lightTextPrimaryColor
         return view
     }()
     
-    private lazy var commonExpansesLabel: UIView = dottedText(color: .designRedColor, text: "Общий расход", textFont: .designSFProRegular13)
+    private lazy var commonExpansesLabel: UIView = dottedText(color: .designRedColor, text: "Общий расход", textFont: .SFProRegular13)
     
     private lazy var commonExpansesValue: UILabel = {
         let view = UILabel()
-        view.text = "-1001 $"
-        view.font = .designSFProMedium16
+        view.text = "-1 001 $"
+        view.font = .SFProMedium16
         view.textColor = .lightTextPrimaryColor
         return view
     }()

@@ -41,7 +41,7 @@ public class BaseInputTextField: UITextField {
             attributes: [NSAttributedString.Key.foregroundColor: color]
         )
         textColor = .darkTextPrimaryColor
-        font = .designSFProRegular17
+        font = .SFProRegular16
         backgroundColor = .none
         self.addSubview(stroke)
     }
