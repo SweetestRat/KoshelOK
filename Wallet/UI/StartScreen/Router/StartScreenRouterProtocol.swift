@@ -8,5 +8,5 @@
 import Foundation
 
 protocol StartScreenRouterProtocol {
-    func openWalletsList()
+    func openAuthorization()
 }

@@ -1,21 +1,21 @@
 //
-//  StartScreenRouter.swift
+//  AuthorizationRouter.swift
 //  Wallet
 //
-//  Created by Владислава Гильде on 12.08.2022.
+//  Created by Alexandr Sokolov on 13.08.2022.
 //
 
 import UIKit
 
-class StartScreenRouter: StartScreenRouterProtocol {
-    var view: StartScreenViewProtocol?
+class AuthorizationRouter: AuthorizationRouterProtocol {
+    var view: AuthorizationViewProtocol?
     
-    init(view: StartScreenViewProtocol) {
+    init(view: AuthorizationViewProtocol) {
         self.view = view
     }
     
-    func openAuthorization() {
-        let nextvc = AuthorizationAsembly().assembly()
+    func openWalletsList() {
+        let nextvc = WalletsListsControllerAssembly().assembly()
         guard let vc = view as? UIViewController else { return }
         
         vc.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
