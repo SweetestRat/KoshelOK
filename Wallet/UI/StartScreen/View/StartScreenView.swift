@@ -11,7 +11,7 @@ import WalletDesignKit
 class StartScreenView: UIView {
     
     private lazy var actionButton: BaseButton = {
-        let button = BaseButton(title: "Войти")
+        let button = BaseButton(title: "Продолжить")
         return button
     }()
     
@@ -70,14 +70,13 @@ class StartScreenView: UIView {
         
         startScreenView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(SmallPadding)
-            make.height.equalTo(StartScreenImageHeight)
-            make.width.equalTo(StartScreenImageWidth)
-            make.top.equalToSuperview()
+            make.height.equalTo(startScreenView.snp.width)
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).inset(MediumPadding)
         }
         
         welcomeText.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(MediumPadding)
-            make.top.equalTo(startScreenView.snp.bottom).offset(LargePadding * 2)
+            make.top.equalTo(startScreenView.snp.bottom).offset(SmallPadding)
         }
         
         infoText.snp.makeConstraints { make in
