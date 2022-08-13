@@ -41,9 +41,6 @@ class WalletsScreenView: UIView {
     
     private lazy var commonBalanceValue: UILabel = {
         let view = UILabel()
-//        let formatter = NumberFormatter()
-//        formatter.numberStyle = .currency
-//        formatter.locale = Locale(identifier: currency.symbol)
         view.text = "9 999 129 $"
         view.font = .SFProSemiBold32
         view.textColor = .lightTextPrimaryColor

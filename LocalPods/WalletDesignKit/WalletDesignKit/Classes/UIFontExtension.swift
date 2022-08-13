@@ -24,5 +24,9 @@ public extension UIFont {
     static let SFProSemiBold13 = systemFont(ofSize: 13, weight: .semibold)
     static let SFProSemiBold16 = systemFont(ofSize: 16, weight: .semibold)
     static let SFProSemiBold32 = systemFont(ofSize: 32, weight: .semibold)
+    
+    static let SFProBold13 = systemFont(ofSize: 13, weight: .bold)
+    static let SFProBold16 = systemFont(ofSize: 16, weight: .bold)
+    static let SFProBold32 = systemFont(ofSize: 32, weight: .bold)
 
 }
