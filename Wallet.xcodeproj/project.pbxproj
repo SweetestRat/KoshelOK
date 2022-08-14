@@ -9,16 +9,16 @@
 /* Begin PBXBuildFile section */
 		2D43E1A128A5419F00947040 /* CreateWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D43E1A028A5419F00947040 /* CreateWalletViewController.swift */; };
 		2DA6462F28A699F800EF8755 /* CurrencySelectionAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6462028A699F700EF8755 /* CurrencySelectionAssembly.swift */; };
-		2DA6463028A699F800EF8755 /* CurrencySeletionPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6462228A699F700EF8755 /* CurrencySeletionPresenterProtocol.swift */; };
-		2DA6463128A699F800EF8755 /* CurrencySeletionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6462328A699F700EF8755 /* CurrencySeletionPresenter.swift */; };
-		2DA6463228A699F800EF8755 /* CurrencySeletionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6462528A699F700EF8755 /* CurrencySeletionModel.swift */; };
-		2DA6463328A699F800EF8755 /* CurrencySeletionModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6462628A699F700EF8755 /* CurrencySeletionModelProtocol.swift */; };
-		2DA6463428A699F800EF8755 /* CurrencySeletionViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6462828A699F700EF8755 /* CurrencySeletionViewProtocol.swift */; };
+		2DA6463028A699F800EF8755 /* CurrencySelectionPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6462228A699F700EF8755 /* CurrencySelectionPresenterProtocol.swift */; };
+		2DA6463128A699F800EF8755 /* CurrencySelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6462328A699F700EF8755 /* CurrencySelectionPresenter.swift */; };
+		2DA6463228A699F800EF8755 /* CurrencySelectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6462528A699F700EF8755 /* CurrencySelectionModel.swift */; };
+		2DA6463328A699F800EF8755 /* CurrencySelectionModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6462628A699F700EF8755 /* CurrencySelectionModelProtocol.swift */; };
+		2DA6463428A699F800EF8755 /* CurrencySelectionViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6462828A699F700EF8755 /* CurrencySelectionViewProtocol.swift */; };
 		2DA6463528A699F800EF8755 /* CurrencySelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6462928A699F700EF8755 /* CurrencySelectionTableViewCell.swift */; };
-		2DA6463628A699F800EF8755 /* CurrencySeletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6462A28A699F700EF8755 /* CurrencySeletionView.swift */; };
-		2DA6463728A699F800EF8755 /* CurrencySeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6462B28A699F700EF8755 /* CurrencySeletionViewController.swift */; };
-		2DA6463828A699F800EF8755 /* CurrencySeletionRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6462D28A699F700EF8755 /* CurrencySeletionRouterProtocol.swift */; };
-		2DA6463928A699F800EF8755 /* CurrencySeletionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6462E28A699F700EF8755 /* CurrencySeletionRouter.swift */; };
+		2DA6463628A699F800EF8755 /* CurrencySelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6462A28A699F700EF8755 /* CurrencySelectionView.swift */; };
+		2DA6463728A699F800EF8755 /* CurrencySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6462B28A699F700EF8755 /* CurrencySelectionViewController.swift */; };
+		2DA6463828A699F800EF8755 /* CurrencySelectionRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6462D28A699F700EF8755 /* CurrencySelectionRouterProtocol.swift */; };
+		2DA6463928A699F800EF8755 /* CurrencySelectionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6462E28A699F700EF8755 /* CurrencySelectionRouter.swift */; };
 		2DA6463B28A6D83700EF8755 /* StartScreenViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6463A28A6D83700EF8755 /* StartScreenViewProtocol.swift */; };
 		2DA6464128A6D87A00EF8755 /* StartScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6464028A6D87A00EF8755 /* StartScreenModel.swift */; };
 		2DA6464328A6D88500EF8755 /* StartScreenModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6464228A6D88500EF8755 /* StartScreenModelProtocol.swift */; };
@@ -74,16 +74,16 @@
 		1A84D4897DE1B568819F927D /* Pods_Wallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D43E1A028A5419F00947040 /* CreateWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWalletViewController.swift; sourceTree = "<group>"; };
 		2DA6462028A699F700EF8755 /* CurrencySelectionAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionAssembly.swift; sourceTree = "<group>"; };
-		2DA6462228A699F700EF8755 /* CurrencySeletionPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySeletionPresenterProtocol.swift; sourceTree = "<group>"; };
-		2DA6462328A699F700EF8755 /* CurrencySeletionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySeletionPresenter.swift; sourceTree = "<group>"; };
-		2DA6462528A699F700EF8755 /* CurrencySeletionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySeletionModel.swift; sourceTree = "<group>"; };
-		2DA6462628A699F700EF8755 /* CurrencySeletionModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySeletionModelProtocol.swift; sourceTree = "<group>"; };
-		2DA6462828A699F700EF8755 /* CurrencySeletionViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySeletionViewProtocol.swift; sourceTree = "<group>"; };
+		2DA6462228A699F700EF8755 /* CurrencySelectionPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionPresenterProtocol.swift; sourceTree = "<group>"; };
+		2DA6462328A699F700EF8755 /* CurrencySelectionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionPresenter.swift; sourceTree = "<group>"; };
+		2DA6462528A699F700EF8755 /* CurrencySelectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionModel.swift; sourceTree = "<group>"; };
+		2DA6462628A699F700EF8755 /* CurrencySelectionModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionModelProtocol.swift; sourceTree = "<group>"; };
+		2DA6462828A699F700EF8755 /* CurrencySelectionViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionViewProtocol.swift; sourceTree = "<group>"; };
 		2DA6462928A699F700EF8755 /* CurrencySelectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionTableViewCell.swift; sourceTree = "<group>"; };
-		2DA6462A28A699F700EF8755 /* CurrencySeletionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySeletionView.swift; sourceTree = "<group>"; };
-		2DA6462B28A699F700EF8755 /* CurrencySeletionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySeletionViewController.swift; sourceTree = "<group>"; };
-		2DA6462D28A699F700EF8755 /* CurrencySeletionRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySeletionRouterProtocol.swift; sourceTree = "<group>"; };
-		2DA6462E28A699F700EF8755 /* CurrencySeletionRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySeletionRouter.swift; sourceTree = "<group>"; };
+		2DA6462A28A699F700EF8755 /* CurrencySelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionView.swift; sourceTree = "<group>"; };
+		2DA6462B28A699F700EF8755 /* CurrencySelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionViewController.swift; sourceTree = "<group>"; };
+		2DA6462D28A699F700EF8755 /* CurrencySelectionRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionRouterProtocol.swift; sourceTree = "<group>"; };
+		2DA6462E28A699F700EF8755 /* CurrencySelectionRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionRouter.swift; sourceTree = "<group>"; };
 		2DA6463A28A6D83700EF8755 /* StartScreenViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenViewProtocol.swift; sourceTree = "<group>"; };
 		2DA6464028A6D87A00EF8755 /* StartScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenModel.swift; sourceTree = "<group>"; };
 		2DA6464228A6D88500EF8755 /* StartScreenModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenModelProtocol.swift; sourceTree = "<group>"; };
@@ -239,8 +239,8 @@
 		2DA6462128A699F700EF8755 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				2DA6462228A699F700EF8755 /* CurrencySeletionPresenterProtocol.swift */,
-				2DA6462328A699F700EF8755 /* CurrencySeletionPresenter.swift */,
+				2DA6462228A699F700EF8755 /* CurrencySelectionPresenterProtocol.swift */,
+				2DA6462328A699F700EF8755 /* CurrencySelectionPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -248,8 +248,8 @@
 		2DA6462428A699F700EF8755 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2DA6462528A699F700EF8755 /* CurrencySeletionModel.swift */,
-				2DA6462628A699F700EF8755 /* CurrencySeletionModelProtocol.swift */,
+				2DA6462528A699F700EF8755 /* CurrencySelectionModel.swift */,
+				2DA6462628A699F700EF8755 /* CurrencySelectionModelProtocol.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -257,10 +257,10 @@
 		2DA6462728A699F700EF8755 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2DA6462828A699F700EF8755 /* CurrencySeletionViewProtocol.swift */,
+				2DA6462828A699F700EF8755 /* CurrencySelectionViewProtocol.swift */,
 				2DA6462928A699F700EF8755 /* CurrencySelectionTableViewCell.swift */,
-				2DA6462A28A699F700EF8755 /* CurrencySeletionView.swift */,
-				2DA6462B28A699F700EF8755 /* CurrencySeletionViewController.swift */,
+				2DA6462A28A699F700EF8755 /* CurrencySelectionView.swift */,
+				2DA6462B28A699F700EF8755 /* CurrencySelectionViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -268,8 +268,8 @@
 		2DA6462C28A699F700EF8755 /* Router */ = {
 			isa = PBXGroup;
 			children = (
-				2DA6462D28A699F700EF8755 /* CurrencySeletionRouterProtocol.swift */,
-				2DA6462E28A699F700EF8755 /* CurrencySeletionRouter.swift */,
+				2DA6462D28A699F700EF8755 /* CurrencySelectionRouterProtocol.swift */,
+				2DA6462E28A699F700EF8755 /* CurrencySelectionRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -663,7 +663,7 @@
 				2DA96D9828A69492005F791F /* CreateWalletViewProtocol.swift in Sources */,
 				2DA96DBF28A694C9005F791F /* CreateWalletRouter.swift in Sources */,
 				2DA6463528A699F800EF8755 /* CurrencySelectionTableViewCell.swift in Sources */,
-				2DA6463628A699F800EF8755 /* CurrencySeletionView.swift in Sources */,
+				2DA6463628A699F800EF8755 /* CurrencySelectionView.swift in Sources */,
 				68F646ED289D3BAE00DAAE91 /* ViewController.swift in Sources */,
 				4C4FB09528A7B3FC00D23CD2 /* AuthorizationRouterProtocol.swift in Sources */,
 				2DA96DC028A694C9005F791F /* CreateWalletRouterProtocol.swift in Sources */,
@@ -671,7 +671,7 @@
 				2DA6464128A6D87A00EF8755 /* StartScreenModel.swift in Sources */,
 				2DA6464728A6D8B400EF8755 /* StartScreenPresenterProtocol.swift in Sources */,
 				2DA96DC728A695CB005F791F /* CreateWalletView.swift in Sources */,
-				2DA6463228A699F800EF8755 /* CurrencySeletionModel.swift in Sources */,
+				2DA6463228A699F800EF8755 /* CurrencySelectionModel.swift in Sources */,
 				4C77E21028A654B8002DE431 /* StartScreenView.swift in Sources */,
 				4C4FB09328A7B2FF00D23CD2 /* AuthorizationRouter.swift in Sources */,
 				2DA6464D28A6D90C00EF8755 /* StartScreenAssembly.swift in Sources */,
@@ -679,28 +679,28 @@
 				2DA6464928A6D8D600EF8755 /* StartScreenRouter.swift in Sources */,
 				2DA96DB728A694BC005F791F /* CreateWalletModel.swift in Sources */,
 				83AF6EEA28A57D5A00BB91CB /* WalletsListViewController.swift in Sources */,
-				2DA6463928A699F800EF8755 /* CurrencySeletionRouter.swift in Sources */,
+				2DA6463928A699F800EF8755 /* CurrencySelectionRouter.swift in Sources */,
 				2DA6465828A6DEDB00EF8755 /* WalletsListModelProtocol.swift in Sources */,
 				2DA96DBB28A694C3005F791F /* CreateWalletPresenter.swift in Sources */,
 				4C4FB08528A7833D00D23CD2 /* AuthorizationPresenter.swift in Sources */,
 				4C4FB08F28A7AA0B00D23CD2 /* AuthorizationModel.swift in Sources */,
-				2DA6463128A699F800EF8755 /* CurrencySeletionPresenter.swift in Sources */,
+				2DA6463128A699F800EF8755 /* CurrencySelectionPresenter.swift in Sources */,
 				4C4FB09128A7AAD600D23CD2 /* AuthorizationModelProtocol.swift in Sources */,
 				83AF6EEC28A57E1500BB91CB /* WalletsListView.swift in Sources */,
 				2DA6462F28A699F800EF8755 /* CurrencySelectionAssembly.swift in Sources */,
 				2DA6465228A6DE4800EF8755 /* WalletsListRouter.swift in Sources */,
-				2DA6463828A699F800EF8755 /* CurrencySeletionRouterProtocol.swift in Sources */,
+				2DA6463828A699F800EF8755 /* CurrencySelectionRouterProtocol.swift in Sources */,
 				68F646E9289D3BAE00DAAE91 /* AppDelegate.swift in Sources */,
-				2DA6463328A699F800EF8755 /* CurrencySeletionModelProtocol.swift in Sources */,
+				2DA6463328A699F800EF8755 /* CurrencySelectionModelProtocol.swift in Sources */,
 				4C4FB08628A7833D00D23CD2 /* AuthorizationPresenterProtocol.swift in Sources */,
 				83AF6EF228A640C800BB91CB /* Wallet.swift in Sources */,
 				2DA6465428A6DE5400EF8755 /* WalletsListRouterProtocol.swift in Sources */,
 				83AF6EF628A641E200BB91CB /* WalletsListScreenPresenter.swift in Sources */,
 				4C4FB08828A7833D00D23CD2 /* AuthorizationView.swift in Sources */,
 				2DA6464B28A6D8DD00EF8755 /* StartScreenRouterProtocol.swift in Sources */,
-				2DA6463028A699F800EF8755 /* CurrencySeletionPresenterProtocol.swift in Sources */,
+				2DA6463028A699F800EF8755 /* CurrencySelectionPresenterProtocol.swift in Sources */,
 				2DA6464528A6D8AA00EF8755 /* StartScreenPresenter.swift in Sources */,
-				2DA6463428A699F800EF8755 /* CurrencySeletionViewProtocol.swift in Sources */,
+				2DA6463428A699F800EF8755 /* CurrencySelectionViewProtocol.swift in Sources */,
 				83AF6F0028A64D2800BB91CB /* WalletsListPresenterProtocol.swift in Sources */,
 				2DA6465628A6DED200EF8755 /* WalletsListModel.swift in Sources */,
 				83AF6F0228A6534100BB91CB /* WalletsListControllerProtocol.swift in Sources */,
@@ -709,7 +709,7 @@
 				83AF6EFC28A644B800BB91CB /* Currency.swift in Sources */,
 				2D43E1A128A5419F00947040 /* CreateWalletViewController.swift in Sources */,
 				68F646EB289D3BAE00DAAE91 /* SceneDelegate.swift in Sources */,
-				2DA6463728A699F800EF8755 /* CurrencySeletionViewController.swift in Sources */,
+				2DA6463728A699F800EF8755 /* CurrencySelectionViewController.swift in Sources */,
 				2DA6463B28A6D83700EF8755 /* StartScreenViewProtocol.swift in Sources */,
 				4C4FB08D28A7A7B900D23CD2 /* AuthorizationAsembly.swift in Sources */,
 				4C77E20E28A654AA002DE431 /* StartScreenViewController.swift in Sources */,
