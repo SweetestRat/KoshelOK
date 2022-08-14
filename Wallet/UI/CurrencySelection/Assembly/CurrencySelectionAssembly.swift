@@ -8,11 +8,11 @@
 import Foundation
 
 class CurrencySelectionAssembly {
-    func configureViewController() -> CurrencySeletionViewController {
-        let model = CurrencySeletionModel()
-        let viewController = CurrencySeletionViewController()
-        let router = CurrencySeletionRouter(view: viewController)
-        let presenter = CurrencySeletionPresenter(model: model, router: router, view: viewController)
+    func configureViewController() -> CurrencySelectionViewController {
+        let model = CurrencySelectionModel()
+        let viewController = CurrencySelectionViewController()
+        let router = CurrencySelectionRouter(view: viewController)
+        let presenter = CurrencySelectionPresenter(model: model, router: router, view: viewController)
 
         viewController.presenter = presenter
         model.presenter = presenter
