@@ -8,25 +8,24 @@
 import UIKit
 
 class CreateWalletPresenter: CreateWalletPresenterProtocol {
-    private var model: CreateWalletModelProtocol?
-    private var router: CreateWalletRouterProtocol?
-    private weak var view: CreateWalletViewProtocol?
+    private let service: CreateWalletServiceProtocol
+    private let router: CreateWalletRouterProtocol
+    weak var view: CreateWalletViewProtocol?
     
-    init(model: CreateWalletModelProtocol, router: CreateWalletRouterProtocol, view: CreateWalletViewController) {
-        self.model = model
+    init(service: CreateWalletServiceProtocol, router: CreateWalletRouterProtocol) {
+        self.service = service
         self.router = router
-        self.view = view
     }
     
     func createWallet() {
-        model?.createWallet()
+        service.createWallet()
     }
     
     func openWalletsList() {
-        router?.openWalletsList()
+        router.openWalletsList()
     }
     
     func cellCurrencyInfoDidTap() {
-        router?.openCurrencySelection()
+        router.openCurrencySelection()
     }
 }

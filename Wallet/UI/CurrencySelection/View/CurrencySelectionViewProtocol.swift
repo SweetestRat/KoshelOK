@@ -1,5 +1,5 @@
 //
-//  WalletsListModelProtocol.swift
+//  CurrencySelectionViewProtocol.swift
 //  Wallet
 //
 //  Created by Владислава Гильде on 12.08.2022.
@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol WalletsListModelProtocol {
+protocol CurrencySelectionViewProtocol: AnyObject {
     
 }

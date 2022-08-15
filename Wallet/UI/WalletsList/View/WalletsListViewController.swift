@@ -10,7 +10,16 @@ import SnapKit
 import WalletDesignKit
 
 class WalletsListViewController: UIViewController, WalletsListControllerProtocol, WalletsScreenViewDelegate {
-    var presenter: WalletsListScreenPresenter?
+    private let presenter: WalletsListPresenterProtocol
+    
+    init(presenter: WalletsListPresenterProtocol) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     lazy var screenView: WalletsScreenView = {
         let view = WalletsScreenView()
@@ -38,13 +47,12 @@ class WalletsListViewController: UIViewController, WalletsListControllerProtocol
         screenView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        presenter?.view = self
-        presenter?.controllerLoaded()
+        presenter.controllerLoaded()
         addTargets()
     }
     
     func didTapWallet() {
-        presenter?.didTapWallet()
+        presenter.didTapWallet()
     }
     
     private func addTargets() {
@@ -52,6 +60,6 @@ class WalletsListViewController: UIViewController, WalletsListControllerProtocol
     }
     
     @objc private func screenViewButtonDidTap() {
-        presenter?.createWalletClicked()
+        presenter.createWalletClicked()
     }
 }

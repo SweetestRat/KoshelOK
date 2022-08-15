@@ -8,14 +8,10 @@
 import UIKit
 
 class StartScreenRouter: StartScreenRouterProtocol {
-    var view: StartScreenViewProtocol?
+    weak var view: StartScreenViewProtocol?
     
-    init(view: StartScreenViewProtocol) {
-        self.view = view
-    }
-    
-    func openWalletsList() {
-        let nextvc = WalletsListsControllerAssembly().assembly()
+    func openAuthorization() {
+        let nextvc = AuthorizationAsembly().assembly()
         guard let vc = view as? UIViewController else { return }
         
         vc.navigationController?.interactivePopGestureRecognizer?.isEnabled = false

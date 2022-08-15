@@ -9,11 +9,7 @@ import Foundation
 import UIKit
 
 class CreateWalletRouter: CreateWalletRouterProtocol {
-    var view: CreateWalletViewProtocol?
-    
-    init(view: CreateWalletViewController) {
-        self.view = view
-    }
+    weak var view: CreateWalletViewProtocol?
     
     func openWalletsList() {
         guard let vc = view as? UIViewController else { return }
@@ -22,7 +18,7 @@ class CreateWalletRouter: CreateWalletRouterProtocol {
     }
     
     func openCurrencySelection() {
-        let nextvc = CurrencySelectionAssembly().configureViewController()
+        let nextvc = CurrencySelectionAssembly().assembly()
         guard let vc = view as? UIViewController else { return }
         
         vc.navigationController?.interactivePopGestureRecognizer?.isEnabled = true

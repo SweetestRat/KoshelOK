@@ -10,13 +10,13 @@ import UIKit
 
 class StartScreenAssembly {
     func assembly() -> UIViewController {
-        let model = StartScreenModel()
-        let viewController = StartScreenViewController()
-        let router = StartScreenRouter(view: viewController)
-        let presenter = StartScreenPresenter(model: model, router: router, view: viewController)
+        let service = StartScreenService()
+        let router = StartScreenRouter()
+        let presenter = StartScreenPresenter(service: service, router: router)
+        let viewController = StartScreenViewController(presenter: presenter)
         
-        viewController.presenter = presenter
-        model.presenter = presenter
+        presenter.view = viewController
+        router.view = viewController
         
         return viewController
     }
