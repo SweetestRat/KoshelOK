@@ -90,5 +90,5 @@ fastlane/test_output
 iOSInjectionProject/
 
 # OS generated files
-*.DS_Store
-*.gitkeep
+.DS_Store
+.gitkeep
