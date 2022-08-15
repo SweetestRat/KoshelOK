@@ -8,16 +8,15 @@
 import Foundation
 
 class CurrencySelectionPresenter: CurrencySelectionPresenterProtocol {
-    private var model: CurrencySelectionModelProtocol?
-    private var router: CurrencySelectionRouterProtocol?
-    private weak var view: CurrencySelectionViewProtocol?
+    private let service: CurrencySelectionServiceProtocol?
+    private let router: CurrencySelectionRouterProtocol?
+    weak var view: CurrencySelectionViewProtocol?
     
     private var selectedIndexPathRow: Int = 0
     
-    init(model: CurrencySelectionModelProtocol, router: CurrencySelectionRouterProtocol, view: CurrencySelectionViewProtocol) {
-        self.model = model
+    init(service: CurrencySelectionServiceProtocol, router: CurrencySelectionRouterProtocol) {
+        self.service = service
         self.router = router
-        self.view = view
     }
     
     func getSelectedRow() -> Int? {
@@ -29,6 +28,6 @@ class CurrencySelectionPresenter: CurrencySelectionPresenterProtocol {
     }
     
     func controllerLoaded() {
-        model?.getData()
+        service?.getData()
     }
 }
