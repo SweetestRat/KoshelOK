@@ -18,6 +18,6 @@ class StartScreenPresenter: StartScreenPresenterProtocol {
     }
     
     func actionButtonDidTap() {
-        router?.openWalletsList()
+        router?.openAuthorization()
     }
 }
