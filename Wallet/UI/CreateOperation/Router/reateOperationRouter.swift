@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class CreateOperationRouter: CreateOperationRouterProtocol {
-    var view: CreateOperationViewProtocol?
+    weak var view: CreateOperationViewProtocol?
     
     init(view: CreateOperationViewController) {
         self.view = view

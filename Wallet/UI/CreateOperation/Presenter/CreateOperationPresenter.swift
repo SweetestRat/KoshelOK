@@ -8,18 +8,16 @@
 class CreateOperationPresenter: CreateOperationPresenterProtocol {
     private var currency: Currency
     
-    private var model: CreateOperationModelProtocol?
+    private var service: CreateOperationServiceProtocol?
     private var router: CreateOperationRouterProtocol?
-    private weak var view: CreateOperationViewProtocol?
+    weak var view: CreateOperationViewProtocol?
     
     init(
-        model: CreateOperationModelProtocol,
-        router: CreateOperationRouterProtocol,
-        view: CreateOperationViewController
+        service: CreateOperationServiceProtocol,
+        router: CreateOperationRouterProtocol
     ) {
-        self.model = model
+        self.service = service
         self.router = router
-        self.view = view
         
         // set default user currency (probable get from user account request)
         currency = Currency(symbol: "THAI", fullName: "Thailand currency")

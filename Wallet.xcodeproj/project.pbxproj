@@ -77,7 +77,7 @@
 		68F646ED289D3BAE00DAAE91 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F646EC289D3BAE00DAAE91 /* ViewController.swift */; };
 		68F646F2289D3BB100DAAE91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68F646F1289D3BB100DAAE91 /* Assets.xcassets */; };
 		68F646F5289D3BB100DAAE91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68F646F3289D3BB100DAAE91 /* LaunchScreen.storyboard */; };
-		830D8DEC28AAD50C00B51034 /* CreateOperationModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830D8DEB28AAD50C00B51034 /* CreateOperationModelProtocol.swift */; };
+		830D8DEC28AAD50C00B51034 /* CreateOperationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830D8DEB28AAD50C00B51034 /* CreateOperationServiceProtocol.swift */; };
 		830D8DEE28AAD65C00B51034 /* CreateOperationRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830D8DED28AAD65C00B51034 /* CreateOperationRouterProtocol.swift */; };
 		830D8DF028AAD72E00B51034 /* reateOperationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830D8DEF28AAD72E00B51034 /* reateOperationRouter.swift */; };
 		83AF6EEA28A57D5A00BB91CB /* WalletsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AF6EE928A57D5A00BB91CB /* WalletsListViewController.swift */; };
@@ -91,7 +91,7 @@
 		83AF6F0228A6534100BB91CB /* WalletsListControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AF6F0128A6534100BB91CB /* WalletsListControllerProtocol.swift */; };
 		83AF6F0628A6869000BB91CB /* WalletsListsControllerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AF6F0528A6869000BB91CB /* WalletsListsControllerAssembly.swift */; };
 		83F3DDAB28A839BA00F176BD /* CreateOperationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3DDAA28A839BA00F176BD /* CreateOperationAssembly.swift */; };
-		83F3DDAF28A839DA00F176BD /* CreateOperationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3DDAE28A839DA00F176BD /* CreateOperationModel.swift */; };
+		83F3DDAF28A839DA00F176BD /* CreateOperationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3DDAE28A839DA00F176BD /* CreateOperationService.swift */; };
 		83F3DDB128A839E700F176BD /* CreateOperationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3DDB028A839E700F176BD /* CreateOperationView.swift */; };
 		83F3DDB328A839FC00F176BD /* CreateOperationViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3DDB228A839FC00F176BD /* CreateOperationViewProtocol.swift */; };
 		83F3DDB528A83A0000F176BD /* CreateOperationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3DDB428A83A0000F176BD /* CreateOperationViewController.swift */; };
@@ -175,7 +175,7 @@
 		68F646F4289D3BB100DAAE91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		68F646F6289D3BB100DAAE91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		74EC7FF8D74674E8D9DB0B71 /* Pods-Wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wallet.release.xcconfig"; path = "Target Support Files/Pods-Wallet/Pods-Wallet.release.xcconfig"; sourceTree = "<group>"; };
-		830D8DEB28AAD50C00B51034 /* CreateOperationModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOperationModelProtocol.swift; sourceTree = "<group>"; };
+		830D8DEB28AAD50C00B51034 /* CreateOperationServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOperationServiceProtocol.swift; sourceTree = "<group>"; };
 		830D8DED28AAD65C00B51034 /* CreateOperationRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationRouterProtocol.swift; sourceTree = "<group>"; };
 		830D8DEF28AAD72E00B51034 /* reateOperationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reateOperationRouter.swift; sourceTree = "<group>"; };
 		83AF6EE928A57D5A00BB91CB /* WalletsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsListViewController.swift; sourceTree = "<group>"; };
@@ -189,7 +189,7 @@
 		83AF6F0128A6534100BB91CB /* WalletsListControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsListControllerProtocol.swift; sourceTree = "<group>"; };
 		83AF6F0528A6869000BB91CB /* WalletsListsControllerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsListsControllerAssembly.swift; sourceTree = "<group>"; };
 		83F3DDAA28A839BA00F176BD /* CreateOperationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationAssembly.swift; sourceTree = "<group>"; };
-		83F3DDAE28A839DA00F176BD /* CreateOperationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationModel.swift; sourceTree = "<group>"; };
+		83F3DDAE28A839DA00F176BD /* CreateOperationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationService.swift; sourceTree = "<group>"; };
 		83F3DDB028A839E700F176BD /* CreateOperationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationView.swift; sourceTree = "<group>"; };
 		83F3DDB228A839FC00F176BD /* CreateOperationViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationViewProtocol.swift; sourceTree = "<group>"; };
 		83F3DDB428A83A0000F176BD /* CreateOperationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationViewController.swift; sourceTree = "<group>"; };
@@ -685,8 +685,8 @@
 		83F3DDA628A8398500F176BD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				830D8DEB28AAD50C00B51034 /* CreateOperationModelProtocol.swift */,
-				83F3DDAE28A839DA00F176BD /* CreateOperationModel.swift */,
+				830D8DEB28AAD50C00B51034 /* CreateOperationServiceProtocol.swift */,
+				83F3DDAE28A839DA00F176BD /* CreateOperationService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -870,7 +870,7 @@
 				2DA6464D28A6D90C00EF8755 /* StartScreenAssembly.swift in Sources */,
 				83AF6F0628A6869000BB91CB /* WalletsListsControllerAssembly.swift in Sources */,
 				2DA6464928A6D8D600EF8755 /* StartScreenRouter.swift in Sources */,
-				830D8DEC28AAD50C00B51034 /* CreateOperationModelProtocol.swift in Sources */,
+				830D8DEC28AAD50C00B51034 /* CreateOperationServiceProtocol.swift in Sources */,
 				2DA96DB728A694BC005F791F /* CreateWalletService.swift in Sources */,
 				83AF6EEA28A57D5A00BB91CB /* WalletsListViewController.swift in Sources */,
 				2DA79AD628AA89B900BA69D3 /* CurrencySeletionView.swift in Sources */,
@@ -917,7 +917,7 @@
 				83F3DDB528A83A0000F176BD /* CreateOperationViewController.swift in Sources */,
 				2DA79ADD28AA89B900BA69D3 /* CurrencySelectionRouterProtocol.swift in Sources */,
 				83AF6EFC28A644B800BB91CB /* Currency.swift in Sources */,
-				83F3DDAF28A839DA00F176BD /* CreateOperationModel.swift in Sources */,
+				83F3DDAF28A839DA00F176BD /* CreateOperationService.swift in Sources */,
 				2D43E1A128A5419F00947040 /* CreateWalletViewController.swift in Sources */,
 				83F3DDAB28A839BA00F176BD /* CreateOperationAssembly.swift in Sources */,
 				83F3DDB928A83A4600F176BD /* CreateOperationPresenterProtocol.swift in Sources */,

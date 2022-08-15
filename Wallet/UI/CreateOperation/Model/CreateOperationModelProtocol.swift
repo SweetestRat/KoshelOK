@@ -1,3 +1,0 @@
-protocol CreateOperationModelProtocol {
-    func createOperation()
-}

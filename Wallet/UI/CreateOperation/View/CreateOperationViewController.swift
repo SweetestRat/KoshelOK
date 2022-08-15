@@ -80,7 +80,7 @@ class CreateOperationViewController: UIViewController, CreateOperationViewProtoc
 }
 
 extension CreateOperationViewController: CreateOperationViewDelegate {
-    func selectCurrency() {
+    func createOperationViewDidSelectCurrency() {
         presenter?.selectCurrency()
     }
 }

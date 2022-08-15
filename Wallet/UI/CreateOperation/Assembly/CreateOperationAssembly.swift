@@ -9,13 +9,13 @@ import Foundation
 
 class CreateOperationAssembly {
     func assembly() -> CreateOperationViewController {
-        let model = CreateOperationModel()
+        let service = CreateOperationService()
         let viewController = CreateOperationViewController()
         let router = CreateOperationRouter(view: viewController)
-        let presenter = CreateOperationPresenter(model: model, router: router, view: viewController)
+        let presenter = CreateOperationPresenter(service: service, router: router)
 
+        presenter.view = viewController
         viewController.presenter = presenter
-        model.presenter = presenter
 
         return viewController
     }

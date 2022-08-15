@@ -22,22 +22,11 @@ public class BaseInputTextField: UITextField {
     public convenience init(placeholder: String? = nil, title: String? = nil, font: UIFont? = nil, textAllignment: NSTextAlignment? = nil) {
         self.init()
         
-        if placeholder == placeholder {
-            self.placeholderText = placeholder
-        }
-        
-        if title == title {
-            self.title = title
-        }
-        
-        if font == font {
-            self.font = font
-        }
-        
-        if textAllignment == textAllignment {
-            self.allignment = textAllignment
-        }
-        
+        self.placeholderText = placeholder
+        self.title = title
+        self.font = font
+        self.allignment = textAllignment ?? .natural
+    
         setup()
         setConstraints()
     }

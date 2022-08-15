@@ -10,7 +10,7 @@ import SnapKit
 import WalletDesignKit
 
 protocol CreateOperationViewDelegate: AnyObject {
-    func selectCurrency()
+    func createOperationViewDidSelectCurrency()
 }
 
 class CreateOperationView: UIView {
@@ -163,7 +163,7 @@ class CreateOperationView: UIView {
     
     private func addTargets() {
         amountTextField.addTarget(self, action: #selector(textFieldDidChangeValue), for: .editingChanged)
-        currencySelector.addTarget(self, action: #selector(selectCurrency), for: .touchUpInside)
+        currencySelector.addTarget(self, action: #selector(createOperationViewDidSelectCurrency), for: .touchUpInside)
     }
     
     @objc private func textFieldDidChangeValue() {
@@ -178,8 +178,8 @@ class CreateOperationView: UIView {
         }
     }
     
-    @objc private func selectCurrency() {
-        delegate?.selectCurrency()
+    @objc private func createOperationViewDidSelectCurrency() {
+        delegate?.createOperationViewDidSelectCurrency()
     }
     
 }
