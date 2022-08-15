@@ -10,13 +10,13 @@ import UIKit
 
 class WalletInfoAssembly {
     func assembly() -> WalletInfoViewController {
-        let model = WalletInfoModel()
-        let viewController = WalletInfoViewController()
-        let router = WalletInfoRouter(view: viewController)
-        let presenter = WalletInfoPresenter(model: model, router: router, view: viewController)
+        let service = WalletInfoService()
+        let router = WalletInfoRouter()
+        let presenter = WalletInfoPresenter(service: service, router: router)
+        let viewController = WalletInfoViewController(presenter: presenter)
         
-        viewController.presenter = presenter
-        model.presenter = presenter
+        presenter.view = viewController
+        router.view = viewController
 
         return viewController
     }

@@ -8,13 +8,12 @@
 import Foundation
 
 class WalletInfoPresenter: WalletInfoPresenterProtocol {
-    private var model: WalletInfoModelProtocol?
-    private var router: WalletInfoRouterProtocol?
-    private weak var view: WalletInfoViewProtocol?
+    private let service: WalletInfoServiceProtocol
+    private let router: WalletInfoRouterProtocol
+    weak var view: WalletInfoViewProtocol?
     
-    init(model: WalletInfoModelProtocol, router: WalletInfoRouterProtocol, view: WalletInfoViewController) {
-        self.model = model
+    init(service: WalletInfoServiceProtocol, router: WalletInfoRouterProtocol) {
+        self.service = service
         self.router = router
-        self.view = view
     }
 }

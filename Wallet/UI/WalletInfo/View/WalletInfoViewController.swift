@@ -9,7 +9,16 @@ import Foundation
 import UIKit
 
 class WalletInfoViewController: UIViewController, WalletInfoViewProtocol {
-    var presenter: WalletInfoPresenterProtocol?
+    private let presenter: WalletInfoPresenterProtocol
+    
+    init(presenter: WalletInfoPresenterProtocol) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private lazy var walletInfoView: WalletInfoView = {
         let view = WalletInfoView()

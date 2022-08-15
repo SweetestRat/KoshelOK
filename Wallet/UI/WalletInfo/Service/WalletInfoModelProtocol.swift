@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol WalletInfoModelProtocol {
+protocol WalletInfoServiceProtocol {
     
 }

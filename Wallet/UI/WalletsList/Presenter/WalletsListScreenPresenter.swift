@@ -9,13 +9,12 @@ import Foundation
 
 class WalletsListScreenPresenter: WalletsListPresenterProtocol {
     weak var view: WalletsListControllerProtocol?
-    var router: WalletsListRouterProtocol?
-    var model: WalletsListModelProtocol?
+    private let router: WalletsListRouterProtocol
+    private let service: WalletsListServiceProtocol
     
-    init(model: WalletsListModelProtocol, view: WalletsListControllerProtocol, router: WalletsListRouterProtocol) {
-        self.model = model
+    init(service: WalletsListServiceProtocol, router: WalletsListRouterProtocol) {
+        self.service = service
         self.router = router
-        self.view = view
     }
     func controllerLoaded() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) { [weak self] in
@@ -26,11 +25,11 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
     }
     
     func createWalletClicked() {
-        router?.openCreateWallet()
+        router.openCreateWallet()
     }
     
     func didTapWallet() {
-        router?.openWalletInfo()
+        router.openWalletInfo()
     }
 
 }

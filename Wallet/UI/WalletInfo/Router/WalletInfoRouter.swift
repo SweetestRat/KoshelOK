@@ -8,9 +8,5 @@
 import Foundation
 
 class WalletInfoRouter: WalletInfoRouterProtocol {
-    var view: WalletInfoViewProtocol?
-    
-    init(view: WalletInfoViewController) {
-        self.view = view
-    }
+    weak var view: WalletInfoViewProtocol?
 }

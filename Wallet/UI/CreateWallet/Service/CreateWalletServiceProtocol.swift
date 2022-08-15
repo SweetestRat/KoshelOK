@@ -1,5 +1,5 @@
 //
-//  CurrencySeletionModelProtocol.swift
+//  CreateWalletModelProtocol.swift
 //  Wallet
 //
 //  Created by Владислава Гильде on 12.08.2022.
@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol CurrencySeletionModelProtocol {
-    func getData()
+protocol CreateWalletServiceProtocol {
+    func createWallet()
 }

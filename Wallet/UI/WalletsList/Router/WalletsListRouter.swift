@@ -8,11 +8,7 @@
 import UIKit
 
 class WalletsListRouter: WalletsListRouterProtocol {
-    var view: WalletsListControllerProtocol?
-    
-    init(view: WalletsListControllerProtocol) {
-        self.view = view
-    }
+    weak var view: WalletsListControllerProtocol?
     
     func openCreateWallet() {
         let nextvc = CreateWalletAssembly().assembly()

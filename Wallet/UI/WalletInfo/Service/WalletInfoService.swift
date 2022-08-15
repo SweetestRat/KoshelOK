@@ -7,7 +7,5 @@
 
 import Foundation
 
-class WalletInfoModel: WalletInfoModelProtocol {
-    weak var presenter: WalletInfoPresenterProtocol?
-    
+class WalletInfoService: WalletInfoServiceProtocol {
 }

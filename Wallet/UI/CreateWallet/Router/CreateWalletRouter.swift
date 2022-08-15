@@ -9,11 +9,7 @@ import Foundation
 import UIKit
 
 class CreateWalletRouter: CreateWalletRouterProtocol {
-    var view: CreateWalletViewProtocol?
-    
-    init(view: CreateWalletViewController) {
-        self.view = view
-    }
+    weak var view: CreateWalletViewProtocol?
     
     func openWalletsList() {
         guard let vc = view as? UIViewController else { return }

@@ -8,11 +8,7 @@
 import UIKit
 
 class StartScreenRouter: StartScreenRouterProtocol {
-    var view: StartScreenViewProtocol?
-    
-    init(view: StartScreenViewProtocol) {
-        self.view = view
-    }
+    weak var view: StartScreenViewProtocol?
     
     func openWalletsList() {
         let nextvc = WalletsListsControllerAssembly().assembly()
