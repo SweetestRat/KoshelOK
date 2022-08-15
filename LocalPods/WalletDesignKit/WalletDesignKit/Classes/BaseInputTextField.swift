@@ -11,7 +11,6 @@ import SnapKit
 public class BaseInputTextField: UITextField {
     var placeholderText: String?
     var title: String?
-    var allignment: NSTextAlignment?
     
     private lazy var stroke: UIView = {
        let view = UIView()
@@ -37,7 +36,6 @@ public class BaseInputTextField: UITextField {
             string: placeholderText ?? "",
             attributes: [NSAttributedString.Key.foregroundColor: color]
         )
-        textAlignment = allignment ?? .natural
         textColor = .darkTextPrimaryColor
         font = font ?? .SFProRegular16
         backgroundColor = .none
