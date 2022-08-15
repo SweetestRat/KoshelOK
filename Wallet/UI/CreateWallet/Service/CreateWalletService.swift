@@ -7,9 +7,7 @@
 
 import UIKit
 
-class CreateWalletModel: CreateWalletModelProtocol {
-    weak var presenter: CreateWalletPresenterProtocol?
-    
+class CreateWalletService: CreateWalletServiceProtocol {
     func createWallet() {
         // call api to create wallet
         // if success ->

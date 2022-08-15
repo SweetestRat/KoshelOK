@@ -8,14 +8,14 @@ import Foundation
 import UIKit
 
 class CreateWalletAssembly {
-    func configureViewController() -> CreateWalletViewController {
-        let model = CreateWalletModel()
-        let viewController = CreateWalletViewController()
-        let router = CreateWalletRouter(view: viewController)
-        let presenter = CreateWalletPresenter(model: model, router: router, view: viewController)
+    func assembly() -> CreateWalletViewController {
+        let service = CreateWalletService()
+        let router = CreateWalletRouter()
+        let presenter = CreateWalletPresenter(service: service, router: router)
+        let viewController = CreateWalletViewController(presenter: presenter)
         
-        viewController.presenter = presenter
-        model.presenter = presenter
+        presenter.view = viewController
+        router.view = viewController
 
         return viewController
     }

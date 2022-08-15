@@ -8,14 +8,18 @@
 import UIKit
 
 class WalletsListRouter: WalletsListRouterProtocol {
-    var view: WalletsListControllerProtocol?
-    
-    init(view: WalletsListControllerProtocol) {
-        self.view = view
-    }
+    weak var view: WalletsListControllerProtocol?
     
     func openCreateWallet() {
-        let nextvc = CreateWalletAssembly().configureViewController()
+        let nextvc = CreateWalletAssembly().assembly()
+        guard let vc = view as? UIViewController else { return }
+        
+        vc.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        vc.navigationController?.pushViewController(nextvc, animated: true)
+    }
+    
+    func openWalletInfo() {
+        let nextvc = WalletInfoAssembly().assembly()
         guard let vc = view as? UIViewController else { return }
         
         vc.navigationController?.interactivePopGestureRecognizer?.isEnabled = true

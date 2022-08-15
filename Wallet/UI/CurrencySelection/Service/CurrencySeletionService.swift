@@ -7,8 +7,7 @@
 
 import Foundation
 
-class CurrencySeletionModel: CurrencySeletionModelProtocol {
-    var presenter: CurrencySeletionPresenterProtocol?
+class CurrencySeletionService: CurrencySeletionServiceProtocol {
     
     func getData() {
         // call get 

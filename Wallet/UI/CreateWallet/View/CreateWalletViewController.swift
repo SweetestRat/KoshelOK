@@ -8,7 +8,16 @@
 import UIKit
 
 class CreateWalletViewController: UIViewController, CreateWalletViewProtocol {
-    var presenter: CreateWalletPresenterProtocol?
+    private let presenter: CreateWalletPresenterProtocol
+    
+    init(presenter: CreateWalletPresenterProtocol) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private lazy var createWalletView: CreateWalletView = {
         let view = CreateWalletView()

@@ -7,6 +7,5 @@
 
 import Foundation
 
-class WalletsListModel: WalletsListModelProtocol {
-    weak var presenter: WalletsListPresenterProtocol?
+class WalletsListService: WalletsListServiceProtocol {
 }

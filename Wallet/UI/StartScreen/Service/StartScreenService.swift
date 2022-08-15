@@ -7,6 +7,5 @@
 
 import Foundation
 
-class StartScreenModel: StartScreenModelProtocol {
-    weak var presenter: StartScreenPresenterProtocol?
+class StartScreenService: StartScreenServiceProtocol {
 }
