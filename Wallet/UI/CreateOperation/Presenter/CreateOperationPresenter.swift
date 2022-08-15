@@ -8,8 +8,8 @@
 class CreateOperationPresenter: CreateOperationPresenterProtocol {
     private var currency: Currency
     
-    private var service: CreateOperationServiceProtocol?
-    private var router: CreateOperationRouterProtocol?
+    private let service: CreateOperationServiceProtocol
+    private let router: CreateOperationRouterProtocol
     weak var view: CreateOperationViewProtocol?
     
     init(
@@ -32,7 +32,7 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
     }
     
     func selectCurrency() {
-        router?.openCurrencySelection(delegate: self)
+        router.openCurrencySelection(delegate: self)
     }
     
     func selectDate() {

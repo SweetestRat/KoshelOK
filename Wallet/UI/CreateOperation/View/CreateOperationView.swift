@@ -127,6 +127,7 @@ class CreateOperationView: UIView {
         stroke.snp.makeConstraints { make in
             make.top.equalTo(amountTextField.snp.bottom)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(MediumPadding)
+            make.height.equalTo(StrokeHeight)
         }
         currencySymbol.snp.makeConstraints { make in
             make.leading.equalTo(amountTextField.snp.trailing).offset(SmallPadding)
