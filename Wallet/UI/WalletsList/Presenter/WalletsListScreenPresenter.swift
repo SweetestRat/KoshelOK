@@ -16,6 +16,7 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
         self.service = service
         self.router = router
     }
+    
     func controllerLoaded() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) { [weak self] in
             self?.view?.updateWalletsList(
