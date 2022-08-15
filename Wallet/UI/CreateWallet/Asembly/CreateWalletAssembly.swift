@@ -8,7 +8,7 @@ import Foundation
 import UIKit
 
 class CreateWalletAssembly {
-    func configureViewController() -> CreateWalletViewController {
+    func assembly() -> CreateWalletViewController {
         let model = CreateWalletModel()
         let viewController = CreateWalletViewController()
         let router = CreateWalletRouter(view: viewController)

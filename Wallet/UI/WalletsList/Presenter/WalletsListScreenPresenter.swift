@@ -30,7 +30,7 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
     }
     
     func didTapWallet() {
-        
+        router?.openWalletInfo()
     }
 
 }

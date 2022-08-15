@@ -22,7 +22,7 @@ class CreateWalletRouter: CreateWalletRouterProtocol {
     }
     
     func openCurrencySelection() {
-        let nextvc = CurrencySelectionAssembly().configureViewController()
+        let nextvc = CurrencySelectionAssembly().assembly()
         guard let vc = view as? UIViewController else { return }
         
         vc.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
