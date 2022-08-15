@@ -47,6 +47,7 @@ class WalletsListViewController: UIViewController, WalletsListControllerProtocol
         screenView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        presenter.view = self
         presenter.controllerLoaded()
         addTargets()
     }

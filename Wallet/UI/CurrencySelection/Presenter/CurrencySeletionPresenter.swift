@@ -8,8 +8,8 @@
 import Foundation
 
 class CurrencySeletionPresenter: CurrencySeletionPresenterProtocol {
-    private let service: CurrencySeletionServiceProtocol
-    private let router: CurrencySeletionRouterProtocol
+    private let service: CurrencySeletionServiceProtocol?
+    private let router: CurrencySeletionRouterProtocol?
     weak var view: CurrencySeletionViewProtocol?
     
     private var selectedIndexPathRow: Int = 0
@@ -28,6 +28,6 @@ class CurrencySeletionPresenter: CurrencySeletionPresenterProtocol {
     }
     
     func controllerLoaded() {
-        service.getData()
+        service?.getData()
     }
 }
