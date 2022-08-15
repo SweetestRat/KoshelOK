@@ -80,7 +80,7 @@ class WalletInfoView: UIView {
         walletInfo = Array(repeating:
                         Wallet(name: "Wallet Name", icon: "", balance:
                                 Balance(value: 125, currency:
-                                            Currency(symbol: "en_US"))), count: 12)
+                                            Currency(symbol: "en_US", fullName: "English"))), count: 12)
         
         walletsTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
 
