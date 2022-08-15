@@ -60,26 +60,40 @@ class CreateOperationViewController: UIViewController, CreateOperationViewProtoc
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {
-        UIView.animate(withDuration: 5) {
-            if let keyboard = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-                self.createOperationView.createButton.snp.remakeConstraints {make in
+        if
+            let durationNumber = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber,
+            let keyboardCurveNumber = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber,
+            let keyboard = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+        {
+            
+            let duration = durationNumber.doubleValue
+            let keyboardCurve = keyboardCurveNumber.uintValue
+            UIView.animate(withDuration: duration, delay: 0, options: UIView.AnimationOptions(rawValue: keyboardCurve)) {
+                self.createOperationView.createButton.snp.remakeConstraints { make in
                     make.bottom.equalTo(self.createOperationView.snp.bottom).offset(-keyboard.height - CGFloat(MediumPadding))
                     make.horizontalEdges.equalTo(self.createOperationView).inset(MediumPadding)
                     make.height.equalTo(ActionButtonHeight)
                 }
+                self.createOperationView.layoutIfNeeded()
             }
-            self.createOperationView.layoutIfNeeded()
         }
     }
     
     @objc private func keyboardWillHide(notification: NSNotification) {
-        UIView.animate(withDuration: 5) {
-            self.createOperationView.createButton.snp.remakeConstraints { make in
-                make.bottom.equalTo(self.createOperationView.safeAreaLayoutGuide.snp.bottom).offset(-LargePadding)
-                make.horizontalEdges.equalTo(self.createOperationView).inset(MediumPadding)
-                make.height.equalTo(ActionButtonHeight)
+        if
+            let durationNumber = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber,
+            let keyboardCurveNumber = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber
+        {
+            let duration = durationNumber.doubleValue
+            let keyboardCurve = keyboardCurveNumber.uintValue
+            UIView.animate(withDuration: duration, delay: 0, options: UIView.AnimationOptions(rawValue: keyboardCurve)) {
+                self.createOperationView.createButton.snp.remakeConstraints { make in
+                    make.bottom.equalTo(self.createOperationView.safeAreaLayoutGuide.snp.bottom).offset(-LargePadding)
+                    make.horizontalEdges.equalTo(self.createOperationView).inset(MediumPadding)
+                    make.height.equalTo(ActionButtonHeight)
+                }
+                self.createOperationView.layoutIfNeeded()
             }
-            self.createOperationView.layoutIfNeeded()
         }
     }
     
