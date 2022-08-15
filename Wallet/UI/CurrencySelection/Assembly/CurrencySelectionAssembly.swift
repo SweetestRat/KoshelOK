@@ -12,9 +12,9 @@ class CurrencySelectionAssembly {
         let service = CurrencySelectionService()
         let router = CurrencySelectionRouter()
         let presenter = CurrencySelectionPresenter(service: service, router: router)
-        let viewController = CurrencySelectionViewController()
+        let viewController = CurrencySelectionViewController(presenter: presenter)
         
-        viewController.presenter = presenter
+        presenter.view = viewController
         router.view = viewController
 
         return viewController
