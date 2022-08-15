@@ -19,13 +19,12 @@ public class BaseInputTextField: UITextField {
        return view
    }()
     
-    public convenience init(placeholder: String? = nil, title: String? = nil, font: UIFont? = nil, textAllignment: NSTextAlignment? = nil) {
+    public convenience init(placeholder: String? = nil, title: String? = nil, font: UIFont? = nil) {
         self.init()
         
         self.placeholderText = placeholder
         self.title = title
         self.font = font
-        self.allignment = textAllignment ?? .natural
     
         setup()
         setConstraints()
