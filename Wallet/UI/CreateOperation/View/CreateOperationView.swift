@@ -51,9 +51,9 @@ class CreateOperationView: UIView {
     
     // MARK: public functions
     
-    public func updateCurrency(currecy: Currency) {
-        currencySymbol.text = currecy.symbol
-        currencySelector.rightButtonDescription.text = currecy.fullName
+    public func updateCurrency(currency: Currency) {
+        currencySymbol.text = currency.symbol
+        currencySelector.rightButtonDescription.text = currency.fullName
     }
     
     private func labelCell(text: String) -> UIView {
@@ -109,7 +109,7 @@ class CreateOperationView: UIView {
             make.bottom.equalTo(createButton.snp.top)
         }
         amountTextField.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(TableViewCellHeight)
+            make.top.equalToSuperview().offset(TableViewCellHeight)
             make.leading.trailing.equalTo(safeAreaLayoutGuide)
             make.height.equalTo(TableViewCellHeight)
         }
@@ -132,7 +132,7 @@ class CreateOperationView: UIView {
         dateSelector.snp.makeConstraints { make in
             make.top.equalTo(currencySelector.snp.bottom).offset(MediumPadding)
             make.leading.trailing.equalTo(safeAreaLayoutGuide)
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-MediumPadding)
         }
         createButton.snp.makeConstraints { make in
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(MediumPadding)
@@ -144,7 +144,6 @@ class CreateOperationView: UIView {
     private func addTargets() {
         amountTextField.addTarget(self, action: #selector(textFieldDidChangeValue), for: .editingChanged)
         currencySelector.addTarget(self, action: #selector(selectCurrency), for: .touchUpInside)
-        //        currencyView.addTarget(self, action: #selector(currencyInfoDidTap), for: .touchUpInside)
     }
     
     @objc private func textFieldDidChangeValue() {

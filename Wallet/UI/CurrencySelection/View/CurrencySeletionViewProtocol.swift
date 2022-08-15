@@ -8,5 +8,5 @@
 import Foundation
 
 protocol CurrencySeletionViewProtocol: AnyObject {
-    
+    func updateCurrenciesList(currencies: [Currency]?)
 }

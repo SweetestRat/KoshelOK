@@ -17,6 +17,10 @@ class CurrencySeletionViewController: UIViewController, CurrencySeletionViewProt
         return view
     }()
     
+    func updateCurrenciesList(currencies: [Currency]?) {
+        currencySeletionView.updateCurrenciesList(currencies: currencies)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .background

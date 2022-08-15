@@ -18,8 +18,13 @@ class CreateOperationViewController: UIViewController, CreateOperationViewProtoc
         return view
     }()
     
+    public func updateCurrency(currency: Currency) {
+        createOperationView.updateCurrency(currency: currency)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter?.viewLoaded()
         
         setup()
         setNavigationBar()
@@ -48,8 +53,10 @@ class CreateOperationViewController: UIViewController, CreateOperationViewProtoc
     @objc private func keyboardWillShow(notification: NSNotification) {
         UIView.animate(withDuration: 5) {
             if let keyboard = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-                self.createOperationView.createButton.snp.updateConstraints {make in
-                    make.bottom.equalTo(self.createOperationView.safeAreaLayoutGuide.snp.bottom).offset(CGFloat(LargePadding) - keyboard.height)
+                self.createOperationView.createButton.snp.remakeConstraints {make in
+                    make.bottom.equalTo(self.createOperationView.snp.bottom).offset(-keyboard.height - CGFloat(MediumPadding))
+                    make.horizontalEdges.equalTo(self.createOperationView).inset(MediumPadding)
+                    make.height.equalTo(ActionButtonHeight)
                 }
             }
             self.createOperationView.layoutIfNeeded()
@@ -58,8 +65,10 @@ class CreateOperationViewController: UIViewController, CreateOperationViewProtoc
     
     @objc private func keyboardWillHide(notification: NSNotification) {
         UIView.animate(withDuration: 5) {
-            self.createOperationView.createButton.snp.updateConstraints { make in
+            self.createOperationView.createButton.snp.remakeConstraints { make in
                 make.bottom.equalTo(self.createOperationView.safeAreaLayoutGuide.snp.bottom).offset(-LargePadding)
+                make.horizontalEdges.equalTo(self.createOperationView).inset(MediumPadding)
+                make.height.equalTo(ActionButtonHeight)
             }
             self.createOperationView.layoutIfNeeded()
         }

@@ -6,6 +6,8 @@
 //
 
 class CreateOperationPresenter: CreateOperationPresenterProtocol {
+    private var currency: Currency
+    
     private var model: CreateOperationModelProtocol?
     private var router: CreateOperationRouterProtocol?
     private weak var view: CreateOperationViewProtocol?
@@ -18,6 +20,13 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
         self.model = model
         self.router = router
         self.view = view
+        
+        // set default user currency (probable get from user account request)
+        currency = Currency(symbol: "THAI", fullName: "Thailand currency")
+    }
+    
+    func viewLoaded() {
+        view?.updateCurrency(currency: currency)
     }
     
     func selectCategory() {
@@ -40,4 +49,12 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
         
     }
     
+}
+
+extension CreateOperationPresenter: CurrencySeletionDelegateProtocol {
+    func updateSelectedCurrency(currency: Currency) {
+        print("Currency selected - ")
+        self.currency = currency
+        view?.updateCurrency(currency: currency)
+    }
 }
