@@ -11,6 +11,5 @@ class CreateWalletService: CreateWalletServiceProtocol {
     func createWallet() {
         // call api to create wallet
         // if success ->
-        presenter?.openWalletsList()
     }
 }
