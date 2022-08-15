@@ -48,6 +48,7 @@ public class BaseInputTextField: UITextField {
     
     private func setConstraints() {
         stroke.snp.makeConstraints { make in
+            make.width.equalToSuperview()
             make.height.equalTo(2)
             make.width.equalToSuperview().inset(MediumPadding)
             make.centerX.equalToSuperview()

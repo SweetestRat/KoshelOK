@@ -6,7 +6,3 @@
 //
 
 import Foundation
-
-protocol AuthorizationPresenterProtocol: AnyObject {
-    func actionButtonDidTap()
-}
