@@ -32,7 +32,6 @@ class CurrencySeletionPresenter: CurrencySeletionPresenterProtocol {
     
     func setSelectedRow(row: Int) {
         selectedIndexPathRow = row
-        print("Update currency in previous screen with delegate: \(currenciesList?[row])")
         guard let currency = currenciesList?[row] else { return }
         
         delegate?.updateSelectedCurrency(currency: currency)

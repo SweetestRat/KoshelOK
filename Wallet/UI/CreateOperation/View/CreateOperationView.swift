@@ -17,16 +17,25 @@ class CreateOperationView: UIView {
     weak var delegate: CreateOperationViewDelegate?
     
     private lazy var amountTextField: UITextField = {
-        let textField = BaseInputTextField(placeholder: "0", font: .SFProBold32, textAllignment: .center)
+        let textField = UITextField()
+        textField.placeholder = "0"
+        textField.font = .SFProBold32
+        textField.textAlignment = .center
         textField.keyboardType = .decimalPad
         textField.returnKeyType = .done
         textField.delegate = self
         return textField
     }()
     
+    private lazy var stroke: UIView = {
+       let view = UIView()
+       view.backgroundColor = .inactiveButtonBackground
+       return view
+   }()
+    
     private lazy var currencySymbol: UILabel = {
         let label = UILabel()
-        label.text = ""
+        label.textColor = .placeholderText
         label.font = .SFProBold32
         return label
     }()
@@ -94,6 +103,8 @@ class CreateOperationView: UIView {
         
         [
             amountTextField,
+            stroke,
+            currencySymbol,
             operationTypeSelector,
             dateSelector,
             parametersLabelCell,
@@ -110,8 +121,17 @@ class CreateOperationView: UIView {
         }
         amountTextField.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(TableViewCellHeight)
-            make.leading.trailing.equalTo(safeAreaLayoutGuide)
+            make.centerX.equalTo(safeAreaLayoutGuide)
             make.height.equalTo(TableViewCellHeight)
+        }
+        stroke.snp.makeConstraints { make in
+            make.top.equalTo(amountTextField.snp.bottom)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(MediumPadding)
+        }
+        currencySymbol.snp.makeConstraints { make in
+            make.leading.equalTo(amountTextField.snp.trailing).offset(SmallPadding)
+            make.trailing.equalTo(safeAreaLayoutGuide)
+            make.centerY.equalTo(amountTextField)
         }
         operationTypeSelector.snp.makeConstraints { make in
             make.top.equalTo(amountTextField.snp.bottom)
