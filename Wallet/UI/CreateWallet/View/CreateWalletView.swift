@@ -29,7 +29,7 @@ class CreateWalletView: UIView {
     }()
     
     private lazy var nextButton: BaseButton = {
-        let button = BaseButton(title: "Создать кошелек", active: false)
+        let button = BaseButton(title: "Далее", active: false)
         return button
     }()
     
