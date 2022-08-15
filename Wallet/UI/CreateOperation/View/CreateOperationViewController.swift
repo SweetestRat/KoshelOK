@@ -10,7 +10,7 @@ import UIKit
 import WalletDesignKit
 
 class CreateOperationViewController: UIViewController, CreateOperationViewProtocol {
-    var presenter: CreateOperationPresenterProtocol?
+    private let presenter: CreateOperationPresenterProtocol
     
     private lazy var createOperationView: CreateOperationView = {
         let view = CreateOperationView()
@@ -22,9 +22,18 @@ class CreateOperationViewController: UIViewController, CreateOperationViewProtoc
         createOperationView.updateCurrency(currency: currency)
     }
     
+    init(presenter: CreateOperationPresenterProtocol) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter?.viewLoaded()
+        presenter.viewLoaded()
         
         setup()
         setNavigationBar()
@@ -81,6 +90,6 @@ class CreateOperationViewController: UIViewController, CreateOperationViewProtoc
 
 extension CreateOperationViewController: CreateOperationViewDelegate {
     func createOperationViewDidSelectCurrency() {
-        presenter?.selectCurrency()
+        presenter.selectCurrency()
     }
 }

@@ -11,19 +11,15 @@ import UIKit
 class CreateOperationRouter: CreateOperationRouterProtocol {
     weak var view: CreateOperationViewProtocol?
     
-    init(view: CreateOperationViewController) {
-        self.view = view
-    }
-    
     func addOperation() {
         guard let vc = view as? UIViewController else { return }
         
         vc.navigationController?.popViewController(animated: true)
     }
     
-    func openCurrencySelection() {
+    func openCurrencySelection(delegate: CurrencySeletionDelegateProtocol) {
         let nextvc = CurrencySelectionAssembly().assembly()
-        nextvc.presenter.delegate = view?.presenter
+        nextvc.presenter.delegate = delegate
         guard let vc = view as? UIViewController else { return }
         
         vc.navigationController?.interactivePopGestureRecognizer?.isEnabled = true

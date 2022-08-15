@@ -32,7 +32,7 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
     }
     
     func selectCurrency() {
-        router?.openCurrencySelection()
+        router?.openCurrencySelection(delegate: self)
     }
     
     func selectDate() {
