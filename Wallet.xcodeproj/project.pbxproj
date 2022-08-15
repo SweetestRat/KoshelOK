@@ -57,6 +57,16 @@
 		83AF6F0028A64D2800BB91CB /* WalletsListPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AF6EFF28A64D2800BB91CB /* WalletsListPresenterProtocol.swift */; };
 		83AF6F0228A6534100BB91CB /* WalletsListControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AF6F0128A6534100BB91CB /* WalletsListControllerProtocol.swift */; };
 		83AF6F0628A6869000BB91CB /* WalletsListsControllerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AF6F0528A6869000BB91CB /* WalletsListsControllerAssembly.swift */; };
+		83F3DDAB28A839BA00F176BD /* CreateOperationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3DDAA28A839BA00F176BD /* CreateOperationAssembly.swift */; };
+		83F3DDAD28A839D200F176BD /* CreateOperationModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3DDAC28A839D200F176BD /* CreateOperationModelProtocol.swift */; };
+		83F3DDAF28A839DA00F176BD /* CreateOperationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3DDAE28A839DA00F176BD /* CreateOperationModel.swift */; };
+		83F3DDB128A839E700F176BD /* CreateOperationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3DDB028A839E700F176BD /* CreateOperationView.swift */; };
+		83F3DDB328A839FC00F176BD /* CreateOperationViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3DDB228A839FC00F176BD /* CreateOperationViewProtocol.swift */; };
+		83F3DDB528A83A0000F176BD /* CreateOperationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3DDB428A83A0000F176BD /* CreateOperationViewController.swift */; };
+		83F3DDB728A83A3B00F176BD /* CreateOperationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3DDB628A83A3B00F176BD /* CreateOperationPresenter.swift */; };
+		83F3DDB928A83A4600F176BD /* CreateOperationPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3DDB828A83A4600F176BD /* CreateOperationPresenterProtocol.swift */; };
+		83F3DDBB28A83A5500F176BD /* CreateOperationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3DDBA28A83A5500F176BD /* CreateOperationRouter.swift */; };
+		83F3DDBF28A83A7700F176BD /* CreateOperationRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3DDBE28A83A7700F176BD /* CreateOperationRouterProtocol.swift */; };
 		B8D42383EFE3F83AF7DEC916 /* Pods_Wallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A84D4897DE1B568819F927D /* Pods_Wallet.framework */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +125,16 @@
 		83AF6EFF28A64D2800BB91CB /* WalletsListPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsListPresenterProtocol.swift; sourceTree = "<group>"; };
 		83AF6F0128A6534100BB91CB /* WalletsListControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsListControllerProtocol.swift; sourceTree = "<group>"; };
 		83AF6F0528A6869000BB91CB /* WalletsListsControllerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsListsControllerAssembly.swift; sourceTree = "<group>"; };
+		83F3DDAA28A839BA00F176BD /* CreateOperationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationAssembly.swift; sourceTree = "<group>"; };
+		83F3DDAC28A839D200F176BD /* CreateOperationModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationModelProtocol.swift; sourceTree = "<group>"; };
+		83F3DDAE28A839DA00F176BD /* CreateOperationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationModel.swift; sourceTree = "<group>"; };
+		83F3DDB028A839E700F176BD /* CreateOperationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationView.swift; sourceTree = "<group>"; };
+		83F3DDB228A839FC00F176BD /* CreateOperationViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationViewProtocol.swift; sourceTree = "<group>"; };
+		83F3DDB428A83A0000F176BD /* CreateOperationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationViewController.swift; sourceTree = "<group>"; };
+		83F3DDB628A83A3B00F176BD /* CreateOperationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationPresenter.swift; sourceTree = "<group>"; };
+		83F3DDB828A83A4600F176BD /* CreateOperationPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationPresenterProtocol.swift; sourceTree = "<group>"; };
+		83F3DDBA28A83A5500F176BD /* CreateOperationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationRouter.swift; sourceTree = "<group>"; };
+		83F3DDBE28A83A7700F176BD /* CreateOperationRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationRouterProtocol.swift; sourceTree = "<group>"; };
 		F5B7635821AADD5375E7C352 /* Pods-Wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wallet.debug.xcconfig"; path = "Target Support Files/Pods-Wallet/Pods-Wallet.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -370,6 +390,7 @@
 		68F6A284289D3DA900DAAE91 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				83F3DDA428A8391200F176BD /* CreateOperation */,
 				2DA6461E28A699F700EF8755 /* CurrencySelection */,
 				4C77E20C28A65489002DE431 /* StartScreen */,
 				83AF6EE428A57CBF00BB91CB /* WalletsList */,
@@ -445,6 +466,63 @@
 				83AF6F0528A6869000BB91CB /* WalletsListsControllerAssembly.swift */,
 			);
 			path = Assembly;
+			sourceTree = "<group>";
+		};
+		83F3DDA428A8391200F176BD /* CreateOperation */ = {
+			isa = PBXGroup;
+			children = (
+				83F3DDA928A8399700F176BD /* Router */,
+				83F3DDA828A8399000F176BD /* Presenter */,
+				83F3DDA728A8398A00F176BD /* View */,
+				83F3DDA628A8398500F176BD /* Model */,
+				83F3DDA528A8397700F176BD /* Assembly */,
+			);
+			path = CreateOperation;
+			sourceTree = "<group>";
+		};
+		83F3DDA528A8397700F176BD /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				83F3DDAA28A839BA00F176BD /* CreateOperationAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		83F3DDA628A8398500F176BD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				83F3DDAC28A839D200F176BD /* CreateOperationModelProtocol.swift */,
+				83F3DDAE28A839DA00F176BD /* CreateOperationModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		83F3DDA728A8398A00F176BD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				83F3DDB028A839E700F176BD /* CreateOperationView.swift */,
+				83F3DDB228A839FC00F176BD /* CreateOperationViewProtocol.swift */,
+				83F3DDB428A83A0000F176BD /* CreateOperationViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		83F3DDA828A8399000F176BD /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				83F3DDB628A83A3B00F176BD /* CreateOperationPresenter.swift */,
+				83F3DDB828A83A4600F176BD /* CreateOperationPresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		83F3DDA928A8399700F176BD /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				83F3DDBA28A83A5500F176BD /* CreateOperationRouter.swift */,
+				83F3DDBE28A83A7700F176BD /* CreateOperationRouterProtocol.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -583,6 +661,8 @@
 				2DA6464328A6D88500EF8755 /* StartScreenModelProtocol.swift in Sources */,
 				83AF6EF028A6351600BB91CB /* WalletsListCell.swift in Sources */,
 				2DA96D9828A69492005F791F /* CreateWalletViewProtocol.swift in Sources */,
+				83F3DDBB28A83A5500F176BD /* CreateOperationRouter.swift in Sources */,
+				83F3DDAD28A839D200F176BD /* CreateOperationModelProtocol.swift in Sources */,
 				2DA96DBF28A694C9005F791F /* CreateWalletRouter.swift in Sources */,
 				2DA6463528A699F800EF8755 /* CurrencySelectionTableViewCell.swift in Sources */,
 				2DA6463628A699F800EF8755 /* CurrencySeletionView.swift in Sources */,
@@ -594,6 +674,7 @@
 				2DA96DC728A695CB005F791F /* CreateWalletView.swift in Sources */,
 				2DA6463228A699F800EF8755 /* CurrencySeletionModel.swift in Sources */,
 				4C77E21028A654B8002DE431 /* StartScreenView.swift in Sources */,
+				83F3DDB328A839FC00F176BD /* CreateOperationViewProtocol.swift in Sources */,
 				2DA6464D28A6D90C00EF8755 /* StartScreenAssembly.swift in Sources */,
 				83AF6F0628A6869000BB91CB /* WalletsListsControllerAssembly.swift in Sources */,
 				2DA6464928A6D8D600EF8755 /* StartScreenRouter.swift in Sources */,
@@ -603,6 +684,7 @@
 				2DA6465828A6DEDB00EF8755 /* WalletsListModelProtocol.swift in Sources */,
 				2DA96DBB28A694C3005F791F /* CreateWalletPresenter.swift in Sources */,
 				2DA6463128A699F800EF8755 /* CurrencySeletionPresenter.swift in Sources */,
+				83F3DDB128A839E700F176BD /* CreateOperationView.swift in Sources */,
 				83AF6EEC28A57E1500BB91CB /* WalletsListView.swift in Sources */,
 				2DA6462F28A699F800EF8755 /* CurrencySelectionAssembly.swift in Sources */,
 				2DA6465228A6DE4800EF8755 /* WalletsListRouter.swift in Sources */,
@@ -610,6 +692,7 @@
 				68F646E9289D3BAE00DAAE91 /* AppDelegate.swift in Sources */,
 				2DA6463328A699F800EF8755 /* CurrencySeletionModelProtocol.swift in Sources */,
 				83AF6EF228A640C800BB91CB /* Wallet.swift in Sources */,
+				83F3DDBF28A83A7700F176BD /* CreateOperationRouterProtocol.swift in Sources */,
 				2DA6465428A6DE5400EF8755 /* WalletsListRouterProtocol.swift in Sources */,
 				83AF6EF628A641E200BB91CB /* WalletsListScreenPresenter.swift in Sources */,
 				2DA6464B28A6D8DD00EF8755 /* StartScreenRouterProtocol.swift in Sources */,
@@ -620,11 +703,16 @@
 				2DA6465628A6DED200EF8755 /* WalletsListModel.swift in Sources */,
 				83AF6F0228A6534100BB91CB /* WalletsListControllerProtocol.swift in Sources */,
 				2DA96DC328A694D3005F791F /* CreateWalletAssembly.swift in Sources */,
+				83F3DDB528A83A0000F176BD /* CreateOperationViewController.swift in Sources */,
 				83AF6EFC28A644B800BB91CB /* Currency.swift in Sources */,
+				83F3DDAF28A839DA00F176BD /* CreateOperationModel.swift in Sources */,
 				2D43E1A128A5419F00947040 /* CreateWalletViewController.swift in Sources */,
+				83F3DDAB28A839BA00F176BD /* CreateOperationAssembly.swift in Sources */,
+				83F3DDB928A83A4600F176BD /* CreateOperationPresenterProtocol.swift in Sources */,
 				68F646EB289D3BAE00DAAE91 /* SceneDelegate.swift in Sources */,
 				2DA6463728A699F800EF8755 /* CurrencySeletionViewController.swift in Sources */,
 				2DA6463B28A6D83700EF8755 /* StartScreenViewProtocol.swift in Sources */,
+				83F3DDB728A83A3B00F176BD /* CreateOperationPresenter.swift in Sources */,
 				4C77E20E28A654AA002DE431 /* StartScreenViewController.swift in Sources */,
 				83AF6EFA28A6447C00BB91CB /* Balance.swift in Sources */,
 				2DA96DBC28A694C3005F791F /* CreateWalletPresenterProtocol.swift in Sources */,
@@ -767,7 +855,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = LB6HJ44JRX;
+				DEVELOPMENT_TEAM = 54MQ4J5X52;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Wallet/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -780,7 +868,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ru.tinkoff.Wallet-D3";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.tinkoff.Wallet-D2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -796,7 +884,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = LB6HJ44JRX;
+				DEVELOPMENT_TEAM = 54MQ4J5X52;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Wallet/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

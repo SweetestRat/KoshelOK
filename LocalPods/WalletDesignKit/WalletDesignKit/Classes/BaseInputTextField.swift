@@ -11,6 +11,7 @@ import SnapKit
 public class BaseInputTextField: UITextField {
     var placeholderText: String?
     var title: String?
+    var allignment: NSTextAlignment?
     
     private lazy var stroke: UIView = {
        let view = UIView()
@@ -18,7 +19,7 @@ public class BaseInputTextField: UITextField {
        return view
    }()
     
-    public convenience init(placeholder: String? = nil, title: String? = nil) {
+    public convenience init(placeholder: String? = nil, title: String? = nil, font: UIFont? = nil, textAllignment: NSTextAlignment? = nil) {
         self.init()
         
         if placeholder == placeholder {
@@ -27,6 +28,14 @@ public class BaseInputTextField: UITextField {
         
         if title == title {
             self.title = title
+        }
+        
+        if font == font {
+            self.font = font
+        }
+        
+        if textAllignment == textAllignment {
+            self.allignment = textAllignment
         }
         
         setup()
@@ -40,8 +49,9 @@ public class BaseInputTextField: UITextField {
             string: placeholderText ?? "",
             attributes: [NSAttributedString.Key.foregroundColor: color]
         )
+        textAlignment = allignment ?? .natural
         textColor = .darkTextPrimaryColor
-        font = .SFProRegular16
+        font = font ?? .SFProRegular16
         backgroundColor = .none
         self.addSubview(stroke)
     }

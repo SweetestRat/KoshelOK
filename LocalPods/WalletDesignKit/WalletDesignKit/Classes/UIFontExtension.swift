@@ -27,6 +27,7 @@ public extension UIFont {
     
     static let SFProBold13 = systemFont(ofSize: 13, weight: .bold)
     static let SFProBold16 = systemFont(ofSize: 16, weight: .bold)
+    static let SFProBold24 = systemFont(ofSize: 24, weight: .bold)
     static let SFProBold32 = systemFont(ofSize: 32, weight: .bold)
 
 }

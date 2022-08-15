@@ -7,4 +7,5 @@
 
 struct Currency {
     let symbol: String
+    let fullName: String
 }
