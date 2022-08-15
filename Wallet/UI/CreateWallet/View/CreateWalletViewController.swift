@@ -47,12 +47,12 @@ class CreateWalletViewController: UIViewController, CreateWalletViewProtocol {
     }
     
     @objc private func openWalletsList() {
-        presenter?.createWallet()
+        presenter.createWallet()
     }
 }
 
 extension CreateWalletViewController: CreateWalletViewDelegate {
     func cellCurrencyInfoDidTap() {
-        presenter?.cellCurrencyInfoDidTap()
+        presenter.cellCurrencyInfoDidTap()
     }
 }
