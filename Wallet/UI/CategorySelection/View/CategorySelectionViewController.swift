@@ -59,15 +59,11 @@ class CategorySelectionViewController: UIViewController, CategorySelectionViewPr
     @objc private func addButton() {
         presenter.didTapBarButton()
     }
-    
-    func updateTableView() {
-        categorySelectionView.tableView.reloadData()
-    }
 }
 
 extension CategorySelectionViewController: CategorySelectionViewDelegate {
     
-    func getCategory(index: Int) -> CategoryViewModel {
+    func getCategory(index: Int) -> Category {
         presenter.getCategory(index: index)
     }
     

@@ -55,7 +55,7 @@ class CategorySelectionTableViewCell: UITableViewCell {
         
     }
     
-    func configurate(parametres: CategoryViewModel) {
+    func configurate(parametres: Category) {
         
         let config = UIImage.SymbolConfiguration(scale: .large)
         let image = UIImageView(image: UIImage(systemName: parametres.iconName, withConfiguration: config))
@@ -63,7 +63,7 @@ class CategorySelectionTableViewCell: UITableViewCell {
         icon.addSubview(image)
         
         icon.layer.cornerRadius = CGFloat(IconSize / 2)
-        icon.backgroundColor = UIColor(hex: "#\(parametres.iconColor)")
+        icon.backgroundColor = UIColor(hex: parametres.iconColor)
         
         title.text = parametres.name
         

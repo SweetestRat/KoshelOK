@@ -26,6 +26,6 @@ public protocol NetworkRequestProtocol {
 }
 
 public extension NetworkRequestProtocol {
-    var baseUrl: String { "http://34.116.166.170:9090" }
+    var baseUrl: String { "http://34.116.166.170:9090/koshelok" }
     var body: Data? { nil }
 }
