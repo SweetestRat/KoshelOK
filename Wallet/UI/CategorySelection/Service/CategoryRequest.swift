@@ -21,7 +21,7 @@ struct CreateCategoryModel: Encodable {
 extension CategoryRequestType: NetworkRequestProtocol {
     typealias Model = Category
     
-    var path: String { "category" }
+    var path: String { "/koshelok/category" }
     
     var parameters: [String: String]? { return nil }
     
@@ -47,7 +47,7 @@ extension CategoryRequestType: NetworkRequestProtocol {
 struct CategoryRequest: NetworkRequestProtocol {
     typealias Model = [Category]
     
-    var path: String = "category"
+    var path: String { "/koshelok/category" }
     var parameters: [String: String]?
     var method: RequestMethod
     

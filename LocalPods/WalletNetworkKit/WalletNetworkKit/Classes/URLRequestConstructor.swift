@@ -13,14 +13,16 @@ extension NSError {
 
 class URLRequestConstructor {
     func constractURLRequest<T: NetworkRequestProtocol>(from request: T) throws -> URLRequest {
-        var components = URLComponents(string: request.baseUrl)
+        guard var components = URLComponents(string: request.baseUrl) else {
+            throw NSError.defaultError
+        }
         
-        components?.path = request.path
-        components?.queryItems = request.parameters?.map {
+        components.path = request.path
+        components.queryItems = request.parameters?.map {
             URLQueryItem(name: $0.key, value: $0.value)
         }
         
-        guard let url = components?.url else { throw NSError.defaultError }
+        guard let url = components.url else { throw NSError.defaultError }
         var urlRequest = URLRequest(url: url)
         urlRequest.httpBody = request.body
         urlRequest.httpMethod = request.method.stringValue
