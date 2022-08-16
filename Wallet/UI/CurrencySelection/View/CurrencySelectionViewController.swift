@@ -26,7 +26,7 @@ class CurrencySelectionViewController: UIViewController, CurrencySelectionViewPr
         return view
     }()
     
-    func updateCurrenciesList(currencies: [Currency]?) {
+    func updateCurrenciesList(currencies: [CurrencyViewModel]?) {
         currencySelectionView.updateCurrenciesList(currencies: currencies)
     }
     

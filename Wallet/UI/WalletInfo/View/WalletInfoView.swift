@@ -10,7 +10,7 @@ import UIKit
 import WalletDesignKit
 
 class WalletInfoView: UIView {
-    private var walletInfo: [Wallet]?
+    private var walletInfo: [WalletViewModel]?
     
     private lazy var walletCardView: UIView = {
         let view = UIView()
@@ -78,9 +78,13 @@ class WalletInfoView: UIView {
         super.init(frame: frame)
         
         walletInfo = Array(repeating:
-                        Wallet(name: "Wallet Name", icon: "", balance:
-                                Balance(value: 125, currency:
-                                            Currency(symbol: "RUB", fullName: "Russian"))), count: 12)
+                        WalletViewModel(name: "Wallet Name",
+                                        icon: "",
+                                        balance:
+                                            BalanceViewModel(value: 125,
+                                                             currency:
+                                                                CurrencyViewModel(symbol: "RUB",
+                                                                                  fullName: "Russian"))), count: 12)
         
         walletsTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
 

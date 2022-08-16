@@ -6,6 +6,9 @@
 //
 
 import Foundation
+import WalletNetworkKit
 
 class WalletsListService: WalletsListServiceProtocol {
+    let networkManager = NetworkManager()
+    
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CurrencySelectionDelegateProtocol: AnyObject {
-    func updateSelectedCurrency(currency: Currency)
+    func updateSelectedCurrency(currency: CurrencyViewModel)
 }
 
 class CurrencySelectionPresenter: CurrencySelectionPresenterProtocol {
@@ -17,7 +17,7 @@ class CurrencySelectionPresenter: CurrencySelectionPresenterProtocol {
     private let router: CurrencySelectionRouterProtocol
     weak var view: CurrencySelectionViewProtocol?
     
-    var currenciesList: [Currency]?
+    var currenciesList: [CurrencyViewModel]?
     private var selectedIndexPathRow: Int = 0
     
     init(service: CurrencySelectionServiceProtocol, router: CurrencySelectionRouterProtocol) {
@@ -40,7 +40,8 @@ class CurrencySelectionPresenter: CurrencySelectionPresenterProtocol {
         service.getData()
         
         // wait for data and set it to view
-        currenciesList = [Currency(symbol: "$", fullName: "USA Dollars"), Currency(symbol: "RUB", fullName: "Russian Rubles")]
+        currenciesList = [CurrencyViewModel(symbol: "$", fullName: "USA Dollars"),
+                          CurrencyViewModel(symbol: "RUB", fullName: "Russian Rubles")]
         view?.updateCurrenciesList(
             currencies: currenciesList
         )

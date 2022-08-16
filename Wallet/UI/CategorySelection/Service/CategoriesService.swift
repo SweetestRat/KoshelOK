@@ -16,12 +16,12 @@ class CategoriesService: CategoriesServiceProtocol {
     }
     
     func loadCategories(completion: @escaping (Result<[Category], Error>) -> Void) {
-        let request = CategoryRequest(parameters: [:])
-        networkManager.makeRequest(request: request) { result in
+        let request = CategoryRequest(parameters: nil, method: .get)
+        
+        networkManager.loadRequest(request: request) { result in
             switch result {
-                
             case .success(let resultDetails):
-                completion(.success(resultDetails.categories))
+                completion(.success(resultDetails))
             case .failure(let error):
                 completion(.failure(error))
             }

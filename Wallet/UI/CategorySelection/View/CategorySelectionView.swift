@@ -12,13 +12,13 @@ protocol CategorySelectionViewDelegate: AnyObject {
     func cellSelected(indexPathRow: Int)
     func getSelectedRow() -> Int?
     func getNumberOfRows() -> Int?
-    func getCategory(index: Int) -> Category
+    func getCategory(index: Int) -> CategoryViewModel
 }
 
 class CategorySelectionView: UIView {
     weak var delegate: CategorySelectionViewDelegate?
     
-    private lazy var tableView: UITableView = {
+    public lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .background
         return tableView
@@ -102,7 +102,8 @@ extension CategorySelectionView: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.configurate(parametres: self.delegate?.getCategory(index: indexPath.row) ?? Category(iconSystemImage: "sun.,ax.fill", title: "", color: "7765C0"))
+        guard let categories = self.delegate?.getCategory(index: indexPath.row)  else { return UITableViewCell() }
+        cell.configurate(parametres: categories)
     
         let row = delegate?.getSelectedRow()
 

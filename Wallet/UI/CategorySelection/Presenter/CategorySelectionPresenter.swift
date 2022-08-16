@@ -14,17 +14,7 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
     
     private var selectedIndexPathRow: Int = 0
     
-//  TEST
-    private var listOfCategories: [Category] = [
-        Category(iconSystemImage: "fork.knife", title: "Кафе и рестораны", color: "#7765C0"),
-        Category(iconSystemImage: "cart", title: "Супермаркеты", color: "#339FEE"),
-        Category(iconSystemImage: "figure.walk", title: "Спортзал", color: "#994747"),
-        Category(iconSystemImage: "bus", title: "Общественный транспорт", color: "#EE33BA"),
-        Category(iconSystemImage: "pills.fill", title: "Медицина", color: "#16DC71"),
-        Category(iconSystemImage: "fuelpump.fill", title: "Бензин", color: "#EEA333"),
-        Category(iconSystemImage: "house.fill", title: "Квартплата", color: "#91397D"),
-        Category(iconSystemImage: "sun.max.fill", title: "Отпуск", color: "#EEDB33")
-    ]
+    private var listOfCategories: [CategoryViewModel] = []
     
     init(service: CategoriesServiceProtocol) {
         self.service = service
@@ -39,6 +29,20 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
     }
     
     func controllerLoaded() {
+        service.loadCategories { [weak self] result in
+            switch result {
+            case .success(let categories):
+                let categoriesViewModels = categories.map { category -> CategoryViewModel in
+                    CategoryViewModel(name: category.name, iconName: category.iconName, iconColor: category.iconColor)
+                }
+                self?.listOfCategories = categoriesViewModels
+                DispatchQueue.main.async {
+                    self?.view?.updateTableView()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     func didTapBarButton() {}
@@ -47,7 +51,7 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
         listOfCategories.count
     }
     
-    func getCategory(index: Int) -> Category {
+    func getCategory(index: Int) -> CategoryViewModel {
         listOfCategories[index]
     }
 }

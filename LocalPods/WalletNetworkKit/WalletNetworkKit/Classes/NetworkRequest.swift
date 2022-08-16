@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum RequestMethod {
+public enum RequestMethod: String {
     case get
     case post
     case put
@@ -20,11 +20,12 @@ public protocol NetworkRequestProtocol {
     
     var baseUrl: String { get }
     var path: String { get }
-    var parameters: [String: String] { get }
+    var parameters: [String: String]? { get }
     var method: RequestMethod { get }
+    var body: Data? { get }
 }
 
 public extension NetworkRequestProtocol {
-    var baseUrl: String { "https://api.stackexchange.com" }
-    var path: String { "/2.3/questions" }
+    var baseUrl: String { "http://34.116.166.170:9090" }
+    var body: Data? { nil }
 }

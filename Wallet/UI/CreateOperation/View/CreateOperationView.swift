@@ -76,7 +76,7 @@ class CreateOperationView: UIView {
     
     // MARK: public functions
     
-    public func updateCurrency(currency: Currency) {
+    public func updateCurrency(currency: CurrencyViewModel) {
         currencySymbol.text = currency.symbol
         currencySelector.rightButtonDescription.text = currency.fullName
     }

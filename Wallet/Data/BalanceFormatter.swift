@@ -1,8 +1,8 @@
 //
-//  Balance.swift
+//  InttoStringFormatter.swift
 //  Wallet
 //
-//  Created by Danila on 12.08.2022.
+//  Created by Владислава Гильде on 16.08.2022.
 //
 
 import Foundation
@@ -20,17 +20,8 @@ class BalanceFormatter {
     private init() {
     }
     
-    func format(balance: Balance) -> String {
+    func format(balance: BalanceViewModel) -> String {
         formatter.currencySymbol = balance.currency.symbol
         return formatter.string(from: balance.value as NSNumber) ?? ""
-    }
-}
-
-struct Balance {    
-    let value: Int
-    let currency: Currency
-    
-    func toString() -> String {
-        return BalanceFormatter.instance.format(balance: self)
     }
 }
