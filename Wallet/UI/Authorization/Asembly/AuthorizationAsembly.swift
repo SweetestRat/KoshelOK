@@ -9,13 +9,13 @@ import UIKit
 
 class AuthorizationAsembly {
     func assembly() -> UIViewController {
-        let service = AuthorizationService()
-        let router = AuthorizationRouter()
-        let presenter = AuthorizationPresenter(service: service, router: router)
-        let viewController = AuthorizationViewController(presenter: presenter)
+        let model = AuthorizationModel()
+        let viewController = AuthorizationViewController()
+        let router = AuthorizationRouter(view: viewController)
+        let presenter = AuthorizationPresenter(model: model, router: router, view: viewController)
         
-        presenter.view = viewController
-        router.view = viewController
+        viewController.presenter = presenter
+        model.presenter = presenter
         
         return viewController
     }

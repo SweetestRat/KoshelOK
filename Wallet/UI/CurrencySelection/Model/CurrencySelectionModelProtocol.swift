@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol CurrencySelectionServiceProtocol {
+protocol CurrencySelectionModelProtocol {
     func getData()
 }

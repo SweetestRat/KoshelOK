@@ -8,8 +8,8 @@
 import Foundation
 
 class StartScreenPresenter: StartScreenPresenterProtocol {
-    private let service: StartScreenServiceProtocol
-    private let router: StartScreenRouterProtocol
+    private let service: StartScreenServiceProtocol?
+    private let router: StartScreenRouterProtocol?
     weak var view: StartScreenViewProtocol?
     
     init(service: StartScreenServiceProtocol, router: StartScreenRouterProtocol) {
@@ -18,6 +18,6 @@ class StartScreenPresenter: StartScreenPresenterProtocol {
     }
     
     func actionButtonDidTap() {
-        router.openAuthorization()
+        router?.openAuthorization()
     }
 }

@@ -8,16 +8,17 @@
 import Foundation
 
 class AuthorizationPresenter: AuthorizationPresenterProtocol {
-    var service: AuthorizationServiceProtocol
-    var router: AuthorizationRouterProtocol
+    var model: AuthorizationModelProtocol?
+    var router: AuthorizationRouterProtocol?
     weak var view: AuthorizationViewProtocol?
     
-    init(service: AuthorizationServiceProtocol, router: AuthorizationRouterProtocol) {
-        self.service = service
+    init(model: AuthorizationModelProtocol, router: AuthorizationRouterProtocol, view: AuthorizationViewProtocol) {
+        self.model = model
         self.router = router
+        self.view = view
     }
     
     func actionButtonDidTap() {
-        router.openWalletsList()
+        router?.openWalletsList()
     }
 }

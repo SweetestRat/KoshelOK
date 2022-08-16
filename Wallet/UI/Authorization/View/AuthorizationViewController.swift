@@ -9,16 +9,7 @@ import Foundation
 import UIKit
 
 class AuthorizationViewController: UIViewController, AuthorizationViewProtocol {
-    var presenter: AuthorizationPresenterProtocol
-    
-    init(presenter: AuthorizationPresenterProtocol) {
-        self.presenter = presenter
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var presenter: AuthorizationPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +23,6 @@ class AuthorizationViewController: UIViewController, AuthorizationViewProtocol {
     }
     
     @objc private func actionButtonDidTap() {
-        presenter.actionButtonDidTap()
+        presenter?.actionButtonDidTap()
     }
 }

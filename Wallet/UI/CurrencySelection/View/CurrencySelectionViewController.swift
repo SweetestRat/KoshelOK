@@ -9,16 +9,7 @@ import UIKit
 import SnapKit
 
 class CurrencySelectionViewController: UIViewController, CurrencySelectionViewProtocol {
-    private var presenter: CurrencySelectionPresenterProtocol
-    
-    init(presenter: CurrencySelectionPresenterProtocol) {
-        self.presenter = presenter
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var presenter: CurrencySelectionPresenterProtocol?
     
     private lazy var currencySelectionView: CurrencySelectionView = {
         let view = CurrencySelectionView()
@@ -47,7 +38,7 @@ class CurrencySelectionViewController: UIViewController, CurrencySelectionViewPr
     }
     
     private func getData() {
-        presenter.controllerLoaded()
+        presenter?.controllerLoaded()
     }
     
     private func setupNavigationBar() {
@@ -57,10 +48,10 @@ class CurrencySelectionViewController: UIViewController, CurrencySelectionViewPr
 
 extension CurrencySelectionViewController: CurrencySelectionViewDelegate {
     func cellSelected(indexPathRow: Int) {
-        presenter.setSelectedRow(row: indexPathRow)
+        presenter?.setSelectedRow(row: indexPathRow)
     }
     
     func getSelectedRow() -> Int? {
-        return presenter.getSelectedRow()
+        return presenter?.getSelectedRow()
     }
 }
