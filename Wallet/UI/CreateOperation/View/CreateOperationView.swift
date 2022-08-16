@@ -11,6 +11,8 @@ import WalletDesignKit
 
 protocol CreateOperationViewDelegate: AnyObject {
     func createOperationViewDidSelectCurrency()
+    func createOperationViewDidSelectDate()
+    func dateDidChanged(date: Date)
 }
 
 class CreateOperationView: UIView {
@@ -45,6 +47,19 @@ class CreateOperationView: UIView {
     private lazy var categorySelector = BaseTextCellWithSelection(title: "Категория", buttonDescriontion: "...")
     private lazy var currencySelector = BaseTextCellWithSelection(title: "Валюта", buttonDescriontion: "...")
     private lazy var dateSelector = BaseTextCellWithSelection(title: "Дата", buttonDescriontion: "...")
+    private lazy var dateSmallSelectorLabel: UILabel = {
+        let view = UILabel()
+        view.font = .SFProRegular16
+        view.textColor = .darkTextPrimaryColor
+        view.textAlignment = .left
+        view.text = "Дата"
+        return view
+    }()
+    private lazy var datePicker: UIDatePicker = {
+        let view = UIDatePicker()
+        view.datePickerMode = .dateAndTime
+        return view
+    }()
     private lazy var operationTypeSelector: UIView = {
         let view = UIView()
         view.snp.makeConstraints { make in
@@ -63,6 +78,12 @@ class CreateOperationView: UIView {
     public func updateCurrency(currency: Currency) {
         currencySymbol.text = currency.symbol
         currencySelector.rightButtonDescription.text = currency.fullName
+    }
+    
+    public func updateDate(date: Date) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YY, MMM d, hh:mm"
+        dateSelector.rightButtonDescription.text = formatter.string(from: date)
     }
     
     private func labelCell(text: String) -> UIView {
@@ -89,6 +110,7 @@ class CreateOperationView: UIView {
         addSubviews()
         setConstraints()
         addTargets()
+        setObservers()
     }
     
     required init?(coder: NSCoder) {
@@ -106,11 +128,21 @@ class CreateOperationView: UIView {
             stroke,
             currencySymbol,
             operationTypeSelector,
-            dateSelector,
             parametersLabelCell,
             categorySelector,
             currencySelector
         ].forEach { scrollView.addSubview($0) }
+        
+        if #available(iOS 14.0, *) {
+            [
+                dateSmallSelectorLabel,
+                datePicker
+            ].forEach { scrollView.addSubview($0) }
+        } else {
+            [
+                dateSelector
+            ].forEach { scrollView.addSubview($0) }
+        }
     }
     
     private func setConstraints() {
@@ -150,10 +182,24 @@ class CreateOperationView: UIView {
             make.top.equalTo(categorySelector.snp.bottom).offset(MediumPadding)
             make.leading.trailing.equalTo(safeAreaLayoutGuide)
         }
-        dateSelector.snp.makeConstraints { make in
-            make.top.equalTo(currencySelector.snp.bottom).offset(MediumPadding)
-            make.leading.trailing.equalTo(safeAreaLayoutGuide)
-            make.bottom.equalToSuperview().offset(-MediumPadding)
+        
+        if #available(iOS 14.0, *) {
+            dateSmallSelectorLabel.snp.makeConstraints { make in
+                make.top.equalTo(currencySelector.snp.bottom).offset(LargePadding)
+                make.leading.equalTo(safeAreaLayoutGuide).offset(MediumPadding)
+                make.bottom.equalToSuperview().offset(-LargePadding)
+            }
+            datePicker.snp.makeConstraints { make in
+                make.centerY.equalTo(dateSmallSelectorLabel)
+                make.leading.greaterThanOrEqualTo(dateSmallSelectorLabel.snp.trailing)
+                make.trailing.equalTo(safeAreaLayoutGuide).inset(MediumPadding)
+            }
+        } else {
+            dateSelector.snp.makeConstraints { make in
+                make.top.equalTo(currencySelector.snp.bottom).offset(MediumPadding)
+                make.leading.trailing.equalTo(safeAreaLayoutGuide)
+                make.bottom.equalToSuperview().offset(-LargePadding)
+            }
         }
         createButton.snp.makeConstraints { make in
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(MediumPadding)
@@ -165,6 +211,7 @@ class CreateOperationView: UIView {
     private func addTargets() {
         amountTextField.addTarget(self, action: #selector(textFieldDidChangeValue), for: .editingChanged)
         currencySelector.addTarget(self, action: #selector(createOperationViewDidSelectCurrency), for: .touchUpInside)
+        dateSelector.addTarget(self, action: #selector(createOperationViewDidSelectDate), for: .touchUpInside)
     }
     
     @objc private func textFieldDidChangeValue() {
@@ -181,6 +228,18 @@ class CreateOperationView: UIView {
     
     @objc private func createOperationViewDidSelectCurrency() {
         delegate?.createOperationViewDidSelectCurrency()
+    }
+    
+    @objc private func createOperationViewDidSelectDate() {
+        delegate?.createOperationViewDidSelectDate()
+    }
+    
+    private func setObservers() {
+        datePicker.addTarget(self, action: #selector(dateChanged), for: UIControl.Event.valueChanged)
+    }
+    
+    @objc func dateChanged() {
+        delegate?.dateDidChanged(date: datePicker.date)
     }
     
 }

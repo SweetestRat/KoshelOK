@@ -13,6 +13,7 @@ protocol CreateOperationPresenterProtocol: CurrencySelectionDelegateProtocol {
     func selectCategory()
     func selectCurrency()
     func selectDate()
+    func dateDidChanged(date: Date)
     func selectType()
     func createOperation()
 }

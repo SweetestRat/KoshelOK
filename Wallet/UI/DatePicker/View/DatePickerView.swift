@@ -18,6 +18,7 @@ class DatePickerView: UIView, DatePickerViewProtocol {
     
     private lazy var datePicker: UIDatePicker = {
         let view = UIDatePicker()
+        view.datePickerMode = .dateAndTime
         return view
     }()
     
@@ -44,7 +45,7 @@ class DatePickerView: UIView, DatePickerViewProtocol {
     
     func setConstraints() {
         datePicker.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview().inset(MediumPadding)
+            make.centerX.centerY.equalTo(safeAreaLayoutGuide)
         }
     }
     

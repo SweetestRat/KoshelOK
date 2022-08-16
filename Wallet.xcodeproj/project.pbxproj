@@ -70,7 +70,7 @@
 		68F646F5289D3BB100DAAE91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68F646F3289D3BB100DAAE91 /* LaunchScreen.storyboard */; };
 		830D8DEC28AAD50C00B51034 /* CreateOperationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830D8DEB28AAD50C00B51034 /* CreateOperationServiceProtocol.swift */; };
 		830D8DEE28AAD65C00B51034 /* CreateOperationRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830D8DED28AAD65C00B51034 /* CreateOperationRouterProtocol.swift */; };
-		830D8DF028AAD72E00B51034 /* reateOperationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830D8DEF28AAD72E00B51034 /* reateOperationRouter.swift */; };
+		830D8DF028AAD72E00B51034 /* CreateOperationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830D8DEF28AAD72E00B51034 /* CreateOperationRouter.swift */; };
 		83258E0428AB919C00B76DE4 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83258E0328AB919C00B76DE4 /* DatePickerView.swift */; };
 		83258E0628AB91B100B76DE4 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83258E0528AB91B100B76DE4 /* DatePickerViewController.swift */; };
 		83258E0828AB91C700B76DE4 /* DatePickerViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83258E0728AB91C700B76DE4 /* DatePickerViewProtocol.swift */; };
@@ -167,7 +167,7 @@
 		74EC7FF8D74674E8D9DB0B71 /* Pods-Wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wallet.release.xcconfig"; path = "Target Support Files/Pods-Wallet/Pods-Wallet.release.xcconfig"; sourceTree = "<group>"; };
 		830D8DEB28AAD50C00B51034 /* CreateOperationServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOperationServiceProtocol.swift; sourceTree = "<group>"; };
 		830D8DED28AAD65C00B51034 /* CreateOperationRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationRouterProtocol.swift; sourceTree = "<group>"; };
-		830D8DEF28AAD72E00B51034 /* reateOperationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reateOperationRouter.swift; sourceTree = "<group>"; };
+		830D8DEF28AAD72E00B51034 /* CreateOperationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationRouter.swift; sourceTree = "<group>"; };
 		83258E0328AB919C00B76DE4 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		83258E0528AB91B100B76DE4 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		83258E0728AB91C700B76DE4 /* DatePickerViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewProtocol.swift; sourceTree = "<group>"; };
@@ -743,7 +743,7 @@
 			isa = PBXGroup;
 			children = (
 				830D8DED28AAD65C00B51034 /* CreateOperationRouterProtocol.swift */,
-				830D8DEF28AAD72E00B51034 /* reateOperationRouter.swift */,
+				830D8DEF28AAD72E00B51034 /* CreateOperationRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -960,7 +960,7 @@
 				4C77E20E28A654AA002DE431 /* StartScreenViewController.swift in Sources */,
 				2D513A6228A839B300573FC4 /* WalletInfoRouter.swift in Sources */,
 				2DA79AD228AA89B900BA69D3 /* CurrencySelectionViewProtocol.swift in Sources */,
-				830D8DF028AAD72E00B51034 /* reateOperationRouter.swift in Sources */,
+				830D8DF028AAD72E00B51034 /* CreateOperationRouter.swift in Sources */,
 				2DA79ADA28AA89B900BA69D3 /* CurrencySeletionRouterProtocol.swift in Sources */,
 				2D513A5C28A8398A00573FC4 /* WalletInfoViewProtocol.swift in Sources */,
 				83AF6EFA28A6447C00BB91CB /* Balance.swift in Sources */,

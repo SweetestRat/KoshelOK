@@ -12,6 +12,6 @@ class DatePickerRouter: DatePickerRouterProtocol {
     weak var view: UIViewController?
     
     func back() {
-        view?.navigationController?.popViewController(animated: true)
+        view?.navigationController?.dismiss(animated: true)
     }
 }
