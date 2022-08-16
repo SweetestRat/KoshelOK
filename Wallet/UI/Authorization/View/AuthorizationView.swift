@@ -10,7 +10,7 @@ import WalletDesignKit
 
 class AuthorizationView: UIView {
     
-    private lazy var actionButton: BaseButton = {
+    public lazy var actionButton: BaseButton = {
         let button = BaseButton(title: "Войти", active: false)
         return button
     }()
@@ -25,6 +25,7 @@ class AuthorizationView: UIView {
     private lazy var nameTextField: UITextField = {
         let textField = BaseInputTextField(placeholder: "username@koshelok.ru")
         textField.returnKeyType = .done
+        textField.delegate = self
         return textField
     }()
     
@@ -85,5 +86,12 @@ class AuthorizationView: UIView {
     
     func addButtonTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
         actionButton.addTarget(target, action: action, for: controlEvents)
+    }
+}
+
+extension AuthorizationView: UITextFieldDelegate {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

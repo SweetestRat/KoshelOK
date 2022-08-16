@@ -8,5 +8,6 @@
 import Foundation
 
 protocol WalletInfoPresenterProtocol: AnyObject {
-    
+    func settingsDidTap()
+    func createOperationButtonDidTap()
 }

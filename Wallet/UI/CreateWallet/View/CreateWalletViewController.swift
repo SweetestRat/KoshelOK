@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WalletDesignKit
 
 class CreateWalletViewController: UIViewController, CreateWalletViewProtocol {
     private let presenter: CreateWalletPresenterProtocol
@@ -34,6 +35,7 @@ class CreateWalletViewController: UIViewController, CreateWalletViewProtocol {
         
         setup()
         setNavigationBar()
+        setObservers()
     }
     
     private func setup() {
@@ -52,6 +54,37 @@ class CreateWalletViewController: UIViewController, CreateWalletViewProtocol {
     
     @objc private func openWalletsList() {
         presenter.createWallet()
+    }
+    
+    private func setObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        buttonAnimation(notification: notification) { duration, keyboardCurve, keyboard in
+            UIView.animate(withDuration: duration, delay: 0, options: UIView.AnimationOptions(rawValue: keyboardCurve)) {
+                self.createWalletView.nextButton.snp.remakeConstraints { make in
+                    make.bottom.equalTo(self.createWalletView.snp.bottom).offset(-keyboard.height - CGFloat(MediumPadding))
+                    make.horizontalEdges.equalTo(self.createWalletView).inset(MediumPadding)
+                    make.height.equalTo(ActionButtonHeight)
+                }
+                self.createWalletView.layoutIfNeeded()
+            }
+        }
+    }
+    
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        buttonAnimation(notification: notification) { duration, keyboardCurve, _ in
+            UIView.animate(withDuration: duration, delay: 0, options: UIView.AnimationOptions(rawValue: keyboardCurve)) {
+                self.createWalletView.nextButton.snp.remakeConstraints { make in
+                    make.bottom.equalTo(self.createWalletView.safeAreaLayoutGuide.snp.bottom).offset(-LargePadding)
+                    make.horizontalEdges.equalTo(self.createWalletView).inset(MediumPadding)
+                    make.height.equalTo(ActionButtonHeight)
+                }
+                self.createWalletView.layoutIfNeeded()
+            }
+        }
     }
 }
 

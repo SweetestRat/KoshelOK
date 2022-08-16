@@ -16,4 +16,12 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
         self.service = service
         self.router = router
     }
+    
+    func settingsDidTap() {
+        
+    }
+    
+    func createOperationButtonDidTap() {
+        router.openCreateOperation()
+    }
 }
