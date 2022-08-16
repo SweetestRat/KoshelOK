@@ -5,8 +5,11 @@
 //  Created by Danila on 13.08.2022.
 //
 
+import Foundation
+
 class CreateOperationPresenter: CreateOperationPresenterProtocol {
     private var currency: CurrencyViewModel
+    private var date: Date
     
     private let service: CreateOperationServiceProtocol
     private let router: CreateOperationRouterProtocol
@@ -21,10 +24,15 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
         
         // set default user currency (probable get from user account request)
         currency = CurrencyViewModel(symbol: "THAI", fullName: "Thailand currency")
+        
+        let timestamp = Date().timeIntervalSince1970
+        let myTimeInterval = TimeInterval(timestamp)
+        date = Date(timeIntervalSince1970: TimeInterval(myTimeInterval))
     }
     
     func viewLoaded() {
         view?.updateCurrency(currency: currency)
+        view?.updateDate(date: date)
     }
     
     func selectCategory() {
@@ -36,7 +44,11 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
     }
     
     func selectDate() {
-        
+        router.openDateSelection(delegate: self, currentDate: date)
+    }
+    
+    func dateDidChanged(date: Date) {
+        self.date = date
     }
     
     func selectType() {
@@ -53,5 +65,12 @@ extension CreateOperationPresenter: CurrencySelectionDelegateProtocol {
     func updateSelectedCurrency(currency: CurrencyViewModel) {
         self.currency = currency
         view?.updateCurrency(currency: currency)
+    }
+}
+
+extension CreateOperationPresenter: DatePickerDelegateProtocol {
+    func dateSaved(date: Date) {
+        self.date = date
+        view?.updateDate(date: date)
     }
 }
