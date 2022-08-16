@@ -1,23 +1,28 @@
 //
-//  AuthorizationViewController.swift
+//  CreateOperationViewController.swift
 //  Wallet
 //
-//  Created by Alexandr Sokolov on 12.08.2022.
+//  Created by Danila on 13.08.2022.
 //
 
 import Foundation
 import UIKit
 import WalletDesignKit
 
-class AuthorizationViewController: UIViewController, AuthorizationViewProtocol {
-    private let presenter: AuthorizationPresenterProtocol
+class CreateOperationViewController: UIViewController, CreateOperationViewProtocol {
+    private let presenter: CreateOperationPresenterProtocol
     
-    private lazy var mainView: AuthorizationView = {
-        let view = AuthorizationView()
+    private lazy var createOperationView: CreateOperationView = {
+        let view = CreateOperationView()
+        view.delegate = self
         return view
     }()
     
-    init(presenter: AuthorizationPresenterProtocol) {
+    public func updateCurrency(currency: Currency) {
+        createOperationView.updateCurrency(currency: currency)
+    }
+    
+    init(presenter: CreateOperationPresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -28,27 +33,25 @@ class AuthorizationViewController: UIViewController, AuthorizationViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(mainView)
-        mainView.snp.makeConstraints { make in
+        presenter.viewLoaded()
+        
+        setup()
+        setNavigationBar()
+        setObservers()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        createOperationView.addGestureRecognizer(tap)
+    }
+    
+    private func setup() {
+        self.view.addSubview(createOperationView)
+        
+        createOperationView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
-        mainView.addButtonTarget(self, action: #selector(actionButtonDidTap), for: .touchUpInside)
-        addGestureRecognizer()
-        setObservers()
     }
     
-    @objc private func actionButtonDidTap() {
-        presenter.actionButtonDidTap()
-    }
-    
-    private func addGestureRecognizer() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc private func dismissKeyboard() {
-        view.endEditing(true)
+    private func setNavigationBar() {
+        navigationItem.title = "Создание операции"
     }
     
     private func setObservers() {
@@ -71,10 +74,20 @@ class AuthorizationViewController: UIViewController, AuthorizationViewProtocol {
     }
     
     private func updateConstraints(inset: CGFloat, keyboardAnimationParameters: KeyboardAnimationParameters) {
-        mainView.updateBottomInset(valueInset: inset)
+        createOperationView.updateBottomInset(valueInset: inset)
         
         UIView.animate(using: keyboardAnimationParameters) {
-            self.mainView.layoutIfNeeded()
+            self.createOperationView.layoutIfNeeded()
         }
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
+extension CreateOperationViewController: CreateOperationViewDelegate {
+    func createOperationViewDidSelectCurrency() {
+        presenter.selectCurrency()
     }
 }

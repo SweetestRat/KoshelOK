@@ -8,8 +8,8 @@
 import Foundation
 
 class AuthorizationPresenter: AuthorizationPresenterProtocol {
-    var service: AuthorizationServiceProtocol
-    var router: AuthorizationRouterProtocol
+    private let service: AuthorizationServiceProtocol
+    private let router: AuthorizationRouterProtocol
     weak var view: AuthorizationViewProtocol?
     
     init(service: AuthorizationServiceProtocol, router: AuthorizationRouterProtocol) {

@@ -80,7 +80,7 @@ class WalletInfoView: UIView {
         walletInfo = Array(repeating:
                         Wallet(name: "Wallet Name", icon: "", balance:
                                 Balance(value: 125, currency:
-                                            Currency(symbol: "en_US"))), count: 12)
+                                            Currency(symbol: "RUB", fullName: "Russian"))), count: 12)
         
         walletsTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
 
@@ -156,6 +156,10 @@ class WalletInfoView: UIView {
             make.top.equalTo(commonExpansesLabel.snp.bottom).offset(SmallPadding)
             make.leading.equalTo(commonExpansesLabel.snp.leading)
         }
+    }
+    
+    public func addButtonTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
+        actionButton.addTarget(target, action: action, for: controlEvents)
     }
 }
 

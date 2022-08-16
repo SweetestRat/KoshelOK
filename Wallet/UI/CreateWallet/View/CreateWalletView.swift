@@ -11,10 +11,12 @@ import WalletDesignKit
 
 protocol CreateWalletViewDelegate: AnyObject {
     func cellCurrencyInfoDidTap()
+    func textFieldDidChangeValue(text: String?)
 }
 
 class CreateWalletView: UIView {
     weak var delegate: CreateWalletViewDelegate?
+    private var bottomConstraint: Constraint?
     
     private lazy var nameTextField: UITextField = {
         let textField = BaseInputTextField(placeholder: "Название")
@@ -32,6 +34,10 @@ class CreateWalletView: UIView {
         let button = BaseButton(title: "Создать кошелек", active: false)
         return button
     }()
+    
+    public func updateActionButtonState(isActive: Bool) {
+        nextButton.isEnabled = isActive
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -64,10 +70,14 @@ class CreateWalletView: UIView {
         }
         
         nextButton.snp.makeConstraints { make in
-            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(MediumPadding)
+            bottomConstraint = make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(MediumPadding).constraint
             make.leading.trailing.equalToSuperview().inset(MediumPadding)
             make.height.equalTo(ActionButtonHeight)
         }
+    }
+    
+    func updateBottomInset(valueInset: CGFloat) {
+        bottomConstraint?.update(inset: valueInset)
     }
     
     private func addTargets() {
@@ -76,11 +86,7 @@ class CreateWalletView: UIView {
     }
     
     @objc func textFieldDidChangeValue() {
-        if let text = nameTextField.text, !text.isEmpty {
-            nextButton.isEnabled = true
-        } else {
-            nextButton.isEnabled = false
-        }
+        delegate?.textFieldDidChangeValue(text: nameTextField.text)
     }
     
     @objc private func currencyInfoDidTap() {

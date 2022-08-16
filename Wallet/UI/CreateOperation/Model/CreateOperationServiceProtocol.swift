@@ -1,0 +1,3 @@
+protocol CreateOperationServiceProtocol {
+    func createOperation()
+}
