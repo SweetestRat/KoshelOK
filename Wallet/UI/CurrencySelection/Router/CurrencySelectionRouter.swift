@@ -8,9 +8,8 @@
 import Foundation 
 
 class CurrencySelectionRouter: CurrencySelectionRouterProtocol {
-    var view: CurrencySelectionViewProtocol?
+    weak var view: CurrencySelectionViewProtocol?
     
-    init(view: CurrencySelectionViewProtocol) {
-        self.view = view
+    init() {
     }
 }

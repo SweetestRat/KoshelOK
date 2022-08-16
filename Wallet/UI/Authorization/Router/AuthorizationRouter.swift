@@ -10,10 +10,6 @@ import UIKit
 class AuthorizationRouter: AuthorizationRouterProtocol {
     var view: AuthorizationViewProtocol?
     
-    init(view: AuthorizationViewProtocol) {
-        self.view = view
-    }
-    
     func openWalletsList() {
         let nextvc = WalletsListsControllerAssembly().assembly()
         guard let vc = view as? UIViewController else { return }
