@@ -9,6 +9,6 @@ import Foundation
 
 struct Currency: Decodable {
     let id: Int
-    let symbol: String
+    let shortName: String
     let longName: String
 }

@@ -26,10 +26,6 @@ class CurrencySelectionViewController: UIViewController, CurrencySelectionViewPr
         return view
     }()
     
-    func updateCurrenciesList(currencies: [CurrencyViewModel]?) {
-        currencySelectionView.updateCurrenciesList(currencies: currencies)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .background
@@ -57,9 +53,21 @@ class CurrencySelectionViewController: UIViewController, CurrencySelectionViewPr
     private func setupNavigationBar() {
         navigationItem.title = "Выбор валюты"
     }
+    
+    func updateTableView() {
+        currencySelectionView.tableView.reloadData()
+    }
 }
 
 extension CurrencySelectionViewController: CurrencySelectionViewDelegate {
+    func getCategory(index: Int) -> CurrencyViewModel {
+        presenter.getCurrency(index: index)
+    }
+    
+    func getNumberOfRows() -> Int? {
+        presenter.getNumberOfRows()
+    }
+    
     func cellSelected(indexPathRow: Int) {
         presenter.setSelectedRow(row: indexPathRow)
     }

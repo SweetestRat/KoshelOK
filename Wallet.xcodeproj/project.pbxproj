@@ -65,6 +65,7 @@
 		2DC3D4ED28ABE286005C9FB7 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3D4EC28ABE286005C9FB7 /* CategoryViewModel.swift */; };
 		2DC3D4F028ABFDA6005C9FB7 /* DatePickerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3D4EF28ABFDA6005C9FB7 /* DatePickerAssembly.swift */; };
 		2DC3D4F228ABFE4B005C9FB7 /* CreateOperationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3D4F128ABFE4B005C9FB7 /* CreateOperationView.swift */; };
+		2DC3D4F428AC062F005C9FB7 /* CurrencyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3D4F328AC062F005C9FB7 /* CurrencyRequest.swift */; };
 		4C4FB08528A7833D00D23CD2 /* AuthorizationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB08028A7833D00D23CD2 /* AuthorizationPresenter.swift */; };
 		4C4FB08628A7833D00D23CD2 /* AuthorizationPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB08128A7833D00D23CD2 /* AuthorizationPresenterProtocol.swift */; };
 		4C4FB08728A7833D00D23CD2 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB08328A7833D00D23CD2 /* AuthorizationViewController.swift */; };
@@ -179,6 +180,7 @@
 		2DC3D4EC28ABE286005C9FB7 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		2DC3D4EF28ABFDA6005C9FB7 /* DatePickerAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerAssembly.swift; sourceTree = "<group>"; };
 		2DC3D4F128ABFE4B005C9FB7 /* CreateOperationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOperationView.swift; sourceTree = "<group>"; };
+		2DC3D4F328AC062F005C9FB7 /* CurrencyRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRequest.swift; sourceTree = "<group>"; };
 		4C4FB08028A7833D00D23CD2 /* AuthorizationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationPresenter.swift; sourceTree = "<group>"; };
 		4C4FB08128A7833D00D23CD2 /* AuthorizationPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationPresenterProtocol.swift; sourceTree = "<group>"; };
 		4C4FB08328A7833D00D23CD2 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 			children = (
 				2DA79AC328AA89B900BA69D3 /* CurrencySelectionService.swift */,
 				2DA79AC428AA89B900BA69D3 /* CurrencySelectionServiceProtocol.swift */,
+				2DC3D4F328AC062F005C9FB7 /* CurrencyRequest.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1065,6 +1068,7 @@
 				2D513A6828A839CA00573FC4 /* WalletInfoModelProtocol.swift in Sources */,
 				2DC3D4E528ABBB40005C9FB7 /* BalanceFormatter.swift in Sources */,
 				2DA79AD728AA89B900BA69D3 /* CurrencySelectionViewController.swift in Sources */,
+				2DC3D4F428AC062F005C9FB7 /* CurrencyRequest.swift in Sources */,
 				2DA79AD328AA89B900BA69D3 /* CurrencySelectionTableViewCell.swift in Sources */,
 				2DA79ADC28AA89B900BA69D3 /* CurrencySelectionRouter.swift in Sources */,
 				2DA79ACB28AA89B900BA69D3 /* CurrencySelectionPresenterProtocol.swift in Sources */,

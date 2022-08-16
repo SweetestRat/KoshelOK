@@ -8,5 +8,6 @@
 import Foundation
 
 protocol CreateWalletViewProtocol: AnyObject {
+    func updateCurrency(currency: CurrencyViewModel)
     func updateActionButtonState(isActive: Bool)
 }

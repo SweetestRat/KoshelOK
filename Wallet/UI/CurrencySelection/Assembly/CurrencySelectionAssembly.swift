@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import WalletNetworkKit
 
 class CurrencySelectionAssembly {
     
     func assembly(delegate: CurrencySelectionDelegateProtocol) -> CurrencySelectionViewController {
-        let service = CurrencySelectionService()
+        let networkManager = NetworkManager()
+        let service = CurrencySelectionService(networkManager: networkManager)
         let router = CurrencySelectionRouter()
         let presenter = CurrencySelectionPresenter(service: service, router: router)
         let viewController = CurrencySelectionViewController(presenter: presenter)

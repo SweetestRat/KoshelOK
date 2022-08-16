@@ -43,6 +43,6 @@ class CreateWalletPresenter: CreateWalletPresenterProtocol {
 
 extension CreateWalletPresenter: CurrencySelectionDelegateProtocol {
     func updateSelectedCurrency(currency: CurrencyViewModel) {
-        
+        view?.updateCurrency(currency: currency)
     }
 }
