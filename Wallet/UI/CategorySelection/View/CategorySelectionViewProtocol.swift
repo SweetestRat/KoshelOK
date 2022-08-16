@@ -8,5 +8,5 @@
 import Foundation
 
 protocol CategorySelectionViewProtocol: AnyObject {
-    
+    func updateTableView()
 }
