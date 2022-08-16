@@ -77,6 +77,8 @@
 		4C4FB09728A7B4A800D23CD2 /* AuthorizationViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB09628A7B4A800D23CD2 /* AuthorizationViewProtocol.swift */; };
 		4C77E20E28A654AA002DE431 /* StartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C77E20D28A654AA002DE431 /* StartScreenViewController.swift */; };
 		4C77E21028A654B8002DE431 /* StartScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C77E20F28A654B8002DE431 /* StartScreenView.swift */; };
+		4CC64D0A28AC2937004BCD59 /* CategorySelectionRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC64D0928AC2937004BCD59 /* CategorySelectionRouterProtocol.swift */; };
+		4CC64D0C28AC2944004BCD59 /* CategorySelectionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC64D0B28AC2944004BCD59 /* CategorySelectionRouter.swift */; };
 		4CDB10CC28AB78E200A6D448 /* CategorySelectionAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB10BD28AB78E200A6D448 /* CategorySelectionAssembly.swift */; };
 		4CDB10CD28AB78E200A6D448 /* CategorySelectionPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB10BF28AB78E200A6D448 /* CategorySelectionPresenterProtocol.swift */; };
 		4CDB10CE28AB78E200A6D448 /* CategorySelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB10C028AB78E200A6D448 /* CategorySelectionPresenter.swift */; };
@@ -191,6 +193,8 @@
 		4C4FB09628A7B4A800D23CD2 /* AuthorizationViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewProtocol.swift; sourceTree = "<group>"; };
 		4C77E20D28A654AA002DE431 /* StartScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
 		4C77E20F28A654B8002DE431 /* StartScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenView.swift; sourceTree = "<group>"; };
+		4CC64D0928AC2937004BCD59 /* CategorySelectionRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectionRouterProtocol.swift; sourceTree = "<group>"; };
+		4CC64D0B28AC2944004BCD59 /* CategorySelectionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectionRouter.swift; sourceTree = "<group>"; };
 		4CDB10BD28AB78E200A6D448 /* CategorySelectionAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySelectionAssembly.swift; sourceTree = "<group>"; };
 		4CDB10BF28AB78E200A6D448 /* CategorySelectionPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySelectionPresenterProtocol.swift; sourceTree = "<group>"; };
 		4CDB10C028AB78E200A6D448 /* CategorySelectionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySelectionPresenter.swift; sourceTree = "<group>"; };
@@ -603,9 +607,19 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		4CC64D0828AC2913004BCD59 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				4CC64D0928AC2937004BCD59 /* CategorySelectionRouterProtocol.swift */,
+				4CC64D0B28AC2944004BCD59 /* CategorySelectionRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		4CDB10BB28AB78E200A6D448 /* CategorySelection */ = {
 			isa = PBXGroup;
 			children = (
+				4CC64D0828AC2913004BCD59 /* Router */,
 				4CDB10BC28AB78E200A6D448 /* Assembly */,
 				4CDB10BE28AB78E200A6D448 /* Presenter */,
 				4CDB10C128AB78E200A6D448 /* View */,
@@ -1051,6 +1065,7 @@
 				68F646E9289D3BAE00DAAE91 /* AppDelegate.swift in Sources */,
 				2DA79ACC28AA89B900BA69D3 /* CurrencySelectionPresenter.swift in Sources */,
 				2DC3D4F028ABFDA6005C9FB7 /* DatePickerAssembly.swift in Sources */,
+				4CC64D0C28AC2944004BCD59 /* CategorySelectionRouter.swift in Sources */,
 				2DC3D4F228ABFE4B005C9FB7 /* CreateOperationView.swift in Sources */,
 				4C4FB08628A7833D00D23CD2 /* AuthorizationPresenterProtocol.swift in Sources */,
 				83258E1028AB91FF00B76DE4 /* DatePickerPresenterProtocol.swift in Sources */,
@@ -1064,6 +1079,7 @@
 				2DA6464B28A6D8DD00EF8755 /* StartScreenRouterProtocol.swift in Sources */,
 				2D513A6828A839CA00573FC4 /* WalletInfoModelProtocol.swift in Sources */,
 				2DC3D4E528ABBB40005C9FB7 /* BalanceFormatter.swift in Sources */,
+				4CC64D0A28AC2937004BCD59 /* CategorySelectionRouterProtocol.swift in Sources */,
 				2DA79AD728AA89B900BA69D3 /* CurrencySelectionViewController.swift in Sources */,
 				2DA79AD328AA89B900BA69D3 /* CurrencySelectionTableViewCell.swift in Sources */,
 				2DA79ADC28AA89B900BA69D3 /* CurrencySelectionRouter.swift in Sources */,
@@ -1243,7 +1259,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = LB6HJ44JRX;
+				DEVELOPMENT_TEAM = 45YLW7UG43;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Wallet/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1256,7 +1272,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ru.tinkoff.Wallet-D3";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.tinkoff.Wallet-D1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1272,7 +1288,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = LB6HJ44JRX;
+				DEVELOPMENT_TEAM = 45YLW7UG43;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Wallet/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1285,7 +1301,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ru.tinkoff.Wallet-D3";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.tinkoff.Wallet-D1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

@@ -9,6 +9,11 @@ import Foundation
 
 class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
     
+    private let router: CategorySelectionRouterProtocol
+    weak var delegate: CategorySelectionDelegateProtocol?
+    
+    internal var category: CategoryViewModel
+    
     private var service: CategoriesServiceProtocol
     weak var view: CategorySelectionViewProtocol?
     
@@ -16,8 +21,10 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
     
     private var listOfCategories: [CategoryViewModel] = []
     
-    init(service: CategoriesServiceProtocol) {
+    init(service: CategoriesServiceProtocol, category: CategoryViewModel, router: CategorySelectionRouterProtocol) {
         self.service = service
+        self.category = category
+        self.router = router
     }
     
     func getSelectedRow() -> Int? {
@@ -26,6 +33,10 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
     
     func setSelectedRow(row: Int) {
         selectedIndexPathRow = row
+        
+        let category = listOfCategories[row]
+        categoryDidUpdate(category: category)
+        delegate?.categorySaved(category: category)
     }
     
     func controllerLoaded() {
@@ -36,6 +47,9 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
                     CategoryViewModel(name: category.name, iconName: category.iconName, iconColor: category.iconColor)
                 }
                 self?.listOfCategories = categoriesViewModels
+                self?.selectedIndexPathRow = self?.listOfCategories.firstIndex(where: { category in
+                    category.name == self?.category.name
+                }) ?? 0
                 DispatchQueue.main.async {
                     self?.view?.updateTableView()
                 }
@@ -45,7 +59,21 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
         }
     }
     
-    func didTapBarButton() {}
+    func didTapBarButton() {
+    }
+    
+    func actionButtonDidTap() {
+        delegate?.categorySaved(category: category)
+        router.back()
+    }
+    
+    func categoryDidUpdate(category: CategoryViewModel) {
+        self.category = category
+    }
+    
+    func cancelDidClick() {
+        router.back()
+    }
     
     func getNumberOfRows() -> Int? {
         listOfCategories.count

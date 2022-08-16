@@ -12,6 +12,7 @@ import WalletDesignKit
 protocol CreateOperationViewDelegate: AnyObject {
     func createOperationViewDidSelectCurrency()
     func createOperationViewDidSelectDate()
+    func createOperationViewDidSelectCategory()
     func dateDidChanged(date: Date)
 }
 
@@ -85,6 +86,10 @@ class CreateOperationView: UIView {
         let formatter = DateFormatter()
         formatter.dateFormat = "YY, MMM d, hh:mm"
         dateSelector.rightButtonDescription.text = formatter.string(from: date)
+    }
+    
+    public func updateCategory(category: CategoryViewModel) {
+        categorySelector.rightButtonDescription.text = category.name
     }
     
     private func labelCell(text: String) -> UIView {
@@ -212,6 +217,7 @@ class CreateOperationView: UIView {
     private func addTargets() {
         amountTextField.addTarget(self, action: #selector(textFieldDidChangeValue), for: .editingChanged)
         currencySelector.addTarget(self, action: #selector(createOperationViewDidSelectCurrency), for: .touchUpInside)
+        categorySelector.addTarget(self, action: #selector(createOperationViewDidSelectCategory), for: .touchUpInside)
         dateSelector.addTarget(self, action: #selector(createOperationViewDidSelectDate), for: .touchUpInside)
     }
     
@@ -235,6 +241,10 @@ class CreateOperationView: UIView {
         delegate?.createOperationViewDidSelectDate()
 	}
 
+    @objc private func createOperationViewDidSelectCategory() {
+        delegate?.createOperationViewDidSelectCategory()
+    }
+    
     func updateBottomInset(valueInset: CGFloat) {
         bottomConstraint?.update(inset: valueInset)
     }
