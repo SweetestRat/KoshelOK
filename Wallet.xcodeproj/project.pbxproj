@@ -764,8 +764,8 @@
 			);
 			path = Presenter;
 			sourceTree = "<group>";
-		83F3DDA928A8399700F176BD /* Router */ = {
 		};
+		83F3DDA928A8399700F176BD /* Router */ = {
 			isa = PBXGroup;
 			children = (
 				830D8DED28AAD65C00B51034 /* CreateOperationRouterProtocol.swift */,
@@ -941,11 +941,11 @@
 				2DA96DBB28A694C3005F791F /* CreateWalletPresenter.swift in Sources */,
 				4C4FB08528A7833D00D23CD2 /* AuthorizationPresenter.swift in Sources */,
 				4C4FB08F28A7AA0B00D23CD2 /* AuthorizationService.swift in Sources */,
-				83F3DDB128A839E700F176BD /* CreateOperationView.swift in Sources */,
 				4CDB10D828AB8BA800A6D448 /* Category.swift in Sources */,
 				4C4FB09128A7AAD600D23CD2 /* AuthorizationServiceProtocol.swift in Sources */,
 				2DA79ACE28AA89B900BA69D3 /* CurrencySelectionPresenterProtocol.swift in Sources */,
 				4CDB10CD28AB78E200A6D448 /* CategorySelectionPresenterProtocol.swift in Sources */,
+				83F3DDB128A839E700F176BD /* CreateOperationView.swift in Sources */,
 				83AF6EEC28A57E1500BB91CB /* WalletsListView.swift in Sources */,
 				4CDB10CE28AB78E200A6D448 /* CategorySelectionPresenter.swift in Sources */,
 				2DA6465228A6DE4800EF8755 /* WalletsListRouter.swift in Sources */,
