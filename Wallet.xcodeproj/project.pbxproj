@@ -63,6 +63,8 @@
 		2DC3D4E728ABBDB7005C9FB7 /* WalletsListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3D4E628ABBDB7005C9FB7 /* WalletsListRequest.swift */; };
 		2DC3D4EB28ABC771005C9FB7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3D4EA28ABC771005C9FB7 /* Category.swift */; };
 		2DC3D4ED28ABE286005C9FB7 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3D4EC28ABE286005C9FB7 /* CategoryViewModel.swift */; };
+		2DC3D4F028ABFDA6005C9FB7 /* DatePickerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3D4EF28ABFDA6005C9FB7 /* DatePickerAssembly.swift */; };
+		2DC3D4F228ABFE4B005C9FB7 /* CreateOperationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3D4F128ABFE4B005C9FB7 /* CreateOperationView.swift */; };
 		4C4FB08528A7833D00D23CD2 /* AuthorizationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB08028A7833D00D23CD2 /* AuthorizationPresenter.swift */; };
 		4C4FB08628A7833D00D23CD2 /* AuthorizationPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB08128A7833D00D23CD2 /* AuthorizationPresenterProtocol.swift */; };
 		4C4FB08728A7833D00D23CD2 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB08328A7833D00D23CD2 /* AuthorizationViewController.swift */; };
@@ -101,7 +103,6 @@
 		83258E0C28AB91E500B76DE4 /* DatePickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83258E0B28AB91E500B76DE4 /* DatePickerRouter.swift */; };
 		83258E0E28AB91F600B76DE4 /* DatePickerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83258E0D28AB91F600B76DE4 /* DatePickerPresenter.swift */; };
 		83258E1028AB91FF00B76DE4 /* DatePickerPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83258E0F28AB91FF00B76DE4 /* DatePickerPresenterProtocol.swift */; };
-		83258E1328AB9A0200B76DE4 /* DatePickerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83258E1228AB9A0200B76DE4 /* DatePickerAssembly.swift */; };
 		83AF6EEA28A57D5A00BB91CB /* WalletsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AF6EE928A57D5A00BB91CB /* WalletsListViewController.swift */; };
 		83AF6EEC28A57E1500BB91CB /* WalletsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AF6EEB28A57E1500BB91CB /* WalletsListView.swift */; };
 		83AF6EF028A6351600BB91CB /* WalletsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AF6EEF28A6351600BB91CB /* WalletsListCell.swift */; };
@@ -111,7 +112,6 @@
 		83AF6F0628A6869000BB91CB /* WalletsListsControllerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AF6F0528A6869000BB91CB /* WalletsListsControllerAssembly.swift */; };
 		83F3DDAB28A839BA00F176BD /* CreateOperationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3DDAA28A839BA00F176BD /* CreateOperationAssembly.swift */; };
 		83F3DDAF28A839DA00F176BD /* CreateOperationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3DDAE28A839DA00F176BD /* CreateOperationService.swift */; };
-		83F3DDB128A839E700F176BD /* CreateOperationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3DDB028A839E700F176BD /* CreateOperationView.swift */; };
 		83F3DDB328A839FC00F176BD /* CreateOperationViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3DDB228A839FC00F176BD /* CreateOperationViewProtocol.swift */; };
 		83F3DDB528A83A0000F176BD /* CreateOperationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3DDB428A83A0000F176BD /* CreateOperationViewController.swift */; };
 		83F3DDB728A83A3B00F176BD /* CreateOperationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F3DDB628A83A3B00F176BD /* CreateOperationPresenter.swift */; };
@@ -177,6 +177,8 @@
 		2DC3D4E628ABBDB7005C9FB7 /* WalletsListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsListRequest.swift; sourceTree = "<group>"; };
 		2DC3D4EA28ABC771005C9FB7 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		2DC3D4EC28ABE286005C9FB7 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
+		2DC3D4EF28ABFDA6005C9FB7 /* DatePickerAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerAssembly.swift; sourceTree = "<group>"; };
+		2DC3D4F128ABFE4B005C9FB7 /* CreateOperationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOperationView.swift; sourceTree = "<group>"; };
 		4C4FB08028A7833D00D23CD2 /* AuthorizationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationPresenter.swift; sourceTree = "<group>"; };
 		4C4FB08128A7833D00D23CD2 /* AuthorizationPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationPresenterProtocol.swift; sourceTree = "<group>"; };
 		4C4FB08328A7833D00D23CD2 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
@@ -218,7 +220,6 @@
 		83258E0B28AB91E500B76DE4 /* DatePickerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerRouter.swift; sourceTree = "<group>"; };
 		83258E0D28AB91F600B76DE4 /* DatePickerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerPresenter.swift; sourceTree = "<group>"; };
 		83258E0F28AB91FF00B76DE4 /* DatePickerPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerPresenterProtocol.swift; sourceTree = "<group>"; };
-		83258E1228AB9A0200B76DE4 /* DatePickerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DatePickerAssembly.swift; path = ../../../../../../../Tickets/DatePickerAssembly.swift; sourceTree = "<group>"; };
 		83AF6EE928A57D5A00BB91CB /* WalletsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsListViewController.swift; sourceTree = "<group>"; };
 		83AF6EEB28A57E1500BB91CB /* WalletsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsListView.swift; sourceTree = "<group>"; };
 		83AF6EEF28A6351600BB91CB /* WalletsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsListCell.swift; sourceTree = "<group>"; };
@@ -228,7 +229,6 @@
 		83AF6F0528A6869000BB91CB /* WalletsListsControllerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsListsControllerAssembly.swift; sourceTree = "<group>"; };
 		83F3DDAA28A839BA00F176BD /* CreateOperationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationAssembly.swift; sourceTree = "<group>"; };
 		83F3DDAE28A839DA00F176BD /* CreateOperationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationService.swift; sourceTree = "<group>"; };
-		83F3DDB028A839E700F176BD /* CreateOperationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationView.swift; sourceTree = "<group>"; };
 		83F3DDB228A839FC00F176BD /* CreateOperationViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationViewProtocol.swift; sourceTree = "<group>"; };
 		83F3DDB428A83A0000F176BD /* CreateOperationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationViewController.swift; sourceTree = "<group>"; };
 		83F3DDB628A83A3B00F176BD /* CreateOperationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationPresenter.swift; sourceTree = "<group>"; };
@@ -516,6 +516,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		2DC3D4EE28ABFD97005C9FB7 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				2DC3D4EF28ABFDA6005C9FB7 /* DatePickerAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
 		4C4FB07E28A7833D00D23CD2 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
@@ -713,7 +721,7 @@
 		83258DFF28AB916F00B76DE4 /* DatePicker */ = {
 			isa = PBXGroup;
 			children = (
-				83258E1128AB99E900B76DE4 /* Assembly */,
+				2DC3D4EE28ABFD97005C9FB7 /* Assembly */,
 				83258E0228AB918500B76DE4 /* View */,
 				83258E0128AB918000B76DE4 /* Router */,
 				83258E0028AB917700B76DE4 /* Presenter */,
@@ -747,14 +755,6 @@
 				83258E0728AB91C700B76DE4 /* DatePickerViewProtocol.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		83258E1128AB99E900B76DE4 /* Assembly */ = {
-			isa = PBXGroup;
-			children = (
-				83258E1228AB9A0200B76DE4 /* DatePickerAssembly.swift */,
-			);
-			path = Assembly;
 			sourceTree = "<group>";
 		};
 		83AF6EE428A57CBF00BB91CB /* WalletsList */ = {
@@ -839,7 +839,7 @@
 		83F3DDA728A8398A00F176BD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				83F3DDB028A839E700F176BD /* CreateOperationView.swift */,
+				2DC3D4F128ABFE4B005C9FB7 /* CreateOperationView.swift */,
 				83F3DDB228A839FC00F176BD /* CreateOperationViewProtocol.swift */,
 				83F3DDB428A83A0000F176BD /* CreateOperationViewController.swift */,
 			);
@@ -1018,7 +1018,6 @@
 				2DA96DC728A695CB005F791F /* CreateWalletView.swift in Sources */,
 				4C77E21028A654B8002DE431 /* StartScreenView.swift in Sources */,
 				83F3DDB328A839FC00F176BD /* CreateOperationViewProtocol.swift in Sources */,
-				83258E1328AB9A0200B76DE4 /* DatePickerAssembly.swift in Sources */,
 				4C4FB09328A7B2FF00D23CD2 /* AuthorizationRouter.swift in Sources */,
 				4CDB10D328AB78E200A6D448 /* CategoriesServiceProtocol.swift in Sources */,
 				2DA6464D28A6D90C00EF8755 /* StartScreenAssembly.swift in Sources */,
@@ -1042,10 +1041,8 @@
 				4C4FB08528A7833D00D23CD2 /* AuthorizationPresenter.swift in Sources */,
 				4C4FB08F28A7AA0B00D23CD2 /* AuthorizationService.swift in Sources */,
 				83258E0628AB91B100B76DE4 /* DatePickerViewController.swift in Sources */,
-				83F3DDB128A839E700F176BD /* CreateOperationView.swift in Sources */,
 				4C4FB09128A7AAD600D23CD2 /* AuthorizationServiceProtocol.swift in Sources */,
 				4CDB10CD28AB78E200A6D448 /* CategorySelectionPresenterProtocol.swift in Sources */,
-				83F3DDB128A839E700F176BD /* CreateOperationView.swift in Sources */,
 				83AF6EEC28A57E1500BB91CB /* WalletsListView.swift in Sources */,
 				4CDB10CE28AB78E200A6D448 /* CategorySelectionPresenter.swift in Sources */,
 				2DA6465228A6DE4800EF8755 /* WalletsListRouter.swift in Sources */,
@@ -1053,8 +1050,9 @@
 				830D8DEE28AAD65C00B51034 /* CreateOperationRouterProtocol.swift in Sources */,
 				68F646E9289D3BAE00DAAE91 /* AppDelegate.swift in Sources */,
 				2DA79ACC28AA89B900BA69D3 /* CurrencySelectionPresenter.swift in Sources */,
+				2DC3D4F028ABFDA6005C9FB7 /* DatePickerAssembly.swift in Sources */,
+				2DC3D4F228ABFE4B005C9FB7 /* CreateOperationView.swift in Sources */,
 				4C4FB08628A7833D00D23CD2 /* AuthorizationPresenterProtocol.swift in Sources */,
-				83AF6EF228A640C800BB91CB /* Wallet.swift in Sources */,
 				83258E1028AB91FF00B76DE4 /* DatePickerPresenterProtocol.swift in Sources */,
 				2D513A5828A8397800573FC4 /* WalletInfoView.swift in Sources */,
 				2DC3D4E728ABBDB7005C9FB7 /* WalletsListRequest.swift in Sources */,
