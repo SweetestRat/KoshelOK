@@ -82,7 +82,15 @@
 		68F646F5289D3BB100DAAE91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68F646F3289D3BB100DAAE91 /* LaunchScreen.storyboard */; };
 		830D8DEC28AAD50C00B51034 /* CreateOperationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830D8DEB28AAD50C00B51034 /* CreateOperationServiceProtocol.swift */; };
 		830D8DEE28AAD65C00B51034 /* CreateOperationRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830D8DED28AAD65C00B51034 /* CreateOperationRouterProtocol.swift */; };
-		830D8DF028AAD72E00B51034 /* reateOperationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830D8DEF28AAD72E00B51034 /* reateOperationRouter.swift */; };
+		830D8DF028AAD72E00B51034 /* CreateOperationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830D8DEF28AAD72E00B51034 /* CreateOperationRouter.swift */; };
+		83258E0428AB919C00B76DE4 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83258E0328AB919C00B76DE4 /* DatePickerView.swift */; };
+		83258E0628AB91B100B76DE4 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83258E0528AB91B100B76DE4 /* DatePickerViewController.swift */; };
+		83258E0828AB91C700B76DE4 /* DatePickerViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83258E0728AB91C700B76DE4 /* DatePickerViewProtocol.swift */; };
+		83258E0A28AB91DF00B76DE4 /* DatePickerRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83258E0928AB91DF00B76DE4 /* DatePickerRouterProtocol.swift */; };
+		83258E0C28AB91E500B76DE4 /* DatePickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83258E0B28AB91E500B76DE4 /* DatePickerRouter.swift */; };
+		83258E0E28AB91F600B76DE4 /* DatePickerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83258E0D28AB91F600B76DE4 /* DatePickerPresenter.swift */; };
+		83258E1028AB91FF00B76DE4 /* DatePickerPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83258E0F28AB91FF00B76DE4 /* DatePickerPresenterProtocol.swift */; };
+		83258E1328AB9A0200B76DE4 /* DatePickerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83258E1228AB9A0200B76DE4 /* DatePickerAssembly.swift */; };
 		83AF6EEA28A57D5A00BB91CB /* WalletsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AF6EE928A57D5A00BB91CB /* WalletsListViewController.swift */; };
 		83AF6EEC28A57E1500BB91CB /* WalletsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AF6EEB28A57E1500BB91CB /* WalletsListView.swift */; };
 		83AF6EF028A6351600BB91CB /* WalletsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AF6EEF28A6351600BB91CB /* WalletsListCell.swift */; };
@@ -183,7 +191,15 @@
 		74EC7FF8D74674E8D9DB0B71 /* Pods-Wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wallet.release.xcconfig"; path = "Target Support Files/Pods-Wallet/Pods-Wallet.release.xcconfig"; sourceTree = "<group>"; };
 		830D8DEB28AAD50C00B51034 /* CreateOperationServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOperationServiceProtocol.swift; sourceTree = "<group>"; };
 		830D8DED28AAD65C00B51034 /* CreateOperationRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationRouterProtocol.swift; sourceTree = "<group>"; };
-		830D8DEF28AAD72E00B51034 /* reateOperationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reateOperationRouter.swift; sourceTree = "<group>"; };
+		830D8DEF28AAD72E00B51034 /* CreateOperationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationRouter.swift; sourceTree = "<group>"; };
+		83258E0328AB919C00B76DE4 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		83258E0528AB91B100B76DE4 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		83258E0728AB91C700B76DE4 /* DatePickerViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewProtocol.swift; sourceTree = "<group>"; };
+		83258E0928AB91DF00B76DE4 /* DatePickerRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerRouterProtocol.swift; sourceTree = "<group>"; };
+		83258E0B28AB91E500B76DE4 /* DatePickerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerRouter.swift; sourceTree = "<group>"; };
+		83258E0D28AB91F600B76DE4 /* DatePickerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerPresenter.swift; sourceTree = "<group>"; };
+		83258E0F28AB91FF00B76DE4 /* DatePickerPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerPresenterProtocol.swift; sourceTree = "<group>"; };
+		83258E1228AB9A0200B76DE4 /* DatePickerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DatePickerAssembly.swift; path = ../../../../../../../Tickets/DatePickerAssembly.swift; sourceTree = "<group>"; };
 		83AF6EE928A57D5A00BB91CB /* WalletsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsListViewController.swift; sourceTree = "<group>"; };
 		83AF6EEB28A57E1500BB91CB /* WalletsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsListView.swift; sourceTree = "<group>"; };
 		83AF6EEF28A6351600BB91CB /* WalletsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsListCell.swift; sourceTree = "<group>"; };
@@ -622,6 +638,7 @@
 		68F6A284289D3DA900DAAE91 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				83258DFF28AB916F00B76DE4 /* DatePicker */,
 				4CDB10BB28AB78E200A6D448 /* CategorySelection */,
 				2DA79AAF28AA89B900BA69D3 /* CurrencySelection */,
 				2D513A5128A8393000573FC4 /* WalletInfo */,
@@ -641,6 +658,53 @@
 				68F646EC289D3BAE00DAAE91 /* ViewController.swift */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		83258DFF28AB916F00B76DE4 /* DatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				83258E1128AB99E900B76DE4 /* Assembly */,
+				83258E0228AB918500B76DE4 /* View */,
+				83258E0128AB918000B76DE4 /* Router */,
+				83258E0028AB917700B76DE4 /* Presenter */,
+			);
+			path = DatePicker;
+			sourceTree = "<group>";
+		};
+		83258E0028AB917700B76DE4 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				83258E0D28AB91F600B76DE4 /* DatePickerPresenter.swift */,
+				83258E0F28AB91FF00B76DE4 /* DatePickerPresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		83258E0128AB918000B76DE4 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				83258E0928AB91DF00B76DE4 /* DatePickerRouterProtocol.swift */,
+				83258E0B28AB91E500B76DE4 /* DatePickerRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		83258E0228AB918500B76DE4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				83258E0328AB919C00B76DE4 /* DatePickerView.swift */,
+				83258E0528AB91B100B76DE4 /* DatePickerViewController.swift */,
+				83258E0728AB91C700B76DE4 /* DatePickerViewProtocol.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		83258E1128AB99E900B76DE4 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				83258E1228AB9A0200B76DE4 /* DatePickerAssembly.swift */,
+			);
+			path = Assembly;
 			sourceTree = "<group>";
 		};
 		83AF6EE428A57CBF00BB91CB /* WalletsList */ = {
@@ -755,7 +819,7 @@
 			isa = PBXGroup;
 			children = (
 				830D8DED28AAD65C00B51034 /* CreateOperationRouterProtocol.swift */,
-				830D8DEF28AAD72E00B51034 /* reateOperationRouter.swift */,
+				830D8DEF28AAD72E00B51034 /* CreateOperationRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -899,33 +963,40 @@
 				2DA96DBF28A694C9005F791F /* CreateWalletRouter.swift in Sources */,
 				68F646ED289D3BAE00DAAE91 /* ViewController.swift in Sources */,
 				2D513A5A28A8398200573FC4 /* WalletInfoViewController.swift in Sources */,
+				83258E0428AB919C00B76DE4 /* DatePickerView.swift in Sources */,
 				4C4FB09528A7B3FC00D23CD2 /* AuthorizationRouterProtocol.swift in Sources */,
 				2DA96DC028A694C9005F791F /* CreateWalletRouterProtocol.swift in Sources */,
 				4CDB10D128AB78E200A6D448 /* CategorySelectionView.swift in Sources */,
 				2DA96DB828A694BC005F791F /* CreateWalletServiceProtocol.swift in Sources */,
+				83258E0828AB91C700B76DE4 /* DatePickerViewProtocol.swift in Sources */,
 				2DA6464128A6D87A00EF8755 /* StartScreenService.swift in Sources */,
 				4CDB10CC28AB78E200A6D448 /* CategorySelectionAssembly.swift in Sources */,
 				2DA6464728A6D8B400EF8755 /* StartScreenPresenterProtocol.swift in Sources */,
 				2DA96DC728A695CB005F791F /* CreateWalletView.swift in Sources */,
 				4C77E21028A654B8002DE431 /* StartScreenView.swift in Sources */,
 				83F3DDB328A839FC00F176BD /* CreateOperationViewProtocol.swift in Sources */,
+				83258E1328AB9A0200B76DE4 /* DatePickerAssembly.swift in Sources */,
 				4C4FB09328A7B2FF00D23CD2 /* AuthorizationRouter.swift in Sources */,
 				4CDB10D328AB78E200A6D448 /* CategoriesServiceProtocol.swift in Sources */,
 				2DA6464D28A6D90C00EF8755 /* StartScreenAssembly.swift in Sources */,
 				4CDB10D428AB78E200A6D448 /* CategoriesService.swift in Sources */,
 				83AF6F0628A6869000BB91CB /* WalletsListsControllerAssembly.swift in Sources */,
+				83258E0E28AB91F600B76DE4 /* DatePickerPresenter.swift in Sources */,
 				2DA6464928A6D8D600EF8755 /* StartScreenRouter.swift in Sources */,
 				830D8DEC28AAD50C00B51034 /* CreateOperationServiceProtocol.swift in Sources */,
 				2DA96DB728A694BC005F791F /* CreateWalletService.swift in Sources */,
+				83258E0A28AB91DF00B76DE4 /* DatePickerRouterProtocol.swift in Sources */,
 				4CDB10D028AB78E200A6D448 /* CategorySelectionViewController.swift in Sources */,
 				83AF6EEA28A57D5A00BB91CB /* WalletsListViewController.swift in Sources */,
 				2DA79AD628AA89B900BA69D3 /* CurrencySelectionView.swift in Sources */,
 				2D513A5E28A8399A00573FC4 /* WalletInfoPresenter.swift in Sources */,
+				83258E0C28AB91E500B76DE4 /* DatePickerRouter.swift in Sources */,
 				2DA6465828A6DEDB00EF8755 /* WalletsListServiceProtocol.swift in Sources */,
 				2D513A7028A8458E00573FC4 /* WalletInfoCell.swift in Sources */,
 				2DA96DBB28A694C3005F791F /* CreateWalletPresenter.swift in Sources */,
 				4C4FB08528A7833D00D23CD2 /* AuthorizationPresenter.swift in Sources */,
 				4C4FB08F28A7AA0B00D23CD2 /* AuthorizationService.swift in Sources */,
+				83258E0628AB91B100B76DE4 /* DatePickerViewController.swift in Sources */,
 				83F3DDB128A839E700F176BD /* CreateOperationView.swift in Sources */,
 				4CDB10D828AB8BA800A6D448 /* Category.swift in Sources */,
 				4C4FB09128A7AAD600D23CD2 /* AuthorizationServiceProtocol.swift in Sources */,
@@ -940,6 +1011,7 @@
 				2DA79ACC28AA89B900BA69D3 /* CurrencySelectionPresenter.swift in Sources */,
 				4C4FB08628A7833D00D23CD2 /* AuthorizationPresenterProtocol.swift in Sources */,
 				83AF6EF228A640C800BB91CB /* Wallet.swift in Sources */,
+				83258E1028AB91FF00B76DE4 /* DatePickerPresenterProtocol.swift in Sources */,
 				2D513A5828A8397800573FC4 /* WalletInfoView.swift in Sources */,
 				2DA6465428A6DE5400EF8755 /* WalletsListRouterProtocol.swift in Sources */,
 				83AF6EF628A641E200BB91CB /* WalletsListScreenPresenter.swift in Sources */,
@@ -976,7 +1048,7 @@
 				4C77E20E28A654AA002DE431 /* StartScreenViewController.swift in Sources */,
 				2D513A6228A839B300573FC4 /* WalletInfoRouter.swift in Sources */,
 				2DA79AD228AA89B900BA69D3 /* CurrencySelectionViewProtocol.swift in Sources */,
-				830D8DF028AAD72E00B51034 /* reateOperationRouter.swift in Sources */,
+				830D8DF028AAD72E00B51034 /* CreateOperationRouter.swift in Sources */,
 				2DA79ADA28AA89B900BA69D3 /* CurrencySeletionRouterProtocol.swift in Sources */,
 				2D513A5C28A8398A00573FC4 /* WalletInfoViewProtocol.swift in Sources */,
 				83AF6EFA28A6447C00BB91CB /* Balance.swift in Sources */,
