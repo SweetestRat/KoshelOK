@@ -14,7 +14,6 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
     
     private var selectedIndexPathRow: Int = 0
     
-//  TEST
     private var listOfCategories: [CategoryViewModel] = []
     
     init(service: CategoriesServiceProtocol) {

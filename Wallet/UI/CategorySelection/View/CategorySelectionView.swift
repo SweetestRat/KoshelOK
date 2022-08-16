@@ -102,7 +102,8 @@ extension CategorySelectionView: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.configurate(parametres: self.delegate?.getCategory(index: indexPath.row) ?? CategoryViewModel(name: "", iconName: "sun.,ax.fill", iconColor: "7765C0"))
+        guard let categories = self.delegate?.getCategory(index: indexPath.row)  else { return UITableViewCell() }
+        cell.configurate(parametres: categories)
     
         let row = delegate?.getSelectedRow()
 
