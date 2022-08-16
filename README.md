@@ -14,5 +14,10 @@ bundle install
 bundle exec pod install
 ```
 
+Можно выполнить специальную команду для установки зависимостей:
+```
+make gen
+```
+
 ## Макеты
 https://www.figma.com/file/CZIOsnWIjasf6rkzlfdo6J/КошелОК?node-id=0%3A1
