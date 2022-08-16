@@ -23,7 +23,9 @@ class AuthorizationPresenter: AuthorizationPresenterProtocol {
         service.createUser(data: data) { [weak self] result in
             switch result {
             case .success(let user):
-                self?.router.openWalletsList(userId: user.id)
+                DispatchQueue.main.async {
+                    self?.router.openWalletsList(userId: user.id)
+                }
             case .failure(let error):
                 debugPrint(error)
             }
