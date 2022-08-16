@@ -8,7 +8,7 @@
 import Foundation
 
 struct Category: Decodable {
-    let IconSystemImage: String
+    let iconSystemImage: String
     let title: String
     let color: String
 }

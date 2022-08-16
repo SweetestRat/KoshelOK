@@ -12,12 +12,10 @@ class CategorySelectionAssembly {
     func assembly() -> CategorySelectionViewController {
         let networkManager = NetworkManager()
         let service = CategoriesService(networkManager: networkManager)
-        let router = CategorySelectionRouter()
-        let presenter = CategorySelectionPresenter(service: service, router: router)
+        let presenter = CategorySelectionPresenter(service: service)
         let viewController = CategorySelectionViewController(presenter: presenter)
 
         presenter.view = viewController
-        router.view = viewController
 
         return viewController
     }

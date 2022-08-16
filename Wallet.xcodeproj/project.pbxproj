@@ -72,8 +72,6 @@
 		4CDB10D228AB78E200A6D448 /* CategorySelectionViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB10C528AB78E200A6D448 /* CategorySelectionViewProtocol.swift */; };
 		4CDB10D328AB78E200A6D448 /* CategoriesServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB10C728AB78E200A6D448 /* CategoriesServiceProtocol.swift */; };
 		4CDB10D428AB78E200A6D448 /* CategoriesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB10C828AB78E200A6D448 /* CategoriesService.swift */; };
-		4CDB10D528AB78E200A6D448 /* CategorySelectionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB10CA28AB78E200A6D448 /* CategorySelectionRouter.swift */; };
-		4CDB10D628AB78E200A6D448 /* CategorySelectionRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB10CB28AB78E200A6D448 /* CategorySelectionRouterProtocol.swift */; };
 		4CDB10D828AB8BA800A6D448 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB10D728AB8BA800A6D448 /* Category.swift */; };
 		4CDB10DA28AB8E1400A6D448 /* CategoryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB10D928AB8E1400A6D448 /* CategoryRequest.swift */; };
 		4CDB10DC28AB8F6C00A6D448 /* CategoryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB10DB28AB8F6C00A6D448 /* CategoryResult.swift */; };
@@ -172,8 +170,6 @@
 		4CDB10C528AB78E200A6D448 /* CategorySelectionViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySelectionViewProtocol.swift; sourceTree = "<group>"; };
 		4CDB10C728AB78E200A6D448 /* CategoriesServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesServiceProtocol.swift; sourceTree = "<group>"; };
 		4CDB10C828AB78E200A6D448 /* CategoriesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesService.swift; sourceTree = "<group>"; };
-		4CDB10CA28AB78E200A6D448 /* CategorySelectionRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySelectionRouter.swift; sourceTree = "<group>"; };
-		4CDB10CB28AB78E200A6D448 /* CategorySelectionRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySelectionRouterProtocol.swift; sourceTree = "<group>"; };
 		4CDB10D728AB8BA800A6D448 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		4CDB10D928AB8E1400A6D448 /* CategoryRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRequest.swift; sourceTree = "<group>"; };
 		4CDB10DB28AB8F6C00A6D448 /* CategoryResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryResult.swift; sourceTree = "<group>"; };
@@ -540,7 +536,6 @@
 				4CDB10BE28AB78E200A6D448 /* Presenter */,
 				4CDB10C128AB78E200A6D448 /* View */,
 				4CDB10C628AB78E200A6D448 /* Service */,
-				4CDB10C928AB78E200A6D448 /* Router */,
 			);
 			path = CategorySelection;
 			sourceTree = "<group>";
@@ -583,15 +578,6 @@
 				4CDB10DB28AB8F6C00A6D448 /* CategoryResult.swift */,
 			);
 			path = Service;
-			sourceTree = "<group>";
-		};
-		4CDB10C928AB78E200A6D448 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				4CDB10CA28AB78E200A6D448 /* CategorySelectionRouter.swift */,
-				4CDB10CB28AB78E200A6D448 /* CategorySelectionRouterProtocol.swift */,
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		68F646DC289D3BAE00DAAE91 = {
@@ -914,7 +900,6 @@
 				68F646ED289D3BAE00DAAE91 /* ViewController.swift in Sources */,
 				2D513A5A28A8398200573FC4 /* WalletInfoViewController.swift in Sources */,
 				4C4FB09528A7B3FC00D23CD2 /* AuthorizationRouterProtocol.swift in Sources */,
-				4CDB10D628AB78E200A6D448 /* CategorySelectionRouterProtocol.swift in Sources */,
 				2DA96DC028A694C9005F791F /* CreateWalletRouterProtocol.swift in Sources */,
 				4CDB10D128AB78E200A6D448 /* CategorySelectionView.swift in Sources */,
 				2DA96DB828A694BC005F791F /* CreateWalletServiceProtocol.swift in Sources */,
@@ -944,7 +929,6 @@
 				83F3DDB128A839E700F176BD /* CreateOperationView.swift in Sources */,
 				4CDB10D828AB8BA800A6D448 /* Category.swift in Sources */,
 				4C4FB09128A7AAD600D23CD2 /* AuthorizationServiceProtocol.swift in Sources */,
-				2DA79ACE28AA89B900BA69D3 /* CurrencySelectionPresenterProtocol.swift in Sources */,
 				4CDB10CD28AB78E200A6D448 /* CategorySelectionPresenterProtocol.swift in Sources */,
 				83F3DDB128A839E700F176BD /* CreateOperationView.swift in Sources */,
 				83AF6EEC28A57E1500BB91CB /* WalletsListView.swift in Sources */,
@@ -961,7 +945,6 @@
 				83AF6EF628A641E200BB91CB /* WalletsListScreenPresenter.swift in Sources */,
 				4C4FB08828A7833D00D23CD2 /* AuthorizationView.swift in Sources */,
 				4CDB10DC28AB8F6C00A6D448 /* CategoryResult.swift in Sources */,
-				2DA79ADB28AA89B900BA69D3 /* CurrencySelectionRouter.swift in Sources */,
 				4CDB10DA28AB8E1400A6D448 /* CategoryRequest.swift in Sources */,
 				2DA6464B28A6D8DD00EF8755 /* StartScreenRouterProtocol.swift in Sources */,
 				2D513A6828A839CA00573FC4 /* WalletInfoModelProtocol.swift in Sources */,
@@ -991,7 +974,6 @@
 				83F3DDB728A83A3B00F176BD /* CreateOperationPresenter.swift in Sources */,
 				2DA79AD928AA89B900BA69D3 /* CurrencySelectionServiceProtocol.swift in Sources */,
 				4C77E20E28A654AA002DE431 /* StartScreenViewController.swift in Sources */,
-				4CDB10D528AB78E200A6D448 /* CategorySelectionRouter.swift in Sources */,
 				2D513A6228A839B300573FC4 /* WalletInfoRouter.swift in Sources */,
 				2DA79AD228AA89B900BA69D3 /* CurrencySelectionViewProtocol.swift in Sources */,
 				830D8DF028AAD72E00B51034 /* reateOperationRouter.swift in Sources */,

@@ -102,7 +102,7 @@ extension CategorySelectionView: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.configurate(parametres: self.delegate?.getCategory(index: indexPath.row) ?? Category(IconSystemImage: "sun.,ax.fill", title: "", color: "7765C0"))
+        cell.configurate(parametres: self.delegate?.getCategory(index: indexPath.row) ?? Category(iconSystemImage: "sun.,ax.fill", title: "", color: "7765C0"))
     
         let row = delegate?.getSelectedRow()
 

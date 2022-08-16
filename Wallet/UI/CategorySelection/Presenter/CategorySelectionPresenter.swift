@@ -10,26 +10,24 @@ import Foundation
 class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
     
     private var service: CategoriesServiceProtocol
-    private var router: CategorySelectionRouterProtocol
     weak var view: CategorySelectionViewProtocol?
     
     private var selectedIndexPathRow: Int = 0
     
 //  TEST
     private var listOfCategories: [Category] = [
-        Category(IconSystemImage: "fork.knife", title: "Кафе и рестораны", color: "#7765C0"),
-        Category(IconSystemImage: "cart", title: "Супермаркеты", color: "#339FEE"),
-        Category(IconSystemImage: "figure.walk", title: "Спортзал", color: "#994747"),
-        Category(IconSystemImage: "bus", title: "Общественный транспорт", color: "#EE33BA"),
-        Category(IconSystemImage: "pills.fill", title: "Медицина", color: "#16DC71"),
-        Category(IconSystemImage: "fuelpump.fill", title: "Бензин", color: "#EEA333"),
-        Category(IconSystemImage: "house.fill", title: "Квартплата", color: "#91397D"),
-        Category(IconSystemImage: "sun.max.fill", title: "Отпуск", color: "#EEDB33")
+        Category(iconSystemImage: "fork.knife", title: "Кафе и рестораны", color: "#7765C0"),
+        Category(iconSystemImage: "cart", title: "Супермаркеты", color: "#339FEE"),
+        Category(iconSystemImage: "figure.walk", title: "Спортзал", color: "#994747"),
+        Category(iconSystemImage: "bus", title: "Общественный транспорт", color: "#EE33BA"),
+        Category(iconSystemImage: "pills.fill", title: "Медицина", color: "#16DC71"),
+        Category(iconSystemImage: "fuelpump.fill", title: "Бензин", color: "#EEA333"),
+        Category(iconSystemImage: "house.fill", title: "Квартплата", color: "#91397D"),
+        Category(iconSystemImage: "sun.max.fill", title: "Отпуск", color: "#EEDB33")
     ]
     
-    init(service: CategoriesServiceProtocol, router: CategorySelectionRouterProtocol) {
+    init(service: CategoriesServiceProtocol) {
         self.service = service
-        self.router = router
     }
     
     func getSelectedRow() -> Int? {

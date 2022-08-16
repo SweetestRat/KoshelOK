@@ -58,7 +58,7 @@ class CategorySelectionTableViewCell: UITableViewCell {
     func configurate(parametres: Category) {
         
         let config = UIImage.SymbolConfiguration(scale: .large)
-        let image = UIImageView(image: UIImage(systemName: parametres.IconSystemImage, withConfiguration: config))
+        let image = UIImageView(image: UIImage(systemName: parametres.iconSystemImage, withConfiguration: config))
         image.tintColor = .white
         icon.addSubview(image)
         
