@@ -62,6 +62,7 @@
 		2DC3D4E528ABBB40005C9FB7 /* BalanceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3D4E428ABBB40005C9FB7 /* BalanceFormatter.swift */; };
 		2DC3D4E728ABBDB7005C9FB7 /* WalletsListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3D4E628ABBDB7005C9FB7 /* WalletsListRequest.swift */; };
 		2DC3D4EB28ABC771005C9FB7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3D4EA28ABC771005C9FB7 /* Category.swift */; };
+		2DC3D4ED28ABE286005C9FB7 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3D4EC28ABE286005C9FB7 /* CategoryViewModel.swift */; };
 		4C4FB08528A7833D00D23CD2 /* AuthorizationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB08028A7833D00D23CD2 /* AuthorizationPresenter.swift */; };
 		4C4FB08628A7833D00D23CD2 /* AuthorizationPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB08128A7833D00D23CD2 /* AuthorizationPresenterProtocol.swift */; };
 		4C4FB08728A7833D00D23CD2 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB08328A7833D00D23CD2 /* AuthorizationViewController.swift */; };
@@ -167,6 +168,7 @@
 		2DC3D4E428ABBB40005C9FB7 /* BalanceFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceFormatter.swift; sourceTree = "<group>"; };
 		2DC3D4E628ABBDB7005C9FB7 /* WalletsListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsListRequest.swift; sourceTree = "<group>"; };
 		2DC3D4EA28ABC771005C9FB7 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		2DC3D4EC28ABE286005C9FB7 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		4C4FB08028A7833D00D23CD2 /* AuthorizationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationPresenter.swift; sourceTree = "<group>"; };
 		4C4FB08128A7833D00D23CD2 /* AuthorizationPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationPresenterProtocol.swift; sourceTree = "<group>"; };
 		4C4FB08328A7833D00D23CD2 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
@@ -493,6 +495,7 @@
 				2DC3D4E028ABB7AE005C9FB7 /* WalletViewModel.swift */,
 				2DC3D4D728ABB618005C9FB7 /* BalanceViewModel.swift */,
 				2DC3D4E228ABB874005C9FB7 /* CurrencyViewModel.swift */,
+				2DC3D4EC28ABE286005C9FB7 /* CategoryViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1022,6 +1025,7 @@
 				2D513A6228A839B300573FC4 /* WalletInfoRouter.swift in Sources */,
 				2DA79AD228AA89B900BA69D3 /* CurrencySelectionViewProtocol.swift in Sources */,
 				830D8DF028AAD72E00B51034 /* reateOperationRouter.swift in Sources */,
+				2DC3D4ED28ABE286005C9FB7 /* CategoryViewModel.swift in Sources */,
 				2DA79ADA28AA89B900BA69D3 /* CurrencySeletionRouterProtocol.swift in Sources */,
 				2D513A5C28A8398A00573FC4 /* WalletInfoViewProtocol.swift in Sources */,
 				2D513A6028A839A100573FC4 /* WalletInfoPresenterProtocol.swift in Sources */,
