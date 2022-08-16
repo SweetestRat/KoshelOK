@@ -8,15 +8,11 @@
 import UIKit
 
 class AuthorizationRouter: AuthorizationRouterProtocol {
-    var view: AuthorizationViewProtocol?
-    
-    init(view: AuthorizationViewProtocol) {
-        self.view = view
-    }
-    
+    weak var view: UIViewController?
+
     func openWalletsList() {
         let nextvc = WalletsListsControllerAssembly().assembly()
-        guard let vc = view as? UIViewController else { return }
+        guard let vc = view else { return }
         
         vc.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         vc.navigationController?.pushViewController(nextvc, animated: true)

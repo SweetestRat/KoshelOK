@@ -13,8 +13,8 @@ protocol CurrencySelectionDelegateProtocol: AnyObject {
 
 class CurrencySelectionPresenter: CurrencySelectionPresenterProtocol {
     weak var delegate: CurrencySelectionDelegateProtocol?
-    private let service: CurrencySelectionServiceProtocol?
-    private let router: CurrencySelectionRouterProtocol?
+    private let service: CurrencySelectionServiceProtocol
+    private let router: CurrencySelectionRouterProtocol
     weak var view: CurrencySelectionViewProtocol?
     
     var currenciesList: [Currency]?
@@ -37,7 +37,7 @@ class CurrencySelectionPresenter: CurrencySelectionPresenterProtocol {
     }
     
     func controllerLoaded() {
-        service?.getData()
+        service.getData()
         
         // wait for data and set it to view
         currenciesList = [Currency(symbol: "$", fullName: "USA Dollars"), Currency(symbol: "RUB", fullName: "Russian Rubles")]
