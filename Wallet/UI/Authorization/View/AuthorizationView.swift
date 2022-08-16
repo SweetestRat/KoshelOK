@@ -7,10 +7,12 @@
 
 import UIKit
 import WalletDesignKit
+import SnapKit
 
 class AuthorizationView: UIView {
+    private var bottomConstraint: Constraint?
     
-    public lazy var actionButton: BaseButton = {
+    private lazy var actionButton: BaseButton = {
         let button = BaseButton(title: "Войти", active: false)
         return button
     }()
@@ -55,7 +57,7 @@ class AuthorizationView: UIView {
         actionButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(MediumPadding)
             make.height.equalTo(ActionButtonHeight)
-            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(MediumPadding)
+            bottomConstraint = make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(MediumPadding).constraint
         }
         
         logoIcon.snp.makeConstraints { make in
@@ -86,6 +88,10 @@ class AuthorizationView: UIView {
     
     func addButtonTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
         actionButton.addTarget(target, action: action, for: controlEvents)
+    }
+    
+    func updateBottomInset(valueInset: CGFloat) {
+        bottomConstraint?.update(inset: valueInset)
     }
 }
 

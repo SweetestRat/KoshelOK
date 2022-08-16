@@ -60,29 +60,24 @@ class CreateOperationViewController: UIViewController, CreateOperationViewProtoc
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {
-        buttonAnimation(notification: notification) { duration, keyboardCurve, keyboard in
-            UIView.animate(withDuration: duration, delay: 0, options: UIView.AnimationOptions(rawValue: keyboardCurve)) {
-                self.createOperationView.createButton.snp.remakeConstraints { make in
-                    make.bottom.equalTo(self.createOperationView.snp.bottom).offset(-keyboard.height - CGFloat(MediumPadding))
-                    make.horizontalEdges.equalTo(self.createOperationView).inset(MediumPadding)
-                    make.height.equalTo(ActionButtonHeight)
-                }
-                self.createOperationView.layoutIfNeeded()
-            }
-        }
+        guard let keyboardAnimationParameters = KeyboardAnimationParameters(notification: notification) else { return }
+        let keyboardHeight = keyboardAnimationParameters.keyboardFrame.height
+        let bottomSafeAreaHeight = view.safeAreaInsets.bottom
+        let inset = keyboardHeight - bottomSafeAreaHeight + CGFloat(MediumPadding)
+        
+        updateConstraints(inset: inset, keyboardAnimationParameters: keyboardAnimationParameters)
     }
     
     @objc private func keyboardWillHide(notification: NSNotification) {
+        guard let keyboardAnimationParameters = KeyboardAnimationParameters(notification: notification) else { return }
+        updateConstraints(inset: CGFloat(MediumPadding), keyboardAnimationParameters: keyboardAnimationParameters)
+    }
+    
+    private func updateConstraints(inset: CGFloat, keyboardAnimationParameters: KeyboardAnimationParameters) {
+        createOperationView.updateBottomInset(valueInset: inset)
         
-        buttonAnimation(notification: notification) { duration, keyboardCurve, _ in
-            UIView.animate(withDuration: duration, delay: 0, options: UIView.AnimationOptions(rawValue: keyboardCurve)) {
-                self.createOperationView.createButton.snp.remakeConstraints { make in
-                    make.bottom.equalTo(self.createOperationView.safeAreaLayoutGuide.snp.bottom).offset(-LargePadding)
-                    make.horizontalEdges.equalTo(self.createOperationView).inset(MediumPadding)
-                    make.height.equalTo(ActionButtonHeight)
-                }
-                self.createOperationView.layoutIfNeeded()
-            }
+        UIView.animate(using: keyboardAnimationParameters) {
+            self.createOperationView.layoutIfNeeded()
         }
     }
     

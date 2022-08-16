@@ -57,28 +57,24 @@ class AuthorizationViewController: UIViewController, AuthorizationViewProtocol {
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {
-        buttonAnimation(notification: notification) { duration, keyboardCurve, keyboard in
-            UIView.animate(withDuration: duration, delay: 0, options: UIView.AnimationOptions(rawValue: keyboardCurve)) {
-                self.mainView.actionButton.snp.remakeConstraints { make in
-                    make.bottom.equalTo(self.mainView.snp.bottom).offset(-keyboard.height - CGFloat(MediumPadding))
-                    make.horizontalEdges.equalTo(self.mainView).inset(MediumPadding)
-                    make.height.equalTo(ActionButtonHeight)
-                }
-                self.mainView.layoutIfNeeded()
-            }
-        }
+        guard let keyboardAnimationParameters = KeyboardAnimationParameters(notification: notification) else { return }
+        let keyboardHeight = keyboardAnimationParameters.keyboardFrame.height
+        let bottomSafeAreaHeight = view.safeAreaInsets.bottom
+        let inset = keyboardHeight - bottomSafeAreaHeight + CGFloat(MediumPadding)
+        
+        updateConstraints(inset: inset, keyboardAnimationParameters: keyboardAnimationParameters)
     }
     
     @objc private func keyboardWillHide(notification: NSNotification) {
-        buttonAnimation(notification: notification) { duration, keyboardCurve, _ in
-            UIView.animate(withDuration: duration, delay: 0, options: UIView.AnimationOptions(rawValue: keyboardCurve)) {
-                self.mainView.actionButton.snp.remakeConstraints { make in
-                    make.bottom.equalTo(self.mainView.safeAreaLayoutGuide.snp.bottom).offset(-LargePadding)
-                    make.horizontalEdges.equalTo(self.mainView).inset(MediumPadding)
-                    make.height.equalTo(ActionButtonHeight)
-                }
-                self.mainView.layoutIfNeeded()
-            }
+        guard let keyboardAnimationParameters = KeyboardAnimationParameters(notification: notification) else { return }
+        updateConstraints(inset: CGFloat(MediumPadding), keyboardAnimationParameters: keyboardAnimationParameters)
+    }
+    
+    private func updateConstraints(inset: CGFloat, keyboardAnimationParameters: KeyboardAnimationParameters) {
+        mainView.updateBottomInset(valueInset: inset)
+        
+        UIView.animate(using: keyboardAnimationParameters) {
+            self.mainView.layoutIfNeeded()
         }
     }
 }

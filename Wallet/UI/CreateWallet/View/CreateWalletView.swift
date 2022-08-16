@@ -16,6 +16,7 @@ protocol CreateWalletViewDelegate: AnyObject {
 
 class CreateWalletView: UIView {
     weak var delegate: CreateWalletViewDelegate?
+    private var bottomConstraint: Constraint?
     
     private lazy var nameTextField: UITextField = {
         let textField = BaseInputTextField(placeholder: "Название")
@@ -29,7 +30,7 @@ class CreateWalletView: UIView {
         return view
     }()
     
-    public lazy var nextButton: BaseButton = {
+    private lazy var nextButton: BaseButton = {
         let button = BaseButton(title: "Создать кошелек", active: false)
         return button
     }()
@@ -69,10 +70,14 @@ class CreateWalletView: UIView {
         }
         
         nextButton.snp.makeConstraints { make in
-            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(MediumPadding)
+            bottomConstraint = make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(MediumPadding).constraint
             make.leading.trailing.equalToSuperview().inset(MediumPadding)
             make.height.equalTo(ActionButtonHeight)
         }
+    }
+    
+    func updateBottomInset(valueInset: CGFloat) {
+        bottomConstraint?.update(inset: valueInset)
     }
     
     private func addTargets() {
