@@ -26,6 +26,10 @@ class CreateOperationViewController: UIViewController, CreateOperationViewProtoc
         createOperationView.updateDate(date: date)
     }
     
+    public func updateOperationType(operationType: OperationType) {
+        createOperationView.updateOperationType(operationType: operationType)
+    }
+    
     init(presenter: CreateOperationPresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -91,6 +95,14 @@ class CreateOperationViewController: UIViewController, CreateOperationViewProtoc
 }
 
 extension CreateOperationViewController: CreateOperationViewDelegate {
+    func createOperationViewDidSelectIncome() {
+        presenter.incomeDidSelected()
+    }
+    
+    func createOperationViewDidSelectExpanse() {
+        presenter.expanseDidSelected()
+    }
+    
     func createOperationViewDidSelectCurrency() {
         presenter.selectCurrency()
     }

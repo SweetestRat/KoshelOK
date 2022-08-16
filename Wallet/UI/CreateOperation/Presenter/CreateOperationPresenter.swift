@@ -10,6 +10,7 @@ import Foundation
 class CreateOperationPresenter: CreateOperationPresenterProtocol {
     private var currency: Currency
     private var date: Date
+    private var operationType: OperationType
     
     private let service: CreateOperationServiceProtocol
     private let router: CreateOperationRouterProtocol
@@ -24,6 +25,7 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
         
         // set default user currency (probable get from user account request)
         currency = Currency(symbol: "THAI", fullName: "Thailand currency")
+        operationType = .income
         
         let timestamp = Date().timeIntervalSince1970
         let myTimeInterval = TimeInterval(timestamp)
@@ -33,6 +35,7 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
     func viewLoaded() {
         view?.updateCurrency(currency: currency)
         view?.updateDate(date: date)
+        view?.updateOperationType(operationType: operationType)
     }
     
     func selectCategory() {
@@ -49,6 +52,16 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
     
     func dateDidChanged(date: Date) {
         self.date = date
+    }
+    
+    func incomeDidSelected() {
+        operationType = .income
+        view?.updateOperationType(operationType: operationType)
+    }
+    
+    func expanseDidSelected() {
+        operationType = .expanse
+        view?.updateOperationType(operationType: operationType)
     }
     
     func selectType() {
@@ -73,4 +86,9 @@ extension CreateOperationPresenter: DatePickerDelegateProtocol {
         self.date = date
         view?.updateDate(date: date)
     }
+}
+
+enum OperationType {
+    case income
+    case expanse
 }
