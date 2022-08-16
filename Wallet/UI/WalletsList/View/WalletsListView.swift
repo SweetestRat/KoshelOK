@@ -14,7 +14,7 @@ protocol WalletsScreenViewDelegate: AnyObject {
 
 class WalletsScreenView: UIView {
     weak var delegate: WalletsScreenViewDelegate?
-    private var walletsList: [Wallet]?
+    private var walletsList: [WalletViewModel]?
     
     private lazy var actionButton: BaseButton = {
         let button = BaseButton(title: "Создать кошелёк")
@@ -88,7 +88,7 @@ class WalletsScreenView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func updateWalletsList(wallets: [Wallet]) {
+    func updateWalletsList(wallets: [WalletViewModel]) {
         update(list: wallets)
         walletsListView.reloadData()
     }
@@ -169,7 +169,7 @@ class WalletsScreenView: UIView {
 
 extension WalletsScreenView: UITableViewDataSource, UITableViewDelegate {
     
-    public func update(list: [Wallet]) {
+    public func update(list: [WalletViewModel]) {
         walletsList = list
     }
     

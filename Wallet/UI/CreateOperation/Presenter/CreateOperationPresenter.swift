@@ -6,7 +6,7 @@
 //
 
 class CreateOperationPresenter: CreateOperationPresenterProtocol {
-    private var currency: Currency
+    private var currency: CurrencyViewModel
     
     private let service: CreateOperationServiceProtocol
     private let router: CreateOperationRouterProtocol
@@ -20,7 +20,7 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
         self.router = router
         
         // set default user currency (probable get from user account request)
-        currency = Currency(symbol: "THAI", fullName: "Thailand currency")
+        currency = CurrencyViewModel(symbol: "THAI", fullName: "Thailand currency")
     }
     
     func viewLoaded() {
@@ -50,7 +50,7 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
 }
 
 extension CreateOperationPresenter: CurrencySelectionDelegateProtocol {
-    func updateSelectedCurrency(currency: Currency) {
+    func updateSelectedCurrency(currency: CurrencyViewModel) {
         self.currency = currency
         view?.updateCurrency(currency: currency)
     }

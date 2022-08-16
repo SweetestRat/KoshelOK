@@ -15,7 +15,7 @@ protocol CurrencySelectionViewDelegate: AnyObject {
 
 class CurrencySelectionView: UIView {
     weak var delegate: CurrencySelectionViewDelegate?
-    private var currenciesList: [Currency]?
+    private var currenciesList: [CurrencyViewModel]?
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -23,7 +23,7 @@ class CurrencySelectionView: UIView {
         return tableView
     }()
     
-    func updateCurrenciesList(currencies: [Currency]?) {
+    func updateCurrenciesList(currencies: [CurrencyViewModel]?) {
         currenciesList = currencies ?? Array()
     }
     

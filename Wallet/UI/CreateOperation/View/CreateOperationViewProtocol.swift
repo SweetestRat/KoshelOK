@@ -8,5 +8,5 @@
 import Foundation
 
 protocol CreateOperationViewProtocol: AnyObject {
-    func updateCurrency(currency: Currency)
+    func updateCurrency(currency: CurrencyViewModel)
 }

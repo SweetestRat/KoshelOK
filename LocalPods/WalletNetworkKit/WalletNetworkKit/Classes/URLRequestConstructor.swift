@@ -11,17 +11,24 @@ extension NSError {
     static let defaultError = NSError(domain: "ru.tinkoff.Wallet-D3", code: -1, userInfo: nil)
 }
 
-class URLConstructor {
-    func constractURL<T: NetworkRequestProtocol>(from request: T) throws -> URL {
+class URLRequestConstructor {
+    func constractURL<T: NetworkRequestProtocol>(from request: T) throws -> URLRequest {
         var components = URLComponents(string: request.baseUrl)
         
         components?.path = request.path
-        components?.queryItems = request.parameters.map {
+        components?.queryItems = request.parameters?.map {
             URLQueryItem(name: $0.key, value: $0.value)
         }
         
         guard let url = components?.url else { throw NSError.defaultError }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpBody = request.body
+        urlRequest.httpMethod = request.method.stringValue
         
-        return url
+        return urlRequest
     }
+}
+
+private extension RequestMethod {
+    var stringValue: String { rawValue.uppercased() }
 }

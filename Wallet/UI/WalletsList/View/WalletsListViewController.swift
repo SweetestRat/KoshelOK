@@ -27,7 +27,7 @@ class WalletsListViewController: UIViewController, WalletsListControllerProtocol
         return view
     }()
     
-    func updateWalletsList(wallets: [Wallet]) {
+    func updateWalletsList(wallets: [WalletViewModel]) {
         screenView.updateWalletsList(wallets: wallets)
     }
     
