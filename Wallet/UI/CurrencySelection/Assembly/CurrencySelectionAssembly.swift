@@ -11,7 +11,7 @@ class CurrencySelectionAssembly {
     func assembly() -> CurrencySeletionViewController {
         let service = CurrencySeletionService()
         let router = CurrencySeletionRouter()
-        let presenter = CurrencySeletionPresenter(service: service, router: router)
+        let presenter = CurrencySelectionPresenter(service: service, router: router)
         let viewController = CurrencySeletionViewController(presenter: presenter)
 
           presenter.view = viewController

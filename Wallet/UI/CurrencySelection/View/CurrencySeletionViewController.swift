@@ -9,9 +9,9 @@ import UIKit
 import SnapKit
 
 class CurrencySeletionViewController: UIViewController, CurrencySeletionViewProtocol {
-    var presenter: CurrencySeletionPresenterProtocol
+    var presenter: CurrencySelectionPresenterProtocol
     
-    init(presenter: CurrencySeletionPresenterProtocol) {
+    init(presenter: CurrencySelectionPresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
