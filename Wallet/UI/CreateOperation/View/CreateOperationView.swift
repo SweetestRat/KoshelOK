@@ -12,6 +12,8 @@ import WalletDesignKit
 protocol CreateOperationViewDelegate: AnyObject {
     func createOperationViewDidSelectCurrency()
     func createOperationViewDidSelectDate()
+    func createOperationViewDidSelectIncome()
+    func createOperationViewDidSelectExpanse()
     func dateDidChanged(date: Date)
 }
 
@@ -60,14 +62,22 @@ class CreateOperationView: UIView {
         view.datePickerMode = .dateAndTime
         return view
     }()
-    private lazy var operationTypeSelector: UIView = {
-        let view = UIView()
-        view.snp.makeConstraints { make in
-            make.height.equalTo(TableViewCellHeight)
-        }
+    private lazy var incomeButton: UIButton = {
+        let view = UIButton()
+        view.backgroundColor = .inactiveButtonBackground
+        view.layer.cornerRadius = CGFloat(SmallButtonHeight / 2)
+        view.setTitle("Доход", for: .normal)
+        view.titleLabel?.font = .SFProRegular13
         return view
     }()
-    
+    private lazy var expanseButton: UIButton = {
+        let view = UIButton()
+        view.backgroundColor = .inactiveButtonBackground
+        view.layer.cornerRadius = CGFloat(SmallButtonHeight / 2)
+        view.setTitle("Расход", for: .normal)
+        view.titleLabel?.font = .SFProRegular13
+        return view
+    }()
     lazy var createButton: BaseButton = {
         let button = BaseButton(title: "Создать", active: false)
         return button
@@ -84,6 +94,21 @@ class CreateOperationView: UIView {
         let formatter = DateFormatter()
         formatter.dateFormat = "YY, MMM d, hh:mm"
         dateSelector.rightButtonDescription.text = formatter.string(from: date)
+    }
+    
+    public func updateOperationType(operationType: OperationType) {
+        switch operationType {
+        case .income:
+            incomeButton.backgroundColor = .activeButtonBackground
+            incomeButton.setTitleColor(.background, for: .normal)
+            expanseButton.backgroundColor = .inactiveButtonBackground
+            expanseButton.setTitleColor(.darkText, for: .normal)
+        case .expanse:
+            expanseButton.backgroundColor = .activeButtonBackground
+            expanseButton.setTitleColor(.background, for: .normal)
+            incomeButton.backgroundColor = .inactiveButtonBackground
+            incomeButton.setTitleColor(.darkText, for: .normal)
+        }
     }
     
     private func labelCell(text: String) -> UIView {
@@ -127,7 +152,8 @@ class CreateOperationView: UIView {
             amountTextField,
             stroke,
             currencySymbol,
-            operationTypeSelector,
+            incomeButton,
+            expanseButton,
             parametersLabelCell,
             categorySelector,
             currencySelector
@@ -152,7 +178,7 @@ class CreateOperationView: UIView {
             make.bottom.equalTo(createButton.snp.top)
         }
         amountTextField.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(TableViewCellHeight)
+            make.top.equalToSuperview().offset(MediumPadding)
             make.centerX.equalTo(safeAreaLayoutGuide)
             make.height.equalTo(TableViewCellHeight)
         }
@@ -166,12 +192,20 @@ class CreateOperationView: UIView {
             make.trailing.equalTo(safeAreaLayoutGuide)
             make.centerY.equalTo(amountTextField)
         }
-        operationTypeSelector.snp.makeConstraints { make in
-            make.top.equalTo(amountTextField.snp.bottom)
-            make.leading.trailing.equalTo(safeAreaLayoutGuide)
+        incomeButton.snp.makeConstraints { make in
+            make.top.equalTo(amountTextField.snp.bottom).offset(MediumPadding)
+            make.height.equalTo(SmallButtonHeight)
+            make.width.equalTo(SmallButtonWidth)
+            make.trailing.equalTo(safeAreaLayoutGuide.snp.centerX).offset(-MediumPadding)
+        }
+        expanseButton.snp.makeConstraints { make in
+            make.top.equalTo(amountTextField.snp.bottom).offset(MediumPadding)
+            make.height.equalTo(SmallButtonHeight)
+            make.width.equalTo(SmallButtonWidth)
+            make.leading.equalTo(safeAreaLayoutGuide.snp.centerX).offset(MediumPadding)
         }
         parametersLabelCell.snp.makeConstraints { make in
-            make.top.equalTo(operationTypeSelector.snp.bottom)
+            make.top.equalTo(incomeButton.snp.bottom)
             make.leading.trailing.equalTo(safeAreaLayoutGuide)
         }
         categorySelector.snp.makeConstraints { make in
@@ -212,6 +246,8 @@ class CreateOperationView: UIView {
         amountTextField.addTarget(self, action: #selector(textFieldDidChangeValue), for: .editingChanged)
         currencySelector.addTarget(self, action: #selector(createOperationViewDidSelectCurrency), for: .touchUpInside)
         dateSelector.addTarget(self, action: #selector(createOperationViewDidSelectDate), for: .touchUpInside)
+        incomeButton.addTarget(self, action: #selector(createOperationViewDidSelectIncome), for: .touchUpInside)
+        expanseButton.addTarget(self, action: #selector(createOperationViewDidSelectExpanse), for: .touchUpInside)
     }
     
     @objc private func textFieldDidChangeValue() {
@@ -232,6 +268,14 @@ class CreateOperationView: UIView {
     
     @objc private func createOperationViewDidSelectDate() {
         delegate?.createOperationViewDidSelectDate()
+    }
+    
+    @objc private func createOperationViewDidSelectIncome() {
+        delegate?.createOperationViewDidSelectIncome()
+    }
+    
+    @objc private func createOperationViewDidSelectExpanse() {
+        delegate?.createOperationViewDidSelectExpanse()
     }
     
     private func setObservers() {
