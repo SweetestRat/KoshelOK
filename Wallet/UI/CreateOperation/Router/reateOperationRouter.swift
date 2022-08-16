@@ -1,17 +1,17 @@
 //
-//  CreateWalletRouter.swift
+//  CreateOperationRouter.swift
 //  Wallet
 //
-//  Created by Владислава Гильде on 12.08.2022.
+//  Created by Danila on 13.08.2022.
 //
 
 import Foundation
 import UIKit
 
-class CreateWalletRouter: CreateWalletRouterProtocol {
-    weak var view: CreateWalletViewProtocol?
+class CreateOperationRouter: CreateOperationRouterProtocol {
+    weak var view: CreateOperationViewProtocol?
     
-    func openWalletsList() {
+    func addOperation() {
         guard let vc = view as? UIViewController else { return }
         
         vc.navigationController?.popViewController(animated: true)

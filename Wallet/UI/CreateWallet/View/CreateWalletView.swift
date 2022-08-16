@@ -11,6 +11,7 @@ import WalletDesignKit
 
 protocol CreateWalletViewDelegate: AnyObject {
     func cellCurrencyInfoDidTap()
+    func textFieldDidChangeValue(text: String?)
 }
 
 class CreateWalletView: UIView {
@@ -32,6 +33,10 @@ class CreateWalletView: UIView {
         let button = BaseButton(title: "Создать кошелек", active: false)
         return button
     }()
+    
+    public func updateActionButtonState(isActive: Bool) {
+        nextButton.isEnabled = isActive
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -76,11 +81,7 @@ class CreateWalletView: UIView {
     }
     
     @objc func textFieldDidChangeValue() {
-        if let text = nameTextField.text, !text.isEmpty {
-            nextButton.isEnabled = true
-        } else {
-            nextButton.isEnabled = false
-        }
+        delegate?.textFieldDidChangeValue(text: nameTextField.text)
     }
     
     @objc private func currencyInfoDidTap() {

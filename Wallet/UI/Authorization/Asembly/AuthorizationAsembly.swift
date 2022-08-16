@@ -14,8 +14,8 @@ class AuthorizationAsembly {
         let presenter = AuthorizationPresenter(service: service, router: router)
         let viewController = AuthorizationViewController(presenter: presenter)
         
-        presenter.view = viewController
         router.view = viewController
+        presenter.view = viewController
         
         return viewController
     }

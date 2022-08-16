@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 public class BaseTextCellWithSelection: UIView {
-    private lazy var title: UILabel = {
+    lazy var title: UILabel = {
         let label = UILabel()
         label.font = .SFProRegular16
         label.textColor = .darkTextPrimaryColor
@@ -29,7 +29,7 @@ public class BaseTextCellWithSelection: UIView {
         return view
     }()
     
-    private lazy var rightButtonDescription: UILabel = {
+    public lazy var rightButtonDescription: UILabel = {
         let label = UILabel()
         label.font = .SFProRegular16
         label.textColor = .inputPlaceholderColor

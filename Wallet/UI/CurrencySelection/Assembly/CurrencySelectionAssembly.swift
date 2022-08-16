@@ -8,15 +8,17 @@
 import Foundation
 
 class CurrencySelectionAssembly {
-    func assembly() -> CurrencySelectionViewController {
+    
+    func assembly(delegate: CurrencySelectionDelegateProtocol) -> CurrencySelectionViewController {
         let service = CurrencySelectionService()
         let router = CurrencySelectionRouter()
         let presenter = CurrencySelectionPresenter(service: service, router: router)
         let viewController = CurrencySelectionViewController(presenter: presenter)
         
+        presenter.delegate = delegate
         presenter.view = viewController
         router.view = viewController
-
+        
         return viewController
     }
 }

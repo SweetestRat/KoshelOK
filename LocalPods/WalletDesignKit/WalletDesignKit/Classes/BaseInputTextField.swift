@@ -18,17 +18,13 @@ public class BaseInputTextField: UITextField {
        return view
    }()
     
-    public convenience init(placeholder: String? = nil, title: String? = nil) {
+    public convenience init(placeholder: String? = nil, title: String? = nil, font: UIFont? = nil) {
         self.init()
         
-        if placeholder == placeholder {
-            self.placeholderText = placeholder
-        }
-        
-        if title == title {
-            self.title = title
-        }
-        
+        self.placeholderText = placeholder
+        self.title = title
+        self.font = font
+    
         setup()
         setConstraints()
     }
@@ -41,7 +37,7 @@ public class BaseInputTextField: UITextField {
             attributes: [NSAttributedString.Key.foregroundColor: color]
         )
         textColor = .darkTextPrimaryColor
-        font = .SFProRegular16
+        font = font ?? .SFProRegular16
         backgroundColor = .none
         self.addSubview(stroke)
     }
