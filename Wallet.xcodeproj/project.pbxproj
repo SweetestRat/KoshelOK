@@ -75,6 +75,18 @@
 		4C4FB09728A7B4A800D23CD2 /* AuthorizationViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB09628A7B4A800D23CD2 /* AuthorizationViewProtocol.swift */; };
 		4C77E20E28A654AA002DE431 /* StartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C77E20D28A654AA002DE431 /* StartScreenViewController.swift */; };
 		4C77E21028A654B8002DE431 /* StartScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C77E20F28A654B8002DE431 /* StartScreenView.swift */; };
+		4CDB10CC28AB78E200A6D448 /* CategorySelectionAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB10BD28AB78E200A6D448 /* CategorySelectionAssembly.swift */; };
+		4CDB10CD28AB78E200A6D448 /* CategorySelectionPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB10BF28AB78E200A6D448 /* CategorySelectionPresenterProtocol.swift */; };
+		4CDB10CE28AB78E200A6D448 /* CategorySelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB10C028AB78E200A6D448 /* CategorySelectionPresenter.swift */; };
+		4CDB10CF28AB78E200A6D448 /* CategorySelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB10C228AB78E200A6D448 /* CategorySelectionTableViewCell.swift */; };
+		4CDB10D028AB78E200A6D448 /* CategorySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB10C328AB78E200A6D448 /* CategorySelectionViewController.swift */; };
+		4CDB10D128AB78E200A6D448 /* CategorySelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB10C428AB78E200A6D448 /* CategorySelectionView.swift */; };
+		4CDB10D228AB78E200A6D448 /* CategorySelectionViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB10C528AB78E200A6D448 /* CategorySelectionViewProtocol.swift */; };
+		4CDB10D328AB78E200A6D448 /* CategoriesServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB10C728AB78E200A6D448 /* CategoriesServiceProtocol.swift */; };
+		4CDB10D428AB78E200A6D448 /* CategoriesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB10C828AB78E200A6D448 /* CategoriesService.swift */; };
+		4CDB10D828AB8BA800A6D448 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB10D728AB8BA800A6D448 /* Category.swift */; };
+		4CDB10DA28AB8E1400A6D448 /* CategoryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB10D928AB8E1400A6D448 /* CategoryRequest.swift */; };
+		4CDB10DC28AB8F6C00A6D448 /* CategoryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB10DB28AB8F6C00A6D448 /* CategoryResult.swift */; };
 		68F646E9289D3BAE00DAAE91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F646E8289D3BAE00DAAE91 /* AppDelegate.swift */; };
 		68F646EB289D3BAE00DAAE91 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F646EA289D3BAE00DAAE91 /* SceneDelegate.swift */; };
 		68F646ED289D3BAE00DAAE91 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F646EC289D3BAE00DAAE91 /* ViewController.swift */; };
@@ -170,6 +182,18 @@
 		4C4FB09628A7B4A800D23CD2 /* AuthorizationViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewProtocol.swift; sourceTree = "<group>"; };
 		4C77E20D28A654AA002DE431 /* StartScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
 		4C77E20F28A654B8002DE431 /* StartScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenView.swift; sourceTree = "<group>"; };
+		4CDB10BD28AB78E200A6D448 /* CategorySelectionAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySelectionAssembly.swift; sourceTree = "<group>"; };
+		4CDB10BF28AB78E200A6D448 /* CategorySelectionPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySelectionPresenterProtocol.swift; sourceTree = "<group>"; };
+		4CDB10C028AB78E200A6D448 /* CategorySelectionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySelectionPresenter.swift; sourceTree = "<group>"; };
+		4CDB10C228AB78E200A6D448 /* CategorySelectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySelectionTableViewCell.swift; sourceTree = "<group>"; };
+		4CDB10C328AB78E200A6D448 /* CategorySelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySelectionViewController.swift; sourceTree = "<group>"; };
+		4CDB10C428AB78E200A6D448 /* CategorySelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySelectionView.swift; sourceTree = "<group>"; };
+		4CDB10C528AB78E200A6D448 /* CategorySelectionViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySelectionViewProtocol.swift; sourceTree = "<group>"; };
+		4CDB10C728AB78E200A6D448 /* CategoriesServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesServiceProtocol.swift; sourceTree = "<group>"; };
+		4CDB10C828AB78E200A6D448 /* CategoriesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesService.swift; sourceTree = "<group>"; };
+		4CDB10D728AB8BA800A6D448 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		4CDB10D928AB8E1400A6D448 /* CategoryRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRequest.swift; sourceTree = "<group>"; };
+		4CDB10DB28AB8F6C00A6D448 /* CategoryResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryResult.swift; sourceTree = "<group>"; };
 		68F646E5289D3BAE00DAAE91 /* Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68F646E8289D3BAE00DAAE91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68F646EA289D3BAE00DAAE91 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -557,6 +581,57 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		4CDB10BB28AB78E200A6D448 /* CategorySelection */ = {
+			isa = PBXGroup;
+			children = (
+				4CDB10BC28AB78E200A6D448 /* Assembly */,
+				4CDB10BE28AB78E200A6D448 /* Presenter */,
+				4CDB10C128AB78E200A6D448 /* View */,
+				4CDB10C628AB78E200A6D448 /* Service */,
+			);
+			path = CategorySelection;
+			sourceTree = "<group>";
+		};
+		4CDB10BC28AB78E200A6D448 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				4CDB10BD28AB78E200A6D448 /* CategorySelectionAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		4CDB10BE28AB78E200A6D448 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				4CDB10BF28AB78E200A6D448 /* CategorySelectionPresenterProtocol.swift */,
+				4CDB10C028AB78E200A6D448 /* CategorySelectionPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		4CDB10C128AB78E200A6D448 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4CDB10C228AB78E200A6D448 /* CategorySelectionTableViewCell.swift */,
+				4CDB10C328AB78E200A6D448 /* CategorySelectionViewController.swift */,
+				4CDB10C428AB78E200A6D448 /* CategorySelectionView.swift */,
+				4CDB10C528AB78E200A6D448 /* CategorySelectionViewProtocol.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4CDB10C628AB78E200A6D448 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				4CDB10C728AB78E200A6D448 /* CategoriesServiceProtocol.swift */,
+				4CDB10C828AB78E200A6D448 /* CategoriesService.swift */,
+				4CDB10D728AB8BA800A6D448 /* Category.swift */,
+				4CDB10D928AB8E1400A6D448 /* CategoryRequest.swift */,
+				4CDB10DB28AB8F6C00A6D448 /* CategoryResult.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		68F646DC289D3BAE00DAAE91 = {
 			isa = PBXGroup;
 			children = (
@@ -600,6 +675,7 @@
 		68F6A284289D3DA900DAAE91 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4CDB10BB28AB78E200A6D448 /* CategorySelection */,
 				2DA79AAF28AA89B900BA69D3 /* CurrencySelection */,
 				2D513A5128A8393000573FC4 /* WalletInfo */,
 				4C4FB07E28A7833D00D23CD2 /* Authorization */,
@@ -870,20 +946,25 @@
 				2D513A5A28A8398200573FC4 /* WalletInfoViewController.swift in Sources */,
 				4C4FB09528A7B3FC00D23CD2 /* AuthorizationRouterProtocol.swift in Sources */,
 				2DA96DC028A694C9005F791F /* CreateWalletRouterProtocol.swift in Sources */,
+				4CDB10D128AB78E200A6D448 /* CategorySelectionView.swift in Sources */,
 				2DA96DB828A694BC005F791F /* CreateWalletServiceProtocol.swift in Sources */,
 				2DA6464128A6D87A00EF8755 /* StartScreenService.swift in Sources */,
+				4CDB10CC28AB78E200A6D448 /* CategorySelectionAssembly.swift in Sources */,
 				2DA6464728A6D8B400EF8755 /* StartScreenPresenterProtocol.swift in Sources */,
 				2DC3D4D128ABB426005C9FB7 /* Currency.swift in Sources */,
 				2DA96DC728A695CB005F791F /* CreateWalletView.swift in Sources */,
 				4C77E21028A654B8002DE431 /* StartScreenView.swift in Sources */,
 				83F3DDB328A839FC00F176BD /* CreateOperationViewProtocol.swift in Sources */,
 				4C4FB09328A7B2FF00D23CD2 /* AuthorizationRouter.swift in Sources */,
+				4CDB10D328AB78E200A6D448 /* CategoriesServiceProtocol.swift in Sources */,
 				2DA6464D28A6D90C00EF8755 /* StartScreenAssembly.swift in Sources */,
+				4CDB10D428AB78E200A6D448 /* CategoriesService.swift in Sources */,
 				83AF6F0628A6869000BB91CB /* WalletsListsControllerAssembly.swift in Sources */,
 				2DA6464928A6D8D600EF8755 /* StartScreenRouter.swift in Sources */,
 				2DC3D4EB28ABC771005C9FB7 /* Category.swift in Sources */,
 				830D8DEC28AAD50C00B51034 /* CreateOperationServiceProtocol.swift in Sources */,
 				2DA96DB728A694BC005F791F /* CreateWalletService.swift in Sources */,
+				4CDB10D028AB78E200A6D448 /* CategorySelectionViewController.swift in Sources */,
 				83AF6EEA28A57D5A00BB91CB /* WalletsListViewController.swift in Sources */,
 				2DA79AD628AA89B900BA69D3 /* CurrencySelectionView.swift in Sources */,
 				2D513A5E28A8399A00573FC4 /* WalletInfoPresenter.swift in Sources */,
@@ -894,8 +975,12 @@
 				4C4FB08528A7833D00D23CD2 /* AuthorizationPresenter.swift in Sources */,
 				4C4FB08F28A7AA0B00D23CD2 /* AuthorizationService.swift in Sources */,
 				83F3DDB128A839E700F176BD /* CreateOperationView.swift in Sources */,
+				4CDB10D828AB8BA800A6D448 /* Category.swift in Sources */,
 				4C4FB09128A7AAD600D23CD2 /* AuthorizationServiceProtocol.swift in Sources */,
+				4CDB10CD28AB78E200A6D448 /* CategorySelectionPresenterProtocol.swift in Sources */,
+				83F3DDB128A839E700F176BD /* CreateOperationView.swift in Sources */,
 				83AF6EEC28A57E1500BB91CB /* WalletsListView.swift in Sources */,
+				4CDB10CE28AB78E200A6D448 /* CategorySelectionPresenter.swift in Sources */,
 				2DC3D4E928ABC6C8005C9FB7 /* CategoryRequest.swift in Sources */,
 				2DA6465228A6DE4800EF8755 /* WalletsListRouter.swift in Sources */,
 				2DA79ACA28AA89B900BA69D3 /* CurrencySelectionAssembly.swift in Sources */,
@@ -908,6 +993,8 @@
 				2DA6465428A6DE5400EF8755 /* WalletsListRouterProtocol.swift in Sources */,
 				83AF6EF628A641E200BB91CB /* WalletsListScreenPresenter.swift in Sources */,
 				4C4FB08828A7833D00D23CD2 /* AuthorizationView.swift in Sources */,
+				4CDB10DC28AB8F6C00A6D448 /* CategoryResult.swift in Sources */,
+				4CDB10DA28AB8E1400A6D448 /* CategoryRequest.swift in Sources */,
 				2DA6464B28A6D8DD00EF8755 /* StartScreenRouterProtocol.swift in Sources */,
 				2D513A6828A839CA00573FC4 /* WalletInfoModelProtocol.swift in Sources */,
 				2DC3D4E528ABBB40005C9FB7 /* BalanceFormatter.swift in Sources */,
@@ -921,6 +1008,7 @@
 				83AF6F0028A64D2800BB91CB /* WalletsListPresenterProtocol.swift in Sources */,
 				2DA6465628A6DED200EF8755 /* WalletsListService.swift in Sources */,
 				83AF6F0228A6534100BB91CB /* WalletsListControllerProtocol.swift in Sources */,
+				4CDB10CF28AB78E200A6D448 /* CategorySelectionTableViewCell.swift in Sources */,
 				2DA96DC328A694D3005F791F /* CreateWalletAssembly.swift in Sources */,
 				4C4FB08728A7833D00D23CD2 /* AuthorizationViewController.swift in Sources */,
 				83F3DDB528A83A0000F176BD /* CreateOperationViewController.swift in Sources */,
@@ -948,6 +1036,7 @@
 				2D513A6428A839B900573FC4 /* WalletInfoRouterProtocol.swift in Sources */,
 				4C4FB09728A7B4A800D23CD2 /* AuthorizationViewProtocol.swift in Sources */,
 				2DA96DBC28A694C3005F791F /* CreateWalletPresenterProtocol.swift in Sources */,
+				4CDB10D228AB78E200A6D448 /* CategorySelectionViewProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
