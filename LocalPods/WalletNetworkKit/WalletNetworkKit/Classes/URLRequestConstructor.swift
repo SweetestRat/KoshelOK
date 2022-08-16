@@ -16,7 +16,6 @@ class URLRequestConstructor {
         guard var components = URLComponents(string: request.baseUrl) else {
             throw NSError.defaultError
         }
-//        var components = URLComponents(string: request.baseUrl)
         
         components.path = request.path
         components.queryItems = request.parameters?.map {
