@@ -8,5 +8,5 @@
 import Foundation
 
 protocol CategorySelectionServiceProtocol {
-    func getData()
+    func getData(complition: @escaping (Result<[Category], Error>) -> Void)
 }

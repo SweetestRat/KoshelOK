@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import WalletNetworkKit
 
 class CategorySelectionAssembly {
     func assembly() -> CategorySelectionViewController {
-        let service = CategorySelectionService()
+        let networkManager = NetworkManager()
+        let service = CategorySelectionService(networkManager: networkManager)
         let router = CategorySelectionRouter()
         let presenter = CategorySelectionPresenter(service: service, router: router)
         let viewController = CategorySelectionViewController(presenter: presenter)

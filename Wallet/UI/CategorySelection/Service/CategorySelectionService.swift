@@ -6,11 +6,25 @@
 //
 
 import Foundation
+import WalletNetworkKit
 
 class CategorySelectionService: CategorySelectionServiceProtocol {
-    var presenter: CategorySelectionPresenterProtocol?
+    private let networkManager: NetworkManager
     
-    func getData() {
-        // call get
+    init(networkManager: NetworkManager) {
+        self.networkManager = networkManager
+    }
+    
+    func getData(complition: @escaping (Result<[Category], Error>) -> Void) {
+        let request = CategoryRequest(parameters: [:])
+        networkManager.makeRequest(request: request) { result in
+            switch result {
+                
+            case .success(let resultDetails):
+                complition(.success(resultDetails.categories))
+            case .failure(let error):
+                complition(.failure(error))
+            }
+        }
     }
 }
