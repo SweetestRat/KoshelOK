@@ -17,7 +17,7 @@ class CreateOperationRouter: CreateOperationRouterProtocol {
         vc.navigationController?.popViewController(animated: true)
     }
     
-    func openCurrencySelection(delegate: CurrencySeletionDelegateProtocol) {
+    func openCurrencySelection(delegate: CurrencySelectionDelegateProtocol) {
         let nextvc = CurrencySelectionAssembly().assembly()
         nextvc.presenter.delegate = delegate
         guard let vc = view as? UIViewController else { return }

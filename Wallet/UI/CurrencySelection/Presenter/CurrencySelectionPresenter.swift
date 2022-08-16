@@ -1,5 +1,5 @@
 //
-//  CurrencySeletionPresenter.swift
+//  CurrencySelectionPresenter.swift
 //  Wallet
 //
 //  Created by Владислава Гильде on 12.08.2022.
@@ -13,14 +13,14 @@ protocol CurrencySelectionDelegateProtocol: AnyObject {
 
 class CurrencySelectionPresenter: CurrencySelectionPresenterProtocol {
     weak var delegate: CurrencySelectionDelegateProtocol?
-    private let service: CurrencySeletionServiceProtocol?
-    private let router: CurrencySeletionRouterProtocol?
-    weak var view: CurrencySeletionViewProtocol?
+    private let service: CurrencySelectionServiceProtocol?
+    private let router: CurrencySelectionRouterProtocol?
+    weak var view: CurrencySelectionViewProtocol?
     
     var currenciesList: [Currency]?
     private var selectedIndexPathRow: Int = 0
     
-    init(service: CurrencySeletionServiceProtocol, router: CurrencySeletionRouterProtocol) {
+    init(service: CurrencySelectionServiceProtocol, router: CurrencySelectionRouterProtocol) {
         self.service = service
         self.router = router
     }

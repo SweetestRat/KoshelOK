@@ -34,21 +34,14 @@
 		2DA79ACA28AA89B900BA69D3 /* CurrencySelectionAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA79AB128AA89B900BA69D3 /* CurrencySelectionAssembly.swift */; };
 		2DA79ACB28AA89B900BA69D3 /* CurrencySelectionPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA79AB328AA89B900BA69D3 /* CurrencySelectionPresenterProtocol.swift */; };
 		2DA79ACC28AA89B900BA69D3 /* CurrencySelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA79AB428AA89B900BA69D3 /* CurrencySelectionPresenter.swift */; };
-		2DA79ACF28AA89B900BA69D3 /* CurrencySelectionModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA79AB828AA89B900BA69D3 /* CurrencySelectionModelProtocol.swift */; };
-		2DA79AD028AA89B900BA69D3 /* CurrencySelectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA79AB928AA89B900BA69D3 /* CurrencySelectionModel.swift */; };
-		2DA79AD128AA89B900BA69D3 /* CurrencySelectionViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA79ABB28AA89B900BA69D3 /* CurrencySelectionViewProtocol.swift */; };
-		2DA79AD228AA89B900BA69D3 /* CurrencySeletionViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA79ABC28AA89B900BA69D3 /* CurrencySeletionViewProtocol.swift */; };
+		2DA79AD228AA89B900BA69D3 /* CurrencySelectionViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA79ABC28AA89B900BA69D3 /* CurrencySelectionViewProtocol.swift */; };
 		2DA79AD328AA89B900BA69D3 /* CurrencySelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA79ABD28AA89B900BA69D3 /* CurrencySelectionTableViewCell.swift */; };
-		2DA79AD428AA89B900BA69D3 /* CurrencySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA79ABE28AA89B900BA69D3 /* CurrencySelectionViewController.swift */; };
-		2DA79AD528AA89B900BA69D3 /* CurrencySelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA79ABF28AA89B900BA69D3 /* CurrencySelectionView.swift */; };
-		2DA79AD628AA89B900BA69D3 /* CurrencySeletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA79AC028AA89B900BA69D3 /* CurrencySeletionView.swift */; };
-		2DA79AD728AA89B900BA69D3 /* CurrencySeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA79AC128AA89B900BA69D3 /* CurrencySeletionViewController.swift */; };
-		2DA79AD828AA89B900BA69D3 /* CurrencySeletionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA79AC328AA89B900BA69D3 /* CurrencySeletionService.swift */; };
-		2DA79AD928AA89B900BA69D3 /* CurrencySeletionServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA79AC428AA89B900BA69D3 /* CurrencySeletionServiceProtocol.swift */; };
+		2DA79AD628AA89B900BA69D3 /* CurrencySelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA79AC028AA89B900BA69D3 /* CurrencySelectionView.swift */; };
+		2DA79AD728AA89B900BA69D3 /* CurrencySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA79AC128AA89B900BA69D3 /* CurrencySelectionViewController.swift */; };
+		2DA79AD828AA89B900BA69D3 /* CurrencySelectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA79AC328AA89B900BA69D3 /* CurrencySelectionService.swift */; };
+		2DA79AD928AA89B900BA69D3 /* CurrencySelectionServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA79AC428AA89B900BA69D3 /* CurrencySelectionServiceProtocol.swift */; };
 		2DA79ADA28AA89B900BA69D3 /* CurrencySeletionRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA79AC628AA89B900BA69D3 /* CurrencySeletionRouterProtocol.swift */; };
-		2DA79ADB28AA89B900BA69D3 /* CurrencySelectionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA79AC728AA89B900BA69D3 /* CurrencySelectionRouter.swift */; };
-		2DA79ADC28AA89B900BA69D3 /* CurrencySeletionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA79AC828AA89B900BA69D3 /* CurrencySeletionRouter.swift */; };
-		2DA79ADD28AA89B900BA69D3 /* CurrencySelectionRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA79AC928AA89B900BA69D3 /* CurrencySelectionRouterProtocol.swift */; };
+		2DA79ADC28AA89B900BA69D3 /* CurrencySelectionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA79AC828AA89B900BA69D3 /* CurrencySelectionRouter.swift */; };
 		2DA96D9828A69492005F791F /* CreateWalletViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA96D9728A69492005F791F /* CreateWalletViewProtocol.swift */; };
 		2DA96DB728A694BC005F791F /* CreateWalletService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA96DB528A694BC005F791F /* CreateWalletService.swift */; };
 		2DA96DB828A694BC005F791F /* CreateWalletServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA96DB628A694BC005F791F /* CreateWalletServiceProtocol.swift */; };
@@ -63,8 +56,8 @@
 		4C4FB08728A7833D00D23CD2 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB08328A7833D00D23CD2 /* AuthorizationViewController.swift */; };
 		4C4FB08828A7833D00D23CD2 /* AuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB08428A7833D00D23CD2 /* AuthorizationView.swift */; };
 		4C4FB08D28A7A7B900D23CD2 /* AuthorizationAsembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB08C28A7A7B900D23CD2 /* AuthorizationAsembly.swift */; };
-		4C4FB08F28A7AA0B00D23CD2 /* AuthorizationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB08E28A7AA0B00D23CD2 /* AuthorizationModel.swift */; };
-		4C4FB09128A7AAD600D23CD2 /* AuthorizationModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB09028A7AAD600D23CD2 /* AuthorizationModelProtocol.swift */; };
+		4C4FB08F28A7AA0B00D23CD2 /* AuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB08E28A7AA0B00D23CD2 /* AuthorizationService.swift */; };
+		4C4FB09128A7AAD600D23CD2 /* AuthorizationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB09028A7AAD600D23CD2 /* AuthorizationServiceProtocol.swift */; };
 		4C4FB09328A7B2FF00D23CD2 /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB09228A7B2FF00D23CD2 /* AuthorizationRouter.swift */; };
 		4C4FB09528A7B3FC00D23CD2 /* AuthorizationRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB09428A7B3FC00D23CD2 /* AuthorizationRouterProtocol.swift */; };
 		4C4FB09728A7B4A800D23CD2 /* AuthorizationViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB09628A7B4A800D23CD2 /* AuthorizationViewProtocol.swift */; };
@@ -127,21 +120,14 @@
 		2DA79AB128AA89B900BA69D3 /* CurrencySelectionAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionAssembly.swift; sourceTree = "<group>"; };
 		2DA79AB328AA89B900BA69D3 /* CurrencySelectionPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionPresenterProtocol.swift; sourceTree = "<group>"; };
 		2DA79AB428AA89B900BA69D3 /* CurrencySelectionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionPresenter.swift; sourceTree = "<group>"; };
-		2DA79AB828AA89B900BA69D3 /* CurrencySelectionModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionModelProtocol.swift; sourceTree = "<group>"; };
-		2DA79AB928AA89B900BA69D3 /* CurrencySelectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionModel.swift; sourceTree = "<group>"; };
-		2DA79ABB28AA89B900BA69D3 /* CurrencySelectionViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionViewProtocol.swift; sourceTree = "<group>"; };
-		2DA79ABC28AA89B900BA69D3 /* CurrencySeletionViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySeletionViewProtocol.swift; sourceTree = "<group>"; };
+		2DA79ABC28AA89B900BA69D3 /* CurrencySelectionViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionViewProtocol.swift; sourceTree = "<group>"; };
 		2DA79ABD28AA89B900BA69D3 /* CurrencySelectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionTableViewCell.swift; sourceTree = "<group>"; };
-		2DA79ABE28AA89B900BA69D3 /* CurrencySelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionViewController.swift; sourceTree = "<group>"; };
-		2DA79ABF28AA89B900BA69D3 /* CurrencySelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionView.swift; sourceTree = "<group>"; };
-		2DA79AC028AA89B900BA69D3 /* CurrencySeletionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySeletionView.swift; sourceTree = "<group>"; };
-		2DA79AC128AA89B900BA69D3 /* CurrencySeletionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySeletionViewController.swift; sourceTree = "<group>"; };
-		2DA79AC328AA89B900BA69D3 /* CurrencySeletionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySeletionService.swift; sourceTree = "<group>"; };
-		2DA79AC428AA89B900BA69D3 /* CurrencySeletionServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySeletionServiceProtocol.swift; sourceTree = "<group>"; };
+		2DA79AC028AA89B900BA69D3 /* CurrencySelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionView.swift; sourceTree = "<group>"; };
+		2DA79AC128AA89B900BA69D3 /* CurrencySelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionViewController.swift; sourceTree = "<group>"; };
+		2DA79AC328AA89B900BA69D3 /* CurrencySelectionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionService.swift; sourceTree = "<group>"; };
+		2DA79AC428AA89B900BA69D3 /* CurrencySelectionServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionServiceProtocol.swift; sourceTree = "<group>"; };
 		2DA79AC628AA89B900BA69D3 /* CurrencySeletionRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySeletionRouterProtocol.swift; sourceTree = "<group>"; };
-		2DA79AC728AA89B900BA69D3 /* CurrencySelectionRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionRouter.swift; sourceTree = "<group>"; };
-		2DA79AC828AA89B900BA69D3 /* CurrencySeletionRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySeletionRouter.swift; sourceTree = "<group>"; };
-		2DA79AC928AA89B900BA69D3 /* CurrencySelectionRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionRouterProtocol.swift; sourceTree = "<group>"; };
+		2DA79AC828AA89B900BA69D3 /* CurrencySelectionRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySelectionRouter.swift; sourceTree = "<group>"; };
 		2DA96D9728A69492005F791F /* CreateWalletViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWalletViewProtocol.swift; sourceTree = "<group>"; };
 		2DA96DB528A694BC005F791F /* CreateWalletService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWalletService.swift; sourceTree = "<group>"; };
 		2DA96DB628A694BC005F791F /* CreateWalletServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWalletServiceProtocol.swift; sourceTree = "<group>"; };
@@ -156,8 +142,8 @@
 		4C4FB08328A7833D00D23CD2 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		4C4FB08428A7833D00D23CD2 /* AuthorizationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationView.swift; sourceTree = "<group>"; };
 		4C4FB08C28A7A7B900D23CD2 /* AuthorizationAsembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationAsembly.swift; sourceTree = "<group>"; };
-		4C4FB08E28A7AA0B00D23CD2 /* AuthorizationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationModel.swift; sourceTree = "<group>"; };
-		4C4FB09028A7AAD600D23CD2 /* AuthorizationModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationModelProtocol.swift; sourceTree = "<group>"; };
+		4C4FB08E28A7AA0B00D23CD2 /* AuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationService.swift; sourceTree = "<group>"; };
+		4C4FB09028A7AAD600D23CD2 /* AuthorizationServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationServiceProtocol.swift; sourceTree = "<group>"; };
 		4C4FB09228A7B2FF00D23CD2 /* AuthorizationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRouter.swift; sourceTree = "<group>"; };
 		4C4FB09428A7B3FC00D23CD2 /* AuthorizationRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRouterProtocol.swift; sourceTree = "<group>"; };
 		4C4FB09628A7B4A800D23CD2 /* AuthorizationViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewProtocol.swift; sourceTree = "<group>"; };
@@ -379,7 +365,6 @@
 			children = (
 				2DA79AB028AA89B900BA69D3 /* Assembly */,
 				2DA79AB228AA89B900BA69D3 /* Presenter */,
-				2DA79AB728AA89B900BA69D3 /* Model */,
 				2DA79ABA28AA89B900BA69D3 /* View */,
 				2DA79AC228AA89B900BA69D3 /* Service */,
 				2DA79AC528AA89B900BA69D3 /* Router */,
@@ -404,25 +389,13 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		2DA79AB728AA89B900BA69D3 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				2DA79AB828AA89B900BA69D3 /* CurrencySelectionModelProtocol.swift */,
-				2DA79AB928AA89B900BA69D3 /* CurrencySelectionModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		2DA79ABA28AA89B900BA69D3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2DA79ABB28AA89B900BA69D3 /* CurrencySelectionViewProtocol.swift */,
-				2DA79ABC28AA89B900BA69D3 /* CurrencySeletionViewProtocol.swift */,
+				2DA79ABC28AA89B900BA69D3 /* CurrencySelectionViewProtocol.swift */,
 				2DA79ABD28AA89B900BA69D3 /* CurrencySelectionTableViewCell.swift */,
-				2DA79ABE28AA89B900BA69D3 /* CurrencySelectionViewController.swift */,
-				2DA79ABF28AA89B900BA69D3 /* CurrencySelectionView.swift */,
-				2DA79AC028AA89B900BA69D3 /* CurrencySeletionView.swift */,
-				2DA79AC128AA89B900BA69D3 /* CurrencySeletionViewController.swift */,
+				2DA79AC028AA89B900BA69D3 /* CurrencySelectionView.swift */,
+				2DA79AC128AA89B900BA69D3 /* CurrencySelectionViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -430,8 +403,8 @@
 		2DA79AC228AA89B900BA69D3 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				2DA79AC328AA89B900BA69D3 /* CurrencySeletionService.swift */,
-				2DA79AC428AA89B900BA69D3 /* CurrencySeletionServiceProtocol.swift */,
+				2DA79AC328AA89B900BA69D3 /* CurrencySelectionService.swift */,
+				2DA79AC428AA89B900BA69D3 /* CurrencySelectionServiceProtocol.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -440,9 +413,7 @@
 			isa = PBXGroup;
 			children = (
 				2DA79AC628AA89B900BA69D3 /* CurrencySeletionRouterProtocol.swift */,
-				2DA79AC728AA89B900BA69D3 /* CurrencySelectionRouter.swift */,
-				2DA79AC828AA89B900BA69D3 /* CurrencySeletionRouter.swift */,
-				2DA79AC928AA89B900BA69D3 /* CurrencySelectionRouterProtocol.swift */,
+				2DA79AC828AA89B900BA69D3 /* CurrencySelectionRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -459,7 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				4C4FB08B28A7836D00D23CD2 /* Router */,
-				4C4FB08A28A7836100D23CD2 /* Model */,
+				4C4FB08A28A7836100D23CD2 /* Service */,
 				4C4FB08928A7835A00D23CD2 /* Asembly */,
 				4C4FB07F28A7833D00D23CD2 /* Presenter */,
 				4C4FB08228A7833D00D23CD2 /* View */,
@@ -494,13 +465,13 @@
 			path = Asembly;
 			sourceTree = "<group>";
 		};
-		4C4FB08A28A7836100D23CD2 /* Model */ = {
+		4C4FB08A28A7836100D23CD2 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				4C4FB08E28A7AA0B00D23CD2 /* AuthorizationModel.swift */,
-				4C4FB09028A7AAD600D23CD2 /* AuthorizationModelProtocol.swift */,
+				4C4FB08E28A7AA0B00D23CD2 /* AuthorizationService.swift */,
+				4C4FB09028A7AAD600D23CD2 /* AuthorizationServiceProtocol.swift */,
 			);
-			path = Model;
+			path = Service;
 			sourceTree = "<group>";
 		};
 		4C4FB08B28A7836D00D23CD2 /* Router */ = {
@@ -867,63 +838,56 @@
 				830D8DEC28AAD50C00B51034 /* CreateOperationServiceProtocol.swift in Sources */,
 				2DA96DB728A694BC005F791F /* CreateWalletService.swift in Sources */,
 				83AF6EEA28A57D5A00BB91CB /* WalletsListViewController.swift in Sources */,
-				2DA79AD628AA89B900BA69D3 /* CurrencySeletionView.swift in Sources */,
+				2DA79AD628AA89B900BA69D3 /* CurrencySelectionView.swift in Sources */,
 				2D513A5E28A8399A00573FC4 /* WalletInfoPresenter.swift in Sources */,
 				2DA6465828A6DEDB00EF8755 /* WalletsListServiceProtocol.swift in Sources */,
 				2D513A7028A8458E00573FC4 /* WalletInfoCell.swift in Sources */,
 				2DA96DBB28A694C3005F791F /* CreateWalletPresenter.swift in Sources */,
 				4C4FB08528A7833D00D23CD2 /* AuthorizationPresenter.swift in Sources */,
-				4C4FB08F28A7AA0B00D23CD2 /* AuthorizationModel.swift in Sources */,
+				4C4FB08F28A7AA0B00D23CD2 /* AuthorizationService.swift in Sources */,
 				83F3DDB128A839E700F176BD /* CreateOperationView.swift in Sources */,
-				4C4FB09128A7AAD600D23CD2 /* AuthorizationModelProtocol.swift in Sources */,
+				4C4FB09128A7AAD600D23CD2 /* AuthorizationServiceProtocol.swift in Sources */,
 				83AF6EEC28A57E1500BB91CB /* WalletsListView.swift in Sources */,
 				2DA6465228A6DE4800EF8755 /* WalletsListRouter.swift in Sources */,
 				2DA79ACA28AA89B900BA69D3 /* CurrencySelectionAssembly.swift in Sources */,
 				830D8DEE28AAD65C00B51034 /* CreateOperationRouterProtocol.swift in Sources */,
-				2DA79AD128AA89B900BA69D3 /* CurrencySelectionViewProtocol.swift in Sources */,
 				68F646E9289D3BAE00DAAE91 /* AppDelegate.swift in Sources */,
 				2DA79ACC28AA89B900BA69D3 /* CurrencySelectionPresenter.swift in Sources */,
 				4C4FB08628A7833D00D23CD2 /* AuthorizationPresenterProtocol.swift in Sources */,
 				83AF6EF228A640C800BB91CB /* Wallet.swift in Sources */,
-				2DA79AD028AA89B900BA69D3 /* CurrencySelectionModel.swift in Sources */,
 				2D513A5828A8397800573FC4 /* WalletInfoView.swift in Sources */,
-				2DA79ACF28AA89B900BA69D3 /* CurrencySelectionModelProtocol.swift in Sources */,
 				2DA6465428A6DE5400EF8755 /* WalletsListRouterProtocol.swift in Sources */,
 				83AF6EF628A641E200BB91CB /* WalletsListScreenPresenter.swift in Sources */,
 				4C4FB08828A7833D00D23CD2 /* AuthorizationView.swift in Sources */,
-				2DA79ADB28AA89B900BA69D3 /* CurrencySelectionRouter.swift in Sources */,
 				2DA6464B28A6D8DD00EF8755 /* StartScreenRouterProtocol.swift in Sources */,
 				2D513A6828A839CA00573FC4 /* WalletInfoModelProtocol.swift in Sources */,
-				2DA79AD728AA89B900BA69D3 /* CurrencySeletionViewController.swift in Sources */,
+				2DA79AD728AA89B900BA69D3 /* CurrencySelectionViewController.swift in Sources */,
 				2DA79AD328AA89B900BA69D3 /* CurrencySelectionTableViewCell.swift in Sources */,
-				2DA79ADC28AA89B900BA69D3 /* CurrencySeletionRouter.swift in Sources */,
+				2DA79ADC28AA89B900BA69D3 /* CurrencySelectionRouter.swift in Sources */,
 				2DA79ACB28AA89B900BA69D3 /* CurrencySelectionPresenterProtocol.swift in Sources */,
 				2DA6464528A6D8AA00EF8755 /* StartScreenPresenter.swift in Sources */,
 				2D513A6A28A839D700573FC4 /* WalletInfoAssembly.swift in Sources */,
-				2DA79AD828AA89B900BA69D3 /* CurrencySeletionService.swift in Sources */,
+				2DA79AD828AA89B900BA69D3 /* CurrencySelectionService.swift in Sources */,
 				83AF6F0028A64D2800BB91CB /* WalletsListPresenterProtocol.swift in Sources */,
 				2DA6465628A6DED200EF8755 /* WalletsListService.swift in Sources */,
 				83AF6F0228A6534100BB91CB /* WalletsListControllerProtocol.swift in Sources */,
 				2DA96DC328A694D3005F791F /* CreateWalletAssembly.swift in Sources */,
 				4C4FB08728A7833D00D23CD2 /* AuthorizationViewController.swift in Sources */,
 				83F3DDB528A83A0000F176BD /* CreateOperationViewController.swift in Sources */,
-				2DA79ADD28AA89B900BA69D3 /* CurrencySelectionRouterProtocol.swift in Sources */,
 				83AF6EFC28A644B800BB91CB /* Currency.swift in Sources */,
 				83F3DDAF28A839DA00F176BD /* CreateOperationService.swift in Sources */,
 				2D43E1A128A5419F00947040 /* CreateWalletViewController.swift in Sources */,
 				83F3DDAB28A839BA00F176BD /* CreateOperationAssembly.swift in Sources */,
 				83F3DDB928A83A4600F176BD /* CreateOperationPresenterProtocol.swift in Sources */,
 				68F646EB289D3BAE00DAAE91 /* SceneDelegate.swift in Sources */,
-				2DA79AD528AA89B900BA69D3 /* CurrencySelectionView.swift in Sources */,
 				2D513A6628A839C200573FC4 /* WalletInfoService.swift in Sources */,
 				2DA6463B28A6D83700EF8755 /* StartScreenViewProtocol.swift in Sources */,
 				4C4FB08D28A7A7B900D23CD2 /* AuthorizationAsembly.swift in Sources */,
 				83F3DDB728A83A3B00F176BD /* CreateOperationPresenter.swift in Sources */,
-				2DA79AD928AA89B900BA69D3 /* CurrencySeletionServiceProtocol.swift in Sources */,
+				2DA79AD928AA89B900BA69D3 /* CurrencySelectionServiceProtocol.swift in Sources */,
 				4C77E20E28A654AA002DE431 /* StartScreenViewController.swift in Sources */,
 				2D513A6228A839B300573FC4 /* WalletInfoRouter.swift in Sources */,
-				2DA79AD228AA89B900BA69D3 /* CurrencySeletionViewProtocol.swift in Sources */,
-				2DA79AD428AA89B900BA69D3 /* CurrencySelectionViewController.swift in Sources */,
+				2DA79AD228AA89B900BA69D3 /* CurrencySelectionViewProtocol.swift in Sources */,
 				830D8DF028AAD72E00B51034 /* reateOperationRouter.swift in Sources */,
 				2DA79ADA28AA89B900BA69D3 /* CurrencySeletionRouterProtocol.swift in Sources */,
 				2D513A5C28A8398A00573FC4 /* WalletInfoViewProtocol.swift in Sources */,

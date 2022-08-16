@@ -9,5 +9,5 @@ import Foundation
 
 protocol CreateOperationRouterProtocol {
     func addOperation()
-    func openCurrencySelection(delegate: CurrencySeletionDelegateProtocol)
+    func openCurrencySelection(delegate: CurrencySelectionDelegateProtocol)
 }

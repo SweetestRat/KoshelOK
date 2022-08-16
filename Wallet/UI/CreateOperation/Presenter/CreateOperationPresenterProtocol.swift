@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol CreateOperationPresenterProtocol: CurrencySeletionDelegateProtocol {
+protocol CreateOperationPresenterProtocol: CurrencySelectionDelegateProtocol {
     func viewLoaded()
     
     func selectCategory()

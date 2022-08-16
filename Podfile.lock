@@ -26,7 +26,7 @@ SPEC CHECKSUMS:
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftLint: 284cea64b6187c5d6bd83e9a548a64104d546447
   WalletDesignKit: c8ae29e0465bb719f6a28e6cb213d1a6b3c72834
-  WalletNetworkKit: d920dd9af08cd9da5e28b168cdfebb605e715daa
+  WalletNetworkKit: 685d7b8311bad2a1a0203ee7e17f9c267b65b053
 
 PODFILE CHECKSUM: 86d968aef60678baf4d4d85ae6c6b9afc62bc610
 

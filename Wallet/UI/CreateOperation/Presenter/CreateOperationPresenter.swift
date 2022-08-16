@@ -49,7 +49,7 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
     
 }
 
-extension CreateOperationPresenter: CurrencySeletionDelegateProtocol {
+extension CreateOperationPresenter: CurrencySelectionDelegateProtocol {
     func updateSelectedCurrency(currency: Currency) {
         self.currency = currency
         view?.updateCurrency(currency: currency)
