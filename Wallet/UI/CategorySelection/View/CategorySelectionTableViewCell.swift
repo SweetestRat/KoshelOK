@@ -12,19 +12,7 @@ import WalletDesignKit
 class CategorySelectionTableViewCell: UITableViewCell {
     
     lazy var icon: UIView = {
-        let config = UIImage.SymbolConfiguration(scale: .large)
-        let image = UIImageView(image: UIImage(systemName: "pills.fill", withConfiguration: config))
-        image.tintColor = .white
         let view = UIView()
-        view.addSubview(image)
-        
-        image.snp.makeConstraints {make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()
-        }
-        
-        view.layer.cornerRadius = CGFloat(IconSize / 2)
-        view.backgroundColor = .systemPink
         return view
     }()
     
@@ -65,5 +53,23 @@ class CategorySelectionTableViewCell: UITableViewCell {
             make.leading.equalTo(contentView).inset(MediumPadding)
         }
         
+    }
+    
+    func configurate(parametres: Category) {
+        
+        let config = UIImage.SymbolConfiguration(scale: .large)
+        let image = UIImageView(image: UIImage(systemName: parametres.IconSystemImage, withConfiguration: config))
+        image.tintColor = .white
+        icon.addSubview(image)
+        
+        icon.layer.cornerRadius = CGFloat(IconSize / 2)
+        icon.backgroundColor = UIColor(hex: parametres.color)
+        
+        title.text = parametres.title
+        
+        image.snp.makeConstraints {make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+        }
     }
 }

@@ -12,4 +12,6 @@ protocol CategorySelectionPresenterProtocol {
     func setSelectedRow(row: Int)
     func controllerLoaded()
     func didTapBarButton()
+    func getNumberOfRows() -> Int?
+    func getCategory(index: Int) -> Category
 }

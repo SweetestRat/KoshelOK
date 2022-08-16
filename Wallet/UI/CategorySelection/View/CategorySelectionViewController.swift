@@ -62,6 +62,15 @@ class CategorySelectionViewController: UIViewController, CategorySelectionViewPr
 }
 
 extension CategorySelectionViewController: CategorySelectionViewDelegate {
+    
+    func getCategory(index: Int) -> Category {
+        presenter.getCategory(index: index)
+    }
+    
+    func getNumberOfRows() -> Int? {
+        presenter.getNumberOfRows()
+    }
+    
     func cellSelected(indexPathRow: Int) {
         presenter.setSelectedRow(row: indexPathRow)
     }

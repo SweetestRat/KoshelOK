@@ -941,6 +941,7 @@
 				2DA96DBB28A694C3005F791F /* CreateWalletPresenter.swift in Sources */,
 				4C4FB08528A7833D00D23CD2 /* AuthorizationPresenter.swift in Sources */,
 				4C4FB08F28A7AA0B00D23CD2 /* AuthorizationService.swift in Sources */,
+				83F3DDB128A839E700F176BD /* CreateOperationView.swift in Sources */,
 				4CDB10D828AB8BA800A6D448 /* Category.swift in Sources */,
 				4C4FB09128A7AAD600D23CD2 /* AuthorizationServiceProtocol.swift in Sources */,
 				2DA79ACE28AA89B900BA69D3 /* CurrencySelectionPresenterProtocol.swift in Sources */,

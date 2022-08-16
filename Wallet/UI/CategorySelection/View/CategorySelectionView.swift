@@ -11,6 +11,8 @@ import WalletDesignKit
 protocol CategorySelectionViewDelegate: AnyObject {
     func cellSelected(indexPathRow: Int)
     func getSelectedRow() -> Int?
+    func getNumberOfRows() -> Int?
+    func getCategory(index: Int) -> Category
 }
 
 class CategorySelectionView: UIView {
@@ -80,7 +82,7 @@ extension CategorySelectionView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        20
+        delegate?.getNumberOfRows() ?? 0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -100,7 +102,8 @@ extension CategorySelectionView: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.title.text = "Отпуск"
+        cell.configurate(parametres: self.delegate?.getCategory(index: indexPath.row) ?? Category(IconSystemImage: "sun.,ax.fill", title: "", color: "7765C0"))
+    
         let row = delegate?.getSelectedRow()
 
         if indexPath.row == row {
