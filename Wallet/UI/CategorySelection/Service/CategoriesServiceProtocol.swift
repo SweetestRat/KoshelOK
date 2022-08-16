@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol CategorySelectionServiceProtocol {
-    func getData(complition: @escaping (Result<[Category], Error>) -> Void)
+protocol CategoriesServiceProtocol {
+    func loadCategories(completion: @escaping (Result<[Category], Error>) -> Void)
 }

@@ -48,8 +48,8 @@ class CategorySelectionTableViewCell: UITableViewCell {
     }
     
     private func addSubviews() {
-        addSubview(title)
-        addSubview(icon)
+        contentView.addSubview(icon)
+        contentView.addSubview(title)
     }
     
     private func setConstraints() {

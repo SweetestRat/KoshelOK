@@ -9,13 +9,13 @@ import Foundation
 
 class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
     
-    private var service: CategorySelectionServiceProtocol
+    private var service: CategoriesServiceProtocol
     private var router: CategorySelectionRouterProtocol
     weak var view: CategorySelectionViewProtocol?
     
     private var selectedIndexPathRow: Int = 0
     
-    init(service: CategorySelectionServiceProtocol, router: CategorySelectionRouterProtocol) {
+    init(service: CategoriesServiceProtocol, router: CategorySelectionRouterProtocol) {
         self.service = service
         self.router = router
     }
