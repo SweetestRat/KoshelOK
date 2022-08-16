@@ -7,6 +7,6 @@
 
 import Foundation
 
-class AuthorizationModel: AuthorizationModelProtocol {
+class AuthorizationService: AuthorizationServiceProtocol {
     weak var presenter: AuthorizationPresenterProtocol?
 }

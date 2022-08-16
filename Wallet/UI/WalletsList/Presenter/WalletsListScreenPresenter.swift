@@ -8,9 +8,9 @@
 import Foundation
 
 class WalletsListScreenPresenter: WalletsListPresenterProtocol {
-    weak var view: WalletsListControllerProtocol?
     private let router: WalletsListRouterProtocol
     private let service: WalletsListServiceProtocol
+    weak var view: WalletsListControllerProtocol?
     
     init(service: WalletsListServiceProtocol, router: WalletsListRouterProtocol) {
         self.service = service
