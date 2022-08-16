@@ -27,7 +27,7 @@ class CreateWalletPresenter: CreateWalletPresenterProtocol {
     }
     
     func cellCurrencyInfoDidTap() {
-        router.openCurrencySelection()
+        router.openCurrencySelection(delegate: self)
     }
     
     func textFieldDidChanchedValue(text: String?) {
@@ -37,5 +37,11 @@ class CreateWalletPresenter: CreateWalletPresenterProtocol {
             isButtonEnabled = false
         }
         view?.updateActionButtonState(isActive: isButtonEnabled)
+    }
+}
+
+extension CreateWalletPresenter: CurrencySelectionDelegateProtocol {
+    func updateSelectedCurrency(currency: Currency) {
+        
     }
 }
