@@ -1,5 +1,5 @@
 //
-//  Сфеупщкн.swift
+//  Category.swift
 //  Wallet
 //
 //  Created by Владислава Гильде on 16.08.2022.
