@@ -19,6 +19,7 @@ protocol CreateOperationViewDelegate: AnyObject {
 
 class CreateOperationView: UIView {
     weak var delegate: CreateOperationViewDelegate?
+    private var bottomConstraint: Constraint?
     
     private lazy var amountTextField: UITextField = {
         let textField = UITextField()
@@ -78,7 +79,7 @@ class CreateOperationView: UIView {
         view.titleLabel?.font = .SFProRegular13
         return view
     }()
-    lazy var createButton: BaseButton = {
+    private lazy var createButton: BaseButton = {
         let button = BaseButton(title: "Создать", active: false)
         return button
     }()
@@ -236,7 +237,7 @@ class CreateOperationView: UIView {
             }
         }
         createButton.snp.makeConstraints { make in
-            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(MediumPadding)
+            bottomConstraint = make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(MediumPadding).constraint
             make.leading.trailing.equalToSuperview().inset(MediumPadding)
             make.height.equalTo(ActionButtonHeight)
         }
@@ -272,6 +273,10 @@ class CreateOperationView: UIView {
     
     @objc private func createOperationViewDidSelectIncome() {
         delegate?.createOperationViewDidSelectIncome()
+	}
+
+    func updateBottomInset(valueInset: CGFloat) {
+        bottomConstraint?.update(inset: valueInset)
     }
     
     @objc private func createOperationViewDidSelectExpanse() {
