@@ -25,6 +25,10 @@ class CreateWalletViewController: UIViewController, CreateWalletViewProtocol {
         return view
     }()
     
+    public func updateActionButtonState(isActive: Bool) {
+        createWalletView.updateActionButtonState(isActive: isActive)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,5 +58,9 @@ class CreateWalletViewController: UIViewController, CreateWalletViewProtocol {
 extension CreateWalletViewController: CreateWalletViewDelegate {
     func cellCurrencyInfoDidTap() {
         presenter.cellCurrencyInfoDidTap()
+    }
+    
+    func textFieldDidChangeValue(text: String?) {
+        presenter.textFieldDidChanchedValue(text: text)
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class AuthorizationViewController: UIViewController, AuthorizationViewProtocol {
-    var presenter: AuthorizationPresenterProtocol
+    private let presenter: AuthorizationPresenterProtocol
     
     init(presenter: AuthorizationPresenterProtocol) {
         self.presenter = presenter

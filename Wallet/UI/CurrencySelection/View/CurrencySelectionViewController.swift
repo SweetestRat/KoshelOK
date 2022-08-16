@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 class CurrencySelectionViewController: UIViewController, CurrencySelectionViewProtocol {
-    private var presenter: CurrencySelectionPresenterProtocol
+    private let presenter: CurrencySelectionPresenterProtocol
     
     init(presenter: CurrencySelectionPresenterProtocol) {
         self.presenter = presenter
@@ -25,6 +25,10 @@ class CurrencySelectionViewController: UIViewController, CurrencySelectionViewPr
         view.delegate = self
         return view
     }()
+    
+    func updateCurrenciesList(currencies: [Currency]?) {
+        currencySelectionView.updateCurrenciesList(currencies: currencies)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

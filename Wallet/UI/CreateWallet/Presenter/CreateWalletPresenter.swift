@@ -8,6 +8,7 @@
 import UIKit
 
 class CreateWalletPresenter: CreateWalletPresenterProtocol {
+    private var isButtonEnabled: Bool = false
     private let service: CreateWalletServiceProtocol
     private let router: CreateWalletRouterProtocol
     weak var view: CreateWalletViewProtocol?
@@ -26,6 +27,21 @@ class CreateWalletPresenter: CreateWalletPresenterProtocol {
     }
     
     func cellCurrencyInfoDidTap() {
-        router.openCurrencySelection()
+        router.openCurrencySelection(delegate: self)
+    }
+    
+    func textFieldDidChanchedValue(text: String?) {
+        if text != "" {
+            isButtonEnabled = true
+        } else {
+            isButtonEnabled = false
+        }
+        view?.updateActionButtonState(isActive: isButtonEnabled)
+    }
+}
+
+extension CreateWalletPresenter: CurrencySelectionDelegateProtocol {
+    func updateSelectedCurrency(currency: Currency) {
+        
     }
 }

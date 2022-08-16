@@ -9,7 +9,4 @@ import Foundation
 
 class CurrencySelectionRouter: CurrencySelectionRouterProtocol {
     weak var view: CurrencySelectionViewProtocol?
-    
-    init() {
-    }
 }

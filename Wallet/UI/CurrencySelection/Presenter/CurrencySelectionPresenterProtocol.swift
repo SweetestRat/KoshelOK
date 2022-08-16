@@ -8,6 +8,9 @@
 import Foundation
 
 protocol CurrencySelectionPresenterProtocol {
+    var delegate: CurrencySelectionDelegateProtocol? { get set }
+    var currenciesList: [Currency]? { get }
+    
     func getSelectedRow() -> Int?
     func setSelectedRow(row: Int)
     func controllerLoaded()
