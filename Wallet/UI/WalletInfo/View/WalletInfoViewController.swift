@@ -32,5 +32,27 @@ class WalletInfoViewController: UIViewController, WalletInfoViewProtocol {
         walletInfoView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        addTargets()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let button = UIBarButtonItem(image: UIImage(systemName: "gearshape"), landscapeImagePhone: nil, style: .plain, target: self, action: #selector(settingsDidTap))
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        navigationItem.rightBarButtonItem = button
+    }
+    
+    @objc func settingsDidTap() {
+        presenter.settingsDidTap()
+    }
+    
+    private func addTargets() {
+        walletInfoView.addButtonTarget(self, action: #selector(createOperationButtonDidTap), for: .touchUpInside)
+    }
+    
+    @objc private func createOperationButtonDidTap() {
+        presenter.createOperationButtonDidTap()
     }
 }

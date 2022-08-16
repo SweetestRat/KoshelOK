@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WalletDesignKit
 
 class CreateWalletViewController: UIViewController, CreateWalletViewProtocol {
     private let presenter: CreateWalletPresenterProtocol
@@ -34,6 +35,9 @@ class CreateWalletViewController: UIViewController, CreateWalletViewProtocol {
         
         setup()
         setNavigationBar()
+        setObservers()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        createWalletView.addGestureRecognizer(tap)
     }
     
     private func setup() {
@@ -52,6 +56,37 @@ class CreateWalletViewController: UIViewController, CreateWalletViewProtocol {
     
     @objc private func openWalletsList() {
         presenter.createWallet()
+    }
+    
+    private func setObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardAnimationParameters = KeyboardAnimationParameters(notification: notification) else { return }
+        let keyboardHeight = keyboardAnimationParameters.keyboardFrame.height
+        let bottomSafeAreaHeight = view.safeAreaInsets.bottom
+        let inset = keyboardHeight - bottomSafeAreaHeight + CGFloat(MediumPadding)
+        
+        updateConstraints(inset: inset, keyboardAnimationParameters: keyboardAnimationParameters)
+    }
+    
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        guard let keyboardAnimationParameters = KeyboardAnimationParameters(notification: notification) else { return }
+        updateConstraints(inset: CGFloat(MediumPadding), keyboardAnimationParameters: keyboardAnimationParameters)
+    }
+    
+    private func updateConstraints(inset: CGFloat, keyboardAnimationParameters: KeyboardAnimationParameters) {
+        createWalletView.updateBottomInset(valueInset: inset)
+        
+        UIView.animate(using: keyboardAnimationParameters) {
+            self.createWalletView.layoutIfNeeded()
+        }
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 
