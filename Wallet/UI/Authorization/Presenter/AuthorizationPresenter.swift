@@ -17,7 +17,16 @@ class AuthorizationPresenter: AuthorizationPresenterProtocol {
         self.router = router
     }
     
-    func actionButtonDidTap() {
-        router.openWalletsList()
+    func actionButtonDidTap(email: String) {
+        let user = CreateUserModel(mail: email)
+        guard let data = try? JSONEncoder().encode(user) else { return }
+        service.createUser(data: data) { [weak self] result in
+            switch result {
+            case .success(let user):
+                self?.router.openWalletsList(userId: user.id)
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
     }
 }

@@ -8,5 +8,5 @@
 import Foundation
 
 protocol AuthorizationServiceProtocol {
-    
+    func createUser(data: Data, completion: @escaping (Result<User, Error>) -> Void)
 }

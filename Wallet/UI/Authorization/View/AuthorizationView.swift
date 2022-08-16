@@ -24,7 +24,7 @@ class AuthorizationView: UIView {
         return icon
     }()
     
-    private lazy var nameTextField: UITextField = {
+    private lazy var nameTextField: BaseInputTextField = {
         let textField = BaseInputTextField(placeholder: "username@koshelok.ru")
         textField.returnKeyType = .done
         textField.delegate = self
@@ -92,6 +92,11 @@ class AuthorizationView: UIView {
     
     func updateBottomInset(valueInset: CGFloat) {
         bottomConstraint?.update(inset: valueInset)
+    }
+    
+    func getEmail() -> String {
+        guard let email = nameTextField.text else { return "" }
+        return email
     }
 }
 

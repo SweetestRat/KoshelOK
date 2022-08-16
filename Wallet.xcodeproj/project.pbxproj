@@ -65,6 +65,8 @@
 		2DC3D4ED28ABE286005C9FB7 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3D4EC28ABE286005C9FB7 /* CategoryViewModel.swift */; };
 		2DC3D4F028ABFDA6005C9FB7 /* DatePickerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3D4EF28ABFDA6005C9FB7 /* DatePickerAssembly.swift */; };
 		2DC3D4F228ABFE4B005C9FB7 /* CreateOperationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3D4F128ABFE4B005C9FB7 /* CreateOperationView.swift */; };
+		2DC3D4FA28AC25AA005C9FB7 /* AuthorizationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3D4F928AC25AA005C9FB7 /* AuthorizationRequest.swift */; };
+		2DC3D4FC28AC26BE005C9FB7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3D4FB28AC26BE005C9FB7 /* User.swift */; };
 		4C4FB08528A7833D00D23CD2 /* AuthorizationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB08028A7833D00D23CD2 /* AuthorizationPresenter.swift */; };
 		4C4FB08628A7833D00D23CD2 /* AuthorizationPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB08128A7833D00D23CD2 /* AuthorizationPresenterProtocol.swift */; };
 		4C4FB08728A7833D00D23CD2 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB08328A7833D00D23CD2 /* AuthorizationViewController.swift */; };
@@ -179,6 +181,8 @@
 		2DC3D4EC28ABE286005C9FB7 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		2DC3D4EF28ABFDA6005C9FB7 /* DatePickerAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerAssembly.swift; sourceTree = "<group>"; };
 		2DC3D4F128ABFE4B005C9FB7 /* CreateOperationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOperationView.swift; sourceTree = "<group>"; };
+		2DC3D4F928AC25AA005C9FB7 /* AuthorizationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRequest.swift; sourceTree = "<group>"; };
+		2DC3D4FB28AC26BE005C9FB7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4C4FB08028A7833D00D23CD2 /* AuthorizationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationPresenter.swift; sourceTree = "<group>"; };
 		4C4FB08128A7833D00D23CD2 /* AuthorizationPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationPresenterProtocol.swift; sourceTree = "<group>"; };
 		4C4FB08328A7833D00D23CD2 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
@@ -501,6 +505,7 @@
 				2DC3D4D228ABB4DC005C9FB7 /* Income.swift */,
 				2DC3D4D428ABB509005C9FB7 /* Expanse.swift */,
 				2DC3D4EA28ABC771005C9FB7 /* Category.swift */,
+				2DC3D4FB28AC26BE005C9FB7 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -568,6 +573,7 @@
 			children = (
 				4C4FB08E28A7AA0B00D23CD2 /* AuthorizationService.swift */,
 				4C4FB09028A7AAD600D23CD2 /* AuthorizationServiceProtocol.swift */,
+				2DC3D4F928AC25AA005C9FB7 /* AuthorizationRequest.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1001,6 +1007,7 @@
 				2DC3D4E128ABB7AE005C9FB7 /* WalletViewModel.swift in Sources */,
 				83AF6EF028A6351600BB91CB /* WalletsListCell.swift in Sources */,
 				2DA96D9828A69492005F791F /* CreateWalletViewProtocol.swift in Sources */,
+				2DC3D4FC28AC26BE005C9FB7 /* User.swift in Sources */,
 				2DA96DBF28A694C9005F791F /* CreateWalletRouter.swift in Sources */,
 				2DC3D4CD28ABB326005C9FB7 /* Wallet.swift in Sources */,
 				68F646ED289D3BAE00DAAE91 /* ViewController.swift in Sources */,
@@ -1016,6 +1023,7 @@
 				2DA6464728A6D8B400EF8755 /* StartScreenPresenterProtocol.swift in Sources */,
 				2DC3D4D128ABB426005C9FB7 /* Currency.swift in Sources */,
 				2DA96DC728A695CB005F791F /* CreateWalletView.swift in Sources */,
+				2DC3D4FA28AC25AA005C9FB7 /* AuthorizationRequest.swift in Sources */,
 				4C77E21028A654B8002DE431 /* StartScreenView.swift in Sources */,
 				83F3DDB328A839FC00F176BD /* CreateOperationViewProtocol.swift in Sources */,
 				4C4FB09328A7B2FF00D23CD2 /* AuthorizationRouter.swift in Sources */,

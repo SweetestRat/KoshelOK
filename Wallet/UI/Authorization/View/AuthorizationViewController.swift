@@ -39,7 +39,8 @@ class AuthorizationViewController: UIViewController, AuthorizationViewProtocol {
     }
     
     @objc private func actionButtonDidTap() {
-        presenter.actionButtonDidTap()
+        let email = mainView.getEmail()
+        presenter.actionButtonDidTap(email: email)
     }
     
     private func addGestureRecognizer() {
