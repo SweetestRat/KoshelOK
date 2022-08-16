@@ -12,7 +12,7 @@ extension NSError {
 }
 
 class URLRequestConstructor {
-    func constractURL<T: NetworkRequestProtocol>(from request: T) throws -> URLRequest {
+    func constractURLRequest<T: NetworkRequestProtocol>(from request: T) throws -> URLRequest {
         var components = URLComponents(string: request.baseUrl)
         
         components?.path = request.path

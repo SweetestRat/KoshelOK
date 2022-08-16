@@ -10,5 +10,6 @@ import Foundation
 struct Category: Decodable {
     let id: Int
     let name: String
-    let iconId: Int
+    let iconName: String
+    let iconColor: String
 }

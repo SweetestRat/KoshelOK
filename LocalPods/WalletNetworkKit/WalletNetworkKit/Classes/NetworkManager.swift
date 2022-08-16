@@ -8,7 +8,7 @@
 import Foundation
 
 final public class NetworkManager {
-    var urlConstructor = URLConstructor()
+    var urlRequestConstructor = URLRequestConstructor()
     
     public init() {}
     
@@ -22,7 +22,7 @@ final public class NetworkManager {
     private let session = URLSession.shared
 
     public func loadRequest<T: NetworkRequestProtocol>(request: T, completion: @escaping (Result<T.Model, Error>) -> Void) {
-        guard let url = try? urlConstructor.constractURL(from: request) else {
+        guard let url = try? urlRequestConstructor.constractURLRequest(from: request) else {
             completion(.failure(NSError.defaultError))
             return
         }

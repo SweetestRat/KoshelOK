@@ -16,14 +16,14 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
     
 //  TEST
     private var listOfCategories: [Category] = [
-        Category(iconSystemImage: "fork.knife", title: "Кафе и рестораны", color: "#7765C0"),
-        Category(iconSystemImage: "cart", title: "Супермаркеты", color: "#339FEE"),
-        Category(iconSystemImage: "figure.walk", title: "Спортзал", color: "#994747"),
-        Category(iconSystemImage: "bus", title: "Общественный транспорт", color: "#EE33BA"),
-        Category(iconSystemImage: "pills.fill", title: "Медицина", color: "#16DC71"),
-        Category(iconSystemImage: "fuelpump.fill", title: "Бензин", color: "#EEA333"),
-        Category(iconSystemImage: "house.fill", title: "Квартплата", color: "#91397D"),
-        Category(iconSystemImage: "sun.max.fill", title: "Отпуск", color: "#EEDB33")
+        Category(id: 0, name: "Кафе и рестораны", iconName: "fork.knife", iconColor: "#7765C0"),
+        Category(id: 0, name: "Супермаркеты", iconName: "cart", iconColor: "#339FEE"),
+        Category(id: 0, name: "Спортзал", iconName: "figure.walk", iconColor: "#994747"),
+        Category(id: 0, name: "Общественный транспорт", iconName: "bus", iconColor: "#EE33BA"),
+        Category(id: 0, name: "Медицина", iconName: "pills.fill", iconColor: "#16DC71"),
+        Category(id: 0, name: "Бензин", iconName: "fuelpump.fill", iconColor: "#EEA333"),
+        Category(id: 0, name: "Квартплата", iconName: "house.fill", iconColor: "#91397D"),
+        Category(id: 0, name: "Отпуск", iconName: "sun.max.fill", iconColor: "#EEDB33")
     ]
     
     init(service: CategoriesServiceProtocol) {
