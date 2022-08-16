@@ -20,6 +20,7 @@ class CreateWalletPresenter: CreateWalletPresenterProtocol {
     
     func createWallet() {
         service.createWallet()
+        openWalletsList()
     }
     
     func openWalletsList() {
