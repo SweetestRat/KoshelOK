@@ -19,9 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let rootViewController: UIViewController
         let userSettings = UserSettings.userDefaults
         
-        
-        let userId = userSettings.userId ?? 0
-        if userId != 0 {
+        if let userId = userSettings.userId  {
             rootViewController = WalletsListsControllerAssembly().assembly(userId: userId)
         } else {
             rootViewController = StartScreenAssembly().assembly()
