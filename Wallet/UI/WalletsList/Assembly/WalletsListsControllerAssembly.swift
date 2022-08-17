@@ -8,10 +8,10 @@
 import UIKit
 
 class WalletsListsControllerAssembly {
-    func assembly() -> UIViewController {
+    func assembly(userId: Int) -> UIViewController {
         let service = WalletsListService()
         let router = WalletsListRouter()
-        let presenter = WalletsListScreenPresenter(service: service, router: router)
+        let presenter = WalletsListScreenPresenter(service: service, router: router, userId: userId)
         let viewController = WalletsListViewController(presenter: presenter)
         
         presenter.view = viewController

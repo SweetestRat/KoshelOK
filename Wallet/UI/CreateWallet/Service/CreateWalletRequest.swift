@@ -17,11 +17,12 @@ struct CreateWalletRequest: NetworkRequestProtocol {
     typealias Model = Wallet
     
     var path: String { "/koshelok/wallet" }
-    var parameters: [String: String]? { nil }
+    var parameters: [String: String]?
     var method: RequestMethod { .post }
     var body: Data?
 
-    init(data: Data) {
+    init(data: Data, userId: Int) {
         self.body = data
+        self.parameters = ["userId": "\(userId)"]
     }
 }

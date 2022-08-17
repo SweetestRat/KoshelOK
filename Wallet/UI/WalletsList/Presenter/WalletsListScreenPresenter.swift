@@ -11,11 +11,14 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
     weak var view: WalletsListControllerProtocol?
     private let router: WalletsListRouterProtocol
     private let service: WalletsListServiceProtocol
+    private var userId: Int?
     
-    init(service: WalletsListServiceProtocol, router: WalletsListRouterProtocol) {
+    init(service: WalletsListServiceProtocol, router: WalletsListRouterProtocol, userId: Int) {
         self.service = service
         self.router = router
+        self.userId = userId
     }
+    
     func controllerLoaded() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) { [weak self] in
             self?.view?.updateWalletsList(

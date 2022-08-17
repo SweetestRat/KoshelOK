@@ -18,7 +18,7 @@ class CreateWalletService: CreateWalletServiceProtocol {
     func createWallet(data: CreateWalletModel, completion: @escaping (Result<Wallet, Error>) -> Void) {
         guard let data = try? JSONEncoder().encode(data) else { return }
         
-        let request = CreateWalletRequest(data: data)
+        let request = CreateWalletRequest(data: data, userId: 3) // TODO: get userId from UserDefault
         
         networkManager.loadRequest(request: request) { result in
             switch result {

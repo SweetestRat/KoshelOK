@@ -8,5 +8,5 @@
 import Foundation
 
 protocol AuthorizationRouterProtocol: AnyObject {
-    func openWalletsList()
+    func openWalletsList(userId: Int)
 }

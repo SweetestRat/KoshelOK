@@ -93,6 +93,11 @@ class AuthorizationView: UIView {
     func updateBottomInset(valueInset: CGFloat) {
         bottomConstraint?.update(inset: valueInset)
     }
+    
+    func getEmail() -> String? {
+        let email = nameTextField.text
+        return email
+    }
 }
 
 extension AuthorizationView: UITextFieldDelegate {
