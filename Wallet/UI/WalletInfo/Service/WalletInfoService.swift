@@ -14,4 +14,17 @@ class WalletInfoService: WalletInfoServiceProtocol {
     init(networkManager: NetworkManager) {
         self.networkManager = networkManager
     }
+    
+//    func getWalletInfo(userId: Int, walletId: Int, completion: @escaping (Result<Wallet, Error>) -> Void) {
+//        let request = OperationRequest(userId: userId, walletId: walletId)
+//        
+//        networkManager.loadRequest(request: request) { result in
+//            switch result {
+//            case .success(let resultData):
+//                completion(.success(resultData))
+//            case .failure(let error):
+//                completion(.failure(error))
+//            }
+//        }
+//    }
 }

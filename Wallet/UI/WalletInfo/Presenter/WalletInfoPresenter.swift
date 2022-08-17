@@ -15,6 +15,7 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
     
     private var walletId: Int
     private var operations: [[OperationViewModel]]?
+    private var wallet: Wallet?
     
     init(walletInfoService: WalletInfoServiceProtocol, operationService: WalletOperationsServiceProtocol, router: WalletInfoRouterProtocol, walletId: Int) {
         self.walletInfoService = walletInfoService
@@ -25,9 +26,11 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
     
     func controllerLoaded() {
         guard let id = UserSettings.userDefaults.userId else { return }
+        
         operationService.getWalletOperations(userId: id, walletId: walletId) { [weak self] result in
             switch result {
             case .success(let operations):
+                self?.updateBalances()
                 self?.mapOperations(operations: operations)
                 DispatchQueue.main.sync {
                     self?.view?.updateOperationsList()
@@ -60,6 +63,7 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
     }
     
     private func mapOperations(operations: [Operation]) {
+        guard !operations.isEmpty else { return }
         self.operations = []
         var sectionDate = dMMMDateFormatter.instance.format(timeStamp: operations[0].date)
         var sectionOperations: [OperationViewModel] = []
@@ -86,5 +90,8 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
         }
         
         self.operations?.append(sectionOperations)
+    }
+    
+    private func updateBalances() {
     }
 }
