@@ -13,7 +13,7 @@ private enum SettingsKeys: String {
 }
 
 final class UserSettings {
-    private let userDefaults: UserDefaults?
+    private let userDefaults: UserDefaults
     
     static let userDefaults = UserSettings(userDefaults: UserDefaults())
     
@@ -23,26 +23,22 @@ final class UserSettings {
     
     var userId: Int? {
         get {
-            return userDefaults?.integer(forKey: SettingsKeys.userId.rawValue)
+            return userDefaults.object(forKey: SettingsKeys.userId.rawValue) as? Int
         } set {
             let key = SettingsKeys.userId.rawValue
-            if let name = newValue {
-                userDefaults?.set(name, forKey: key)
-            } else {
-                userDefaults?.removeObject(forKey: key)
-            }
+            userDefaults.set(newValue, forKey: key)
         }
     }
     
     var userName: String? {
         get {
-            return userDefaults?.string(forKey: SettingsKeys.userName.rawValue)
+            return userDefaults.string(forKey: SettingsKeys.userName.rawValue)
         } set {
             let key = SettingsKeys.userName.rawValue
             if let name = newValue {
-                userDefaults?.set(name, forKey: key)
+                userDefaults.set(name, forKey: key)
             } else {
-                userDefaults?.removeObject(forKey: key)
+                userDefaults.removeObject(forKey: key)
             }
         }
     }
