@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: sceneDelegate)
         
         let rootViewController: UIViewController
-        let userSettings = UserSettings.singleton
+        let userSettings = UserSettings.userDefaults
         
         
         let userId = userSettings.userId ?? 0

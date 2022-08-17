@@ -15,7 +15,7 @@ private enum SettingsKeys: String {
 final class UserSettings {
     private let userDefaults: UserDefaults?
     
-    static let singleton = UserSettings(userDefaults: UserDefaults())
+    static let userDefaults = UserSettings(userDefaults: UserDefaults())
     
     init(userDefaults: UserDefaults) {
         self.userDefaults = userDefaults

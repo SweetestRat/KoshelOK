@@ -22,8 +22,8 @@ class AuthorizationPresenter: AuthorizationPresenterProtocol {
         service.createUser(data: user) { [weak self] result in
             switch result {
             case .success(let user):
-                UserSettings.singleton.userName = user.mail
-                UserSettings.singleton.userId = user.id
+                UserSettings.userDefaults.userName = user.mail
+                UserSettings.userDefaults.userId = user.id
                 DispatchQueue.main.async {
                     self?.router.openWalletsList(userId: user.id)
                 }
