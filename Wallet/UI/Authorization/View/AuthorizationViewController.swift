@@ -40,6 +40,7 @@ class AuthorizationViewController: UIViewController, AuthorizationViewProtocol {
     
     @objc private func actionButtonDidTap() {
         guard let email = mainView.getEmail() else { return }
+        mainView.changeLoadingState(state: .start)
         presenter.actionButtonDidTap(email: email)
     }
     
@@ -77,6 +78,10 @@ class AuthorizationViewController: UIViewController, AuthorizationViewProtocol {
         UIView.animate(using: keyboardAnimationParameters) {
             self.mainView.layoutIfNeeded()
         }
+    }
+    
+    func stopLoading() {
+        mainView.changeLoadingState(state: .stop)
     }
     
     func userCreationFailed(error: String) {

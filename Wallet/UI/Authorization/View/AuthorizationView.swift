@@ -9,6 +9,11 @@ import UIKit
 import WalletDesignKit
 import SnapKit
 
+enum loadingState {
+    case start
+    case stop
+}
+
 class AuthorizationView: UIView {
     private var bottomConstraint: Constraint?
     
@@ -97,6 +102,21 @@ class AuthorizationView: UIView {
     func getEmail() -> String? {
         let email = nameTextField.text
         return email
+    }
+    
+    func changeLoadingState(state: loadingState) {
+        switch state {
+        case .start:
+            actionButton.titleLabel?.layer.opacity = 0
+            actionButton.loadingIndicator.isHidden = false
+            actionButton.loadingIndicator.startAnimating()
+            actionButton.isEnabled = false
+        case .stop:
+            actionButton.titleLabel?.layer.opacity = 1
+            actionButton.loadingIndicator.isHidden = true
+            actionButton.loadingIndicator.stopAnimating()
+            actionButton.isEnabled = true
+        }
     }
 }
 
