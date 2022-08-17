@@ -8,6 +8,8 @@
 import Foundation
 
 protocol CreateWalletViewProtocol: AnyObject {
-    func updateCurrency(currency: CurrencyViewModel)
+    func updateCurrency(currency: Currency)
     func updateActionButtonState(isActive: Bool)
+    func getWalletName() -> String?
+    func walletCreationFailed(error: String)
 }

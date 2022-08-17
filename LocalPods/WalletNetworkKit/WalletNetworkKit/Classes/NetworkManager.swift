@@ -32,7 +32,7 @@ final public class NetworkManager {
                 completion(.failure(error))
                 return
             }
-
+            
             if let data = data {
                 do {
                     let object = try self.decoder.decode(T.Model.self, from: data)

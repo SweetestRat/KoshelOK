@@ -8,7 +8,7 @@
 import Foundation
 
 class CreateOperationPresenter: CreateOperationPresenterProtocol {
-    private var currency: CurrencyViewModel
+    private var currency: Currency
     private var date: Date
     private var category: Category
     
@@ -24,7 +24,7 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
         self.router = router
         
         // set default user currency (probable get from user account request)
-        currency = CurrencyViewModel(symbol: "THAI", fullName: "Thailand currency")
+        currency = Currency(id: 0, shortName: "RUB", longName: "Российский рубль")
         
         let timestamp = Date().timeIntervalSince1970
         let myTimeInterval = TimeInterval(timestamp)
@@ -65,7 +65,7 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
 }
 
 extension CreateOperationPresenter: CurrencySelectionDelegateProtocol {
-    func updateSelectedCurrency(currency: CurrencyViewModel) {
+    func updateSelectedCurrency(currency: Currency) {
         self.currency = currency
         view?.updateCurrency(currency: currency)
     }
