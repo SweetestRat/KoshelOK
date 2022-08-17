@@ -9,6 +9,8 @@ import Foundation
 
 protocol CurrencySelectionDelegateProtocol: AnyObject {
     func updateSelectedCurrency(currency: CurrencyViewModel)
+    func getSelectedRow() -> Int
+    func saveSelectedRow(row: Int)
 }
 
 class CurrencySelectionPresenter: CurrencySelectionPresenterProtocol {
@@ -26,13 +28,14 @@ class CurrencySelectionPresenter: CurrencySelectionPresenterProtocol {
     }
     
     func getSelectedRow() -> Int? {
-        return selectedIndexPathRow
+        return delegate?.getSelectedRow()
     }
     
     func setSelectedRow(row: Int) {
         selectedIndexPathRow = row
         let currency = currenciesList[row]
         
+        delegate?.saveSelectedRow(row: row)
         delegate?.updateSelectedCurrency(currency: currency)
     }
     
