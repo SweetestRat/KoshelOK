@@ -77,13 +77,16 @@ class WalletInfoView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        let balance = BalanceViewModel(value: 125,
+                                       currency: CurrencyViewModel(symbol: "RUB",
+                                                                   fullName: "Russian")
+        )
+        
         walletInfo = Array(repeating:
                         WalletViewModel(name: "Wallet Name",
-                                        balance:
-                                            BalanceViewModel(value: 125,
-                                                             currency:
-                                                                CurrencyViewModel(symbol: "RUB",
-                                                                                  fullName: "Russian"))), count: 12)
+                                        balance:balance,
+                                        income: balance,
+                                        expanse: balance), count: 12)
         
         walletsTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
 

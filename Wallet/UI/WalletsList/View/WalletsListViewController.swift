@@ -31,6 +31,10 @@ class WalletsListViewController: UIViewController, WalletsListControllerProtocol
         screenView.updateWalletsList()
     }
     
+    func updateBalances(commonBalance: BalanceViewModel?, income: BalanceViewModel?, expanse: BalanceViewModel?) {
+        screenView.updateBalances(commonBalance: commonBalance, income: income, expanse: expanse)
+    }
+    
     func walletsLoadingError(error: String) {
         
     }
