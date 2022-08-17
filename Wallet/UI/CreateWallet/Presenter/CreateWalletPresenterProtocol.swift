@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CreateWalletPresenterProtocol: AnyObject {
-    func createWallet()
+    func createButtonDidTap()
     func openWalletsList()
     func cellCurrencyInfoDidTap()
     func textFieldDidChanchedValue(text: String?)

@@ -6,10 +6,27 @@
 //
 
 import UIKit
+import WalletNetworkKit
 
 class CreateWalletService: CreateWalletServiceProtocol {
-    func createWallet() {
-        // call api to create wallet
-        // if success ->
+    private let networkManager: NetworkManager
+    
+    init(networkManager: NetworkManager) {
+        self.networkManager = networkManager
+    }
+    
+    func createWallet(data: CreateWalletModel, completion: @escaping (Result<Wallet, Error>) -> Void) {
+        guard let data = try? JSONEncoder().encode(data) else { return }
+        
+        let request = CreateWalletRequest(data: data)
+        
+        networkManager.loadRequest(request: request) { result in
+            switch result {
+            case .success(let resultData):
+                completion(.success(resultData))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }

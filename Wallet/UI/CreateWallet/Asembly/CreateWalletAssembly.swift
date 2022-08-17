@@ -6,10 +6,13 @@
 //
 import Foundation
 import UIKit
+import WalletNetworkKit
 
 class CreateWalletAssembly {
     func assembly() -> CreateWalletViewController {
-        let service = CreateWalletService()
+        let networkManager = NetworkManager()
+        
+        let service = CreateWalletService(networkManager: networkManager)
         let router = CreateWalletRouter()
         let presenter = CreateWalletPresenter(service: service, router: router)
         let viewController = CreateWalletViewController(presenter: presenter)

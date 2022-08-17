@@ -14,14 +14,30 @@ class CreateWalletPresenter: CreateWalletPresenterProtocol {
     weak var view: CreateWalletViewProtocol?
     
     private var currencySeletedRow: Int?
+    private var currency: Currency?
     
     init(service: CreateWalletServiceProtocol, router: CreateWalletRouterProtocol) {
         self.service = service
         self.router = router
     }
     
-    func createWallet() {
-        service.createWallet()
+    func createButtonDidTap() {
+        guard let walletName = view?.getWalletName(),
+              let id = currency?.id else { return }
+        
+        let createWalletModel = CreateWalletModel(name: walletName, currencyId: id)
+        service.createWallet(data: createWalletModel) { [weak self] result in
+            switch result {
+            case .success(let wallet):
+                print(wallet)
+                DispatchQueue.main.async {
+                    self?.router.openWalletsList()
+                }
+            case .failure(let error):
+                self?.view?.walletCreationFailed(error: error.localizedDescription)
+            }
+        }
+        
         openWalletsList()
     }
     
@@ -44,7 +60,8 @@ class CreateWalletPresenter: CreateWalletPresenterProtocol {
 }
 
 extension CreateWalletPresenter: CurrencySelectionDelegateProtocol {
-    func updateSelectedCurrency(currency: CurrencyViewModel) {
+    func updateSelectedCurrency(currency: Currency) {
+        self.currency = currency
         view?.updateCurrency(currency: currency)
     }
     

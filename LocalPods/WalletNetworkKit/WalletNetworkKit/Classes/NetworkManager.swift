@@ -27,12 +27,14 @@ final public class NetworkManager {
             return
         }
         
-        let task = session.dataTask(with: url) { data, _, error in
+        let task = session.dataTask(with: url) { data, response, error in
             if let error = error {
                 completion(.failure(error))
                 return
             }
 
+            print(response)
+            
             if let data = data {
                 do {
                     let object = try self.decoder.decode(T.Model.self, from: data)

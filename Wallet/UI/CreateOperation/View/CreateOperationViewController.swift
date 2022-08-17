@@ -18,7 +18,7 @@ class CreateOperationViewController: UIViewController, CreateOperationViewProtoc
         return view
     }()
     
-    public func updateCurrency(currency: CurrencyViewModel) {
+    public func updateCurrency(currency: Currency) {
         createOperationView.updateCurrency(currency: currency)
     }
     
