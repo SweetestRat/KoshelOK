@@ -10,7 +10,7 @@ import SnapKit
 
 public class BaseInputTextField: UITextField {
     var placeholderText: String?
-    public var title: String?
+    var title: String?
     
     private lazy var stroke: UIView = {
        let view = UIView()
