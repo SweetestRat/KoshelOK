@@ -7,6 +7,11 @@
 
 import UIKit
 
+public enum loadingState {
+    case start
+    case stop
+}
+
 public class BaseButton: UIButton {
     
     override public var isEnabled: Bool {

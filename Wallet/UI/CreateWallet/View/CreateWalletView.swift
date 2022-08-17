@@ -104,6 +104,21 @@ class CreateWalletView: UIView {
     func getWalletName() -> String? {
        return nameTextField.text
     }
+    
+    func changeLoadingState(state: loadingState) {
+        switch state {
+        case .start:
+            nextButton.titleLabel?.layer.opacity = 0
+            nextButton.loadingIndicator.isHidden = false
+            nextButton.loadingIndicator.startAnimating()
+            nextButton.isEnabled = false
+        case .stop:
+            nextButton.titleLabel?.layer.opacity = 1
+            nextButton.loadingIndicator.isHidden = true
+            nextButton.loadingIndicator.stopAnimating()
+            nextButton.isEnabled = true
+        }
+    }
 }
 
 extension CreateWalletView: UITextFieldDelegate {

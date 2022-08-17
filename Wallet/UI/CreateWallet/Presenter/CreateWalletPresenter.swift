@@ -14,7 +14,7 @@ class CreateWalletPresenter: CreateWalletPresenterProtocol {
     weak var view: CreateWalletViewProtocol?
     
     private var currencySeletedRow: Int?
-    private var currency: Currency?
+    private var currency: Currency = Currency(id: 1, shortName: "RUB", longName: "Российский рубль")
     
     init(service: CreateWalletServiceProtocol, router: CreateWalletRouterProtocol) {
         self.service = service
@@ -22,15 +22,15 @@ class CreateWalletPresenter: CreateWalletPresenterProtocol {
     }
     
     func createButtonDidTap() {
-        guard let walletName = view?.getWalletName(),
-              let id = currency?.id else { return }
+        guard let walletName = view?.getWalletName() else { return }
         
-        let createWalletModel = CreateWalletModel(name: walletName, currencyId: id)
+        let createWalletModel = CreateWalletModel(name: walletName, currencyId: currency.id)
         service.createWallet(data: createWalletModel) { [weak self] result in
             switch result {
             case .success(let wallet):
                 print(wallet)
                 DispatchQueue.main.async {
+                    self?.view?.stopLoading()
                     self?.router.openWalletsList()
                 }
             case .failure(let error):
@@ -56,6 +56,11 @@ class CreateWalletPresenter: CreateWalletPresenterProtocol {
             isButtonEnabled = false
         }
         view?.updateActionButtonState(isActive: isButtonEnabled)
+    }
+    
+    func controllerLoaded() {
+        
+        view?.updateCurrency(currency: currency)
     }
 }
 

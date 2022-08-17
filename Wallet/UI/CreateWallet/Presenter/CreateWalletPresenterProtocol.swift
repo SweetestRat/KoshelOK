@@ -12,4 +12,5 @@ protocol CreateWalletPresenterProtocol: AnyObject {
     func openWalletsList()
     func cellCurrencyInfoDidTap()
     func textFieldDidChanchedValue(text: String?)
+    func controllerLoaded()
 }

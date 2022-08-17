@@ -9,11 +9,6 @@ import UIKit
 import WalletDesignKit
 import SnapKit
 
-enum loadingState {
-    case start
-    case stop
-}
-
 class AuthorizationView: UIView {
     private var bottomConstraint: Constraint?
     
