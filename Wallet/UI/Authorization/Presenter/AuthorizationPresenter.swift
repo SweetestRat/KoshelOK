@@ -17,7 +17,17 @@ class AuthorizationPresenter: AuthorizationPresenterProtocol {
         self.router = router
     }
     
-    func actionButtonDidTap() {
-        router.openWalletsList()
+    func actionButtonDidTap(email: String) {
+        let user = CreateUserModel(mail: email)
+        service.createUser(data: user) { [weak self] result in
+            switch result {
+            case .success(let user):
+                DispatchQueue.main.async {
+                    self?.router.openWalletsList(userId: user.id)
+                }
+            case .failure(let error):
+                self?.view?.userCreationFailed(error: error.localizedDescription)
+            }
+        }
     }
 }

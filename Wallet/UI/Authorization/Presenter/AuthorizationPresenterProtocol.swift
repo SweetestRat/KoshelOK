@@ -8,5 +8,5 @@
 import Foundation
 
 protocol AuthorizationPresenterProtocol: AnyObject {
-    func actionButtonDidTap()
+    func actionButtonDidTap(email: String)
 }

@@ -39,7 +39,8 @@ class AuthorizationViewController: UIViewController, AuthorizationViewProtocol {
     }
     
     @objc private func actionButtonDidTap() {
-        presenter.actionButtonDidTap()
+        guard let email = mainView.getEmail() else { return }
+        presenter.actionButtonDidTap(email: email)
     }
     
     private func addGestureRecognizer() {
@@ -76,5 +77,9 @@ class AuthorizationViewController: UIViewController, AuthorizationViewProtocol {
         UIView.animate(using: keyboardAnimationParameters) {
             self.mainView.layoutIfNeeded()
         }
+    }
+    
+    func userCreationFailed(error: String) {
+        // TODO: show error allert
     }
 }
