@@ -12,13 +12,22 @@ class AuthorizationPresenter: AuthorizationPresenterProtocol {
     private let router: AuthorizationRouterProtocol
     weak var view: AuthorizationViewProtocol?
     
+    private var email: String?
+    
     init(service: AuthorizationServiceProtocol, router: AuthorizationRouterProtocol) {
         self.service = service
         self.router = router
     }
     
-    func actionButtonDidTap(email: String) {
-        let user = CreateUserModel(mail: email)
+    func emailDidChange(email: String) {
+        self.email = email
+        let isValid = email.count < 3 || email ~= emailRegex
+        view?.updateEmailValidationState(isValid: isValid)
+        view?.updateActionButtonState(isEnabled: email ~= emailRegex)
+    }
+    
+    func actionButtonDidTap() {
+        let user = CreateUserModel(mail: email ?? "")
         service.createUser(data: user) { [weak self] result in
             switch result {
             case .success(let user):

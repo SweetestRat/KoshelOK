@@ -9,7 +9,12 @@ import UIKit
 import WalletDesignKit
 import SnapKit
 
+protocol AuthorizationViewDelegateProtocol: AnyObject {
+    func emailDidChange(email: String)
+}
+
 class AuthorizationView: UIView {
+    weak var delegate: AuthorizationViewDelegateProtocol?
     private var bottomConstraint: Constraint?
     
     private lazy var actionButton: BaseButton = {
@@ -24,7 +29,16 @@ class AuthorizationView: UIView {
         return icon
     }()
     
-    private lazy var nameTextField: UITextField = {
+    private lazy var incorrectMailLabel: UILabel = {
+        let view = UILabel()
+        view.text = "Неправильная почта"
+        view.font = .SFProMedium13
+        view.textColor = .designRedColor
+        view.isHidden = true
+        return view
+    }()
+    
+    private lazy var nameTextField: BaseInputTextField = {
         let textField = BaseInputTextField(placeholder: "username@koshelok.ru")
         textField.returnKeyType = .done
         textField.delegate = self
@@ -48,6 +62,7 @@ class AuthorizationView: UIView {
         [
             logoIcon,
             nameTextField,
+            incorrectMailLabel,
             actionButton
         ].forEach { self.addSubview($0) }
     }
@@ -72,6 +87,11 @@ class AuthorizationView: UIView {
             make.height.equalTo(TableViewCellHeight)
         }
         
+        incorrectMailLabel.snp.makeConstraints { make in
+            make.top.equalTo(nameTextField.snp.bottom).offset(SmallPadding)
+            make.leading.equalTo(nameTextField.stroke.snp.leading)
+        }
+        
     }
         
     private func addTargets() {
@@ -79,11 +99,7 @@ class AuthorizationView: UIView {
     }
     
     @objc func textFieldDidChangeValue() {
-        if let text = nameTextField.text, !text.isEmpty {
-            actionButton.isEnabled = true
-        } else {
-            actionButton.isEnabled = false
-        }
+        delegate?.emailDidChange(email: nameTextField.text ?? "")
     }
     
     func addButtonTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
@@ -94,9 +110,17 @@ class AuthorizationView: UIView {
         bottomConstraint?.update(inset: valueInset)
     }
     
-    func getEmail() -> String? {
-        let email = nameTextField.text
-        return email
+    func updateActionButtonState(isEnabled: Bool) {
+        actionButton.isEnabled = isEnabled
+    }
+    
+    func updateEmailValidationState(isValid: Bool) {
+        if isValid {
+            nameTextField.stroke.backgroundColor = .inactiveButtonBackground
+        } else {
+            nameTextField.stroke.backgroundColor = .designRedColor
+        }
+        incorrectMailLabel.isHidden = isValid
     }
     
     func changeLoadingState(state: loadingState) {
