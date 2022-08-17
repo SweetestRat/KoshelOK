@@ -67,8 +67,12 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
             let date = dMMMDateFormatter.instance.format(timeStamp: operation.date)
             let time = TimeFormatter.instance.format(timeStamp: operation.date)
             
-            let viewModel = OperationViewModel(category: operation.categoryDto,
-                                               balance: operation.balanceDto.amount,
+            let viewModel = OperationViewModel(category: CategoryViewModel(name: operation.categoryDto.name,
+                                                                           iconName: operation.categoryDto.iconName,
+                                                                           iconColor: operation.categoryDto.iconColor),
+                                               balance: BalanceViewModel(value: Int(operation.balanceDto.amount) ?? 0,
+                                                                         currency: CurrencyViewModel(symbol: operation.balanceDto.currencyDto.shortName,
+                                                                                                     fullName: operation.balanceDto.currencyDto.longName)),
                                                date: date,
                                                time: time)
             

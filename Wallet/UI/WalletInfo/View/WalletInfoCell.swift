@@ -12,7 +12,6 @@ import WalletDesignKit
 class WalletInfoCell: UITableViewCell {
     var icon: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = CGFloat(IconSize / 2)
         return view
     }()
     
@@ -88,5 +87,27 @@ class WalletInfoCell: UITableViewCell {
             make.centerY.equalToSuperview()
         }
         
+        time.snp.makeConstraints { make in
+            make.trailing.equalToSuperview()
+        }
+    }
+    
+    func configurate(operation: OperationViewModel) {
+        category.text = operation.category.name
+        balance.text = operation.balance.toString()
+        let color = operation.category.iconColor
+        let imageName = operation.category.iconName
+        icon.backgroundColor = UIColor(hex: color)
+        let config = UIImage.SymbolConfiguration(scale: .large)
+        let image = UIImageView(image: UIImage(systemName: imageName, withConfiguration: config))
+        image.tintColor = .lightTextPrimaryColor
+        icon.addSubview(image)
+        
+        icon.layer.cornerRadius = CGFloat(IconSize / 2)
+        
+        image.snp.makeConstraints {make in
+            make.center.equalToSuperview()
+        }
+        backgroundColor = .background
     }
 }

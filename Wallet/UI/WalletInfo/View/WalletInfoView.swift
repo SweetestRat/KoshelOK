@@ -185,12 +185,8 @@ extension WalletInfoView: UITableViewDataSource {
             return WalletInfoCell()
         }
         
-        let operation = delegate?.getOperation(row: indexPath.row, section: indexPath.section)
-        cell.category.text = operation?.category.name
-        cell.balance.text = operation?.balance
-        guard let color = operation?.category.iconColor else { return cell }
-        cell.icon.backgroundColor = UIColor(hex: color)
-        cell.backgroundColor = .background
+        guard let operation = delegate?.getOperation(row: indexPath.row, section: indexPath.section) else { return cell }
+        cell.configurate(operation: operation)
         
         return cell
     }

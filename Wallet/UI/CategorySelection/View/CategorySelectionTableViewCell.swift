@@ -59,7 +59,7 @@ class CategorySelectionTableViewCell: UITableViewCell {
         
         let config = UIImage.SymbolConfiguration(scale: .large)
         let image = UIImageView(image: UIImage(systemName: parametres.iconName, withConfiguration: config))
-        image.tintColor = .white
+        image.tintColor = .lightTextPrimaryColor
         icon.addSubview(image)
         
         icon.layer.cornerRadius = CGFloat(IconSize / 2)
