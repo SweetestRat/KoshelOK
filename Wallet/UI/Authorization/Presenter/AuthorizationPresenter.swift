@@ -23,6 +23,7 @@ class AuthorizationPresenter: AuthorizationPresenterProtocol {
             switch result {
             case .success(let user):
                 DispatchQueue.main.async {
+                    self?.view?.stopLoading()
                     self?.router.openWalletsList(userId: user.id)
                 }
             case .failure(let error):

@@ -25,6 +25,13 @@ public class BaseButton: UIButton {
     
     var text: String?
     
+    public lazy var loadingIndicator: UIActivityIndicatorView = {
+        let activityIndicatorView = UIActivityIndicatorView()
+        activityIndicatorView.isHidden = true
+        activityIndicatorView.color = .darkTextPrimaryColor
+        return activityIndicatorView
+    }()
+    
     let activeBackgroundColor = UIColor.activeButtonBackground
     let inactiveBackgroundColor = UIColor.inactiveButtonBackground
     let activeTextColor = UIColor.lightTextPrimaryColor
@@ -40,6 +47,8 @@ public class BaseButton: UIButton {
         }
         
         setup()
+        addSubviews()
+        setConstraints()
     }
     
     private func setup() {
@@ -56,5 +65,15 @@ public class BaseButton: UIButton {
         
         self.layer.cornerCurve = .continuous
         self.layer.cornerRadius = 16
+    }
+    
+    private func addSubviews() {
+        addSubview(loadingIndicator)
+    }
+    
+    private func setConstraints() {
+        loadingIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
     }
 }
