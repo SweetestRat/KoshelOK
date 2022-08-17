@@ -9,7 +9,9 @@ import Foundation
 import WalletNetworkKit
 
 class CategoriesService: CategoriesServiceProtocol {
+    
     private let networkManager: NetworkManager
+    var categories: [Category]?
     
     init(networkManager: NetworkManager) {
         self.networkManager = networkManager
@@ -21,10 +23,15 @@ class CategoriesService: CategoriesServiceProtocol {
         networkManager.loadRequest(request: request) { result in
             switch result {
             case .success(let resultDetails):
+                self.categories = resultDetails
                 completion(.success(resultDetails))
             case .failure(let error):
                 completion(.failure(error))
             }
         }
+    }
+    
+    func getCategories() -> [Category] {
+        categories ?? []
     }
 }

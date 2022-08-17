@@ -9,4 +9,5 @@ import Foundation
 
 protocol CategoriesServiceProtocol {
     func loadCategories(completion: @escaping (Result<[Category], Error>) -> Void)
+    func getCategories() -> [Category]
 }

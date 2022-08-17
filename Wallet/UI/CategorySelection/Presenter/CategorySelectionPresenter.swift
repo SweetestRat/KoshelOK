@@ -9,6 +9,11 @@ import Foundation
 
 class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
     
+    private let router: CategorySelectionRouterProtocol
+    weak var delegate: CategorySelectionDelegateProtocol?
+    
+    internal var category: Category
+    
     private var service: CategoriesServiceProtocol
     weak var view: CategorySelectionViewProtocol?
     
@@ -16,8 +21,10 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
     
     private var listOfCategories: [CategoryViewModel] = []
     
-    init(service: CategoriesServiceProtocol) {
+    init(service: CategoriesServiceProtocol, category: Category, router: CategorySelectionRouterProtocol) {
         self.service = service
+        self.category = category
+        self.router = router
     }
     
     func getSelectedRow() -> Int? {
@@ -26,6 +33,17 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
     
     func setSelectedRow(row: Int) {
         selectedIndexPathRow = row
+        
+        let categorySelected = listOfCategories[row]
+        categoryDidUpdate(category: categorySelected)
+        
+        let categories = service.getCategories()
+        
+        let category = categories.first(where: { category in
+            category.name == categorySelected.name
+        }) ?? Category(id: 0, name: category.name, iconName: category.iconName, iconColor: category.iconColor)
+        
+        delegate?.categorySaved(category: category)
     }
     
     func controllerLoaded() {
@@ -36,6 +54,9 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
                     CategoryViewModel(name: category.name, iconName: category.iconName, iconColor: category.iconColor)
                 }
                 self?.listOfCategories = categoriesViewModels
+                self?.selectedIndexPathRow = self?.listOfCategories.firstIndex(where: { category in
+                    category.name == self?.category.name
+                }) ?? 0
                 DispatchQueue.main.async {
                     self?.view?.updateTableView()
                 }
@@ -45,7 +66,25 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
         }
     }
     
-    func didTapBarButton() {}
+    func didTapBarButton() {
+    }
+    
+    func actionButtonDidTap() {
+        delegate?.categorySaved(category: category)
+        router.closeCAtegorySelectionScreen()
+    }
+    
+    func categoryDidUpdate(category: CategoryViewModel) {
+        let categoriesVM = service.getCategories()
+        
+        self.category = categoriesVM.first(where: { categoryVM in
+            categoryVM.name == category.name
+        }) ?? Category(id: 0, name: category.name, iconName: category.iconName, iconColor: category.iconColor)
+    }
+    
+    func cancelDidClick() {
+        router.closeCAtegorySelectionScreen()
+    }
     
     func getNumberOfRows() -> Int? {
         listOfCategories.count

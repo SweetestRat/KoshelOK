@@ -65,6 +65,10 @@ class CategorySelectionView: UIView {
         }
     }
     
+    func addButtonTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
+        actionButton.addTarget(target, action: action, for: controlEvents)
+    }
+    
     private func setupTableView() {
         tableView.register(CategorySelectionTableViewCell.self, forCellReuseIdentifier: "CategorySelectionTableViewCell")
     }
