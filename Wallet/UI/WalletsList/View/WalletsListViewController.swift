@@ -44,11 +44,18 @@ class WalletsListViewController: UIViewController, WalletsListControllerProtocol
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(screenView)
+        
         screenView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
         presenter.controllerLoaded()
         addTargets()
+        setupNavigationBar()
+    }
+    
+    private func setupNavigationBar() {
+        navigationItem.title = "Кошельки"
     }
     
     func didTapWallet() {

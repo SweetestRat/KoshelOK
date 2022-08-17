@@ -38,6 +38,11 @@ class AuthorizationViewController: UIViewController, AuthorizationViewProtocol {
         setObservers()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     @objc private func actionButtonDidTap() {
         guard let email = mainView.getEmail() else { return }
         mainView.changeLoadingState(state: .start)
