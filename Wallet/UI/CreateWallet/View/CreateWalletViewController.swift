@@ -38,6 +38,7 @@ class CreateWalletViewController: UIViewController, CreateWalletViewProtocol {
         setObservers()
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         createWalletView.addGestureRecognizer(tap)
+        presenter.controllerLoaded()
     }
     
     private func setup() {
@@ -47,14 +48,15 @@ class CreateWalletViewController: UIViewController, CreateWalletViewProtocol {
             make.edges.equalToSuperview()
         }
         
-        createWalletView.addButtonTarget(self, action: #selector(openWalletsList), for: .touchUpInside)
+        createWalletView.addButtonTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
     }
     
     private func setNavigationBar() {
         navigationItem.title = "Создание кошелька"
     }
     
-    @objc private func openWalletsList() {
+    @objc private func nextButtonDidTap() {
+        createWalletView.changeLoadingState(state: .start)
         presenter.createButtonDidTap()
     }
     
@@ -99,6 +101,10 @@ class CreateWalletViewController: UIViewController, CreateWalletViewProtocol {
     
     func walletCreationFailed(error: String) {
         // TODO: show error allert
+    }
+    
+    func stopLoading() {
+        createWalletView.changeLoadingState(state: .stop)
     }
 }
 
