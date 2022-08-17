@@ -55,7 +55,7 @@ class CreateWalletViewController: UIViewController, CreateWalletViewProtocol {
     }
     
     @objc private func openWalletsList() {
-        presenter.createWallet()
+        presenter.createButtonDidTap()
     }
     
     private func setObservers() {
@@ -89,8 +89,16 @@ class CreateWalletViewController: UIViewController, CreateWalletViewProtocol {
         view.endEditing(true)
     }
     
-    func updateCurrency(currency: CurrencyViewModel) {
+    func updateCurrency(currency: Currency) {
         createWalletView.updateCurrency(currency: currency)
+    }
+    
+    func getWalletName() -> String? {
+        return createWalletView.getWalletName()
+    }
+    
+    func walletCreationFailed(error: String) {
+        // TODO: show error allert
     }
 }
 

@@ -97,8 +97,12 @@ class CreateWalletView: UIView {
         delegate?.cellCurrencyInfoDidTap()
     }
     
-    public func updateCurrency(currency: CurrencyViewModel) {
-        currencyView.rightButtonDescription.text = currency.fullName
+    public func updateCurrency(currency: Currency) {
+        currencyView.rightButtonDescription.text = currency.longName
+    }
+    
+    func getWalletName() -> String? {
+       return nameTextField.text
     }
 }
 

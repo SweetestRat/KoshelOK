@@ -8,5 +8,5 @@
 import Foundation
 
 protocol CreateWalletServiceProtocol {
-    func createWallet()
+    func createWallet(data: CreateWalletModel, completion: @escaping (Result<Wallet, Error>) -> Void)
 }

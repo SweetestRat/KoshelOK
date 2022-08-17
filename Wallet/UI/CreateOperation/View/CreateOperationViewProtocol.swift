@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CreateOperationViewProtocol: AnyObject {
-    func updateCurrency(currency: CurrencyViewModel)
+    func updateCurrency(currency: Currency)
     func updateDate(date: Date)
     func updateCategory(category: CategoryViewModel)
 }

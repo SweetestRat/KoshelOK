@@ -16,7 +16,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: sceneDelegate)
         
-        let rootViewController = StartScreenAssembly().assembly()
+        let rootViewController: UIViewController
+        let userSettings = UserSettings.userDefaults
+        
+        if let userId = userSettings.userId  {
+            rootViewController = WalletsListsControllerAssembly().assembly(userId: userId)
+        } else {
+            rootViewController = StartScreenAssembly().assembly()
+        }
         let navigationController = UINavigationController(rootViewController: rootViewController)
         
         window?.rootViewController = navigationController
