@@ -24,7 +24,7 @@ class AuthorizationView: UIView {
         return icon
     }()
     
-    private lazy var nameTextField: BaseInputTextField = {
+    private lazy var nameTextField: UITextField = {
         let textField = BaseInputTextField(placeholder: "username@koshelok.ru")
         textField.returnKeyType = .done
         textField.delegate = self
