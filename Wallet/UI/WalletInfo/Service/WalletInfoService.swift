@@ -6,7 +6,11 @@
 //
 
 import Foundation
+import WalletNetworkKit
 
 class WalletInfoService: WalletInfoServiceProtocol {
+    private let networkManager: NetworkManager
     
+    init(networkManager: NetworkManager) {
+        self.networkManager = networkManager
 }

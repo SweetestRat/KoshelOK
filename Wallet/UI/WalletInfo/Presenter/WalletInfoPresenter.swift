@@ -8,12 +8,14 @@
 import Foundation
 
 class WalletInfoPresenter: WalletInfoPresenterProtocol {
-    private let service: WalletInfoServiceProtocol
+    private let walletInfoService: WalletInfoServiceProtocol
+    private let operationService: WalletInfoServiceProtocol
     private let router: WalletInfoRouterProtocol
     weak var view: WalletInfoViewProtocol?
     
-    init(service: WalletInfoServiceProtocol, router: WalletInfoRouterProtocol) {
-        self.service = service
+    init(walletInfoService: WalletInfoServiceProtocol, operationService: WalletInfoServiceProtocol, router: WalletInfoRouterProtocol) {
+        self.walletInfoService = walletInfoService
+        self.operationService = operationService
         self.router = router
     }
     
