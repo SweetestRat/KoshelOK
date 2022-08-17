@@ -21,9 +21,9 @@ class AuthorizationPresenter: AuthorizationPresenterProtocol {
     
     func emailDidChange(email: String) {
         self.email = email
-        let isValid = email.count < 3 || email ~= emailRegex
+        let isValid = email.count < 3 || email.matches(pattern: emailRegex)
         view?.updateEmailValidationState(isValid: isValid)
-        view?.updateActionButtonState(isEnabled: email ~= emailRegex)
+        view?.updateActionButtonState(isEnabled: email.matches(pattern: emailRegex))
     }
     
     func actionButtonDidTap() {
