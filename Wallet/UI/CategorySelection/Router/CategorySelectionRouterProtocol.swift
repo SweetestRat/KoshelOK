@@ -8,5 +8,5 @@
 import Foundation
 
 protocol CategorySelectionRouterProtocol {
-    func back()
+    func closeCAtegorySelectionScreen()
 }

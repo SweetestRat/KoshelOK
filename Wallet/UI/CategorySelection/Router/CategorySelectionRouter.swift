@@ -11,7 +11,7 @@ import UIKit
 class CategorySelectionRouter: CategorySelectionRouterProtocol {
     weak var view: UIViewController?
     
-    func back() {
+    func closeCAtegorySelectionScreen() {
         view?.navigationController?.dismiss(animated: true)
     }
 }

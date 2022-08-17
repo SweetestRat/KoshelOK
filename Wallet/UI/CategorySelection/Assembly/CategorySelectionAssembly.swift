@@ -9,7 +9,7 @@ import Foundation
 import WalletNetworkKit
 
 class CategorySelectionAssembly {
-    func assembly(delegate: CategorySelectionDelegateProtocol, category: CategoryViewModel) -> CategorySelectionViewController {
+    func assembly(delegate: CategorySelectionDelegateProtocol, category: Category) -> CategorySelectionViewController {
         let networkManager = NetworkManager()
         let router = CategorySelectionRouter()
         let service = CategoriesService(networkManager: networkManager)

@@ -12,7 +12,7 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
     private let router: CategorySelectionRouterProtocol
     weak var delegate: CategorySelectionDelegateProtocol?
     
-    internal var category: CategoryViewModel
+    internal var category: Category
     
     private var service: CategoriesServiceProtocol
     weak var view: CategorySelectionViewProtocol?
@@ -21,7 +21,7 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
     
     private var listOfCategories: [CategoryViewModel] = []
     
-    init(service: CategoriesServiceProtocol, category: CategoryViewModel, router: CategorySelectionRouterProtocol) {
+    init(service: CategoriesServiceProtocol, category: Category, router: CategorySelectionRouterProtocol) {
         self.service = service
         self.category = category
         self.router = router
@@ -34,8 +34,15 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
     func setSelectedRow(row: Int) {
         selectedIndexPathRow = row
         
-        let category = listOfCategories[row]
-        categoryDidUpdate(category: category)
+        let categorySelected = listOfCategories[row]
+        categoryDidUpdate(category: categorySelected)
+        
+        let categories = service.getCategories()
+        
+        let category = categories.first(where: { category in
+            category.name == categorySelected.name
+        }) ?? Category(id: 0, name: category.name, iconName: category.iconName, iconColor: category.iconColor)
+        
         delegate?.categorySaved(category: category)
     }
     
@@ -64,15 +71,19 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
     
     func actionButtonDidTap() {
         delegate?.categorySaved(category: category)
-        router.back()
+        router.closeCAtegorySelectionScreen()
     }
     
     func categoryDidUpdate(category: CategoryViewModel) {
-        self.category = category
+        let categoriesVM = service.getCategories()
+        
+        self.category = categoriesVM.first(where: { categoryVM in
+            categoryVM.name == category.name
+        }) ?? Category(id: 0, name: category.name, iconName: category.iconName, iconColor: category.iconColor)
     }
     
     func cancelDidClick() {
-        router.back()
+        router.closeCAtegorySelectionScreen()
     }
     
     func getNumberOfRows() -> Int? {

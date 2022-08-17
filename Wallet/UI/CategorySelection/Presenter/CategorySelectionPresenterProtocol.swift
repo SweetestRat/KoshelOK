@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CategorySelectionDelegateProtocol: AnyObject {
-    func categorySaved(category: CategoryViewModel)
+    func categorySaved(category: Category)
 }
 
 protocol CategorySelectionPresenterProtocol {

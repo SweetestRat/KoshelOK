@@ -28,7 +28,7 @@ class CreateOperationRouter: CreateOperationRouterProtocol {
         view?.navigationController?.present(UINavigationController(rootViewController: nextvc), animated: true, completion: nil)
     }
     
-    func openCategorySelection(delegate: CategorySelectionDelegateProtocol, currentCategory: CategoryViewModel) {
+    func openCategorySelection(delegate: CategorySelectionDelegateProtocol, currentCategory: Category) {
         let nextvc = CategorySelectionAssembly().assembly(delegate: delegate, category: currentCategory)
         nextvc.modalPresentationStyle = .popover
         view?.navigationController?.present(UINavigationController(rootViewController: nextvc), animated: true, completion: nil)

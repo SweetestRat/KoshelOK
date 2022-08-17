@@ -10,7 +10,7 @@ import Foundation
 class CreateOperationPresenter: CreateOperationPresenterProtocol {
     private var currency: CurrencyViewModel
     private var date: Date
-    private var category: CategoryViewModel
+    private var category: Category
     
     private let service: CreateOperationServiceProtocol
     private let router: CreateOperationRouterProtocol
@@ -29,13 +29,13 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
         let timestamp = Date().timeIntervalSince1970
         let myTimeInterval = TimeInterval(timestamp)
         date = Date(timeIntervalSince1970: TimeInterval(myTimeInterval))
-        category = CategoryViewModel(name: "Кафе и рестораны", iconName: "fork.knife", iconColor: "#7765C0")
+        category = Category(id: 0, name: "Кафе и рестораны", iconName: "fork.knife", iconColor: "#7765C0")
     }
     
     func viewLoaded() {
         view?.updateCurrency(currency: currency)
         view?.updateDate(date: date)
-        view?.updateCategory(category: category)
+        view?.updateCategory(category: CategoryViewModel(name: category.name, iconName: category.iconName, iconColor: category.iconColor))
     }
     
     func selectCategory() {
@@ -79,8 +79,8 @@ extension CreateOperationPresenter: DatePickerDelegateProtocol {
 }
 
 extension CreateOperationPresenter: CategorySelectionDelegateProtocol {
-    func categorySaved(category: CategoryViewModel) {
+    func categorySaved(category: Category) {
         self.category = category
-        view?.updateCategory(category: category)
+        view?.updateCategory(category: CategoryViewModel(name: category.name, iconName: category.iconName, iconColor: category.iconColor))
     }
 }
