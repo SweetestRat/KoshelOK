@@ -29,7 +29,7 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
                     self?.view?.updateWalletsList()
                 }
             case .failure(let error):
-                self?.view?.userCreationFailed(error: error.localizedDescription)
+                self?.view?.walletsLoadingError(error: error.localizedDescription)
             }
         }
     }

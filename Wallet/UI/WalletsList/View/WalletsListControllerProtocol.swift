@@ -9,5 +9,5 @@ import UIKit
 
 protocol WalletsListControllerProtocol: AnyObject {
     func updateWalletsList()
-    func userCreationFailed(error: String)
+    func walletsLoadingError(error: String)
 }

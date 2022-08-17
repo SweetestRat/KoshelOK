@@ -31,7 +31,7 @@ class WalletsListViewController: UIViewController, WalletsListControllerProtocol
         screenView.updateWalletsList()
     }
     
-    func userCreationFailed(error: String) {
+    func walletsLoadingError(error: String) {
         
     }
     
