@@ -13,8 +13,20 @@ class WalletsListCell: UITableViewCell {
     
     lazy var icon: UIView = {
         let view = UIView()
+        let config = UIImage.SymbolConfiguration(scale: .medium)
+        let image = UIImageView(image: UIImage(systemName: "creditcard", withConfiguration: config))
+        
+        image.tintColor = .white
+        
+        view.addSubview(image)
         view.layer.cornerRadius = CGFloat(IconSize / 2)
-        view.backgroundColor = .systemGray
+        view.backgroundColor = .activeButtonBackground
+        
+        image.snp.makeConstraints {make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+        }
+        
         return view
     }()
     
