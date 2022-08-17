@@ -78,4 +78,8 @@ class AuthorizationViewController: UIViewController, AuthorizationViewProtocol {
             self.mainView.layoutIfNeeded()
         }
     }
+    
+    func userCreationFailed(error: String) {
+        // TODO: show error allert
+    }
 }

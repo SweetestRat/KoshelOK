@@ -26,7 +26,7 @@ class AuthorizationPresenter: AuthorizationPresenterProtocol {
                     self?.router.openWalletsList(userId: user.id)
                 }
             case .failure(let error):
-                debugPrint(error)
+                self?.view?.userCreationFailed(error: error.localizedDescription)
             }
         }
     }
