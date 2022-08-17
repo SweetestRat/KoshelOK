@@ -16,10 +16,6 @@ class StartScreenRouter: StartScreenRouterProtocol {
         
         vc.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         vc.navigationController?.pushViewController(nextvc, animated: true)
-        
-        guard let navigationController = vc.navigationController else { return }
-        var navigationArray = navigationController.viewControllers
-        navigationArray.remove(at: navigationArray.count - 2)
-        vc.navigationController?.viewControllers = navigationArray
+        vc.navigationController?.viewControllers.removeFirst()
     }
 }
