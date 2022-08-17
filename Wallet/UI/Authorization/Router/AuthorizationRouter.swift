@@ -14,8 +14,6 @@ class AuthorizationRouter: AuthorizationRouterProtocol {
         let nextvc = WalletsListsControllerAssembly().assembly(userId: userId)
         guard let vc = view else { return }
         
-        vc.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        vc.navigationController?.pushViewController(nextvc, animated: true)
-        vc.navigationController?.viewControllers.removeFirst()
+        vc.navigationController?.setViewControllers([nextvc], animated: true)
     }
 }

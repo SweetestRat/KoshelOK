@@ -14,8 +14,6 @@ class StartScreenRouter: StartScreenRouterProtocol {
         let nextvc = AuthorizationAsembly().assembly()
         guard let vc = view as? UIViewController else { return }
         
-        vc.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        vc.navigationController?.pushViewController(nextvc, animated: true)
-        vc.navigationController?.viewControllers.removeFirst()
+        vc.navigationController?.setViewControllers([nextvc], animated: true)
     }
 }
