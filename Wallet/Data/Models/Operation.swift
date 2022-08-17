@@ -12,5 +12,5 @@ struct Operation: Decodable {
     let balanceDto: Balance
     let isIncome: Bool
     let date: Int
-    let category: Category
+    let categoryDto: Category
 }

@@ -22,6 +22,7 @@ class WalletInfoViewController: UIViewController, WalletInfoViewProtocol {
     
     private lazy var walletInfoView: WalletInfoView = {
         let view = WalletInfoView()
+        view.delegate = self
         return view
     }()
     
@@ -34,6 +35,7 @@ class WalletInfoViewController: UIViewController, WalletInfoViewProtocol {
         }
         
         addTargets()
+        presenter.controllerLoaded()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,12 +68,12 @@ class WalletInfoViewController: UIViewController, WalletInfoViewProtocol {
 }
 
 extension WalletInfoViewController: WalletInfoViewDelegate {
-    func getOperation(row: Int, section: Int) -> OperationViewModel? {
-        return presenter.getOperation(row: row, section: section)
+    func getNumberOfSections() -> Int {
+        return presenter.getNumberOfSections()
     }
     
-    func getNumberOfRows() -> Int {
-        return presenter.getNumberOfRows()
+    func getOperation(row: Int, section: Int) -> OperationViewModel? {
+        return presenter.getOperation(row: row, section: section)
     }
     
     func getNumberOfRowsInSection(section: Int) -> Int? {

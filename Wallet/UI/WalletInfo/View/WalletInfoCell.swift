@@ -13,14 +13,13 @@ class WalletInfoCell: UITableViewCell {
     var icon: UIView = {
         let view = UIView()
         view.layer.cornerRadius = CGFloat(IconSize / 2)
-        view.backgroundColor = .systemGray
         return view
     }()
     
     lazy var category: UILabel = {
         let label = UILabel()
         label.font = .SFProRegular16
-        label.textColor = .inputPlaceholderColor
+        label.textColor = .darkTextPrimaryColor
         return label
     }()
     

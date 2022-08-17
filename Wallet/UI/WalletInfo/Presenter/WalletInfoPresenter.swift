@@ -13,19 +13,22 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
     private let router: WalletInfoRouterProtocol
     weak var view: WalletInfoViewProtocol?
     
+    private var walletId: Int
     private var operations: [[OperationViewModel]]?
     
-    init(walletInfoService: WalletInfoServiceProtocol, operationService: WalletOperationsServiceProtocol, router: WalletInfoRouterProtocol) {
+    init(walletInfoService: WalletInfoServiceProtocol, operationService: WalletOperationsServiceProtocol, router: WalletInfoRouterProtocol, walletId: Int) {
         self.walletInfoService = walletInfoService
         self.operationService = operationService
         self.router = router
+        self.walletId = walletId
     }
     
     func controllerLoaded() {
-        operationService.getWalletOperations(userId: 5, walletId: 6) { [weak self] result in
+        guard let id = UserSettings.userDefaults.userId else { return }
+        operationService.getWalletOperations(userId: id, walletId: walletId) { [weak self] result in
             switch result {
             case .success(let operations):
-                self?.operations = self?.mapOperations(operations: operations)
+                self?.mapOperations(operations: operations)
                 DispatchQueue.main.sync {
                     self?.view?.updateOperationsList()
                 }
@@ -44,26 +47,27 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
         return section?[row]
     }
     
-    func getNumberOfRows() -> Int {
-        operations?.count ?? 0
+    func getNumberOfRowsInSection(section: Int) -> Int? {
+        operations?[section].count
     }
     
-    func getNumberOfRowsInSection(section: Int) -> Int? {
-        return operations?[section].count
+    func getNumberOfSections() -> Int {
+        operations?.count ?? 0
     }
     
     func createOperationButtonDidTap() {
         router.openCreateOperation()
     }
     
-    private func mapOperations(operations: [Operation]) -> [[OperationViewModel]] {
-        var sectionDate = ""
+    private func mapOperations(operations: [Operation]) {
+        self.operations = []
+        var sectionDate = dMMMDateFormatter.instance.format(timeStamp: operations[0].date)
         var sectionOperations: [OperationViewModel] = []
         operations.forEach { operation in
             let date = dMMMDateFormatter.instance.format(timeStamp: operation.date)
             let time = TimeFormatter.instance.format(timeStamp: operation.date)
             
-            let viewModel = OperationViewModel(category: operation.category.name,
+            let viewModel = OperationViewModel(category: operation.categoryDto,
                                                balance: operation.balanceDto.amount,
                                                date: date,
                                                time: time)
@@ -77,8 +81,6 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
             }
         }
         
-        guard let allOperations = self.operations else { return [[]] }
-        
-        return allOperations
+        self.operations?.append(sectionOperations)
     }
 }

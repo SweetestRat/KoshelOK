@@ -11,8 +11,8 @@ import WalletDesignKit
 
 protocol WalletInfoViewDelegate: AnyObject {
     func getOperation(row: Int, section: Int) -> OperationViewModel?
-    func getNumberOfRows() -> Int
     func getNumberOfRowsInSection(section: Int) -> Int?
+    func getNumberOfSections() -> Int
 }
 
 class WalletInfoView: UIView {
@@ -82,8 +82,6 @@ class WalletInfoView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        walletsTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
 
         addSubviews()
         setConstraints()
@@ -174,7 +172,7 @@ extension WalletInfoView: UITableViewDelegate {
 
 extension WalletInfoView: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return delegate?.getNumberOfSections() ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -188,8 +186,10 @@ extension WalletInfoView: UITableViewDataSource {
         }
         
         let operation = delegate?.getOperation(row: indexPath.row, section: indexPath.section)
-        cell.category.text = operation?.category
+        cell.category.text = operation?.category.name
         cell.balance.text = operation?.balance
+        guard let color = operation?.category.iconColor else { return cell }
+        cell.icon.backgroundColor = UIColor(hex: color)
         cell.backgroundColor = .background
         
         return cell

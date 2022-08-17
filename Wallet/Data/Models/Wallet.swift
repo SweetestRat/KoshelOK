@@ -12,5 +12,5 @@ struct Wallet: Decodable {
     let name: String
     let balance: Balance
     let income: Balance
-    let expanse: Balance
+    let expense: Balance
 }

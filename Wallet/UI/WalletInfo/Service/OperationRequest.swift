@@ -11,7 +11,7 @@ import WalletNetworkKit
 struct OperationRequest: NetworkRequestProtocol {
     typealias Model = [Operation]
     
-    var path: String?
+    var path: String
     var parameters: [String: String]? { nil }
     var method: RequestMethod { .get }
     var headers: [String : String]?
@@ -19,6 +19,6 @@ struct OperationRequest: NetworkRequestProtocol {
     
     init(userId: Int, walletId: Int) {
         self.headers = ["userId": "\(userId)"]
-        self.path = "koshelok/wallet/\(walletId)/transaction"
+        self.path = "/koshelok/wallet/\(walletId)/transaction"
     }
 }
