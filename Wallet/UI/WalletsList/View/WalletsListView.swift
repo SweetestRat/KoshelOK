@@ -93,8 +93,13 @@ class WalletsScreenView: UIView {
         walletsListView.reloadData()
     }
     
-    func updateBalances(commonBalance: BalanceViewModel, income: BalanceViewModel, expanse: BalanceViewModel) {
-        commonBalanceValue.text = commonBalance.toString()
+    func updateBalances(commonBalance: BalanceViewModel?, income: BalanceViewModel?, expanse: BalanceViewModel?) {
+        // We shold update all values per update
+        guard let common = commonBalance,
+              let income = income,
+              let expanse = expanse
+        else { return }
+        commonBalanceValue.text = common.toString()
         commonIncomeValue.text = income.toString()
         commonExpansesValue.text = expanse.toString()
     }

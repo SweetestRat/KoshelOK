@@ -31,7 +31,7 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
                 self?.updateBalances()
                 DispatchQueue.main.sync {
                     self?.view?.updateWalletsList()
-                    self?.view?.updateBalances()
+                    self?.view?.updateBalances(commonBalance: self?.commonBalance, income: self?.income, expanse: self?.expanse)
                 }
             case .failure(let error):
                 self?.view?.walletsLoadingError(error: error.localizedDescription)
