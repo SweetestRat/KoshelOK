@@ -29,7 +29,7 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
         let timestamp = Date().timeIntervalSince1970
         let myTimeInterval = TimeInterval(timestamp)
         date = Date(timeIntervalSince1970: TimeInterval(myTimeInterval))
-        category = CategoryViewModel(name: "Другое", iconName: "", iconColor: "")
+        category = CategoryViewModel(name: "Кафе и рестораны", iconName: "fork.knife", iconColor: "#7765C0")
     }
     
     func viewLoaded() {
