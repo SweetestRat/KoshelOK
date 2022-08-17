@@ -18,7 +18,7 @@ class WalletsListRouter: WalletsListRouterProtocol {
         vc.navigationController?.pushViewController(nextvc, animated: true)
     }
     
-    func openWalletInfo() {
+    func openWalletInfo(walletId: Int) {
         let nextvc = WalletInfoAssembly().assembly()
         guard let vc = view as? UIViewController else { return }
         

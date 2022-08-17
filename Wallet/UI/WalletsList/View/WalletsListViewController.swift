@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import WalletDesignKit
 
-class WalletsListViewController: UIViewController, WalletsListControllerProtocol, WalletsScreenViewDelegate {
+class WalletsListViewController: UIViewController, WalletsListControllerProtocol {
     private let presenter: WalletsListPresenterProtocol
     
     init(presenter: WalletsListPresenterProtocol) {
@@ -27,8 +27,16 @@ class WalletsListViewController: UIViewController, WalletsListControllerProtocol
         return view
     }()
     
-    func updateWalletsList(wallets: [Wallet]) {
-        screenView.updateWalletsList(wallets: wallets)
+    func updateWalletsList() {
+        screenView.updateWalletsList()
+    }
+    
+    func updateBalances(commonBalance: BalanceViewModel?, income: BalanceViewModel?, expanse: BalanceViewModel?) {
+        screenView.updateBalances(commonBalance: commonBalance, income: income, expanse: expanse)
+    }
+    
+    func walletsLoadingError(error: String) {
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,15 +52,18 @@ class WalletsListViewController: UIViewController, WalletsListControllerProtocol
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(screenView)
+        
         screenView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
         presenter.controllerLoaded()
         addTargets()
+        setupNavigationBar()
     }
     
-    func didTapWallet() {
-        presenter.didTapWallet()
+    private func setupNavigationBar() {
+        navigationItem.title = "Кошельки"
     }
     
     private func addTargets() {
@@ -62,4 +73,20 @@ class WalletsListViewController: UIViewController, WalletsListControllerProtocol
     @objc private func screenViewButtonDidTap() {
         presenter.createWalletClicked()
     }
+}
+
+extension WalletsListViewController: WalletsScreenViewDelegate {
+    
+    func didTapWallet(at row: Int) {
+        presenter.didTapWallet(at: row)
+    }
+    
+    func getWallet(at row: Int) -> WalletViewModel? {
+        presenter.getWallet(at: row)
+    }
+    
+    func getNumberOfRows() -> Int {
+        presenter.getNumberOfRows()
+    }
+    
 }

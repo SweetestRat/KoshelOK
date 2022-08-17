@@ -8,5 +8,6 @@
 import Foundation
 
 protocol CurrencySelectionServiceProtocol {
-    func getData()
+    func loadCurrencies(completion: @escaping (Result<[Currency], Error>) -> Void)
+    func getCurrencies() -> [Currency]?
 }

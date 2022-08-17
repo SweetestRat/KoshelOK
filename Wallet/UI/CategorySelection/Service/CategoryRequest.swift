@@ -8,10 +8,38 @@
 import Foundation
 import WalletNetworkKit
 
-struct CategoryRequest: NetworkRequestProtocol {
-    typealias Model = CategoryResult
+enum CategoryRequestType {
+    case loadCategories
+    case createCategory(category: CreateCategoryModel)
+}
+
+struct CreateCategoryModel: Encodable {
+    let name: String
+    let iconId: String
+}
+
+extension CategoryRequestType: NetworkRequestProtocol {
+    typealias Model = [Category]
     
-    var parameters: [String: String]
-    let method: RequestMethod = .get
+    var path: String { "/koshelok/category" }
     
+    var parameters: [String: String]? { return nil }
+    
+    var method: RequestMethod {
+        switch self {
+        case .loadCategories:
+            return .get
+        case .createCategory:
+            return .post
+        }
+    }
+
+    var body: Data? {
+        switch self {
+        case .loadCategories:
+            return nil
+        case .createCategory(let category):
+            return try? JSONEncoder().encode(category)
+        }
+    }
 }

@@ -7,11 +7,18 @@
 
 import Foundation
 
+protocol CategorySelectionDelegateProtocol: AnyObject {
+    func categorySaved(category: Category)
+}
+
 protocol CategorySelectionPresenterProtocol {
     func getSelectedRow() -> Int?
     func setSelectedRow(row: Int)
     func controllerLoaded()
     func didTapBarButton()
+    func actionButtonDidTap()
     func getNumberOfRows() -> Int?
-    func getCategory(index: Int) -> Category
+    func getCategory(index: Int) -> CategoryViewModel
+    func categoryDidUpdate(category: CategoryViewModel)
+    func cancelDidClick()
 }

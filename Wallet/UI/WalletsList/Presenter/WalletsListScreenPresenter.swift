@@ -11,35 +11,99 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
     weak var view: WalletsListControllerProtocol?
     private let router: WalletsListRouterProtocol
     private let service: WalletsListServiceProtocol
+    private var userId: Int?
+    private var wallets: [WalletViewModel]?
+    private var commonBalance: BalanceViewModel?
+    private var income: BalanceViewModel?
+    private var expanse: BalanceViewModel?
     
-    init(service: WalletsListServiceProtocol, router: WalletsListRouterProtocol) {
+    init(service: WalletsListServiceProtocol, router: WalletsListRouterProtocol, userId: Int) {
         self.service = service
         self.router = router
+        self.userId = userId
     }
+    
     func controllerLoaded() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) { [weak self] in
-            self?.view?.updateWalletsList(
-                wallets: Array(repeating:
-                                Wallet(name: "Wallet Name",
-                                       icon: "",
-                                       balance:
-                                        Balance(
-                                            value: 125,
-                                            currency: Currency(symbol: "en_US", fullName: "English USD")
-                                        )
-                                      ),
-                               count: 30
-                              )
-            )
+        service.getAllWallets(userId: 5) { [weak self] result in
+            switch result {
+            case .success(let wallets):
+                self?.wallets = self?.mapWallets(wallets: wallets)
+                self?.updateBalances()
+                DispatchQueue.main.sync {
+                    self?.view?.updateWalletsList()
+                    self?.view?.updateBalances(commonBalance: self?.commonBalance, income: self?.income, expanse: self?.expanse)
+                }
+            case .failure(let error):
+                self?.view?.walletsLoadingError(error: error.localizedDescription)
+            }
         }
+    }
+    
+    func getWallet(at row: Int) -> WalletViewModel? {
+        wallets?[row]
+    }
+    
+    func getNumberOfRows() -> Int {
+        wallets?.count ?? 0
     }
     
     func createWalletClicked() {
         router.openCreateWallet()
     }
     
-    func didTapWallet() {
-        router.openWalletInfo()
+    func didTapWallet(at row: Int) {
+        let selectedWalletName = wallets?[row].name
+        guard let walletId = service.getWalletsModels()?.first (where: { wallet in
+            wallet.name == selectedWalletName
+        })?.id else { return }
+        router.openWalletInfo(walletId: walletId)
     }
-
+    
+    private func updateBalances() {
+        guard
+            let wallets = wallets,
+            wallets.count > 0
+        else { return }
+        
+        let currency = wallets[0].balance.currency
+        var income = 0
+        var expanse = 0
+        wallets.forEach { wallet in
+            income += wallet.income.value
+            expanse += wallet.expanse.value
+        }
+        
+        self.income = BalanceViewModel(value: income, currency: currency)
+        self.expanse = BalanceViewModel(value: expanse, currency: currency)
+        self.commonBalance = BalanceViewModel(value: income - expanse, currency: currency)
+    }
+    
+    private func mapWallets(wallets: [Wallet]) -> [WalletViewModel] {
+        wallets.map { wallet in
+            WalletViewModel(
+                name: wallet.name,
+                balance: BalanceViewModel(
+                    value: Int(wallet.balance.amount) ?? 0,
+                    currency: CurrencyViewModel(
+                        symbol: wallet.balance.currency.shortName,
+                        fullName: wallet.balance.currency.longName
+                    )
+                ),
+                income: BalanceViewModel(
+                    value: Int(wallet.income.amount) ?? 0,
+                    currency: CurrencyViewModel(
+                        symbol: wallet.income.currency.shortName,
+                        fullName: wallet.income.currency.longName
+                    )
+                ),
+                expanse: BalanceViewModel(
+                    value: Int(wallet.expanse.amount) ?? 0,
+                    currency: CurrencyViewModel(
+                        symbol: wallet.expanse.currency.shortName,
+                        fullName: wallet.expanse.currency.longName
+                    )
+                )
+            )
+        }
+    }
 }

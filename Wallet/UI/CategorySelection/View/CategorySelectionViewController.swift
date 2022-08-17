@@ -33,6 +33,8 @@ class CategorySelectionViewController: UIViewController, CategorySelectionViewPr
         setupNavigationBar()
         addSubviews()
         setConstraints()
+        
+        categorySelectionView.addButtonTarget(self, action: #selector(actionButtonDidTap), for: .touchUpInside)
     }
     
     private func addSubviews() {
@@ -57,13 +59,20 @@ class CategorySelectionViewController: UIViewController, CategorySelectionViewPr
     }
     
     @objc private func addButton() {
-        presenter.didTapBarButton()
+    }
+    
+    @objc private func actionButtonDidTap() {
+        presenter.actionButtonDidTap()
+    }
+    
+    func updateTableView() {
+        categorySelectionView.tableView.reloadData()
     }
 }
 
 extension CategorySelectionViewController: CategorySelectionViewDelegate {
     
-    func getCategory(index: Int) -> Category {
+    func getCategory(index: Int) -> CategoryViewModel {
         presenter.getCategory(index: index)
     }
     

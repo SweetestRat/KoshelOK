@@ -9,12 +9,13 @@ import UIKit
 import WalletDesignKit
 
 protocol WalletsScreenViewDelegate: AnyObject {
-    func didTapWallet()
+    func didTapWallet(at row: Int)
+    func getWallet(at: Int) -> WalletViewModel?
+    func getNumberOfRows() -> Int
 }
 
 class WalletsScreenView: UIView {
     weak var delegate: WalletsScreenViewDelegate?
-    private var walletsList: [Wallet]?
     
     private lazy var actionButton: BaseButton = {
         let button = BaseButton(title: "Создать кошелёк")
@@ -88,9 +89,19 @@ class WalletsScreenView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func updateWalletsList(wallets: [Wallet]) {
-        update(list: wallets)
+    func updateWalletsList() {
         walletsListView.reloadData()
+    }
+    
+    func updateBalances(commonBalance: BalanceViewModel?, income: BalanceViewModel?, expanse: BalanceViewModel?) {
+        // We shold update all values per update
+        guard let common = commonBalance,
+              let income = income,
+              let expanse = expanse
+        else { return }
+        commonBalanceValue.text = common.toString()
+        commonIncomeValue.text = income.toString()
+        commonExpansesValue.text = expanse.toString()
     }
     
     private func addSubviews() {
@@ -169,12 +180,8 @@ class WalletsScreenView: UIView {
 
 extension WalletsScreenView: UITableViewDataSource, UITableViewDelegate {
     
-    public func update(list: [Wallet]) {
-        walletsList = list
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.didTapWallet()
+        delegate?.didTapWallet(at: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -182,16 +189,16 @@ extension WalletsScreenView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        walletsList?.count ?? 0
+        delegate?.getNumberOfRows() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "WalletsListCell", for: indexPath) as? WalletsListCell else {
             return WalletsListCell()
         }
-        cell.title.text = walletsList?[indexPath.row].name
-        cell.balance.text = walletsList?[indexPath.row].balance.toString()
-        cell.backgroundColor = .background
+        guard let wallet = delegate?.getWallet(at: indexPath.row) else { return WalletsListCell() }
+        
+        cell.configure(with: wallet)
         
         return cell
     }

@@ -9,22 +9,29 @@ import Foundation
 import WalletNetworkKit
 
 class CategoriesService: CategoriesServiceProtocol {
+    
     private let networkManager: NetworkManager
+    var categories: [Category]?
     
     init(networkManager: NetworkManager) {
         self.networkManager = networkManager
     }
     
     func loadCategories(completion: @escaping (Result<[Category], Error>) -> Void) {
-        let request = CategoryRequest(parameters: [:])
-        networkManager.makeRequest(request: request) { result in
+        let request: CategoryRequestType = .loadCategories
+        
+        networkManager.loadRequest(request: request) { result in
             switch result {
-                
             case .success(let resultDetails):
-                completion(.success(resultDetails.categories))
+                self.categories = resultDetails
+                completion(.success(resultDetails))
             case .failure(let error):
                 completion(.failure(error))
             }
         }
+    }
+    
+    func getCategories() -> [Category] {
+        categories ?? []
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 final public class NetworkManager {
-    var urlConstructor = URLConstructor()
+    var urlRequestConstructor = URLRequestConstructor()
     
     public init() {}
     
@@ -21,8 +21,8 @@ final public class NetworkManager {
     
     private let session = URLSession.shared
 
-    public func makeRequest<T: NetworkRequestProtocol>(request: T, completion: @escaping (Result<T.Model, Error>) -> Void) {
-        guard let url = try? urlConstructor.constractURL(from: request) else {
+    public func loadRequest<T: NetworkRequestProtocol>(request: T, completion: @escaping (Result<T.Model, Error>) -> Void) {
+        guard let url = try? urlRequestConstructor.constractURLRequest(from: request) else {
             completion(.failure(NSError.defaultError))
             return
         }
@@ -32,7 +32,7 @@ final public class NetworkManager {
                 completion(.failure(error))
                 return
             }
-
+            
             if let data = data {
                 do {
                     let object = try self.decoder.decode(T.Model.self, from: data)
@@ -43,6 +43,5 @@ final public class NetworkManager {
             }
         }
         task.resume()
-        
     }
 }

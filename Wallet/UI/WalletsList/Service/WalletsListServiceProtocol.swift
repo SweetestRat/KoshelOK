@@ -8,5 +8,6 @@
 import Foundation
 
 protocol WalletsListServiceProtocol {
-    
+    func getAllWallets(userId: Int, completion: @escaping (Result<[Wallet], Error>) -> Void)
+    func getWalletsModels() -> [Wallet]?
 }

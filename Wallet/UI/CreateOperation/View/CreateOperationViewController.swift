@@ -30,6 +30,10 @@ class CreateOperationViewController: UIViewController, CreateOperationViewProtoc
         createOperationView.updateOperationType(operationType: operationType)
     }
     
+    public func updateCategory(category: CategoryViewModel) {
+        createOperationView.updateCategory(category: category)
+    }
+    
     init(presenter: CreateOperationPresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -101,6 +105,10 @@ extension CreateOperationViewController: CreateOperationViewDelegate {
     
     func createOperationViewDidSelectExpanse() {
         presenter.expanseDidSelected()
+    }
+    
+    func createOperationViewDidSelectCategory() {
+        presenter.selectCategory()
     }
     
     func createOperationViewDidSelectCurrency() {

@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import WalletNetworkKit
 
 class AuthorizationAsembly {
     func assembly() -> UIViewController {
-        let service = AuthorizationService()
+        let networkManager = NetworkManager()
+        let service = AuthorizationService(networkManager: networkManager)
         let router = AuthorizationRouter()
         let presenter = AuthorizationPresenter(service: service, router: router)
         let viewController = AuthorizationViewController(presenter: presenter)

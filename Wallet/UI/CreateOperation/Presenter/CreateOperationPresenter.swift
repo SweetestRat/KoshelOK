@@ -11,6 +11,7 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
     private var currency: Currency
     private var date: Date
     private var operationType: OperationType
+    private var category: Category
     
     private let service: CreateOperationServiceProtocol
     private let router: CreateOperationRouterProtocol
@@ -24,22 +25,24 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
         self.router = router
         
         // set default user currency (probable get from user account request)
-        currency = Currency(symbol: "THAI", fullName: "Thailand currency")
         operationType = .income
+        currency = Currency(id: 0, shortName: "RUB", longName: "Российский рубль")
         
         let timestamp = Date().timeIntervalSince1970
         let myTimeInterval = TimeInterval(timestamp)
         date = Date(timeIntervalSince1970: TimeInterval(myTimeInterval))
+        category = Category(id: 0, name: "Кафе и рестораны", iconName: "fork.knife", iconColor: "#7765C0")
     }
     
     func viewLoaded() {
         view?.updateCurrency(currency: currency)
         view?.updateDate(date: date)
         view?.updateOperationType(operationType: operationType)
+        view?.updateCategory(category: CategoryViewModel(name: category.name, iconName: category.iconName, iconColor: category.iconColor))
     }
     
     func selectCategory() {
-        
+        router.openCategorySelection(delegate: self, currentCategory: category)
     }
     
     func selectCurrency() {
@@ -79,6 +82,14 @@ extension CreateOperationPresenter: CurrencySelectionDelegateProtocol {
         self.currency = currency
         view?.updateCurrency(currency: currency)
     }
+    
+    func getSelectedRow() -> Int {
+        return 0
+    }
+    
+    func saveSelectedRow(row: Int) {
+        
+    }
 }
 
 extension CreateOperationPresenter: DatePickerDelegateProtocol {
@@ -91,4 +102,11 @@ extension CreateOperationPresenter: DatePickerDelegateProtocol {
 enum OperationType {
     case income
     case expanse
+}
+
+extension CreateOperationPresenter: CategorySelectionDelegateProtocol {
+    func categorySaved(category: Category) {
+        self.category = category
+        view?.updateCategory(category: CategoryViewModel(name: category.name, iconName: category.iconName, iconColor: category.iconColor))
+    }
 }

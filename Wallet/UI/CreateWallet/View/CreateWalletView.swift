@@ -85,6 +85,10 @@ class CreateWalletView: UIView {
         currencyView.addTarget(self, action: #selector(currencyInfoDidTap), for: .touchUpInside)
     }
     
+    func addButtonTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
+        nextButton.addTarget(target, action: action, for: controlEvents)
+    }
+    
     @objc func textFieldDidChangeValue() {
         delegate?.textFieldDidChangeValue(text: nameTextField.text)
     }
@@ -93,8 +97,27 @@ class CreateWalletView: UIView {
         delegate?.cellCurrencyInfoDidTap()
     }
     
-    func addButtonTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
-        nextButton.addTarget(target, action: action, for: controlEvents)
+    public func updateCurrency(currency: Currency) {
+        currencyView.rightButtonDescription.text = currency.longName
+    }
+    
+    func getWalletName() -> String? {
+       return nameTextField.text
+    }
+    
+    func changeLoadingState(state: loadingState) {
+        switch state {
+        case .start:
+            nextButton.titleLabel?.layer.opacity = 0
+            nextButton.loadingIndicator.isHidden = false
+            nextButton.loadingIndicator.startAnimating()
+            nextButton.isEnabled = false
+        case .stop:
+            nextButton.titleLabel?.layer.opacity = 1
+            nextButton.loadingIndicator.isHidden = true
+            nextButton.loadingIndicator.stopAnimating()
+            nextButton.isEnabled = true
+        }
     }
 }
 

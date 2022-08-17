@@ -14,6 +14,7 @@ protocol CreateOperationViewDelegate: AnyObject {
     func createOperationViewDidSelectDate()
     func createOperationViewDidSelectIncome()
     func createOperationViewDidSelectExpanse()
+    func createOperationViewDidSelectCategory()
     func dateDidChanged(date: Date)
 }
 
@@ -87,8 +88,8 @@ class CreateOperationView: UIView {
     // MARK: public functions
     
     public func updateCurrency(currency: Currency) {
-        currencySymbol.text = currency.symbol
-        currencySelector.rightButtonDescription.text = currency.fullName
+        currencySymbol.text = currency.shortName
+        currencySelector.rightButtonDescription.text = currency.longName
     }
     
     public func updateDate(date: Date) {
@@ -110,6 +111,10 @@ class CreateOperationView: UIView {
             incomeButton.backgroundColor = .inactiveButtonBackground
             incomeButton.setTitleColor(.darkText, for: .normal)
         }
+    }
+    
+    public func updateCategory(category: CategoryViewModel) {
+        categorySelector.rightButtonDescription.text = category.name
     }
     
     private func labelCell(text: String) -> UIView {
@@ -246,6 +251,7 @@ class CreateOperationView: UIView {
     private func addTargets() {
         amountTextField.addTarget(self, action: #selector(textFieldDidChangeValue), for: .editingChanged)
         currencySelector.addTarget(self, action: #selector(createOperationViewDidSelectCurrency), for: .touchUpInside)
+        categorySelector.addTarget(self, action: #selector(createOperationViewDidSelectCategory), for: .touchUpInside)
         dateSelector.addTarget(self, action: #selector(createOperationViewDidSelectDate), for: .touchUpInside)
         incomeButton.addTarget(self, action: #selector(createOperationViewDidSelectIncome), for: .touchUpInside)
         expanseButton.addTarget(self, action: #selector(createOperationViewDidSelectExpanse), for: .touchUpInside)
@@ -275,6 +281,10 @@ class CreateOperationView: UIView {
         delegate?.createOperationViewDidSelectIncome()
 	}
 
+    @objc private func createOperationViewDidSelectCategory() {
+        delegate?.createOperationViewDidSelectCategory()
+    }
+    
     func updateBottomInset(valueInset: CGFloat) {
         bottomConstraint?.update(inset: valueInset)
     }

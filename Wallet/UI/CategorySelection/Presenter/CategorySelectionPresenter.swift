@@ -9,25 +9,22 @@ import Foundation
 
 class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
     
+    private let router: CategorySelectionRouterProtocol
+    weak var delegate: CategorySelectionDelegateProtocol?
+    
+    internal var category: Category
+    
     private var service: CategoriesServiceProtocol
     weak var view: CategorySelectionViewProtocol?
     
     private var selectedIndexPathRow: Int = 0
     
-//  TEST
-    private var listOfCategories: [Category] = [
-        Category(iconSystemImage: "fork.knife", title: "Кафе и рестораны", color: "#7765C0"),
-        Category(iconSystemImage: "cart", title: "Супермаркеты", color: "#339FEE"),
-        Category(iconSystemImage: "figure.walk", title: "Спортзал", color: "#994747"),
-        Category(iconSystemImage: "bus", title: "Общественный транспорт", color: "#EE33BA"),
-        Category(iconSystemImage: "pills.fill", title: "Медицина", color: "#16DC71"),
-        Category(iconSystemImage: "fuelpump.fill", title: "Бензин", color: "#EEA333"),
-        Category(iconSystemImage: "house.fill", title: "Квартплата", color: "#91397D"),
-        Category(iconSystemImage: "sun.max.fill", title: "Отпуск", color: "#EEDB33")
-    ]
+    private var listOfCategories: [CategoryViewModel] = []
     
-    init(service: CategoriesServiceProtocol) {
+    init(service: CategoriesServiceProtocol, category: Category, router: CategorySelectionRouterProtocol) {
         self.service = service
+        self.category = category
+        self.router = router
     }
     
     func getSelectedRow() -> Int? {
@@ -36,18 +33,64 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
     
     func setSelectedRow(row: Int) {
         selectedIndexPathRow = row
+        
+        let categorySelected = listOfCategories[row]
+        categoryDidUpdate(category: categorySelected)
+        
+        let categories = service.getCategories()
+        
+        let category = categories.first(where: { category in
+            category.name == categorySelected.name
+        }) ?? Category(id: 0, name: category.name, iconName: category.iconName, iconColor: category.iconColor)
+        
+        delegate?.categorySaved(category: category)
     }
     
     func controllerLoaded() {
+        service.loadCategories { [weak self] result in
+            switch result {
+            case .success(let categories):
+                let categoriesViewModels = categories.map { category -> CategoryViewModel in
+                    CategoryViewModel(name: category.name, iconName: category.iconName, iconColor: category.iconColor)
+                }
+                self?.listOfCategories = categoriesViewModels
+                self?.selectedIndexPathRow = self?.listOfCategories.firstIndex(where: { category in
+                    category.name == self?.category.name
+                }) ?? 0
+                DispatchQueue.main.async {
+                    self?.view?.updateTableView()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
-    func didTapBarButton() {}
+    func didTapBarButton() {
+    }
+    
+    func actionButtonDidTap() {
+        delegate?.categorySaved(category: category)
+        router.closeCAtegorySelectionScreen()
+    }
+    
+    func categoryDidUpdate(category: CategoryViewModel) {
+        let categoriesVM = service.getCategories()
+        
+        self.category = categoriesVM.first(where: { categoryVM in
+            categoryVM.name == category.name
+        }) ?? Category(id: 0, name: category.name, iconName: category.iconName, iconColor: category.iconColor)
+    }
+    
+    func cancelDidClick() {
+        router.closeCAtegorySelectionScreen()
+    }
     
     func getNumberOfRows() -> Int? {
         listOfCategories.count
     }
     
-    func getCategory(index: Int) -> Category {
+    func getCategory(index: Int) -> CategoryViewModel {
         listOfCategories[index]
     }
 }

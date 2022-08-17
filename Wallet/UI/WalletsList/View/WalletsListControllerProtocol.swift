@@ -8,5 +8,7 @@
 import UIKit
 
 protocol WalletsListControllerProtocol: AnyObject {
-    func updateWalletsList(wallets: [Wallet])
+    func updateWalletsList()
+    func updateBalances(commonBalance: BalanceViewModel?, income: BalanceViewModel?, expanse: BalanceViewModel?)
+    func walletsLoadingError(error: String)
 }

@@ -12,7 +12,7 @@ public class BaseInputTextField: UITextField {
     var placeholderText: String?
     var title: String?
     
-    private lazy var stroke: UIView = {
+    public lazy var stroke: UIView = {
        let view = UIView()
        view.backgroundColor = .inactiveButtonBackground
        return view

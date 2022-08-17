@@ -11,19 +11,21 @@ import WalletDesignKit
 protocol CurrencySelectionViewDelegate: AnyObject {
     func cellSelected(indexPathRow: Int)
     func getSelectedRow() -> Int?
+    func getNumberOfRows() -> Int?
+    func getCategory(index: Int) -> CurrencyViewModel
 }
 
 class CurrencySelectionView: UIView {
     weak var delegate: CurrencySelectionViewDelegate?
-    private var currenciesList: [Currency]?
+    private var currenciesList: [CurrencyViewModel]?
     
-    private lazy var tableView: UITableView = {
+    lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .background
         return tableView
     }()
     
-    func updateCurrenciesList(currencies: [Currency]?) {
+    func updateCurrenciesList(currencies: [CurrencyViewModel]?) {
         currenciesList = currencies ?? Array()
     }
     
@@ -69,7 +71,7 @@ extension CurrencySelectionView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        currenciesList?.count ?? 0
+        delegate?.getNumberOfRows() ?? 0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -88,7 +90,7 @@ extension CurrencySelectionView: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CurrencySelectionTableViewCell", for: indexPath) as? CurrencySelectionTableViewCell else {
             return UITableViewCell()
         }
-        guard let currency = currenciesList?[indexPath.row] else { return UITableViewCell() }
+        guard let currency = self.delegate?.getCategory(index: indexPath.row)  else { return UITableViewCell() }
         
         cell.title.text = currency.fullName
         let row = delegate?.getSelectedRow()

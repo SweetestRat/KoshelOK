@@ -13,13 +13,31 @@ class CreateWalletPresenter: CreateWalletPresenterProtocol {
     private let router: CreateWalletRouterProtocol
     weak var view: CreateWalletViewProtocol?
     
+    private var currencySeletedRow: Int?
+    private var currency: Currency = Currency(id: 1, shortName: "RUB", longName: "Российский рубль")
+    
     init(service: CreateWalletServiceProtocol, router: CreateWalletRouterProtocol) {
         self.service = service
         self.router = router
     }
     
-    func createWallet() {
-        service.createWallet()
+    func createButtonDidTap() {
+        guard let walletName = view?.getWalletName() else { return }
+        
+        let createWalletModel = CreateWalletModel(name: walletName, currencyId: currency.id)
+        service.createWallet(data: createWalletModel) { [weak self] result in
+            switch result {
+            case .success(let wallet):
+                print(wallet)
+                DispatchQueue.main.async {
+                    self?.view?.stopLoading()
+                    self?.router.openWalletsList()
+                }
+            case .failure(let error):
+                self?.view?.walletCreationFailed(error: error.localizedDescription)
+            }
+        }
+        
         openWalletsList()
     }
     
@@ -39,10 +57,24 @@ class CreateWalletPresenter: CreateWalletPresenterProtocol {
         }
         view?.updateActionButtonState(isActive: isButtonEnabled)
     }
+    
+    func controllerLoaded() {
+        
+        view?.updateCurrency(currency: currency)
+    }
 }
 
 extension CreateWalletPresenter: CurrencySelectionDelegateProtocol {
     func updateSelectedCurrency(currency: Currency) {
-        
+        self.currency = currency
+        view?.updateCurrency(currency: currency)
+    }
+    
+    func getSelectedRow() -> Int {
+        return currencySeletedRow ?? 0
+    }
+    
+    func saveSelectedRow(row: Int) {
+        currencySeletedRow = row
     }
 }

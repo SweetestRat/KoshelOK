@@ -11,4 +11,5 @@ protocol CreateOperationViewProtocol: AnyObject {
     func updateCurrency(currency: Currency)
     func updateDate(date: Date)
     func updateOperationType(operationType: OperationType)
+    func updateCategory(category: CategoryViewModel)
 }
