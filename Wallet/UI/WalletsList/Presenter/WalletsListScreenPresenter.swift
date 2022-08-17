@@ -13,6 +13,9 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
     private let service: WalletsListServiceProtocol
     private var userId: Int?
     private var wallets: [WalletViewModel]?
+    private var commonBalance: BalanceViewModel?
+    private var income: BalanceViewModel?
+    private var expanse: BalanceViewModel?
     
     init(service: WalletsListServiceProtocol, router: WalletsListRouterProtocol, userId: Int) {
         self.service = service
@@ -25,8 +28,10 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
             switch result {
             case .success(let wallets):
                 self?.wallets = self?.mapWallets(wallets: wallets)
+                self?.updateBalances()
                 DispatchQueue.main.sync {
                     self?.view?.updateWalletsList()
+                    self?.view?.updateBalances()
                 }
             case .failure(let error):
                 self?.view?.walletsLoadingError(error: error.localizedDescription)
@@ -53,7 +58,26 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
         })?.id else { return }
         router.openWalletInfo(walletId: walletId)
     }
-
+    
+    private func updateBalances() {
+        guard
+            let wallets = wallets,
+            wallets.count > 0
+        else { return }
+        
+        let currency = wallets[0].balance.currency
+        var income = 0
+        var expanse = 0
+        wallets.forEach { wallet in
+            income += wallet.income.value
+            expanse += wallet.expanse.value
+        }
+        
+        self.income = BalanceViewModel(value: income, currency: currency)
+        self.expanse = BalanceViewModel(value: expanse, currency: currency)
+        self.commonBalance = BalanceViewModel(value: income - expanse, currency: currency)
+    }
+    
     private func mapWallets(wallets: [Wallet]) -> [WalletViewModel] {
         wallets.map { wallet in
             WalletViewModel(
@@ -63,6 +87,20 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
                     currency: CurrencyViewModel(
                         symbol: wallet.balance.currency.shortName,
                         fullName: wallet.balance.currency.longName
+                    )
+                ),
+                income: BalanceViewModel(
+                    value: Int(wallet.income.amount) ?? 0,
+                    currency: CurrencyViewModel(
+                        symbol: wallet.income.currency.shortName,
+                        fullName: wallet.income.currency.longName
+                    )
+                ),
+                expanse: BalanceViewModel(
+                    value: Int(wallet.expanse.amount) ?? 0,
+                    currency: CurrencyViewModel(
+                        symbol: wallet.expanse.currency.shortName,
+                        fullName: wallet.expanse.currency.longName
                     )
                 )
             )
