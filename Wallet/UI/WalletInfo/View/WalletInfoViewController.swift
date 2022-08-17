@@ -55,4 +55,26 @@ class WalletInfoViewController: UIViewController, WalletInfoViewProtocol {
     @objc private func createOperationButtonDidTap() {
         presenter.createOperationButtonDidTap()
     }
+    
+    func updateOperationsList() {
+        walletInfoView.updateOperationsList()
+    }
+    
+    func operationsLoadingError(error: String) {
+        // TODO: show error allert
+    }
+}
+
+extension WalletInfoViewController: WalletInfoViewDelegate {
+    func getOperation(row: Int, section: Int) -> OperationViewModel? {
+        return presenter.getOperation(row: row, section: section)
+    }
+    
+    func getNumberOfRows() -> Int {
+        return presenter.getNumberOfRows()
+    }
+    
+    func getNumberOfRowsInSection(section: Int) -> Int? {
+        return presenter.getNumberOfRowsInSection(section: section)
+    }
 }

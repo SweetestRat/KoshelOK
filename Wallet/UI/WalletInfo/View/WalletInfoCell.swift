@@ -16,19 +16,6 @@ class WalletInfoCell: UITableViewCell {
         view.backgroundColor = .systemGray
         return view
     }()
-
-    lazy var textStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = CGFloat(ExtraSmallPadding)
-        return stackView
-    }()
-    
-    lazy var title: UILabel = {
-        let label = UILabel()
-        label.font = .SFProRegular16
-        return label
-    }()
     
     lazy var category: UILabel = {
         let label = UILabel()
@@ -75,13 +62,9 @@ class WalletInfoCell: UITableViewCell {
     private func addSubviews() {
         [
             icon,
-            textStackView,
+            category,
             infoStackView
         ].forEach { addSubview($0) }
-        [
-            title,
-            category
-        ].forEach { textStackView.addArrangedSubview($0) }
         [
             balance,
             time
@@ -95,9 +78,10 @@ class WalletInfoCell: UITableViewCell {
             make.leading.equalTo(contentView).inset(MediumPadding)
         }
         
-        textStackView.snp.makeConstraints { make in
-            make.leading.equalTo(icon.snp.trailing).offset(MediumPadding)
+        category.snp.makeConstraints { make in
+            make.leading.equalTo(icon.snp.trailing).offset(SmallPadding)
             make.centerY.equalToSuperview()
+            make.trailing.equalTo(infoStackView.snp.leading).offset(-SmallPadding)
         }
         
         infoStackView.snp.makeConstraints { make in

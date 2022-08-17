@@ -8,7 +8,7 @@
 import Foundation
 import WalletNetworkKit
 
-class OperationService: WalletInfoServiceProtocol {
+class OperationService: WalletOperationsServiceProtocol {
     private let networkManager: NetworkManager
     
     init(networkManager: NetworkManager) {
@@ -18,7 +18,7 @@ class OperationService: WalletInfoServiceProtocol {
     func getWalletOperations(userId: Int, walletId: Int, completion: @escaping (Result<[Operation], Error>) -> Void) {
         let request = OperationRequest(userId: userId, walletId: walletId)
         
-        networkManager.loadRequest(request: request) { [weak self] result in
+        networkManager.loadRequest(request: request) { result in
             switch result {
             case .success(let resultData):
                 completion(.success(resultData))

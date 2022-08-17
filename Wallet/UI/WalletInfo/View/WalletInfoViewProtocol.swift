@@ -8,5 +8,6 @@
 import Foundation
 
 protocol WalletInfoViewProtocol: AnyObject {
-    
+    func updateOperationsList()
+    func operationsLoadingError(error: String)
 }

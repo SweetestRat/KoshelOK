@@ -21,7 +21,8 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
     }
     
     func controllerLoaded() {
-        service.getAllWallets(userId: 5) { [weak self] result in
+        guard let id = UserSettings.userDefaults.userId else { return }
+        service.getAllWallets(userId: id) { [weak self] result in
             switch result {
             case .success(let wallets):
                 self?.wallets = self?.mapWallets(wallets: wallets)

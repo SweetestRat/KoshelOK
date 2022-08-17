@@ -10,4 +10,7 @@ import Foundation
 protocol WalletInfoPresenterProtocol: AnyObject {
     func settingsDidTap()
     func createOperationButtonDidTap()
+    func getOperation(row: Int, section: Int) -> OperationViewModel?
+    func getNumberOfRows() -> Int
+    func getNumberOfRowsInSection(section: Int) -> Int?
 }

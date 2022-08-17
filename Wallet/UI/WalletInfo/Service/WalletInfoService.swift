@@ -13,4 +13,5 @@ class WalletInfoService: WalletInfoServiceProtocol {
     
     init(networkManager: NetworkManager) {
         self.networkManager = networkManager
+    }
 }
