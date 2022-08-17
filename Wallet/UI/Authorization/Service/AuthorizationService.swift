@@ -17,7 +17,9 @@ class AuthorizationService: AuthorizationServiceProtocol {
         self.networkManager = networkManager
     }
     
-    func createUser(data: Data, completion: @escaping (Result<User, Error>) -> Void) {
+    func createUser(data: CreateUserModel, completion: @escaping (Result<User, Error>) -> Void) {
+        guard let data = try? JSONEncoder().encode(data) else { return }
+        
         let request = AuthorizationRequest(data: data)
         
         networkManager.loadRequest(request: request) { result in

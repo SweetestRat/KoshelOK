@@ -19,8 +19,7 @@ class AuthorizationPresenter: AuthorizationPresenterProtocol {
     
     func actionButtonDidTap(email: String) {
         let user = CreateUserModel(mail: email)
-        guard let data = try? JSONEncoder().encode(user) else { return }
-        service.createUser(data: data) { [weak self] result in
+        service.createUser(data: user) { [weak self] result in
             switch result {
             case .success(let user):
                 DispatchQueue.main.async {
