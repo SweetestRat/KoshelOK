@@ -1,3 +1,3 @@
 
 gen:
-	bundle install && bundle exec pod install
+	xcodegen generate && bundle install && bundle exec pod install

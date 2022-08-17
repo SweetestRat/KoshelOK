@@ -1,0 +1,26 @@
+name: Wallet
+# include:
+#   - base_spec.yml
+options:
+  bundleIdPrefix: com.wallet-D1
+#packages:  
+#  Yams:
+#    url: https://github.com/jpsim/Yams
+#    from: 2.0.0
+targets:
+  Wallet:
+    type: application
+    platform: iOS
+    deploymentTarget: "13.0"
+    sources: [Wallet]
+    info:
+      path: Wallet/SupportingFiles/Info.plist
+      properties:
+        UIRequiresFullScreen: YES
+        UIApplicationSceneManifest:
+            UIApplicationSupportsMultipleScenes: false
+            UISceneConfigurations:
+              UIWindowSceneSessionRoleApplication:
+                - UISceneConfigurationName: Default Configuration
+                  UISceneDelegateClassName: $(PRODUCT_MODULE_NAME).SceneDelegate
+        UILaunchStoryboardName: LaunchScreen
