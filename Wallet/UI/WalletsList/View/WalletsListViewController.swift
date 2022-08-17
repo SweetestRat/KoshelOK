@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import WalletDesignKit
 
-class WalletsListViewController: UIViewController, WalletsListControllerProtocol, WalletsScreenViewDelegate {
+class WalletsListViewController: UIViewController, WalletsListControllerProtocol {
     private let presenter: WalletsListPresenterProtocol
     
     init(presenter: WalletsListPresenterProtocol) {
@@ -27,8 +27,12 @@ class WalletsListViewController: UIViewController, WalletsListControllerProtocol
         return view
     }()
     
-    func updateWalletsList(wallets: [WalletViewModel]) {
-        screenView.updateWalletsList(wallets: wallets)
+    func updateWalletsList() {
+        screenView.updateWalletsList()
+    }
+    
+    func userCreationFailed(error: String) {
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,10 +55,6 @@ class WalletsListViewController: UIViewController, WalletsListControllerProtocol
         addTargets()
     }
     
-    func didTapWallet() {
-        presenter.didTapWallet()
-    }
-    
     private func addTargets() {
         screenView.addButtonTarget(self, action: #selector(screenViewButtonDidTap), for: .touchUpInside)
     }
@@ -62,4 +62,20 @@ class WalletsListViewController: UIViewController, WalletsListControllerProtocol
     @objc private func screenViewButtonDidTap() {
         presenter.createWalletClicked()
     }
+}
+
+extension WalletsListViewController: WalletsScreenViewDelegate {
+    
+    func didTapWallet(at row: Int) {
+        presenter.didTapWallet(at: row)
+    }
+    
+    func getWallet(at row: Int) -> WalletViewModel? {
+        presenter.getWallet(at: row)
+    }
+    
+    func getNumberOfRows() -> Int {
+        presenter.getNumberOfRows()
+    }
+    
 }

@@ -8,19 +8,17 @@
 import Foundation
 import WalletNetworkKit
 
-enum RequestType {
-    
-}
+struct GetWalletsModel: Encodable {}
 
 struct WalletsListRequest: NetworkRequestProtocol {
     typealias Model = [Wallet]
     
-    var path: String = "wallet"
+    var path: String { "/koshelok/wallet" }
     var parameters: [String: String]?
-    var method: RequestMethod
+    var method: RequestMethod { .get }
+    var headers: [String : String]?
     
-    init(parameters: [String: String], method: RequestMethod) {
-        self.parameters = parameters
-        self.method = method
+    init(userId: Int) {
+        self.headers = ["userId": "\(userId)"]
     }
 }
