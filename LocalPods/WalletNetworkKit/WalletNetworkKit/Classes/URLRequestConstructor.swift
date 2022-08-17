@@ -24,7 +24,10 @@ class URLRequestConstructor {
         
         guard let url = components.url else { throw NSError.defaultError }
         var urlRequest = URLRequest(url: url)
-        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.headers?.forEach { header in
+            urlRequest.addValue(header.value, forHTTPHeaderField: header.key)
+        }
         urlRequest.httpBody = request.body
         urlRequest.httpMethod = request.method.stringValue
         

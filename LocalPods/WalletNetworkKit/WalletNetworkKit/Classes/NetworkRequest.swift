@@ -21,6 +21,7 @@ public protocol NetworkRequestProtocol {
     var baseUrl: String { get }
     var path: String { get }
     var parameters: [String: String]? { get }
+    var headers: [String: String]? { get }
     var method: RequestMethod { get }
     var body: Data? { get }
 }
@@ -28,4 +29,5 @@ public protocol NetworkRequestProtocol {
 public extension NetworkRequestProtocol {
     var baseUrl: String { "http://34.116.166.170:9090" }
     var body: Data? { nil }
+    var headers: [String: String]? { nil }
 }

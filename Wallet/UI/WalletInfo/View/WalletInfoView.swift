@@ -79,7 +79,6 @@ class WalletInfoView: UIView {
         
         walletInfo = Array(repeating:
                         WalletViewModel(name: "Wallet Name",
-                                        icon: "",
                                         balance:
                                             BalanceViewModel(value: 125,
                                                              currency:

@@ -8,5 +8,6 @@
 import UIKit
 
 protocol WalletsListControllerProtocol: AnyObject {
-    func updateWalletsList(wallets: [WalletViewModel])
+    func updateWalletsList()
+    func walletsLoadingError(error: String)
 }

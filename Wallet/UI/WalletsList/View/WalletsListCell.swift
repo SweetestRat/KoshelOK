@@ -30,8 +30,14 @@ class WalletsListCell: UITableViewCell {
         return view
     }()
     
+    func configure(with wallet: WalletViewModel) {
+        title.text = wallet.name
+        balance.text = wallet.balance.toString()
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = .background
         
         [icon, title, balance].forEach {
             contentView.addSubview($0)

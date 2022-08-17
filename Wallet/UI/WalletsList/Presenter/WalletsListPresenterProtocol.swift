@@ -7,6 +7,8 @@
 
 protocol WalletsListPresenterProtocol: AnyObject {
     func createWalletClicked()
-    func didTapWallet()
+    func didTapWallet(at row: Int)
     func controllerLoaded()
+    func getWallet(at row: Int) -> WalletViewModel?
+    func getNumberOfRows() -> Int
 }

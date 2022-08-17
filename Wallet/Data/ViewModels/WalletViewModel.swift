@@ -9,7 +9,7 @@ import Foundation
 
 struct WalletViewModel {
     let name: String
-    let icon: String
+    let icon: String = "creditcard"
     let balance: BalanceViewModel
     
     func toString() -> String {

@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import WalletNetworkKit
 
 class WalletsListsControllerAssembly {
     func assembly(userId: Int) -> UIViewController {
-        let service = WalletsListService()
+        let networkManager = NetworkManager()
         let router = WalletsListRouter()
+        let service = WalletsListService(networkManager: networkManager)
         let presenter = WalletsListScreenPresenter(service: service, router: router, userId: userId)
         let viewController = WalletsListViewController(presenter: presenter)
         

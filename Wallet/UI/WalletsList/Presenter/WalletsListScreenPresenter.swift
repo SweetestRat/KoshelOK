@@ -12,6 +12,7 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
     private let router: WalletsListRouterProtocol
     private let service: WalletsListServiceProtocol
     private var userId: Int?
+    private var wallets: [WalletViewModel]?
     
     init(service: WalletsListServiceProtocol, router: WalletsListRouterProtocol, userId: Int) {
         self.service = service
@@ -20,31 +21,51 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
     }
     
     func controllerLoaded() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) { [weak self] in
-            self?.view?.updateWalletsList(
-                wallets: Array(repeating:
-                                WalletViewModel(name: "Wallet Name",
-                                                icon: "",
-                                                balance:
-                                                    BalanceViewModel(
-                                                            value: 125,
-                                                            currency:
-                                                                CurrencyViewModel(symbol: "en_US",
-                                                                                  fullName: "English USD")
-                                        )
-                                      ),
-                               count: 30
-                              )
-            )
+        service.getAllWallets(userId: 5) { [weak self] result in
+            switch result {
+            case .success(let wallets):
+                self?.wallets = self?.mapWallets(wallets: wallets)
+                DispatchQueue.main.sync {
+                    self?.view?.updateWalletsList()
+                }
+            case .failure(let error):
+                self?.view?.walletsLoadingError(error: error.localizedDescription)
+            }
         }
+    }
+    
+    func getWallet(at row: Int) -> WalletViewModel? {
+        wallets?[row]
+    }
+    
+    func getNumberOfRows() -> Int {
+        wallets?.count ?? 0
     }
     
     func createWalletClicked() {
         router.openCreateWallet()
     }
     
-    func didTapWallet() {
-        router.openWalletInfo()
+    func didTapWallet(at row: Int) {
+        let selectedWalletName = wallets?[row].name
+        guard let walletId = service.getWalletsModels()?.first (where: { wallet in
+            wallet.name == selectedWalletName
+        })?.id else { return }
+        router.openWalletInfo(walletId: walletId)
     }
 
+    private func mapWallets(wallets: [Wallet]) -> [WalletViewModel] {
+        wallets.map { wallet in
+            WalletViewModel(
+                name: wallet.name,
+                balance: BalanceViewModel(
+                    value: Int(wallet.balance.amount) ?? 0,
+                    currency: CurrencyViewModel(
+                        symbol: wallet.balance.currency.shortName,
+                        fullName: wallet.balance.currency.longName
+                    )
+                )
+            )
+        }
+    }
 }
