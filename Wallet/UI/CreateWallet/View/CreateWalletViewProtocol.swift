@@ -12,4 +12,5 @@ protocol CreateWalletViewProtocol: AnyObject {
     func updateActionButtonState(isActive: Bool)
     func getWalletName() -> String?
     func walletCreationFailed(error: String)
+    func stopLoading()
 }
