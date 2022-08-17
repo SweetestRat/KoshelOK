@@ -14,6 +14,7 @@ class AuthorizationViewController: UIViewController, AuthorizationViewProtocol {
     
     private lazy var mainView: AuthorizationView = {
         let view = AuthorizationView()
+        view.delegate = self
         return view
     }()
     
@@ -38,10 +39,14 @@ class AuthorizationViewController: UIViewController, AuthorizationViewProtocol {
         setObservers()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     @objc private func actionButtonDidTap() {
-        guard let email = mainView.getEmail() else { return }
         mainView.changeLoadingState(state: .start)
-        presenter.actionButtonDidTap(email: email)
+        presenter.actionButtonDidTap()
     }
     
     private func addGestureRecognizer() {
@@ -84,7 +89,21 @@ class AuthorizationViewController: UIViewController, AuthorizationViewProtocol {
         mainView.changeLoadingState(state: .stop)
     }
     
+    func updateEmailValidationState(isValid: Bool) {
+        mainView.updateEmailValidationState(isValid: isValid)
+    }
+    
+    func updateActionButtonState(isEnabled: Bool) {
+        mainView.updateActionButtonState(isEnabled: isEnabled)
+    }
+    
     func userCreationFailed(error: String) {
         // TODO: show error allert
+    }
+}
+
+extension AuthorizationViewController: AuthorizationViewDelegateProtocol {
+    func emailDidChange(email: String) {
+        presenter.emailDidChange(email: email)
     }
 }

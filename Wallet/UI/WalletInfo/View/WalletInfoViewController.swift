@@ -35,6 +35,7 @@ class WalletInfoViewController: UIViewController, WalletInfoViewProtocol {
         }
         
         addTargets()
+        setupNavigationBar()
         presenter.controllerLoaded()
     }
     
@@ -44,6 +45,10 @@ class WalletInfoViewController: UIViewController, WalletInfoViewProtocol {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         navigationItem.rightBarButtonItem = button
+    }
+    
+    private func setupNavigationBar() {
+        navigationItem.title = "Операции"
     }
     
     @objc func settingsDidTap() {
