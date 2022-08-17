@@ -16,7 +16,7 @@ class CategoriesService: CategoriesServiceProtocol {
     }
     
     func loadCategories(completion: @escaping (Result<[Category], Error>) -> Void) {
-        let request = CategoryRequest(parameters: nil, method: .get)
+        let request: CategoryRequestType = .loadCategories
         
         networkManager.loadRequest(request: request) { result in
             switch result {

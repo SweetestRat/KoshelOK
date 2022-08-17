@@ -66,6 +66,14 @@ extension CreateOperationPresenter: CurrencySelectionDelegateProtocol {
         self.currency = currency
         view?.updateCurrency(currency: currency)
     }
+    
+    func getSelectedRow() -> Int {
+        return 0
+    }
+    
+    func saveSelectedRow(row: Int) {
+        
+    }
 }
 
 extension CreateOperationPresenter: DatePickerDelegateProtocol {

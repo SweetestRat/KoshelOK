@@ -88,6 +88,10 @@ class CreateWalletViewController: UIViewController, CreateWalletViewProtocol {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+    
+    func updateCurrency(currency: CurrencyViewModel) {
+        createWalletView.updateCurrency(currency: currency)
+    }
 }
 
 extension CreateWalletViewController: CreateWalletViewDelegate {

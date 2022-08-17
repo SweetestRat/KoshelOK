@@ -92,3 +92,7 @@ iOSInjectionProject/
 # OS generated files
 **/.DS_Store
 **/.gitkeep
+
+# Xcode project files
+Wallet.xcodeproj
+Wallet/SupportingFiles/Info.plist

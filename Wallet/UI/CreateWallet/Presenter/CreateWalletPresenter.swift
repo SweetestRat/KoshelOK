@@ -13,6 +13,8 @@ class CreateWalletPresenter: CreateWalletPresenterProtocol {
     private let router: CreateWalletRouterProtocol
     weak var view: CreateWalletViewProtocol?
     
+    private var currencySeletedRow: Int?
+    
     init(service: CreateWalletServiceProtocol, router: CreateWalletRouterProtocol) {
         self.service = service
         self.router = router
@@ -43,6 +45,14 @@ class CreateWalletPresenter: CreateWalletPresenterProtocol {
 
 extension CreateWalletPresenter: CurrencySelectionDelegateProtocol {
     func updateSelectedCurrency(currency: CurrencyViewModel) {
-        
+        view?.updateCurrency(currency: currency)
+    }
+    
+    func getSelectedRow() -> Int {
+        return currencySeletedRow ?? 0
+    }
+    
+    func saveSelectedRow(row: Int) {
+        currencySeletedRow = row
     }
 }

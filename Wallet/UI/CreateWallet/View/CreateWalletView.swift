@@ -85,6 +85,10 @@ class CreateWalletView: UIView {
         currencyView.addTarget(self, action: #selector(currencyInfoDidTap), for: .touchUpInside)
     }
     
+    func addButtonTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
+        nextButton.addTarget(target, action: action, for: controlEvents)
+    }
+    
     @objc func textFieldDidChangeValue() {
         delegate?.textFieldDidChangeValue(text: nameTextField.text)
     }
@@ -93,8 +97,8 @@ class CreateWalletView: UIView {
         delegate?.cellCurrencyInfoDidTap()
     }
     
-    func addButtonTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
-        nextButton.addTarget(target, action: action, for: controlEvents)
+    public func updateCurrency(currency: CurrencyViewModel) {
+        currencyView.rightButtonDescription.text = currency.fullName
     }
 }
 

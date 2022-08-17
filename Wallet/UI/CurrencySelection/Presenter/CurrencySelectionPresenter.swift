@@ -9,6 +9,8 @@ import Foundation
 
 protocol CurrencySelectionDelegateProtocol: AnyObject {
     func updateSelectedCurrency(currency: CurrencyViewModel)
+    func getSelectedRow() -> Int
+    func saveSelectedRow(row: Int)
 }
 
 class CurrencySelectionPresenter: CurrencySelectionPresenterProtocol {
@@ -17,7 +19,7 @@ class CurrencySelectionPresenter: CurrencySelectionPresenterProtocol {
     private let router: CurrencySelectionRouterProtocol
     weak var view: CurrencySelectionViewProtocol?
     
-    var currenciesList: [CurrencyViewModel]?
+    var currenciesList: [CurrencyViewModel] = []
     private var selectedIndexPathRow: Int = 0
     
     init(service: CurrencySelectionServiceProtocol, router: CurrencySelectionRouterProtocol) {
@@ -26,24 +28,39 @@ class CurrencySelectionPresenter: CurrencySelectionPresenterProtocol {
     }
     
     func getSelectedRow() -> Int? {
-        return selectedIndexPathRow
+        return delegate?.getSelectedRow()
     }
     
     func setSelectedRow(row: Int) {
         selectedIndexPathRow = row
-        guard let currency = currenciesList?[row] else { return }
+        let currency = currenciesList[row]
         
+        delegate?.saveSelectedRow(row: row)
         delegate?.updateSelectedCurrency(currency: currency)
     }
     
     func controllerLoaded() {
-        service.getData()
-        
-        // wait for data and set it to view
-        currenciesList = [CurrencyViewModel(symbol: "$", fullName: "USA Dollars"),
-                          CurrencyViewModel(symbol: "RUB", fullName: "Russian Rubles")]
-        view?.updateCurrenciesList(
-            currencies: currenciesList
-        )
+        service.loadCurrencies { [weak self] result in
+            switch result {
+            case .success(let currencies):
+                let currenciesViewModels = currencies.map { currency -> CurrencyViewModel in
+                    CurrencyViewModel(symbol: currency.shortName, fullName: currency.longName)
+                }
+                self?.currenciesList = currenciesViewModels
+                DispatchQueue.main.async {
+                    self?.view?.updateTableView()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func getNumberOfRows() -> Int? {
+        currenciesList.count
+    }
+    
+    func getCurrency(index: Int) -> CurrencyViewModel {
+        currenciesList[index]
     }
 }

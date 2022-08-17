@@ -63,7 +63,7 @@ class CategorySelectionTableViewCell: UITableViewCell {
         icon.addSubview(image)
         
         icon.layer.cornerRadius = CGFloat(IconSize / 2)
-        icon.backgroundColor = UIColor(hex: "#\(parametres.iconColor)")
+        icon.backgroundColor = UIColor(hex: parametres.iconColor)
         
         title.text = parametres.name
         
