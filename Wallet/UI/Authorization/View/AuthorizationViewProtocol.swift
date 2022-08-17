@@ -9,5 +9,7 @@ import Foundation
 
 protocol AuthorizationViewProtocol: AnyObject {
     func userCreationFailed(error: String)
+    func updateEmailValidationState(isValid: Bool)
+    func updateActionButtonState(isEnabled: Bool)
     func stopLoading()
 }
