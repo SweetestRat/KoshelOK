@@ -94,8 +94,8 @@ class AuthorizationView: UIView {
         bottomConstraint?.update(inset: valueInset)
     }
     
-    func getEmail() -> String {
-        guard let email = nameTextField.text else { return "" }
+    func getEmail() -> String? {
+        let email = nameTextField.text
         return email
     }
 }

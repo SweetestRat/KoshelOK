@@ -39,7 +39,7 @@ class AuthorizationViewController: UIViewController, AuthorizationViewProtocol {
     }
     
     @objc private func actionButtonDidTap() {
-        let email = mainView.getEmail()
+        guard let email = mainView.getEmail() else { return }
         presenter.actionButtonDidTap(email: email)
     }
     
