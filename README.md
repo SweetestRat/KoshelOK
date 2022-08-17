@@ -14,6 +14,11 @@ bundle install
 bundle exec pod install
 ```
 
+Ставим XCodegen зависимости
+```
+brew install xcodegen
+```
+
 Можно выполнить специальную команду для установки зависимостей:
 ```
 make gen

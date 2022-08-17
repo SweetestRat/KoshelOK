@@ -1,0 +1,20 @@
+name: Wallet
+options:
+  bundleIdPrefix: com.wallet-D1
+targets:
+  Wallet:
+    type: application
+    platform: iOS
+    deploymentTarget: "13.0"
+    sources: [Wallet]
+    info:
+      path: Wallet/SupportingFiles/Info.plist
+      properties:
+        UIRequiresFullScreen: YES
+        UIApplicationSceneManifest:
+            UIApplicationSupportsMultipleScenes: false
+            UISceneConfigurations:
+              UIWindowSceneSessionRoleApplication:
+                - UISceneConfigurationName: Default Configuration
+                  UISceneDelegateClassName: $(PRODUCT_MODULE_NAME).SceneDelegate
+        UILaunchStoryboardName: LaunchScreen
