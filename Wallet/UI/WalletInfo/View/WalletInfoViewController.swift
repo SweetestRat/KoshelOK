@@ -62,7 +62,11 @@ class WalletInfoViewController: UIViewController, WalletInfoViewProtocol {
         walletInfoView.updateOperationsList()
     }
     
-    func operationsLoadingError(error: String) {
+    func updateBalances(wallet: WalletViewModel) {
+        walletInfoView.updateBalances(wallet: wallet)
+    }
+    
+    func loadingError(error: String) {
         // TODO: show error allert
     }
 }

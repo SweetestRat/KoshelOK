@@ -15,7 +15,7 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
     
     private var walletId: Int
     private var operations: [[OperationViewModel]]?
-    private var wallet: Wallet?
+    private var wallet: WalletViewModel?
     
     init(walletInfoService: WalletInfoServiceProtocol, operationService: WalletOperationsServiceProtocol, router: WalletInfoRouterProtocol, walletId: Int) {
         self.walletInfoService = walletInfoService
@@ -30,13 +30,34 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
         operationService.getWalletOperations(userId: id, walletId: walletId) { [weak self] result in
             switch result {
             case .success(let operations):
-                self?.updateBalances()
                 self?.mapOperations(operations: operations)
                 DispatchQueue.main.sync {
                     self?.view?.updateOperationsList()
                 }
             case .failure(let error):
-                self?.view?.operationsLoadingError(error: error.localizedDescription)
+                self?.view?.loadingError(error: error.localizedDescription)
+            }
+        }
+        
+        walletInfoService.getWalletInfo(userId: id, walletId: walletId) { [weak self] result in
+            switch result {
+            case .success(let wallet):
+                self?.wallet = WalletViewModel(name: wallet.name,
+                                               balance: BalanceViewModel(value: Int(wallet.balance.amount) ?? 0,
+                                                                         currency: CurrencyViewModel(symbol: wallet.balance.currencyDto.shortName,
+                                                                                                     fullName: wallet.balance.currencyDto.longName)),
+                                               income: BalanceViewModel(value: Int(wallet.income.amount) ?? 0,
+                                                                        currency: CurrencyViewModel(symbol: wallet.balance.currencyDto.shortName,
+                                                                                                    fullName: wallet.balance.currencyDto.longName)),
+                                               expanse: BalanceViewModel(value: Int(wallet.expense.amount) ?? 0,
+                                                                         currency: CurrencyViewModel(symbol: wallet.balance.currencyDto.shortName,
+                                                                                                     fullName: wallet.balance.currencyDto.longName)))
+                DispatchQueue.main.sync {
+                    guard let wallet = self?.wallet else { return }
+                    self?.view?.updateBalances(wallet: wallet)
+                }
+            case .failure(let error):
+                self?.view?.loadingError(error: error.localizedDescription)
             }
         }
     }
@@ -90,8 +111,5 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
         }
         
         self.operations?.append(sectionOperations)
-    }
-    
-    private func updateBalances() {
     }
 }

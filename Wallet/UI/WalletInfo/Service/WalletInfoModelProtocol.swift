@@ -8,5 +8,5 @@
 import Foundation
 
 protocol WalletInfoServiceProtocol {
-    
+    func getWalletInfo(userId: Int, walletId: Int, completion: @escaping (Result<Wallet, Error>) -> Void)
 }

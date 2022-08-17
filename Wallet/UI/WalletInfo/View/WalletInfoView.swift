@@ -28,7 +28,7 @@ class WalletInfoView: UIView {
     
     private lazy var walletNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Кошелек 1"
+        label.text = "Name"
         label.font = .SFProMedium16
         label.textColor = .lightTextPrimaryColor
         label.alpha = 0.8
@@ -37,7 +37,7 @@ class WalletInfoView: UIView {
     
     private lazy var commonBalanceValue: UILabel = {
         let label = UILabel()
-        label.text = "118 000 $"
+        label.text = "0,00"
         label.font = .SFProSemiBold32
         label.textColor = .lightTextPrimaryColor
         return label
@@ -47,7 +47,7 @@ class WalletInfoView: UIView {
     
     private lazy var commonIncomeValue: UILabel = {
         let label = UILabel()
-        label.text = "130 000 $"
+        label.text = "0,00"
         label.font = .SFProMedium16
         label.textColor = .lightTextPrimaryColor
         return label
@@ -57,7 +57,7 @@ class WalletInfoView: UIView {
     
     private lazy var commonExpansesValue: UILabel = {
         let label = UILabel()
-        label.text = "12 000 $"
+        label.text = "0,00"
         label.font = .SFProMedium16
         label.textColor = .lightTextPrimaryColor
         return label
@@ -163,6 +163,13 @@ class WalletInfoView: UIView {
     
     func updateOperationsList() {
         walletsTableView.reloadData()
+    }
+    
+    func updateBalances(wallet: WalletViewModel) {
+        commonBalanceValue.text = wallet.balance.toString()
+        commonIncomeValue.text = wallet.income.toString()
+        commonExpansesValue.text = wallet.expanse.toString()
+        walletNameLabel.text = wallet.name
     }
 }
 
