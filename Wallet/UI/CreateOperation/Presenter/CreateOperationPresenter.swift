@@ -79,7 +79,7 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
     func createDidTap() {
         view?.updateActionButtonState(state: .loading)
         let createOperationModel = CreateOperationModel(
-            balanceDto: Balance(currencyDto: currency, amount: String(amount)),
+            balanceDto: Balance(currency: currency, amount: String(amount)),
             date: Int(date.timeIntervalSince1970),
             categoryDto: category,
             income: operationType == .income

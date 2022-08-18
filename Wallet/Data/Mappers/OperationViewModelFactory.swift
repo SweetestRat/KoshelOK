@@ -20,8 +20,8 @@ class OperationViewModelFactory {
         let date = dMMMDateFormatter.instance.format(timeStamp: from.date)
         let time = TimeFormatter.instance.format(timeStamp: from.date)
         return OperationViewModel(
-            category: categoryFactory.produce(from: from.categoryDto),
-            balance: balanceFactory.produce(from: from.balanceDto),
+            category: categoryFactory.produce(from: from.category),
+            balance: balanceFactory.produce(from: from.balance),
             isIncome: from.isIncome,
             date: date,
             time: time

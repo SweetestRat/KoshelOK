@@ -28,7 +28,7 @@ public class BaseButton: UIButton {
         }
     }
     
-    public var actionState: BaseButtonState? {
+    public var actionState: BaseButtonState {
         didSet {
             switch actionState {
             case .loading:
@@ -46,8 +46,6 @@ public class BaseButton: UIButton {
                 loadingIndicator.isHidden = true
                 loadingIndicator.stopAnimating()
                 isEnabled = false
-            case .none:
-                return
             }
         }
     }
@@ -67,9 +65,8 @@ public class BaseButton: UIButton {
     let inactiveTextColor = UIColor.darkTextPrimaryColor
 
     public init(title: String? = nil) {
-        super.init(frame: .zero)
-        
         self.actionState = .active
+        super.init(frame: .zero)
         
         if title != nil {
             text = title

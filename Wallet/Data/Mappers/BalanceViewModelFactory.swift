@@ -17,7 +17,7 @@ class BalanceViewModelFactory {
     func produce(from: Balance) -> BalanceViewModel {
         BalanceViewModel(
             value: Int(from.amount) ?? 0,
-            currency: currencyFactory.produce(from: from.currencyDto)
+            currency: currencyFactory.produce(from: from.currency)
         )
     }
 }

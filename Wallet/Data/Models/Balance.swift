@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct Balance: Decodable, Encodable {
-    let currencyDto: Currency
+struct Balance: Codable {
+    let currency: Currency
     let amount: String
+    
+    private enum CodingKeys : String, CodingKey {
+        case currency = "currencyDto"
+        case amount
+    }
 }

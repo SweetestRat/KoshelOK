@@ -90,22 +90,22 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
                 balance: BalanceViewModel(
                     value: Int(wallet.balance.amount) ?? 0,
                     currency: CurrencyViewModel(
-                        symbol: wallet.balance.currencyDto.shortName,
-                        fullName: wallet.balance.currencyDto.longName
+                        symbol: wallet.balance.currency.shortName,
+                        fullName: wallet.balance.currency.longName
                     )
                 ),
                 income: BalanceViewModel(
                     value: Int(wallet.income.amount) ?? 0,
                     currency: CurrencyViewModel(
-                        symbol: wallet.income.currencyDto.shortName,
-                        fullName: wallet.income.currencyDto.longName
+                        symbol: wallet.income.currency.shortName,
+                        fullName: wallet.income.currency.longName
                     )
                 ),
                 expanse: BalanceViewModel(
                     value: Int(wallet.expense.amount) ?? 0,
                     currency: CurrencyViewModel(
-                        symbol: wallet.expense.currencyDto.shortName,
-                        fullName: wallet.expense.currencyDto.longName
+                        symbol: wallet.expense.currency.shortName,
+                        fullName: wallet.expense.currency.longName
                     )
                 )
             )
