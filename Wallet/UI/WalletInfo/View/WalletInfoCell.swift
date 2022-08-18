@@ -12,28 +12,13 @@ import WalletDesignKit
 class WalletInfoCell: UITableViewCell {
     var icon: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = CGFloat(IconSize / 2)
-        view.backgroundColor = .systemGray
         return view
-    }()
-
-    lazy var textStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = CGFloat(ExtraSmallPadding)
-        return stackView
-    }()
-    
-    lazy var title: UILabel = {
-        let label = UILabel()
-        label.font = .SFProRegular16
-        return label
     }()
     
     lazy var category: UILabel = {
         let label = UILabel()
         label.font = .SFProRegular16
-        label.textColor = .inputPlaceholderColor
+        label.textColor = .darkTextPrimaryColor
         return label
     }()
     
@@ -75,13 +60,9 @@ class WalletInfoCell: UITableViewCell {
     private func addSubviews() {
         [
             icon,
-            textStackView,
+            category,
             infoStackView
         ].forEach { addSubview($0) }
-        [
-            title,
-            category
-        ].forEach { textStackView.addArrangedSubview($0) }
         [
             balance,
             time
@@ -95,9 +76,10 @@ class WalletInfoCell: UITableViewCell {
             make.leading.equalTo(contentView).inset(MediumPadding)
         }
         
-        textStackView.snp.makeConstraints { make in
-            make.leading.equalTo(icon.snp.trailing).offset(MediumPadding)
+        category.snp.makeConstraints { make in
+            make.leading.equalTo(icon.snp.trailing).offset(SmallPadding)
             make.centerY.equalToSuperview()
+            make.trailing.equalTo(infoStackView.snp.leading).offset(-SmallPadding)
         }
         
         infoStackView.snp.makeConstraints { make in
@@ -105,5 +87,27 @@ class WalletInfoCell: UITableViewCell {
             make.centerY.equalToSuperview()
         }
         
+        time.snp.makeConstraints { make in
+            make.trailing.equalToSuperview()
+        }
+    }
+    
+    func configurate(operation: OperationViewModel) {
+        category.text = operation.category.name
+        balance.text = operation.balance.toString()
+        let color = operation.category.iconColor
+        let imageName = operation.category.iconName
+        icon.backgroundColor = UIColor(hex: color)
+        let config = UIImage.SymbolConfiguration(scale: .large)
+        let image = UIImageView(image: UIImage(systemName: imageName, withConfiguration: config))
+        image.tintColor = .lightTextPrimaryColor
+        icon.addSubview(image)
+        
+        icon.layer.cornerRadius = CGFloat(IconSize / 2)
+        
+        image.snp.makeConstraints {make in
+            make.center.equalToSuperview()
+        }
+        backgroundColor = .background
     }
 }

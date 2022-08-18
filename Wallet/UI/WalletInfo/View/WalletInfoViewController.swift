@@ -22,6 +22,7 @@ class WalletInfoViewController: UIViewController, WalletInfoViewProtocol {
     
     private lazy var walletInfoView: WalletInfoView = {
         let view = WalletInfoView()
+        view.delegate = self
         return view
     }()
     
@@ -35,6 +36,7 @@ class WalletInfoViewController: UIViewController, WalletInfoViewProtocol {
         
         addTargets()
         setupNavigationBar()
+        presenter.controllerLoaded()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,7 +48,8 @@ class WalletInfoViewController: UIViewController, WalletInfoViewProtocol {
     }
     
     private func setupNavigationBar() {
-        navigationItem.title = "Операции"
+        let walletName = presenter.getWalletName()
+        navigationItem.title = walletName
     }
     
     @objc func settingsDidTap() {
@@ -59,5 +62,31 @@ class WalletInfoViewController: UIViewController, WalletInfoViewProtocol {
     
     @objc private func createOperationButtonDidTap() {
         presenter.createOperationButtonDidTap()
+    }
+    
+    func updateOperationsList() {
+        walletInfoView.updateOperationsList()
+    }
+    
+    func updateBalances(wallet: WalletViewModel) {
+        walletInfoView.updateBalances(wallet: wallet)
+    }
+    
+    func loadingError(error: String) {
+        // TODO: show error allert
+    }
+}
+
+extension WalletInfoViewController: WalletInfoViewDelegate {
+    func getNumberOfSections() -> Int {
+        return presenter.getNumberOfSections()
+    }
+    
+    func getOperation(row: Int, section: Int) -> OperationViewModel? {
+        return presenter.getOperation(row: row, section: section)
+    }
+    
+    func getNumberOfRowsInSection(section: Int) -> Int? {
+        return presenter.getNumberOfRowsInSection(section: section)
     }
 }

@@ -26,6 +26,10 @@ class CreateOperationViewController: UIViewController, CreateOperationViewProtoc
         createOperationView.updateDate(date: date)
     }
     
+    public func updateOperationType(operationType: OperationType) {
+        createOperationView.updateOperationType(operationType: operationType)
+    }
+    
     public func updateCategory(category: CategoryViewModel) {
         createOperationView.updateCategory(category: category)
     }
@@ -95,6 +99,13 @@ class CreateOperationViewController: UIViewController, CreateOperationViewProtoc
 }
 
 extension CreateOperationViewController: CreateOperationViewDelegate {
+    func createOperationViewDidSelectIncome() {
+        presenter.incomeDidSelected()
+    }
+    
+    func createOperationViewDidSelectExpanse() {
+        presenter.expanseDidSelected()
+    }
     
     func createOperationViewDidSelectCategory() {
         presenter.selectCategory()

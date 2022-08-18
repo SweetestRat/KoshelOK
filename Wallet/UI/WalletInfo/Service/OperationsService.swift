@@ -1,23 +1,23 @@
 //
-//  WalletInfoModel.swift
+//  OperationsService.swift
 //  Wallet
 //
-//  Created by Владислава Гильде on 13.08.2022.
+//  Created by Владислава Гильде on 17.08.2022.
 //
 
 import Foundation
 import WalletNetworkKit
 
-class WalletInfoService: WalletInfoServiceProtocol {
+class OperationService: WalletOperationsServiceProtocol {
     private let networkManager: NetworkManager
     
     init(networkManager: NetworkManager) {
         self.networkManager = networkManager
     }
     
-    func getWalletInfo(userId: Int, walletId: Int, completion: @escaping (Result<Wallet, Error>) -> Void) {
-        let request = WalletInfoRequest(userId: userId, walletId: walletId)
-
+    func getWalletOperations(userId: Int, walletId: Int, completion: @escaping (Result<[Operation], Error>) -> Void) {
+        let request = OperationRequest(userId: userId, walletId: walletId)
+        
         networkManager.loadRequest(request: request) { result in
             switch result {
             case .success(let resultData):

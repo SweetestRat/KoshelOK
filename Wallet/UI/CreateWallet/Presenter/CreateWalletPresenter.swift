@@ -24,11 +24,10 @@ class CreateWalletPresenter: CreateWalletPresenterProtocol {
     func createButtonDidTap() {
         guard let walletName = view?.getWalletName() else { return }
         
-        let createWalletModel = CreateWalletModel(name: walletName, currencyId: currency.id)
+        let createWalletModel = CreateWalletModel(name: walletName, currencyDto: currency)
         service.createWallet(data: createWalletModel) { [weak self] result in
             switch result {
-            case .success(let wallet):
-                print(wallet)
+            case .success(_):
                 DispatchQueue.main.async {
                     self?.view?.stopLoading()
                     self?.router.openWalletsList()
@@ -37,8 +36,6 @@ class CreateWalletPresenter: CreateWalletPresenterProtocol {
                 self?.view?.walletCreationFailed(error: error.localizedDescription)
             }
         }
-        
-        openWalletsList()
     }
     
     func openWalletsList() {
