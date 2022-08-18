@@ -31,7 +31,8 @@ class CreateWalletView: UIView {
     }()
     
     private lazy var nextButton: BaseButton = {
-        let button = BaseButton(title: "Создать кошелек", active: false)
+        let button = BaseButton(title: "Создать кошелек")
+        button.actionState = .inactive
         return button
     }()
     
@@ -105,19 +106,8 @@ class CreateWalletView: UIView {
        return nameTextField.text
     }
     
-    func changeLoadingState(state: loadingState) {
-        switch state {
-        case .start:
-            nextButton.titleLabel?.layer.opacity = 0
-            nextButton.loadingIndicator.isHidden = false
-            nextButton.loadingIndicator.startAnimating()
-            nextButton.isEnabled = false
-        case .stop:
-            nextButton.titleLabel?.layer.opacity = 1
-            nextButton.loadingIndicator.isHidden = true
-            nextButton.loadingIndicator.stopAnimating()
-            nextButton.isEnabled = true
-        }
+    func changeLoadingState(state: BaseButtonState) {
+        nextButton.actionState = state
     }
 }
 

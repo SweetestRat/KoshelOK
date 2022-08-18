@@ -6,12 +6,14 @@
 //
 
 import Foundation
+import WalletNetworkKit
 
 class CreateOperationAssembly {
-    func assembly() -> CreateOperationViewController {
-        let service = CreateOperationService()
+    func assembly(walletId: Int) -> CreateOperationViewController {
+        let networkManager = NetworkManager()
+        let service = CreateOperationService(networkManager: networkManager)
         let router = CreateOperationRouter()
-        let presenter = CreateOperationPresenter(service: service, router: router)
+        let presenter = CreateOperationPresenter(service: service, router: router, walletId: walletId)
         let viewController = CreateOperationViewController(presenter: presenter)
 
         router.view = viewController

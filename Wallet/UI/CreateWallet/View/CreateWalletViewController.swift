@@ -56,7 +56,7 @@ class CreateWalletViewController: UIViewController, CreateWalletViewProtocol {
     }
     
     @objc private func nextButtonDidTap() {
-        createWalletView.changeLoadingState(state: .start)
+        createWalletView.changeLoadingState(state: .inactive)
         presenter.createButtonDidTap()
     }
     
@@ -104,7 +104,7 @@ class CreateWalletViewController: UIViewController, CreateWalletViewProtocol {
     }
     
     func stopLoading() {
-        createWalletView.changeLoadingState(state: .stop)
+        createWalletView.changeLoadingState(state: .inactive)
     }
 }
 

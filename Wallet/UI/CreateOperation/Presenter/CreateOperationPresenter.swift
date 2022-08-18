@@ -12,21 +12,26 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
     private var date: Date
     private var operationType: OperationType
     private var category: Category
-
+    private var amount: Int
+    private let walletId: Int
+    
     private let service: CreateOperationServiceProtocol
     private let router: CreateOperationRouterProtocol
     weak var view: CreateOperationViewProtocol?
     
     init(
         service: CreateOperationServiceProtocol,
-        router: CreateOperationRouterProtocol
+        router: CreateOperationRouterProtocol,
+        walletId: Int
     ) {
         self.service = service
         self.router = router
+        self.walletId = walletId
         
-        // set default user currency (probable get from user account request)
+        // set default user currency (probably get from user account request)
         operationType = .income
         currency = Currency(id: 0, shortName: "RUB", longName: "Российский рубль")
+        amount = 0
         
         let timestamp = Date().timeIntervalSince1970
         let myTimeInterval = TimeInterval(timestamp)
@@ -67,14 +72,33 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
         view?.updateOperationType(operationType: operationType)
     }
     
-    func selectType() {
-        
+    func amountDidChange(amount: String) {
+        self.amount = Int(amount) ?? self.amount
     }
     
-    func createOperation() {
+    func createDidTap() {
+        view?.updateActionButtonState(state: .loading)
+        let createOperationModel = CreateOperationModel(
+            balanceDto: Balance(currencyDto: currency, amount: String(amount)),
+            date: Int(date.timeIntervalSince1970),
+            categoryDto: category,
+            income: operationType == .income
+        )
         
+        service.createOperation(data: createOperationModel, walletId: walletId) {  [weak self] result in
+            switch result {
+            case .success(let wallet):
+                DispatchQueue.main.async {
+                    self?.view?.updateActionButtonState(state: .inactive)
+                    self?.router.closeCreateOperationScreen()
+                }
+            case .failure:
+                self?.view?.updateActionButtonState(state: .active)
+                // TODO show popup
+                return
+            }
+        }
     }
-    
 }
 
 extension CreateOperationPresenter: CurrencySelectionDelegateProtocol {

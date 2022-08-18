@@ -8,5 +8,5 @@
 import Foundation
 
 protocol WalletInfoRouterProtocol {
-    func openCreateOperation()
+    func openCreateOperation(walletId: Int)
 }

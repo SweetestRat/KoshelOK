@@ -34,6 +34,10 @@ class CreateOperationViewController: UIViewController, CreateOperationViewProtoc
         createOperationView.updateCategory(category: category)
     }
     
+    public func updateActionButtonState(state: BaseButtonState) {
+        createOperationView.updateActionButtonState(state: state)
+    }
+    
     init(presenter: CreateOperationPresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -114,9 +118,19 @@ extension CreateOperationViewController: CreateOperationViewDelegate {
     func createOperationViewDidSelectCurrency() {
         presenter.selectCurrency()
     }
+    
     func createOperationViewDidSelectDate() {
         presenter.selectDate()
     }
+    
+    func createOperationViewDidTapCreate() {
+        presenter.createDidTap()
+    }
+    
+    func createOperationViewAmountDidChange(amount: String) {
+        presenter.amountDidChange(amount: amount)
+    }
+    
     func dateDidChanged(date: Date) {
         presenter.dateDidChanged(date: date)
     }

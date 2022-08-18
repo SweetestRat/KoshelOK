@@ -11,6 +11,10 @@ import UIKit
 class CreateOperationRouter: CreateOperationRouterProtocol {
     weak var view: UIViewController?
     
+    func closeCreateOperationScreen() {
+        view?.navigationController?.popViewController(animated: true)
+    }
+    
     func addOperation() {
         view?.navigationController?.popViewController(animated: true)
     }

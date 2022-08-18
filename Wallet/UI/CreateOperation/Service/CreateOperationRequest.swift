@@ -26,7 +26,7 @@ struct CreateOperationRequest: NetworkRequestProtocol {
 
     init(data: Data, userId: Int, walletId: Int) {
         self.body = data
-        self.path = "/wallet/\(walletId)/transaction"
+        self.path = "/koshelok/wallet/\(walletId)/transaction"
         self.headers = ["userId": "\(userId)"]
     }
 }

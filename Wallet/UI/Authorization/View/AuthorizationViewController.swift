@@ -45,7 +45,7 @@ class AuthorizationViewController: UIViewController, AuthorizationViewProtocol {
     }
     
     @objc private func actionButtonDidTap() {
-        mainView.changeLoadingState(state: .start)
+        mainView.changeLoadingState(state: .loading)
         presenter.actionButtonDidTap()
     }
     
@@ -86,7 +86,7 @@ class AuthorizationViewController: UIViewController, AuthorizationViewProtocol {
     }
     
     func stopLoading() {
-        mainView.changeLoadingState(state: .stop)
+        mainView.changeLoadingState(state: .inactive)
     }
     
     func updateEmailValidationState(isValid: Bool) {

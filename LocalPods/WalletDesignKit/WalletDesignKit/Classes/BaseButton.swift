@@ -7,13 +7,13 @@
 
 import UIKit
 
-public enum loadingState {
-    case start
-    case stop
+public enum BaseButtonState {
+    case loading
+    case active
+    case inactive
 }
 
 public class BaseButton: UIButton {
-    
     override public var isEnabled: Bool {
         didSet {
             if isEnabled == true {
@@ -24,6 +24,30 @@ public class BaseButton: UIButton {
                 self.backgroundColor = inactiveBackgroundColor
                 self.setTitleColor(inactiveTextColor, for: .normal)
                 self.isUserInteractionEnabled = false
+            }
+        }
+    }
+    
+    public var actionState: BaseButtonState? {
+        didSet {
+            switch actionState {
+            case .loading:
+                titleLabel?.layer.opacity = 0
+                loadingIndicator.isHidden = false
+                loadingIndicator.startAnimating()
+                isEnabled = false
+            case .active:
+                titleLabel?.layer.opacity = 1
+                loadingIndicator.isHidden = true
+                loadingIndicator.stopAnimating()
+                isEnabled = true
+            case .inactive:
+                titleLabel?.layer.opacity = 1
+                loadingIndicator.isHidden = true
+                loadingIndicator.stopAnimating()
+                isEnabled = false
+            case .none:
+                return
             }
         }
     }
@@ -42,18 +66,22 @@ public class BaseButton: UIButton {
     let activeTextColor = UIColor.lightTextPrimaryColor
     let inactiveTextColor = UIColor.darkTextPrimaryColor
 
-    public convenience init(title: String? = nil, active: Bool? = true) {
-        self.init(type: .custom)
+    public init(title: String? = nil) {
+        super.init(frame: .zero)
         
-        isEnabled = active ?? true
+        self.actionState = .active
         
         if title != nil {
             text = title
         }
         
-        setup()
-        addSubviews()
-        setConstraints()
+        self.setup()
+        self.addSubviews()
+        self.setConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func setup() {

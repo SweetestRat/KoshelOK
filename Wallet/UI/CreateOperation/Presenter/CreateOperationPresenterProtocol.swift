@@ -14,8 +14,8 @@ protocol CreateOperationPresenterProtocol: CurrencySelectionDelegateProtocol {
     func selectCurrency()
     func selectDate()
     func dateDidChanged(date: Date)
-    func selectType()
-    func createOperation()
+    func createDidTap()
+    func amountDidChange(amount: String)
     func incomeDidSelected()
     func expanseDidSelected()
 }
