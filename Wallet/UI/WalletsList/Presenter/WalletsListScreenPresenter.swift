@@ -16,10 +16,13 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
     private var commonBalance: BalanceViewModel?
     private var income: BalanceViewModel?
     private var expanse: BalanceViewModel?
+    private var currencyBalances: [BalanceViewModel] = []
     
     private let currencyViewModelFactory: CurrencyViewModelFactory
     private let balanceViewModelFactory: BalanceViewModelFactory
     private let walletViewModelFactory: WalletViewModelFactory
+    
+    var userCurrencies: Set<CurrencyViewModel> = Set()
     
     init(service: WalletsListServiceProtocol, router: WalletsListRouterProtocol, userId: Int) {
         self.service = service
@@ -71,6 +74,25 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
          router.exitFromWallet()
     }
     
+    func getCurrencyBalance(row: Int) -> String? {
+        currencyBalances[row].toString()
+    }
+    
+    func getNumberOfBalanceRows() -> Int? {
+        currencyBalances.count
+    }
+    
+    func fillUserCurrencies() {
+        guard let allWallets = wallets else { return }
+        allWallets.forEach { wallet in
+            self.userCurrencies.insert(wallet.balance.currency)
+        }
+    }
+    
+    func getNumberOfBalanceRows() -> Int {
+        return self.userCurrencies.count
+    }
+    
     func didTapWallet(at row: Int) {
         guard let selectedWalletName = wallets?[row].name,
               let walletId = service.getWalletsModels()?.first (where: { wallet in
@@ -84,6 +106,22 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
             let wallets = wallets,
             wallets.count > 0
         else { return }
+        
+        currencyBalances = []
+        fillUserCurrencies()
+        print(userCurrencies)
+        userCurrencies.forEach { currency in
+            let filtredWallets = wallets.filter { $0.balance.currency == currency }
+            
+            let currencyAmount = filtredWallets.map { filtredWallet in
+                filtredWallet.balance.value
+            }.reduce(0, +)
+            
+            currencyBalances.append(BalanceViewModel(value: currencyAmount, currency: currency))
+        }
+        currencyBalances.sort { currency1, currency2 in
+            return currency1.currency.symbol > currency2.currency.symbol
+        }
         
         let currency = wallets[0].balance.currency
         var income = 0

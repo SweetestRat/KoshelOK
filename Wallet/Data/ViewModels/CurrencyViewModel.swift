@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CurrencyViewModel {
+struct CurrencyViewModel: Hashable {
     let symbol: String
     let fullName: String
     

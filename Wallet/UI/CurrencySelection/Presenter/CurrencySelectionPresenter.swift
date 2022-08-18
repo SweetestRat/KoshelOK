@@ -52,7 +52,8 @@ class CurrencySelectionPresenter: CurrencySelectionPresenterProtocol {
         service.loadCurrencies { [weak self] result in
             switch result {
             case .success(let currencies):
-                self?.currenciesList = self?.mapCurrencies(currencies: currencies)
+                guard let currenciesViewModels = self?.mapCurrencies(currencies: currencies) else { return }
+                self?.currenciesList = currenciesViewModels
                 DispatchQueue.main.async {
                     self?.view?.updateTableView()
                 }

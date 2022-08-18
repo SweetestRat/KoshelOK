@@ -98,6 +98,13 @@ class WalletsListViewController: UIViewController, WalletsListControllerProtocol
 }
 
 extension WalletsListViewController: WalletsScreenViewDelegate {
+    func getCurrencyBalance(row: Int) -> String? {
+        presenter.getCurrencyBalance(row: row)
+    }
+    
+    func getNumberOfBalanceRows() -> Int? {
+        presenter.getNumberOfBalanceRows()
+    }
     
     func didTapWallet(at row: Int) {
         presenter.didTapWallet(at: row)
