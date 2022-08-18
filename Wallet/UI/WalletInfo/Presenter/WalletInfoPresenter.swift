@@ -106,14 +106,14 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
                 sectionOperations.append(viewModel)
             } else {
                 sectionDate = date
-                let sortedByDateOperations = sectionOperations.sorted(by: {$0.time < $1.time})
+                let sortedByDateOperations = sectionOperations.sorted(by: {$0.time > $1.time})
                 self.operations?.append(sortedByDateOperations)
                 sectionOperations = []
                 sectionOperations.append(viewModel)
             }
         }
         
-        let sortedByDateOperations = sectionOperations.sorted(by: {$0.time < $1.time})
+        let sortedByDateOperations = sectionOperations.sorted(by: {$0.time > $1.time})
         self.operations?.append(sortedByDateOperations)
         self.operations?.sort(by: {$0[0].date > $1[0].date})
     }
