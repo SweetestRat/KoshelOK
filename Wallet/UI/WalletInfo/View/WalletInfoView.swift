@@ -23,6 +23,12 @@ protocol WalletInfoViewDelegate: AnyObject {
 class WalletInfoView: UIView {
     weak var delegate: WalletInfoViewDelegate?
     
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControll = UIRefreshControl()
+        refreshControll.tintColor = .inputPlaceholderColor
+        return refreshControll
+    }()
+    
     private lazy var loadingIndicator: UIActivityIndicatorView = {
         let activityIndicatorView = UIActivityIndicatorView()
         activityIndicatorView.isHidden = true
@@ -129,6 +135,7 @@ class WalletInfoView: UIView {
             commonExpansesLabel,
             commonExpansesValue
         ].forEach { walletCardView.addSubview($0) }
+        walletsTableView.addSubview(refreshControl)
     }
     
     private func setConstraints() {
@@ -189,12 +196,17 @@ class WalletInfoView: UIView {
         }
     }
     
+    public func addrefreshControllTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
+        refreshControl.addTarget(target, action:action, for: controlEvents)
+    }
+    
     public func addButtonTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
         actionButton.addTarget(target, action: action, for: controlEvents)
     }
     
     func updateOperationsList() {
         walletsTableView.reloadData()
+        refreshControl.endRefreshing()
     }
     
     func updateBalances(wallet: WalletViewModel) {
