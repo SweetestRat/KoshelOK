@@ -27,7 +27,7 @@ class CreateWalletPresenter: CreateWalletPresenterProtocol {
         let createWalletModel = CreateWalletModel(name: walletName, currencyDto: currency)
         service.createWallet(data: createWalletModel) { [weak self] result in
             switch result {
-            case .success(let wallet):
+            case .success(_):
                 DispatchQueue.main.async {
                     self?.view?.stopLoading()
                     self?.router.openWalletsList()
