@@ -9,6 +9,7 @@ import Foundation
 
 public let StrokeHeight = 2
 public let ExtraSmallPadding = 4
+public let MediumSmallPadding = 6
 public let SmallPadding = 8
 public let IconInsetSize = 12
 public let MediumPadding = 16
@@ -20,6 +21,7 @@ public let StartScreenImageHeight = 343
 public let StartScreenImageWidth = 341
 public let LogoItemHeight = 100
 public let LogoItemWidth = 100
+public let BalanceCardSwipeInfoSize = 105
 public let ExitButtonSize = 15
 public let SmallButtonHeight = 30
 public let SmallButtonWidth = 95

@@ -13,7 +13,7 @@ protocol WalletsScreenViewDelegate: AnyObject {
     func getWallet(at: Int) -> WalletViewModel?
     func getNumberOfRows() -> Int
     func getNumberOfBalanceRows() -> Int?
-    func getCurrencyBalance(row: Int) -> String?
+    func getBalance(row: Int) -> CurrencyBalanceViewModel?
 }
 
 class WalletsScreenView: UIView {
@@ -167,13 +167,8 @@ class WalletsScreenView: UIView {
         ].forEach { self.addSubview($0) }
         
         [
-            commonIncomeValue,
-            commonIncomeLabel,
-            commonBalanceValue,
             commonBalanceLabel,
             swipeCollectionView,
-            commonExpansesLabel,
-            commonExpansesValue,
             exitButton
         ].forEach { headerView.addSubview($0) }
         walletsListView.addSubview(refreshControl)
@@ -196,42 +191,17 @@ class WalletsScreenView: UIView {
             make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(LargePadding)
         }
         
-        commonBalanceValue.snp.makeConstraints { make in
-            make.leading.equalTo(commonBalanceLabel.snp.leading)
-            make.top.equalTo(commonBalanceLabel.snp.bottom)
-        }
-        
         swipeCollectionView.snp.makeConstraints { make in
-            make.leading.equalToSuperview()
-            make.height.equalTo(60)
+            make.leading.trailing.equalToSuperview()
             make.width.equalToSuperview()
-            make.top.equalTo(commonBalanceLabel.snp.bottom)
-        }
-        
-        commonIncomeLabel.snp.makeConstraints { make in
-            make.top.equalTo(commonBalanceValue.snp.bottom).offset(LargePadding)
-            make.leading.equalTo(commonBalanceValue.snp.leading)
-        }
-        
-        commonIncomeValue.snp.makeConstraints { make in
-            make.top.equalTo(commonIncomeLabel.snp.bottom).offset(SmallPadding)
-            make.leading.equalTo(commonIncomeLabel.snp.leading)
-        }
-        
-        commonExpansesLabel.snp.makeConstraints { make in
-            make.top.equalTo(commonBalanceValue.snp.bottom).offset(LargePadding)
-            make.leading.equalTo(snp.centerX)
-        }
-        
-        commonExpansesValue.snp.makeConstraints { make in
-            make.top.equalTo(commonExpansesLabel.snp.bottom).offset(SmallPadding)
-            make.leading.equalTo(commonExpansesLabel.snp.leading)
+            make.top.equalTo(commonBalanceLabel.snp.bottom).offset(MediumSmallPadding)
+            make.height.equalTo(BalanceCardSwipeInfoSize)
         }
         
         headerView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.top.equalToSuperview()
-            make.bottom.equalTo(commonIncomeValue.snp.bottom).offset(MediumPadding)
+            make.bottom.equalTo(swipeCollectionView.snp.bottom).offset(MediumPadding)
         }
         
         walletsListView.snp.makeConstraints { make in
@@ -314,13 +284,13 @@ extension WalletsScreenView: UICollectionViewDataSource, UICollectionViewDelegat
             return BalanceCell()
         }
         
-        guard let currencyBalance = delegate?.getCurrencyBalance(row: indexPath.row) else { return cell }
+        guard let currencyBalance = delegate?.getBalance(row: indexPath.row) else { return cell }
         
-        cell.currencyBalance.text = currencyBalance
+        cell.configure(balance: currencyBalance)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.bounds.width, height: 60)
+        return CGSize(width: self.bounds.width, height: CGFloat(BalanceCardSwipeInfoSize))
     }
 }

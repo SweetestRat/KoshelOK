@@ -98,8 +98,8 @@ class WalletsListViewController: UIViewController, WalletsListControllerProtocol
 }
 
 extension WalletsListViewController: WalletsScreenViewDelegate {
-    func getCurrencyBalance(row: Int) -> String? {
-        presenter.getCurrencyBalance(row: row)
+    func getBalance(row: Int) -> CurrencyBalanceViewModel? {
+        presenter.getBalance(row: row)
     }
     
     func getNumberOfBalanceRows() -> Int? {

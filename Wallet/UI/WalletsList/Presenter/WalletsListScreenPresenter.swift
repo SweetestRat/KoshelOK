@@ -16,7 +16,7 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
     private var commonBalance: BalanceViewModel?
     private var income: BalanceViewModel?
     private var expanse: BalanceViewModel?
-    private var currencyBalances: [BalanceViewModel] = []
+    private var currencyBalances: [CurrencyBalanceViewModel] = []
     
     private let currencyViewModelFactory: CurrencyViewModelFactory
     private let balanceViewModelFactory: BalanceViewModelFactory
@@ -74,8 +74,8 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
          router.exitFromWallet()
     }
     
-    func getCurrencyBalance(row: Int) -> String? {
-        currencyBalances[row].toString()
+    func getBalance(row: Int) -> CurrencyBalanceViewModel? {
+        currencyBalances[row]
     }
     
     func getNumberOfBalanceRows() -> Int? {
@@ -110,17 +110,29 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
         currencyBalances = []
         fillUserCurrencies()
         print(userCurrencies)
+        
+        var currentCurrency = ""
+        var incomeValue = 0
+        var expanseValue = 0
         userCurrencies.forEach { currency in
             let filtredWallets = wallets.filter { $0.balance.currency == currency }
             
+            if currency.symbol != currentCurrency {
+                incomeValue = 0
+                expanseValue = 0
+                currentCurrency = currency.symbol
+            }
+            
             let currencyAmount = filtredWallets.map { filtredWallet in
-                filtredWallet.balance.value
+                incomeValue += filtredWallet.income.value
+                expanseValue += filtredWallet.expanse.value
+                return filtredWallet.balance.value
             }.reduce(0, +)
             
-            currencyBalances.append(BalanceViewModel(value: currencyAmount, currency: currency))
+            currencyBalances.append(CurrencyBalanceViewModel(value: BalanceViewModel(value: currencyAmount, currency: currency), currency: currency, income: BalanceViewModel(value: incomeValue, currency: currency), expanse: BalanceViewModel(value: expanseValue, currency: currency)))
         }
-        currencyBalances.sort { currency1, currency2 in
-            return currency1.currency.symbol > currency2.currency.symbol
+        currencyBalances.sort { balance1, balance2 in
+            return balance1.currency.symbol > balance2.currency.symbol
         }
         
         let currency = wallets[0].balance.currency
