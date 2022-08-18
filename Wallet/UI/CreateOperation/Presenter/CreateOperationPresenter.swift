@@ -12,7 +12,7 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
     private var date: Date
     private var operationType: OperationType
     private var category: Category
-    
+
     private let service: CreateOperationServiceProtocol
     private let router: CreateOperationRouterProtocol
     weak var view: CreateOperationViewProtocol?

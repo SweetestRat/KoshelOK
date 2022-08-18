@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Balance: Decodable {
+struct Balance: Decodable, Encodable {
     let currencyDto: Currency
     let amount: String
 }
