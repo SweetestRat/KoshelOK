@@ -42,4 +42,9 @@ final class UserSettings {
             }
         }
     }
+    
+    func exitFromAccount() {
+        userId = nil
+        userName = nil
+    }
 }

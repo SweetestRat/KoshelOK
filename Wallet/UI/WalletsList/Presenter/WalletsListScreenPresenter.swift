@@ -52,6 +52,10 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
         router.openCreateWallet()
     }
     
+    func createExitFromWallet() {
+         router.exitFromWallet()
+    }
+    
     func didTapWallet(at row: Int) {
         guard let selectedWalletName = wallets?[row].name,
               let walletId = service.getWalletsModels()?.first (where: { wallet in

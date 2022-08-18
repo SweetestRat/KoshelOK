@@ -22,6 +22,17 @@ class WalletsScreenView: UIView {
         return button
     }()
     
+    private lazy var exitButton: UIButton = {
+        let button = UIButton()
+        
+        let config = UIImage.SymbolConfiguration(pointSize: CGFloat(ExitButtonSize), weight: .bold, scale: .large)
+        let iconImage = UIImage(systemName: "rectangle.portrait.and.arrow.right", withConfiguration: config)?.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
+
+        button.setImage(iconImage, for: .normal)
+        
+        return button
+    }()
+    
     private lazy var headerView: UIView = {
         let view = UIView()
         view.backgroundColor = .activeButtonBackground
@@ -117,7 +128,8 @@ class WalletsScreenView: UIView {
             commonBalanceValue,
             commonBalanceLabel,
             commonExpansesLabel,
-            commonExpansesValue
+            commonExpansesValue,
+            exitButton
         ].forEach { headerView.addSubview($0) }
 
     }
@@ -127,6 +139,11 @@ class WalletsScreenView: UIView {
             make.leading.trailing.equalToSuperview().inset(MediumPadding)
             make.height.equalTo(ActionButtonHeight)
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(MediumPadding)
+        }
+        
+        exitButton.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(LargePadding)
+            make.trailing.equalToSuperview().inset(MediumPadding)
         }
         
         commonBalanceLabel.snp.makeConstraints { make in
@@ -173,8 +190,12 @@ class WalletsScreenView: UIView {
         }
     }
     
-    func addButtonTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
+    func addActionButtonTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
         actionButton.addTarget(target, action: action, for: controlEvents)
+    }
+    
+    func addExitButtonTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
+        exitButton.addTarget(target, action: action, for: controlEvents)
     }
 }
 
