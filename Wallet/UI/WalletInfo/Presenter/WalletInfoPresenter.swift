@@ -113,6 +113,7 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
                 sectionDate = date
                 self.operations?.append(sectionOperations)
                 sectionOperations = []
+                sectionOperations.append(viewModel)
             }
         }
         
