@@ -64,7 +64,6 @@ class SetupCategoryCell: UICollectionViewCell {
             self.icon.backgroundColor = UIColor(hex: iconColor)
         }
         
-        
         image.snp.makeConstraints {make in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()

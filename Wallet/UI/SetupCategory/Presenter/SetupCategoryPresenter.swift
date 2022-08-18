@@ -38,12 +38,10 @@ class SetupCategoryPresenter: SetupCategoryPresenterProtocol {
             case .success(_):
                 self?.delegate?.categoryCreated()
                 DispatchQueue.main.async {
-                    self?.view?.stopLoading()
                     self?.router.openCategorySelection()
                 }
             case .failure(_):
                 break
-           //     self?.view?.walletCreationFailed(error: error.localizedDescription)
             }
         }
     }

@@ -45,12 +45,6 @@ class SetupCategoryViewController: UIViewController, SetupCategoryViewProtocol {
         setupCategoryView.addButtonTarget(self, action: #selector(ActionButtonDidTap), for: .touchUpInside)
     }
     
-//    private func setConstraints() {
-//        setupCategoryView.snp.makeConstraints { make in
-//            make.edges.equalTo(view.safeAreaLayoutGuide)
-//        }
-//    }
-    
     @objc private func ActionButtonDidTap() {
         presenter.createButtonDidTap()
     }
@@ -100,9 +94,6 @@ class SetupCategoryViewController: UIViewController, SetupCategoryViewProtocol {
     
     func getIconColor() -> String? {
         setupCategoryView.getIconColor()
-    }
-    
-    func stopLoading() {
     }
 }
 

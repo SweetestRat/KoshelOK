@@ -12,6 +12,4 @@ protocol SetupCategoryViewProtocol: AnyObject {
     func getCategoryName() -> String?
     func getIconName() -> String?
     func getIconColor() -> String?
-//    func walletCreationFailed(error: String)
-    func stopLoading()
 }

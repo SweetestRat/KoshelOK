@@ -104,6 +104,4 @@ extension CategorySelectionPresenter: SetupCategoryPresenterDelegateProtocol {
     func categoryCreated() {
         updateCategoryScreen()
     }
-    
-    
 }

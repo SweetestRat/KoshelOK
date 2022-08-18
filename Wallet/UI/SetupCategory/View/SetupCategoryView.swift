@@ -39,8 +39,8 @@ class SetupCategoryView: UIView {
     
     lazy var categoriesCollectionView: UICollectionView = {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 16, bottom: 10, right: 16)
-        layout.minimumInteritemSpacing = 20
+        layout.sectionInset = UIEdgeInsets(top: CGFloat(MediumCollectionItemTopInset), left: CGFloat(MediumPadding), bottom: CGFloat(SmallCollectionItemBottomInset), right: CGFloat(MediumPadding))
+        layout.minimumInteritemSpacing = CGFloat(MediumInteritemSpacing)
         
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.backgroundColor = .background
@@ -52,8 +52,8 @@ class SetupCategoryView: UIView {
     
     lazy var colorsCollectionView: UICollectionView = {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
-        layout.minimumInteritemSpacing = 10
+        layout.sectionInset = UIEdgeInsets(top: CGFloat(MediumCollectionItemTopInset), left: CGFloat(MediumPadding), bottom: CGFloat(SmallCollectionItemBottomInset), right: CGFloat(MediumPadding))
+        layout.minimumInteritemSpacing = CGFloat(SmallInteritemSpacing)
         
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.backgroundColor = .background
@@ -234,16 +234,16 @@ extension SetupCategoryView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if (collectionView === categoriesCollectionView) {
             let widthCollectionView = collectionView.bounds.size.width
-            let contentViewWidth = widthCollectionView - 16 * 2
-            let itemInsets = CGFloat(20 * 5)
+            let contentViewWidth = widthCollectionView - CGFloat(MediumPadding) * 2
+            let itemInsets = CGFloat(MediumInteritemSpacing * 5)
             let totalItemsWidth = contentViewWidth - itemInsets
             let itemWidth = totalItemsWidth / 6
             
             return CGSize(width: itemWidth, height: itemWidth)
         } else {
             let widthCollectionView = collectionView.bounds.size.width
-            let contentViewWidth = widthCollectionView - 16 * 2
-            let itemInsets = CGFloat(10 * 7)
+            let contentViewWidth = widthCollectionView - CGFloat(MediumPadding) * 2
+            let itemInsets = CGFloat(SmallInteritemSpacing * 7)
             let totalItemsWidth = contentViewWidth - itemInsets
             let itemWidth = totalItemsWidth / 8
             
