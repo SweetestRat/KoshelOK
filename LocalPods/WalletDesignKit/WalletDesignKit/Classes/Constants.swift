@@ -19,3 +19,4 @@ public let StartScreenImageHeight = 343
 public let StartScreenImageWidth = 341
 public let LogoItemHeight = 100
 public let LogoItemWidth = 100
+public let ExitButtonSize = 15

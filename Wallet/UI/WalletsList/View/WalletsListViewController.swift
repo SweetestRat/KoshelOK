@@ -67,11 +67,18 @@ class WalletsListViewController: UIViewController, WalletsListControllerProtocol
     }
     
     private func addTargets() {
-        screenView.addButtonTarget(self, action: #selector(screenViewButtonDidTap), for: .touchUpInside)
+        screenView.addActionButtonTarget(self, action: #selector(screenViewButtonDidTap), for: .touchUpInside)
+        screenView.addExitButtonTarget(self, action: #selector(screenViewExitButtonDidTap), for: .touchUpInside)
     }
     
     @objc private func screenViewButtonDidTap() {
         presenter.createWalletClicked()
+    }
+    
+    @objc private func screenViewExitButtonDidTap() {
+        UIAlertController.exitWaletAlert(from: self) { [weak self] _ in
+            self?.presenter.createExitFromWallet()
+        }
     }
 }
 

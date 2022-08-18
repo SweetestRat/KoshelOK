@@ -18,6 +18,14 @@ class WalletsListRouter: WalletsListRouterProtocol {
         vc.navigationController?.pushViewController(nextvc, animated: true)
     }
     
+    func exitFromWallet() {
+        let nextvc = StartScreenAssembly().assembly()
+        guard let vc = view as? UIViewController else { return }
+        
+        UserSettings.userDefaults.exitFromAccount()
+        vc.navigationController?.setViewControllers([nextvc], animated: false)
+    }
+    
     func openWalletInfo(walletId: Int) {
         let nextvc = WalletInfoAssembly().assembly()
         guard let vc = view as? UIViewController else { return }
