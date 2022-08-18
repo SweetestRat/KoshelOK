@@ -10,7 +10,7 @@ import UIKit
 import WalletNetworkKit
 
 class SetupCategoryAssembly {
-    func assembly() -> SetupCategoryViewController {
+    func assembly(delegate: SetupCategoryPresenterDelegateProtocol) -> SetupCategoryViewController {
         let networkManager = NetworkManager()
         
         let service = SetupCategoryService(networkManager: networkManager)
@@ -19,6 +19,7 @@ class SetupCategoryAssembly {
         let viewController = SetupCategoryViewController(presenter: presenter)
         
         presenter.view = viewController
+        presenter.delegate = delegate
         router.view = viewController
 
         return viewController

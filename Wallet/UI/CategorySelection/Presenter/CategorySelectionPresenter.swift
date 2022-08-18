@@ -47,6 +47,10 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
     }
     
     func controllerLoaded() {
+        updateCategoryScreen()
+    }
+    
+    func updateCategoryScreen() {
         service.loadCategories { [weak self] result in
             switch result {
             case .success(let categories):
@@ -67,7 +71,7 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
     }
     
     func addNewCategory() {
-        router.openSetupCategoryScreen()
+        router.openSetupCategoryScreen(delegate: self)
     }
     
     func actionButtonDidTap() {
@@ -94,4 +98,12 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
     func getCategory(index: Int) -> CategoryViewModel {
         listOfCategories[index]
     }
+}
+
+extension CategorySelectionPresenter: SetupCategoryPresenterDelegateProtocol {    
+    func categoryCreated() {
+        updateCategoryScreen()
+    }
+    
+    
 }

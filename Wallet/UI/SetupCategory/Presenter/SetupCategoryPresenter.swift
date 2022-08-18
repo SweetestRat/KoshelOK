@@ -8,6 +8,10 @@
 import Foundation
 import WalletDesignKit
 
+protocol SetupCategoryPresenterDelegateProtocol: AnyObject {
+    func categoryCreated()
+}
+
 class SetupCategoryPresenter: SetupCategoryPresenterProtocol {
     
     private var isButtonEnabled: Bool = false
@@ -16,6 +20,7 @@ class SetupCategoryPresenter: SetupCategoryPresenterProtocol {
     private var selectedRowColor: Int = 0
     private var selectedRowCategory: Int = 0
     weak var view: SetupCategoryViewProtocol?
+    weak var delegate: SetupCategoryPresenterDelegateProtocol?
     
     init(service: SetupCategoryServiceProtocol, router: SetupCategoryRouterProtocol) {
         self.service = service
@@ -31,9 +36,11 @@ class SetupCategoryPresenter: SetupCategoryPresenterProtocol {
         service.setupCategory(data: setupCategoryModel) { [weak self] result in
             switch result {
             case .success(_):
+                self?.delegate?.categoryCreated()
                 DispatchQueue.main.async {
                     self?.view?.stopLoading()
-                    self?.router.openCategorySelection()                }
+                    self?.router.openCategorySelection()
+                }
             case .failure(_):
                 break
            //     self?.view?.walletCreationFailed(error: error.localizedDescription)

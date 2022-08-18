@@ -55,7 +55,7 @@ class CategorySelectionView: UIView {
         tableView.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide)
             make.leading.trailing.equalTo(self)
-            make.bottom.equalTo(actionButton.snp.top).offset(MediumPadding)
+            make.bottom.equalTo(actionButton.snp.top).offset(SmallPadding)
         }
         
         actionButton.snp.makeConstraints { make in

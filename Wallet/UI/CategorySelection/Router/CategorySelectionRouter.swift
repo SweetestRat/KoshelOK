@@ -15,9 +15,9 @@ class CategorySelectionRouter: CategorySelectionRouterProtocol {
         view?.navigationController?.dismiss(animated: true)
     }
     
-    func openSetupCategoryScreen() {
-        let nextvc = SetupCategoryAssembly().assembly()
-        nextvc.modalPresentationStyle = .popover
-        view?.navigationController?.present(UINavigationController(rootViewController: nextvc), animated: true, completion: nil)
+    func openSetupCategoryScreen(delegate: SetupCategoryPresenterDelegateProtocol) {
+        let nextvc = SetupCategoryAssembly().assembly(delegate: delegate)
+        view?.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        view?.navigationController?.pushViewController(nextvc, animated: true)
     }
 }

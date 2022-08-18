@@ -14,7 +14,7 @@ class SetupCategoryRouter: SetupCategoryRouterProtocol {
     func openCategorySelection() {
         guard let vc = view as? UIViewController else { return }
         
-        vc.navigationController?.dismiss(animated: true)
+        vc.navigationController?.popViewController(animated: true)
     }
     
 }
