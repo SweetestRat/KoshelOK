@@ -11,6 +11,6 @@ protocol WalletInfoViewProtocol: AnyObject {
     func updateOperationsList()
     func updateBalances(wallet: WalletViewModel)
     func loadingError(error: String)
-    func changeLoadingIndicatorState(state: operationsLoadingIndicatorState)
+    func changeLoadingIndicatorState(state: loadingIndicatorState)
     func changeWalletOperations(isEmpty: Bool)
 }

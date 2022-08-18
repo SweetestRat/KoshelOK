@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import WalletDesignKit
 
-enum operationsLoadingIndicatorState {
+enum loadingIndicatorState {
     case loading
     case stopped
 }
@@ -215,7 +215,7 @@ class WalletInfoView: UIView {
         commonExpansesValue.text = wallet.expanse.toString()
     }
     
-    func changeLoadingIndicatorState(state: operationsLoadingIndicatorState) {
+    func changeLoadingIndicatorState(state: loadingIndicatorState) {
         switch state {
         case .loading:
             loadingIndicator.isHidden = false

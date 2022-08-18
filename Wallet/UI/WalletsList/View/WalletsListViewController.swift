@@ -35,6 +35,10 @@ class WalletsListViewController: UIViewController, WalletsListControllerProtocol
         screenView.updateBalances(commonBalance: commonBalance, income: income, expanse: expanse)
     }
     
+    func changeWalletsList(isEmpty: Bool) {
+        screenView.changeWalletsList(isEmpty: isEmpty)
+    }
+    
     func walletsLoadingError(error: String) {
         
     }
@@ -57,9 +61,10 @@ class WalletsListViewController: UIViewController, WalletsListControllerProtocol
             make.edges.equalToSuperview()
         }
         
-        presenter.controllerLoaded()
         addTargets()
         setupNavigationBar()
+        changeLoadingIndicatorState(state: .loading)
+        presenter.controllerLoaded()
     }
     
     private func setupNavigationBar() {
@@ -69,6 +74,15 @@ class WalletsListViewController: UIViewController, WalletsListControllerProtocol
     private func addTargets() {
         screenView.addActionButtonTarget(self, action: #selector(screenViewButtonDidTap), for: .touchUpInside)
         screenView.addExitButtonTarget(self, action: #selector(screenViewExitButtonDidTap), for: .touchUpInside)
+        screenView.addrefreshControllTarget(self, action: #selector(pulledToRefresh), for: .valueChanged)
+    }
+    
+    func changeLoadingIndicatorState(state: loadingIndicatorState) {
+        screenView.changeLoadingIndicatorState(state: state)
+    }
+    
+    @objc private func pulledToRefresh() {
+        presenter.controllerLoaded()
     }
     
     @objc private func screenViewButtonDidTap() {

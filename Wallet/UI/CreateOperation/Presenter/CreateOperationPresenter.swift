@@ -87,13 +87,15 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
         
         service.createOperation(data: createOperationModel, walletId: walletId) {  [weak self] result in
             switch result {
-            case .success(let wallet):
+            case .success(_):
                 DispatchQueue.main.async {
                     self?.view?.updateActionButtonState(state: .inactive)
                     self?.router.closeCreateOperationScreen()
                 }
             case .failure:
-                self?.view?.updateActionButtonState(state: .active)
+                DispatchQueue.main.async {
+                    self?.view?.updateActionButtonState(state: .active)
+                }
                 // TODO show popup
                 return
             }
