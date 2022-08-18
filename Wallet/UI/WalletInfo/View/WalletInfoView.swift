@@ -63,6 +63,14 @@ class WalletInfoView: UIView {
         return label
     }()
     
+    private lazy var emptyWalletLabel: UILabel = {
+        let label = UILabel()
+        label.text = "У вас пока нет созданных операций"
+        label.font = .SFProRegular16
+        label.textColor = .darkTextPrimaryColor
+        return label
+    }()
+    
     private lazy var walletsTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(WalletInfoCell.self, forCellReuseIdentifier: "WalletInfoCell")
@@ -93,6 +101,7 @@ class WalletInfoView: UIView {
     
     private func addSubviews() {
         [
+            emptyWalletLabel,
             walletsTableView,
             actionButton,
             walletCardView
@@ -118,6 +127,10 @@ class WalletInfoView: UIView {
             make.top.equalTo(walletCardView.snp.bottom).offset(-MediumPadding)
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(actionButton.snp.centerY)
+        }
+        
+        emptyWalletLabel.snp.makeConstraints { make in
+            make.center.equalTo(walletsTableView.snp.center)
         }
         
         actionButton.snp.makeConstraints { make in
