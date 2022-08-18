@@ -94,7 +94,7 @@ public class BaseButton: UIButton {
         }
         
         self.layer.cornerCurve = .continuous
-        self.layer.cornerRadius = 16
+        self.layer.cornerRadius = CGFloat(MediumPadding)
     }
     
     private func addSubviews() {
