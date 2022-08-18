@@ -7,6 +7,10 @@
 
 import Foundation
 
+protocol CreateOperationPresenterDelegateProtocol: AnyObject {
+    func operationCreated()
+}
+
 class CreateOperationPresenter: CreateOperationPresenterProtocol {
     private var currency: Currency
     private var date: Date
@@ -18,6 +22,7 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
     private let service: CreateOperationServiceProtocol
     private let router: CreateOperationRouterProtocol
     weak var view: CreateOperationViewProtocol?
+    weak var delegate: CreateOperationPresenterDelegateProtocol?
     
     init(
         service: CreateOperationServiceProtocol,
@@ -88,6 +93,7 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
         service.createOperation(data: createOperationModel, walletId: walletId) {  [weak self] result in
             switch result {
             case .success:
+                self?.delegate?.operationCreated()
                 DispatchQueue.main.async {
                     self?.view?.updateActionButtonState(state: .inactive)
                     self?.router.closeCreateOperationScreen()

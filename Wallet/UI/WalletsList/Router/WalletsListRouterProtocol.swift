@@ -8,7 +8,7 @@
 import Foundation
 
 protocol WalletsListRouterProtocol {
-    func openCreateWallet()
+    func openCreateWallet(delegate: CreateWalletPresenterDelegateProtocol)
     func exitFromWallet()
     func openWalletInfo(walletId: Int, walletName: String)
 }

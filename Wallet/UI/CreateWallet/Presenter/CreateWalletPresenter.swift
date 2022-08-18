@@ -7,11 +7,16 @@
 
 import UIKit
 
+protocol CreateWalletPresenterDelegateProtocol: AnyObject {
+    func walletCreated()
+}
+
 class CreateWalletPresenter: CreateWalletPresenterProtocol {
     private var isButtonEnabled: Bool = false
     private let service: CreateWalletServiceProtocol
     private let router: CreateWalletRouterProtocol
     weak var view: CreateWalletViewProtocol?
+    weak var delegate: CreateWalletPresenterDelegateProtocol?
     
     private var currencySeletedRow: Int?
     private var currency: Currency = Currency(id: 1, shortName: "RUB", longName: "Российский рубль")
@@ -28,6 +33,7 @@ class CreateWalletPresenter: CreateWalletPresenterProtocol {
         service.createWallet(data: createWalletModel) { [weak self] result in
             switch result {
             case .success(_):
+                self?.delegate?.walletCreated()
                 DispatchQueue.main.async {
                     self?.view?.stopLoading()
                     self?.router.openWalletsList()

@@ -9,7 +9,7 @@ import Foundation
 import WalletNetworkKit
 
 class CreateOperationAssembly {
-    func assembly(walletId: Int) -> CreateOperationViewController {
+    func assembly(walletId: Int, delegate: CreateOperationPresenterDelegateProtocol) -> CreateOperationViewController {
         let networkManager = NetworkManager()
         let service = CreateOperationService(networkManager: networkManager)
         let router = CreateOperationRouter()
@@ -18,6 +18,7 @@ class CreateOperationAssembly {
 
         router.view = viewController
         presenter.view = viewController
+        presenter.delegate = delegate
 
         return viewController
     }

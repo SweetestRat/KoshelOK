@@ -9,7 +9,7 @@ import UIKit
 import WalletNetworkKit
 
 class CreateWalletAssembly {
-    func assembly() -> CreateWalletViewController {
+    func assembly(delegate: CreateWalletPresenterDelegateProtocol) -> CreateWalletViewController {
         let networkManager = NetworkManager()
         
         let service = CreateWalletService(networkManager: networkManager)
@@ -18,6 +18,7 @@ class CreateWalletAssembly {
         let viewController = CreateWalletViewController(presenter: presenter)
         
         presenter.view = viewController
+        presenter.delegate = delegate
         router.view = viewController
 
         return viewController
