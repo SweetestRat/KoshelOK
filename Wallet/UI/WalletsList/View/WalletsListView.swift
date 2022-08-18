@@ -14,6 +14,7 @@ protocol WalletsScreenViewDelegate: AnyObject {
     func getNumberOfRows() -> Int
     func getNumberOfBalanceRows() -> Int?
     func getBalance(row: Int) -> CurrencyBalanceViewModel?
+    func pageDidChange()
 }
 
 class WalletsScreenView: UIView {
@@ -292,5 +293,9 @@ extension WalletsScreenView: UICollectionViewDataSource, UICollectionViewDelegat
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.bounds.width, height: CGFloat(BalanceCardSwipeInfoSize))
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        delegate?.pageDidChange()
     }
 }

@@ -11,6 +11,7 @@ import WalletDesignKit
 
 class WalletsListViewController: UIViewController, WalletsListControllerProtocol {
     private let presenter: WalletsListPresenterProtocol
+    private let impactFeedbackgenerator = UIImpactFeedbackGenerator(style: .medium)
     
     init(presenter: WalletsListPresenterProtocol) {
         self.presenter = presenter
@@ -118,4 +119,7 @@ extension WalletsListViewController: WalletsScreenViewDelegate {
         presenter.getNumberOfRows()
     }
     
+    func pageDidChange() {
+        impactFeedbackgenerator.impactOccurred()
+    }
 }
