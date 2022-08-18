@@ -14,4 +14,5 @@ protocol WalletInfoPresenterProtocol: AnyObject {
     func getNumberOfRowsInSection(section: Int) -> Int?
     func getNumberOfSections() -> Int
     func controllerLoaded()
+    func getWalletName() -> String
 }

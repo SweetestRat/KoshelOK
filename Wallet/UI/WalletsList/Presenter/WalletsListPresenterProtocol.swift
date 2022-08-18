@@ -11,4 +11,5 @@ protocol WalletsListPresenterProtocol: AnyObject {
     func controllerLoaded()
     func getWallet(at row: Int) -> WalletViewModel?
     func getNumberOfRows() -> Int
+    func createExitFromWallet()
 }

@@ -26,14 +26,14 @@ class WalletInfoView: UIView {
         return view
     }()
     
-    private lazy var walletNameLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Name"
-        label.font = .SFProMedium16
-        label.textColor = .lightTextPrimaryColor
-        label.alpha = 0.8
-        return label
-    }()
+    private lazy var commonBalanceLabel: UILabel = {
+          let label = UILabel()
+          label.text = "Общий баланс"
+          label.font = .SFProMedium16
+          label.textColor = .lightTextPrimaryColor
+          label.alpha = 0.8
+          return label
+      }()
     
     private lazy var commonBalanceValue: UILabel = {
         let label = UILabel()
@@ -60,6 +60,14 @@ class WalletInfoView: UIView {
         label.text = "0,00"
         label.font = .SFProMedium16
         label.textColor = .lightTextPrimaryColor
+        return label
+    }()
+    
+    private lazy var emptyWalletLabel: UILabel = {
+        let label = UILabel()
+        label.text = "У вас пока нет созданных операций"
+        label.font = .SFProRegular16
+        label.textColor = .darkTextPrimaryColor
         return label
     }()
     
@@ -93,12 +101,13 @@ class WalletInfoView: UIView {
     
     private func addSubviews() {
         [
+            emptyWalletLabel,
             walletsTableView,
             actionButton,
             walletCardView
         ].forEach { addSubview($0) }
         [
-            walletNameLabel,
+            commonBalanceLabel,
             commonBalanceValue,
             commonIncomeLabel,
             commonIncomeValue,
@@ -120,20 +129,24 @@ class WalletInfoView: UIView {
             make.bottom.equalTo(actionButton.snp.centerY)
         }
         
+        emptyWalletLabel.snp.makeConstraints { make in
+            make.center.equalTo(walletsTableView.snp.center)
+        }
+        
         actionButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(MediumPadding)
             make.height.equalTo(ActionButtonHeight)
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(MediumPadding)
         }
         
-        walletNameLabel.snp.makeConstraints { make in
+        commonBalanceLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(MediumPadding)
             make.top.equalToSuperview().offset(MediumPadding)
         }
         
         commonBalanceValue.snp.makeConstraints { make in
-            make.top.equalTo(walletNameLabel.snp.bottom)
-            make.leading.equalTo(walletNameLabel.snp.leading)
+            make.top.equalTo(commonBalanceLabel.snp.bottom)
+            make.leading.equalTo(commonBalanceLabel.snp.leading)
         }
         
         commonIncomeLabel.snp.makeConstraints { make in
@@ -169,7 +182,6 @@ class WalletInfoView: UIView {
         commonBalanceValue.text = wallet.balance.toString()
         commonIncomeValue.text = wallet.income.toString()
         commonExpansesValue.text = wallet.expanse.toString()
-        walletNameLabel.text = wallet.name
     }
 }
 

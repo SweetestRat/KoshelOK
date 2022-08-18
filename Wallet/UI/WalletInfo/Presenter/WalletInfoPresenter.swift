@@ -16,12 +16,26 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
     private var walletId: Int
     private var operations: [[OperationViewModel]]?
     private var wallet: WalletViewModel?
+    private var walletName: String
     
-    init(walletInfoService: WalletInfoServiceProtocol, operationService: WalletOperationsServiceProtocol, router: WalletInfoRouterProtocol, walletId: Int) {
+    private let currencyViewModelFactory: CurrencyViewModelFactory
+    private let categoryViewModelFactory: CategoryViewModelFactory
+    private let balanceViewModelFactory: BalanceViewModelFactory
+    private let walletViewModelFactory: WalletViewModelFactory
+    private let operationViewModelFactory: OperationViewModelFactory
+    
+    init(walletInfoService: WalletInfoServiceProtocol, operationService: WalletOperationsServiceProtocol, router: WalletInfoRouterProtocol, walletId: Int, walletName: String) {
         self.walletInfoService = walletInfoService
         self.operationService = operationService
         self.router = router
         self.walletId = walletId
+        self.walletName = walletName
+        
+        currencyViewModelFactory = CurrencyViewModelFactory()
+        categoryViewModelFactory = CategoryViewModelFactory()
+        balanceViewModelFactory = BalanceViewModelFactory(currencyFactory: currencyViewModelFactory)
+        walletViewModelFactory = WalletViewModelFactory(balanceFactory: balanceViewModelFactory)
+        operationViewModelFactory = OperationViewModelFactory(categoryFactory: categoryViewModelFactory, balanceFactory: balanceViewModelFactory)
     }
     
     func controllerLoaded() {
@@ -42,16 +56,7 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
         walletInfoService.getWalletInfo(userId: id, walletId: walletId) { [weak self] result in
             switch result {
             case .success(let wallet):
-                self?.wallet = WalletViewModel(name: wallet.name,
-                                               balance: BalanceViewModel(value: Int(wallet.balance.amount) ?? 0,
-                                                                         currency: CurrencyViewModel(symbol: wallet.balance.currencyDto.shortName,
-                                                                                                     fullName: wallet.balance.currencyDto.longName)),
-                                               income: BalanceViewModel(value: Int(wallet.income.amount) ?? 0,
-                                                                        currency: CurrencyViewModel(symbol: wallet.balance.currencyDto.shortName,
-                                                                                                    fullName: wallet.balance.currencyDto.longName)),
-                                               expanse: BalanceViewModel(value: Int(wallet.expense.amount) ?? 0,
-                                                                         currency: CurrencyViewModel(symbol: wallet.balance.currencyDto.shortName,
-                                                                                                     fullName: wallet.balance.currencyDto.longName)))
+                self?.wallet = self?.walletViewModelFactory.produce(from: wallet)
                 DispatchQueue.main.sync {
                     guard let wallet = self?.wallet else { return }
                     self?.view?.updateBalances(wallet: wallet)
@@ -83,6 +88,10 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
         router.openCreateOperation()
     }
     
+    func getWalletName() -> String {
+        walletName
+    }
+    
     private func mapOperations(operations: [Operation]) {
         guard !operations.isEmpty else { return }
         self.operations = []
@@ -90,26 +99,22 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
         var sectionOperations: [OperationViewModel] = []
         operations.forEach { operation in
             let date = dMMMDateFormatter.instance.format(timeStamp: operation.date)
-            let time = TimeFormatter.instance.format(timeStamp: operation.date)
             
-            let viewModel = OperationViewModel(category: CategoryViewModel(name: operation.categoryDto.name,
-                                                                           iconName: operation.categoryDto.iconName,
-                                                                           iconColor: operation.categoryDto.iconColor),
-                                               balance: BalanceViewModel(value: Int(operation.balanceDto.amount) ?? 0,
-                                                                         currency: CurrencyViewModel(symbol: operation.balanceDto.currencyDto.shortName,
-                                                                                                     fullName: operation.balanceDto.currencyDto.longName)),
-                                               date: date,
-                                               time: time)
+            let viewModel = operationViewModelFactory.produce(from: operation)
             
             if date == sectionDate {
                 sectionOperations.append(viewModel)
             } else {
                 sectionDate = date
-                self.operations?.append(sectionOperations)
+                let sortedByDateOperations = sectionOperations.sorted(by: {$0.time > $1.time})
+                self.operations?.append(sortedByDateOperations)
                 sectionOperations = []
+                sectionOperations.append(viewModel)
             }
         }
         
-        self.operations?.append(sectionOperations)
+        let sortedByDateOperations = sectionOperations.sorted(by: {$0.time > $1.time})
+        self.operations?.append(sortedByDateOperations)
+        self.operations?.sort(by: {$0[0].date > $1[0].date})
     }
 }
