@@ -10,7 +10,7 @@ import Foundation
 class dMMMDateFormatter {
     private lazy var formatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "d MMM"
+        formatter.dateFormat = "d MMM YYYY"
         return formatter
     }()
     static let instance: dMMMDateFormatter = dMMMDateFormatter()

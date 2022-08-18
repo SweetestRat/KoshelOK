@@ -75,6 +75,14 @@ class WalletInfoViewController: UIViewController, WalletInfoViewProtocol {
     func loadingError(error: String) {
         // TODO: show error allert
     }
+    
+    func changeLoadingIndicatorState(state: operationsLoadingIndicatorState) {
+        walletInfoView.changeLoadingIndicatorState(state: state)
+    }
+    
+    func changeWalletOperations(isEmpty: Bool) {
+        walletInfoView.changeWalletOperations(isEmpty: isEmpty)
+    }
 }
 
 extension WalletInfoViewController: WalletInfoViewDelegate {
