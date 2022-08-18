@@ -28,7 +28,6 @@ class URLRequestConstructor {
         request.headers?.forEach { header in
             urlRequest.addValue(header.value, forHTTPHeaderField: header.key)
         }
-        print(request.headers)
         urlRequest.httpBody = request.body
         urlRequest.httpMethod = request.method.stringValue
         

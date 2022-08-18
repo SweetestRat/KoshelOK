@@ -53,11 +53,11 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
     }
     
     func didTapWallet(at row: Int) {
-        let selectedWalletName = wallets?[row].name
-        guard let walletId = service.getWalletsModels()?.first (where: { wallet in
+        guard let selectedWalletName = wallets?[row].name,
+              let walletId = service.getWalletsModels()?.first (where: { wallet in
             wallet.name == selectedWalletName
         })?.id else { return }
-        router.openWalletInfo(walletId: walletId)
+        router.openWalletInfo(walletId: walletId, walletName: selectedWalletName)
     }
     
     private func updateBalances() {

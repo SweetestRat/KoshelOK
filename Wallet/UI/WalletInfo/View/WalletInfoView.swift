@@ -26,15 +26,6 @@ class WalletInfoView: UIView {
         return view
     }()
     
-    private lazy var walletNameLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Name"
-        label.font = .SFProMedium16
-        label.textColor = .lightTextPrimaryColor
-        label.alpha = 0.8
-        return label
-    }()
-    
     private lazy var commonBalanceValue: UILabel = {
         let label = UILabel()
         label.text = "0,00"
@@ -98,7 +89,6 @@ class WalletInfoView: UIView {
             walletCardView
         ].forEach { addSubview($0) }
         [
-            walletNameLabel,
             commonBalanceValue,
             commonIncomeLabel,
             commonIncomeValue,
@@ -126,14 +116,9 @@ class WalletInfoView: UIView {
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(MediumPadding)
         }
         
-        walletNameLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(MediumPadding)
-            make.top.equalToSuperview().offset(MediumPadding)
-        }
-        
         commonBalanceValue.snp.makeConstraints { make in
-            make.top.equalTo(walletNameLabel.snp.bottom)
-            make.leading.equalTo(walletNameLabel.snp.leading)
+            make.top.equalToSuperview().inset(LargePadding)
+            make.leading.equalToSuperview().offset(MediumPadding)
         }
         
         commonIncomeLabel.snp.makeConstraints { make in
@@ -169,7 +154,6 @@ class WalletInfoView: UIView {
         commonBalanceValue.text = wallet.balance.toString()
         commonIncomeValue.text = wallet.income.toString()
         commonExpansesValue.text = wallet.expanse.toString()
-        walletNameLabel.text = wallet.name
     }
 }
 

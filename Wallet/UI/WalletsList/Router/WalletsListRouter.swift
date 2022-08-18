@@ -18,8 +18,8 @@ class WalletsListRouter: WalletsListRouterProtocol {
         vc.navigationController?.pushViewController(nextvc, animated: true)
     }
     
-    func openWalletInfo(walletId: Int) {
-        let nextvc = WalletInfoAssembly().assembly(walletId: walletId)
+    func openWalletInfo(walletId: Int, walletName: String) {
+        let nextvc = WalletInfoAssembly().assembly(walletId: walletId, walletName: walletName)
         guard let vc = view as? UIViewController else { return }
         
         vc.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
