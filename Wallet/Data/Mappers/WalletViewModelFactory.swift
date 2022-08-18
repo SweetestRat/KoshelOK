@@ -7,13 +7,6 @@
 
 import Foundation
 
-class WalletViewModelFactoryAssembly {
-    func assembly() -> WalletViewModelFactory {
-        let balanceFactory = BalanceViewModelFactoryAssembly().assembly()
-        return WalletViewModelFactory(balanceFactory: balanceFactory)
-    }
-}
-
 class WalletViewModelFactory {
     private let balanceFactory: BalanceViewModelFactory
     

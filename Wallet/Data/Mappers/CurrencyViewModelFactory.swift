@@ -7,12 +7,6 @@
 
 import Foundation
 
-class CurrencyViewModelFactoryAssembly {
-    func assembly() -> CurrencyViewModelFactory {
-        CurrencyViewModelFactory()
-    }
-}
-
 class CurrencyViewModelFactory {
     func produce(from: Currency) -> CurrencyViewModel {
         CurrencyViewModel(symbol: from.shortName, fullName: from.longName)

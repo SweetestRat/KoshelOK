@@ -7,12 +7,6 @@
 
 import Foundation
 
-class CategoryViewModelFactoryAssembly {
-    func assembly() -> CategoryViewModelFactory {
-        CategoryViewModelFactory()
-    }
-}
-
 class CategoryViewModelFactory {
     func produce(from: Category) -> CategoryViewModel {
         CategoryViewModel(

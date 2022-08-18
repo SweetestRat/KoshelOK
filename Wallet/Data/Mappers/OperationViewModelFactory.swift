@@ -7,14 +7,6 @@
 
 import Foundation
 
-class OperationViewModelFactoryAssembly {
-    func assembly() -> OperationViewModelFactory {
-        let categoryFactory = CategoryViewModelFactoryAssembly().assembly()
-        let balanceFactory = BalanceViewModelFactoryAssembly().assembly()
-        return OperationViewModelFactory(categoryFactory: categoryFactory, balanceFactory: balanceFactory)
-    }
-}
-
 class OperationViewModelFactory {
     private let categoryFactory: CategoryViewModelFactory
     private let balanceFactory: BalanceViewModelFactory
