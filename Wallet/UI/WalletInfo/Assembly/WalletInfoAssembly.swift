@@ -10,7 +10,7 @@ import UIKit
 import WalletNetworkKit
 
 class WalletInfoAssembly {
-    func assembly(walletId: Int) -> WalletInfoViewController {
+    func assembly(walletId: Int, walletName: String) -> WalletInfoViewController {
         let networkManager = NetworkManager()
         let walletInfoService = WalletInfoService(networkManager: networkManager)
         let operationService = OperationService(networkManager: networkManager)
@@ -18,7 +18,8 @@ class WalletInfoAssembly {
         let presenter = WalletInfoPresenter(walletInfoService: walletInfoService,
                                             operationService: operationService,
                                             router: router,
-                                            walletId: walletId)
+                                            walletId: walletId,
+                                            walletName: walletName)
         let viewController = WalletInfoViewController(presenter: presenter)
         
         presenter.view = viewController

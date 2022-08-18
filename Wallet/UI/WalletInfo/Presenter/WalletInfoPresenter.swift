@@ -16,12 +16,14 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
     private var walletId: Int
     private var operations: [[OperationViewModel]]?
     private var wallet: WalletViewModel?
+    private var walletName: String
     
-    init(walletInfoService: WalletInfoServiceProtocol, operationService: WalletOperationsServiceProtocol, router: WalletInfoRouterProtocol, walletId: Int) {
+    init(walletInfoService: WalletInfoServiceProtocol, operationService: WalletOperationsServiceProtocol, router: WalletInfoRouterProtocol, walletId: Int, walletName: String) {
         self.walletInfoService = walletInfoService
         self.operationService = operationService
         self.router = router
         self.walletId = walletId
+        self.walletName = walletName
     }
     
     func controllerLoaded() {
@@ -81,6 +83,10 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
     
     func createOperationButtonDidTap() {
         router.openCreateOperation()
+    }
+    
+    func getWalletName() -> String {
+        walletName
     }
     
     private func mapOperations(operations: [Operation]) {

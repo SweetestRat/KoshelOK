@@ -48,7 +48,8 @@ class WalletInfoViewController: UIViewController, WalletInfoViewProtocol {
     }
     
     private func setupNavigationBar() {
-        navigationItem.title = "Операции"
+        let walletName = presenter.getWalletName()
+        navigationItem.title = walletName
     }
     
     @objc func settingsDidTap() {
