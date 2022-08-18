@@ -25,14 +25,21 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
     
     func controllerLoaded() {
         guard let id = UserSettings.userDefaults.userId else { return }
+        
         service.getAllWallets(userId: id) { [weak self] result in
             switch result {
             case .success(let wallets):
                 self?.wallets = self?.mapWallets(wallets: wallets)
                 self?.updateBalances()
                 DispatchQueue.main.sync {
-                    self?.view?.updateWalletsList()
-                    self?.view?.updateBalances(commonBalance: self?.commonBalance, income: self?.income, expanse: self?.expanse)
+                    self?.view?.changeLoadingIndicatorState(state: .stopped)
+                    if let walletsList = self?.wallets, !walletsList.isEmpty {
+                        self?.view?.changeWalletsList(isEmpty: false)
+                        self?.view?.updateWalletsList()
+                        self?.view?.updateBalances(commonBalance: self?.commonBalance, income: self?.income, expanse: self?.expanse)
+                    } else {
+                        self?.view?.changeWalletsList(isEmpty: true)
+                    }
                 }
             case .failure(let error):
                 self?.view?.walletsLoadingError(error: error.localizedDescription)

@@ -56,7 +56,6 @@ class CreateWalletPresenter: CreateWalletPresenterProtocol {
     }
     
     func controllerLoaded() {
-        
         view?.updateCurrency(currency: currency)
     }
 }

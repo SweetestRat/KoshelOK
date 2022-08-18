@@ -36,6 +36,7 @@ class WalletInfoViewController: UIViewController, WalletInfoViewProtocol {
         
         addTargets()
         setupNavigationBar()
+        changeLoadingIndicatorState(state: .loading)
         presenter.controllerLoaded()
     }
     
@@ -81,7 +82,7 @@ class WalletInfoViewController: UIViewController, WalletInfoViewProtocol {
         // TODO: show error allert
     }
     
-    func changeLoadingIndicatorState(state: operationsLoadingIndicatorState) {
+    func changeLoadingIndicatorState(state: LoadingIndicatorState) {
         walletInfoView.changeLoadingIndicatorState(state: state)
     }
     

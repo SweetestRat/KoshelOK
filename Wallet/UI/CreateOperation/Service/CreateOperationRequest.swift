@@ -12,7 +12,7 @@ struct CreateOperationModel: Encodable {
     let balanceDto: Balance
     let date: Int
     let categoryDto: Category
-    let income: Bool
+    let incomeFlag: Bool
 }
 
 struct CreateOperationRequest: NetworkRequestProtocol {

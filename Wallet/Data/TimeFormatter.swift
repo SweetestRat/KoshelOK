@@ -10,7 +10,7 @@ import Foundation
 class TimeFormatter {
     private lazy var formatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "hh:mm"
+        formatter.dateFormat = "HH:mm"
         return formatter
     }()
     static let instance: TimeFormatter = TimeFormatter()

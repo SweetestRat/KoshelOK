@@ -17,6 +17,19 @@ protocol WalletsScreenViewDelegate: AnyObject {
 class WalletsScreenView: UIView {
     weak var delegate: WalletsScreenViewDelegate?
     
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControll = UIRefreshControl()
+        refreshControll.tintColor = .inputPlaceholderColor
+        return refreshControll
+    }()
+    
+    private lazy var loadingIndicator: UIActivityIndicatorView = {
+        let activityIndicatorView = UIActivityIndicatorView()
+        activityIndicatorView.isHidden = true
+        activityIndicatorView.color = .darkTextPrimaryColor
+        return activityIndicatorView
+    }()
+    
     private lazy var actionButton: BaseButton = {
         let button = BaseButton(title: "Создать кошелёк")
         return button
@@ -53,7 +66,7 @@ class WalletsScreenView: UIView {
     
     private lazy var commonBalanceValue: UILabel = {
         let view = UILabel()
-        view.text = "9 999 129 $"
+        view.text = "0,00"
         view.font = .SFProSemiBold32
         view.textColor = .lightTextPrimaryColor
         return view
@@ -63,7 +76,7 @@ class WalletsScreenView: UIView {
     
     private lazy var commonIncomeValue: UILabel = {
         let view = UILabel()
-        view.text = "1 000 062 $"
+        view.text = "0,00"
         view.font = .SFProMedium16
         view.textColor = .lightTextPrimaryColor
         return view
@@ -73,10 +86,19 @@ class WalletsScreenView: UIView {
     
     private lazy var commonExpansesValue: UILabel = {
         let view = UILabel()
-        view.text = "-1 001 $"
+        view.text = "0,00"
         view.font = .SFProMedium16
         view.textColor = .lightTextPrimaryColor
         return view
+    }()
+    
+    private lazy var emptyWalletsListLabel: UILabel = {
+        let label = UILabel()
+        label.text = "У вас пока нет созданных кошельков"
+        label.isHidden = true
+        label.font = .SFProRegular16
+        label.textColor = .darkTextPrimaryColor
+        return label
     }()
     
     private lazy var walletsListView: UITableView = {
@@ -102,6 +124,7 @@ class WalletsScreenView: UIView {
 
     func updateWalletsList() {
         walletsListView.reloadData()
+        refreshControl.endRefreshing()
     }
     
     func updateBalances(commonBalance: BalanceViewModel?, income: BalanceViewModel?, expanse: BalanceViewModel?) {
@@ -117,6 +140,8 @@ class WalletsScreenView: UIView {
     
     private func addSubviews() {
         [
+            loadingIndicator,
+            emptyWalletsListLabel,
             walletsListView,
             actionButton,
             headerView
@@ -131,7 +156,7 @@ class WalletsScreenView: UIView {
             commonExpansesValue,
             exitButton
         ].forEach { headerView.addSubview($0) }
-
+        walletsListView.addSubview(refreshControl)
     }
     
     private func setConstraints() {
@@ -188,6 +213,18 @@ class WalletsScreenView: UIView {
             make.leading.trailing.equalTo(self)
             make.bottom.equalTo(actionButton.snp.top).offset(MediumPadding)
         }
+        
+        emptyWalletsListLabel.snp.makeConstraints { make in
+            make.center.equalTo(walletsListView.snp.center)
+        }
+        
+        loadingIndicator.snp.makeConstraints { make in
+            make.center.equalTo(walletsListView.snp.center)
+        }
+    }
+    
+    public func addrefreshControllTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
+        refreshControl.addTarget(target, action:action, for: controlEvents)
     }
     
     func addActionButtonTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
@@ -196,6 +233,21 @@ class WalletsScreenView: UIView {
     
     func addExitButtonTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
         exitButton.addTarget(target, action: action, for: controlEvents)
+    }
+    
+    func changeLoadingIndicatorState(state: LoadingIndicatorState) {
+        switch state {
+        case .loading:
+            loadingIndicator.isHidden = false
+            loadingIndicator.startAnimating()
+        case .stopped:
+            loadingIndicator.isHidden = true
+            loadingIndicator.stopAnimating()
+        }
+    }
+    
+    func changeWalletsList(isEmpty: Bool) {
+        emptyWalletsListLabel.isHidden = isEmpty ? false : true
     }
 }
 

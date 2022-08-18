@@ -21,6 +21,7 @@ class CategoriesService: CategoriesServiceProtocol {
         guard let id = UserSettings.userDefaults.userId else { return }
         let request: CategoryRequestType = .loadCategories(userId: id)
         
+        
         networkManager.loadRequest(request: request) { result in
             switch result {
             case .success(let resultDetails):

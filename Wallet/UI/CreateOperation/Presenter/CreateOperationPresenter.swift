@@ -82,10 +82,8 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
             balanceDto: Balance(currency: currency, amount: String(amount)),
             date: Int(date.timeIntervalSince1970),
             categoryDto: category,
-            income: operationType == .income
+            incomeFlag: operationType == .income
         )
-        
-        print(createOperationModel)
         
         service.createOperation(data: createOperationModel, walletId: walletId) {  [weak self] result in
             switch result {
