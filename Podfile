@@ -8,6 +8,7 @@ target 'Wallet' do
   
   pod 'SwiftLint', '0.48.0'
   pod 'SnapKit', '~> 5.6.0'
+  pod 'ReachabilitySwift'
   pod 'WalletDesignKit', :path => 'LocalPods/WalletDesignKit/WalletDesignKit.podspec'
   pod 'WalletNetworkKit', :path => 'LocalPods/WalletNetworkKit/WalletNetworkKit.podspec'
 end
