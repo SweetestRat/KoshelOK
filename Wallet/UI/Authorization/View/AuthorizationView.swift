@@ -18,7 +18,8 @@ class AuthorizationView: UIView {
     private var bottomConstraint: Constraint?
     
     private lazy var actionButton: BaseButton = {
-        let button = BaseButton(title: "Войти", active: false)
+        let button = BaseButton(title: "Войти")
+        button.actionState = .inactive
         return button
     }()
     
@@ -123,19 +124,8 @@ class AuthorizationView: UIView {
         incorrectMailLabel.isHidden = isValid
     }
     
-    func changeLoadingState(state: loadingState) {
-        switch state {
-        case .start:
-            actionButton.titleLabel?.layer.opacity = 0
-            actionButton.loadingIndicator.isHidden = false
-            actionButton.loadingIndicator.startAnimating()
-            actionButton.isEnabled = false
-        case .stop:
-            actionButton.titleLabel?.layer.opacity = 1
-            actionButton.loadingIndicator.isHidden = true
-            actionButton.loadingIndicator.stopAnimating()
-            actionButton.isEnabled = true
-        }
+    func changeLoadingState(state: BaseButtonState) {
+        actionButton.actionState = state
     }
 }
 

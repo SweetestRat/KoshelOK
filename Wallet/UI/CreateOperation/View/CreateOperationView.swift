@@ -15,6 +15,8 @@ protocol CreateOperationViewDelegate: AnyObject {
     func createOperationViewDidSelectIncome()
     func createOperationViewDidSelectExpanse()
     func createOperationViewDidSelectCategory()
+    func createOperationViewDidTapCreate()
+    func createOperationViewAmountDidChange(amount: String)
     func dateDidChanged(date: Date)
 }
 
@@ -81,7 +83,8 @@ class CreateOperationView: UIView {
         return view
     }()
     private lazy var createButton: BaseButton = {
-        let button = BaseButton(title: "Создать", active: false)
+        let button = BaseButton(title: "Создать")
+        button.actionState = .inactive
         return button
     }()
     
@@ -115,6 +118,10 @@ class CreateOperationView: UIView {
     
     public func updateCategory(category: CategoryViewModel) {
         categorySelector.rightButtonDescription.text = category.name
+    }
+    
+    public func updateActionButtonState(state: BaseButtonState) {
+        createButton.actionState = state
     }
     
     private func labelCell(text: String) -> UIView {
@@ -255,17 +262,19 @@ class CreateOperationView: UIView {
         dateSelector.addTarget(self, action: #selector(createOperationViewDidSelectDate), for: .touchUpInside)
         incomeButton.addTarget(self, action: #selector(createOperationViewDidSelectIncome), for: .touchUpInside)
         expanseButton.addTarget(self, action: #selector(createOperationViewDidSelectExpanse), for: .touchUpInside)
+        createButton.addTarget(self, action: #selector(createOperationViewDidTapCreate), for: .touchUpInside)
     }
     
     @objc private func textFieldDidChangeValue() {
+        delegate?.createOperationViewAmountDidChange(amount: amountTextField.text ?? "")
         if let text = amountTextField.text, !text.isEmpty {
-            createButton.isEnabled = true
+            createButton.actionState = .active
             
             if text.count > 8 {
                 amountTextField.deleteBackward()
             }
         } else {
-            createButton.isEnabled = false
+            createButton.actionState = .inactive
         }
     }
     
@@ -283,6 +292,10 @@ class CreateOperationView: UIView {
 
     @objc private func createOperationViewDidSelectCategory() {
         delegate?.createOperationViewDidSelectCategory()
+    }
+    
+    @objc private func createOperationViewDidTapCreate() {
+        delegate?.createOperationViewDidTapCreate()
     }
     
     func updateBottomInset(valueInset: CGFloat) {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Currency: Decodable, Encodable {
+struct Currency: Codable {
     let id: Int
     let shortName: String
     let longName: String

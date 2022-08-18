@@ -92,7 +92,7 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
     }
     
     func createOperationButtonDidTap() {
-        router.openCreateOperation()
+        router.openCreateOperation(walletId: walletId)
     }
     
     func getWalletName() -> String {
