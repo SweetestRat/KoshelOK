@@ -21,33 +21,30 @@ public class NetworkBanner: UIView {
         return label
     }()
     
-    private lazy var iconConnected: UIImageView = {
-        let image = UIImageView(image: UIImage(systemName: "wifi"))
-        image.tintColor = .incomeColor
-        return image
+    private lazy var icon: UIImageView = {
+        UIImageView()
     }()
     
-    private lazy var iconDisconnected: UIImageView = {
-        let image = UIImageView(image: UIImage(systemName: "wifi.slash"))
-        image.tintColor = .designRedColor
-        return image
+    private lazy var iconConnected: UIImage? = {
+        UIImage(systemName: "wifi")
+    }()
+    
+    private lazy var iconDisconnected: UIImage? = {
+        UIImage(systemName: "wifi.slash")
     }()
     
     public var networkState: NetworkBannerState {
         didSet {
-            print("Text did set", networkState)
             switch networkState {
             case .available:
-                iconConnected.isHidden = false
-                iconDisconnected.isHidden = true
+                icon.image = iconConnected
+                icon.tintColor = .incomeColor
                 label.text = "Соединение восстановлено"
             case .unavailable:
-                iconConnected.isHidden = true
-                iconDisconnected.isHidden = false
+                icon.image = iconDisconnected
+                icon.tintColor = .designRedColor
                 label.text = "Нет соединения с интернетом"
             }
-            print("iconConnected.isHidden", iconConnected.isHidden)
-            print("iconDisconnected.isHidden", iconDisconnected.isHidden)
         }
     }
     
@@ -74,22 +71,17 @@ public class NetworkBanner: UIView {
     private func addSubviews() {
         [
             label,
-            iconConnected,
-            iconDisconnected,
+            icon,
         ].forEach { addSubview($0) }
     }
     
     private func makeConstraints() {
-        iconConnected.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(MediumPadding)
-            make.centerY.equalToSuperview()
-        }
-        iconDisconnected.snp.makeConstraints { make in
+        icon.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(MediumPadding)
             make.centerY.equalToSuperview()
         }
         label.snp.makeConstraints { make in
-            make.leading.equalTo(iconConnected.snp.trailing).offset(MediumPadding)
+            make.leading.equalTo(icon.snp.trailing).offset(MediumPadding)
             make.trailing.lessThanOrEqualToSuperview()
             make.centerY.equalToSuperview()
         }
