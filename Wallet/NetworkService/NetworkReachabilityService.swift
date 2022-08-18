@@ -16,24 +16,15 @@ protocol NetworkReachabilityServiceDelegateProtocol: AnyObject {
 private enum NetworkState {
     case available
     case unavailable
-    
-    static func from(connection: Reachability.Connection) -> NetworkState {
-        switch connection {
-        case .none,.unavailable:
-            return .unavailable
-        case .wifi, .cellular:
-            return .available
-        }
-    }
 }
 
 class NetworkReachabilityService {
     weak var delegate: NetworkReachabilityServiceDelegateProtocol?
     let reachability = try? Reachability()
-    private var lastSavedState: NetworkState?
+    private var lastState: NetworkState?
     
     func startListening() {
-        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
+        setupObservers()
         do {
             try reachability?.startNotifier()
         } catch {
@@ -41,21 +32,18 @@ class NetworkReachabilityService {
         }
     }
     
-    @objc func reachabilityChanged(note: Notification) {
-        guard let connection = (note.object as? Reachability)?.connection else { return }
-        let state = NetworkState.from(connection: connection)
-        
-        if (lastSavedState == nil || state == lastSavedState) {
-            lastSavedState = state
-            return
+    func setupObservers() {
+        reachability?.whenReachable = { [weak self] _ in
+            if self?.lastState != nil && self?.lastState != .available {
+                self?.delegate?.networkConnectionAppear()
+            }
+            self?.lastState = .available
         }
-        
-        switch state {
-        case .available:
-            delegate?.networkConnectionAppear()
-        case .unavailable:
-            delegate?.networkConnectionLost()
+        reachability?.whenUnreachable = { [weak self] _ in
+            if self?.lastState != .unavailable {
+                self?.delegate?.networkConnectionLost()
+            }
+            self?.lastState = .unavailable
         }
-        lastSavedState = state
     }
 }
