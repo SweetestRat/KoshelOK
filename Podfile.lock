@@ -1,4 +1,5 @@
 PODS:
+  - ReachabilitySwift (5.0.0)
   - SnapKit (5.6.0)
   - SwiftLint (0.48.0)
   - WalletDesignKit (0.1.0):
@@ -6,6 +7,7 @@ PODS:
   - WalletNetworkKit (0.1.0)
 
 DEPENDENCIES:
+  - ReachabilitySwift (= 5.0.0)
   - SnapKit (~> 5.6.0)
   - SwiftLint (= 0.48.0)
   - WalletDesignKit (from `LocalPods/WalletDesignKit/WalletDesignKit.podspec`)
@@ -13,6 +15,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - ReachabilitySwift
     - SnapKit
     - SwiftLint
 
@@ -23,11 +26,12 @@ EXTERNAL SOURCES:
     :path: LocalPods/WalletNetworkKit/WalletNetworkKit.podspec
 
 SPEC CHECKSUMS:
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftLint: 284cea64b6187c5d6bd83e9a548a64104d546447
   WalletDesignKit: c8ae29e0465bb719f6a28e6cb213d1a6b3c72834
   WalletNetworkKit: 685d7b8311bad2a1a0203ee7e17f9c267b65b053
 
-PODFILE CHECKSUM: 86d968aef60678baf4d4d85ae6c6b9afc62bc610
+PODFILE CHECKSUM: 64bc63f458abba75a52684dbfa95bf9c65797723
 
 COCOAPODS: 1.10.1
