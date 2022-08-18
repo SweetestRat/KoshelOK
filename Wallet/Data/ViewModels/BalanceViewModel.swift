@@ -8,8 +8,8 @@
 import Foundation
 
 struct BalanceViewModel {
-    var value: Int
-    var currency: CurrencyViewModel
+    let value: Int
+    let currency: CurrencyViewModel
     
     init(value: Int, currency: CurrencyViewModel) {
         self.value = value
