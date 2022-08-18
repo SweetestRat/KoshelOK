@@ -17,7 +17,7 @@ struct Operation: Decodable {
     private enum CodingKeys : String, CodingKey {
         case id
         case balance = "balanceDto"
-        case isIncome
+        case isIncome = "incomeFlag"
         case date
         case category = "categoryDto"
     }
