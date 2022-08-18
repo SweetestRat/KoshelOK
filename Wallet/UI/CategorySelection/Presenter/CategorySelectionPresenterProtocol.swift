@@ -15,10 +15,10 @@ protocol CategorySelectionPresenterProtocol {
     func getSelectedRow() -> Int?
     func setSelectedRow(row: Int)
     func controllerLoaded()
-    func didTapBarButton()
     func actionButtonDidTap()
     func getNumberOfRows() -> Int?
     func getCategory(index: Int) -> CategoryViewModel
     func categoryDidUpdate(category: CategoryViewModel)
     func cancelDidClick()
+    func addNewCategory()
 }

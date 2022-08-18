@@ -66,7 +66,8 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
         }
     }
     
-    func didTapBarButton() {
+    func addNewCategory() {
+        router.openSetupCategoryScreen()
     }
     
     func actionButtonDidTap() {

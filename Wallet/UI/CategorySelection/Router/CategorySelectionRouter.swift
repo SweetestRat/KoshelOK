@@ -14,4 +14,10 @@ class CategorySelectionRouter: CategorySelectionRouterProtocol {
     func closeCAtegorySelectionScreen() {
         view?.navigationController?.dismiss(animated: true)
     }
+    
+    func openSetupCategoryScreen() {
+        let nextvc = SetupCategoryAssembly().assembly()
+        nextvc.modalPresentationStyle = .popover
+        view?.navigationController?.present(UINavigationController(rootViewController: nextvc), animated: true, completion: nil)
+    }
 }

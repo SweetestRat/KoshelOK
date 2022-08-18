@@ -59,6 +59,7 @@ class CategorySelectionViewController: UIViewController, CategorySelectionViewPr
     }
     
     @objc private func addButton() {
+        presenter.addNewCategory()
     }
     
     @objc private func actionButtonDidTap() {
