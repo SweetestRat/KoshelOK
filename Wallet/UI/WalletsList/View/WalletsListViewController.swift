@@ -76,7 +76,8 @@ class WalletsListViewController: UIViewController, WalletsListControllerProtocol
     }
     
     @objc private func screenViewExitButtonDidTap() {
-        UIAlertController.exitWaletAlert(from: self) { [weak self] _ in
+        
+        exitWaletAlert { [weak self] _ in
             self?.presenter.createExitFromWallet()
         }
     }
