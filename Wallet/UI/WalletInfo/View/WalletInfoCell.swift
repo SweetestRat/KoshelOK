@@ -40,7 +40,6 @@ class WalletInfoCell: UITableViewCell {
     lazy var time: UILabel = {
         let label = UILabel()
         label.font = .SFProRegular16
-        label.text = "15:00"
         label.textColor = .inputPlaceholderColor
         label.textAlignment = .right
         return label
@@ -96,6 +95,7 @@ class WalletInfoCell: UITableViewCell {
         category.text = operation.category.name
         balance.text = operation.isIncome ? operation.balance.toString() : "-\(operation.balance.toString())"
         balance.textColor = operation.isIncome ? UIColor.incomeColor : UIColor.designRedColor
+        time.text = operation.time
         
         let color = operation.category.iconColor
         let imageName = operation.category.iconName
