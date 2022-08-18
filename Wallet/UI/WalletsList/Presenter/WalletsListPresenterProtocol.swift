@@ -12,4 +12,6 @@ protocol WalletsListPresenterProtocol: AnyObject {
     func getWallet(at row: Int) -> WalletViewModel?
     func getNumberOfRows() -> Int
     func createExitFromWallet()
+    func getBalance(row: Int) -> CurrencyBalanceViewModel?
+    func getNumberOfBalanceRows() -> Int?
 }

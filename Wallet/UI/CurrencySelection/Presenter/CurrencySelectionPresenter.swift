@@ -22,9 +22,12 @@ class CurrencySelectionPresenter: CurrencySelectionPresenterProtocol {
     var currenciesList: [CurrencyViewModel] = []
     private var selectedIndexPathRow: Int = 0
     
+    private let currencyViewModelFactory: CurrencyViewModelFactory
+    
     init(service: CurrencySelectionServiceProtocol, router: CurrencySelectionRouterProtocol) {
         self.service = service
         self.router = router
+        self.currencyViewModelFactory = CurrencyViewModelFactory()
     }
     
     func getSelectedRow() -> Int? {
@@ -49,9 +52,7 @@ class CurrencySelectionPresenter: CurrencySelectionPresenterProtocol {
         service.loadCurrencies { [weak self] result in
             switch result {
             case .success(let currencies):
-                let currenciesViewModels = currencies.map { currency -> CurrencyViewModel in
-                    CurrencyViewModel(symbol: currency.shortName, fullName: currency.longName)
-                }
+                guard let currenciesViewModels = self?.mapCurrencies(currencies: currencies) else { return }
                 self?.currenciesList = currenciesViewModels
                 DispatchQueue.main.async {
                     self?.view?.updateTableView()
@@ -68,5 +69,11 @@ class CurrencySelectionPresenter: CurrencySelectionPresenterProtocol {
     
     func getCurrency(index: Int) -> CurrencyViewModel {
         currenciesList[index]
+    }
+    
+    private func mapCurrencies(currencies: [Currency]) -> [CurrencyViewModel] {
+        currencies.map { currency in
+            currencyViewModelFactory.produce(from: currency)
+        }
     }
 }

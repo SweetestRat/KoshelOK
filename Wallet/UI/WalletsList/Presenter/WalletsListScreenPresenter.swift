@@ -16,11 +16,22 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
     private var commonBalance: BalanceViewModel?
     private var income: BalanceViewModel?
     private var expanse: BalanceViewModel?
+    private var currencyBalances: [CurrencyBalanceViewModel] = []
+    
+    private let currencyViewModelFactory: CurrencyViewModelFactory
+    private let balanceViewModelFactory: BalanceViewModelFactory
+    private let walletViewModelFactory: WalletViewModelFactory
+    
+    var userCurrencies: Set<CurrencyViewModel> = Set()
     
     init(service: WalletsListServiceProtocol, router: WalletsListRouterProtocol, userId: Int) {
         self.service = service
         self.router = router
         self.userId = userId
+        
+        currencyViewModelFactory = CurrencyViewModelFactory()
+        balanceViewModelFactory = BalanceViewModelFactory(currencyFactory: currencyViewModelFactory)
+        walletViewModelFactory = WalletViewModelFactory(balanceFactory: balanceViewModelFactory)
     }
     
     func controllerLoaded() {
@@ -63,6 +74,25 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
          router.exitFromWallet()
     }
     
+    func getBalance(row: Int) -> CurrencyBalanceViewModel? {
+        currencyBalances[row]
+    }
+    
+    func getNumberOfBalanceRows() -> Int? {
+        currencyBalances.count
+    }
+    
+    func fillUserCurrencies() {
+        guard let allWallets = wallets else { return }
+        allWallets.forEach { wallet in
+            self.userCurrencies.insert(wallet.balance.currency)
+        }
+    }
+    
+    func getNumberOfBalanceRows() -> Int {
+        return self.userCurrencies.count
+    }
+    
     func didTapWallet(at row: Int) {
         guard let selectedWalletName = wallets?[row].name,
               let walletId = service.getWalletsModels()?.first (where: { wallet in
@@ -76,6 +106,34 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
             let wallets = wallets,
             wallets.count > 0
         else { return }
+        
+        currencyBalances = []
+        fillUserCurrencies()
+        print(userCurrencies)
+        
+        var currentCurrency = ""
+        var incomeValue = 0
+        var expanseValue = 0
+        userCurrencies.forEach { currency in
+            let filtredWallets = wallets.filter { $0.balance.currency == currency }
+            
+            if currency.symbol != currentCurrency {
+                incomeValue = 0
+                expanseValue = 0
+                currentCurrency = currency.symbol
+            }
+            
+            let currencyAmount = filtredWallets.map { filtredWallet in
+                incomeValue += filtredWallet.income.value
+                expanseValue += filtredWallet.expanse.value
+                return filtredWallet.balance.value
+            }.reduce(0, +)
+            
+            currencyBalances.append(CurrencyBalanceViewModel(value: BalanceViewModel(value: currencyAmount, currency: currency), currency: currency, income: BalanceViewModel(value: incomeValue, currency: currency), expanse: BalanceViewModel(value: expanseValue, currency: currency)))
+        }
+        currencyBalances.sort { balance1, balance2 in
+            return balance1.currency.symbol > balance2.currency.symbol
+        }
         
         let currency = wallets[0].balance.currency
         var income = 0
@@ -92,30 +150,7 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
     
     private func mapWallets(wallets: [Wallet]) -> [WalletViewModel] {
         wallets.map { wallet in
-            WalletViewModel(
-                name: wallet.name,
-                balance: BalanceViewModel(
-                    value: Int(wallet.balance.amount) ?? 0,
-                    currency: CurrencyViewModel(
-                        symbol: wallet.balance.currency.shortName,
-                        fullName: wallet.balance.currency.longName
-                    )
-                ),
-                income: BalanceViewModel(
-                    value: Int(wallet.income.amount) ?? 0,
-                    currency: CurrencyViewModel(
-                        symbol: wallet.income.currency.shortName,
-                        fullName: wallet.income.currency.longName
-                    )
-                ),
-                expanse: BalanceViewModel(
-                    value: Int(wallet.expense.amount) ?? 0,
-                    currency: CurrencyViewModel(
-                        symbol: wallet.expense.currency.shortName,
-                        fullName: wallet.expense.currency.longName
-                    )
-                )
-            )
+            walletViewModelFactory.produce(from: wallet)
         }
     }
 }

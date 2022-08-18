@@ -12,6 +12,8 @@ protocol WalletsScreenViewDelegate: AnyObject {
     func didTapWallet(at row: Int)
     func getWallet(at: Int) -> WalletViewModel?
     func getNumberOfRows() -> Int
+    func getNumberOfBalanceRows() -> Int?
+    func getBalance(row: Int) -> CurrencyBalanceViewModel?
 }
 
 class WalletsScreenView: UIView {
@@ -55,6 +57,20 @@ class WalletsScreenView: UIView {
         return view
     }()
     
+    private lazy var swipeCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 0
+        layout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.isPagingEnabled = true
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.backgroundColor = .clear
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(BalanceCell.self, forCellWithReuseIdentifier: "BalanceCell")
+        return collectionView
+    }()
+    
     private lazy var commonBalanceLabel: UILabel = {
         let view = UILabel()
         view.text = "Общий баланс"
@@ -69,6 +85,7 @@ class WalletsScreenView: UIView {
         view.text = "0,00"
         view.font = .SFProSemiBold32
         view.textColor = .lightTextPrimaryColor
+        view.isHidden = true
         return view
     }()
     
@@ -136,6 +153,8 @@ class WalletsScreenView: UIView {
         commonBalanceValue.text = common.toString()
         commonIncomeValue.text = income.toString()
         commonExpansesValue.text = expanse.toString()
+        
+        swipeCollectionView.reloadData()
     }
     
     private func addSubviews() {
@@ -148,12 +167,8 @@ class WalletsScreenView: UIView {
         ].forEach { self.addSubview($0) }
         
         [
-            commonIncomeValue,
-            commonIncomeLabel,
-            commonBalanceValue,
             commonBalanceLabel,
-            commonExpansesLabel,
-            commonExpansesValue,
+            swipeCollectionView,
             exitButton
         ].forEach { headerView.addSubview($0) }
         walletsListView.addSubview(refreshControl)
@@ -176,36 +191,17 @@ class WalletsScreenView: UIView {
             make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(LargePadding)
         }
         
-        commonBalanceValue.snp.makeConstraints { make in
-            make.leading.equalTo(commonBalanceLabel.snp.leading)
-            make.top.equalTo(commonBalanceLabel.snp.bottom)
-
-        }
-        
-        commonIncomeLabel.snp.makeConstraints { make in
-            make.top.equalTo(commonBalanceValue.snp.bottom).offset(LargePadding)
-            make.leading.equalTo(commonBalanceValue.snp.leading)
-        }
-        
-        commonIncomeValue.snp.makeConstraints { make in
-            make.top.equalTo(commonIncomeLabel.snp.bottom).offset(SmallPadding)
-            make.leading.equalTo(commonIncomeLabel.snp.leading)
-        }
-        
-        commonExpansesLabel.snp.makeConstraints { make in
-            make.top.equalTo(commonBalanceValue.snp.bottom).offset(LargePadding)
-            make.leading.equalTo(snp.centerX)
-        }
-        
-        commonExpansesValue.snp.makeConstraints { make in
-            make.top.equalTo(commonExpansesLabel.snp.bottom).offset(SmallPadding)
-            make.leading.equalTo(commonExpansesLabel.snp.leading)
+        swipeCollectionView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.width.equalToSuperview()
+            make.top.equalTo(commonBalanceLabel.snp.bottom).offset(MediumSmallPadding)
+            make.height.equalTo(BalanceCardSwipeInfoSize)
         }
         
         headerView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.top.equalToSuperview()
-            make.bottom.equalTo(commonIncomeValue.snp.bottom).offset(MediumPadding)
+            make.bottom.equalTo(swipeCollectionView.snp.bottom).offset(MediumPadding)
         }
         
         walletsListView.snp.makeConstraints { make in
@@ -276,4 +272,25 @@ extension WalletsScreenView: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+}
+
+extension WalletsScreenView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        delegate?.getNumberOfBalanceRows() ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BalanceCell", for: indexPath) as? BalanceCell else {
+            return BalanceCell()
+        }
+        
+        guard let currencyBalance = delegate?.getBalance(row: indexPath.row) else { return cell }
+        
+        cell.configure(balance: currencyBalance)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.bounds.width, height: CGFloat(BalanceCardSwipeInfoSize))
+    }
 }
