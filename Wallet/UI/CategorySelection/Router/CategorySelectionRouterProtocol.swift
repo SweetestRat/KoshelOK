@@ -9,4 +9,5 @@ import Foundation
 
 protocol CategorySelectionRouterProtocol {
     func closeCAtegorySelectionScreen()
+    func openSetupCategoryScreen(delegate: SetupCategoryPresenterDelegateProtocol)
 }

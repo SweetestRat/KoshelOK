@@ -14,4 +14,10 @@ class CategorySelectionRouter: CategorySelectionRouterProtocol {
     func closeCAtegorySelectionScreen() {
         view?.navigationController?.dismiss(animated: true)
     }
+    
+    func openSetupCategoryScreen(delegate: SetupCategoryPresenterDelegateProtocol) {
+        let nextvc = SetupCategoryAssembly().assembly(delegate: delegate)
+        view?.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        view?.navigationController?.pushViewController(nextvc, animated: true)
+    }
 }

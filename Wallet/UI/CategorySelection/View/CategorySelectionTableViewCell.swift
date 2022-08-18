@@ -11,6 +11,8 @@ import WalletDesignKit
 
 class CategorySelectionTableViewCell: UITableViewCell {
     
+    private var image: UIImageView?
+    
     lazy var icon: UIView = {
         let view = UIView()
         return view
@@ -56,9 +58,11 @@ class CategorySelectionTableViewCell: UITableViewCell {
     }
     
     func configurate(parametres: CategoryViewModel) {
-        
+        image?.removeFromSuperview()
         let config = UIImage.SymbolConfiguration(scale: .large)
-        let image = UIImageView(image: UIImage(systemName: parametres.iconName, withConfiguration: config))
+        image = UIImageView(image: UIImage(systemName: parametres.iconName, withConfiguration: config))
+        
+        guard let image = image else { return }
         image.tintColor = .lightTextPrimaryColor
         icon.addSubview(image)
         

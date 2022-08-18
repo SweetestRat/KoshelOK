@@ -51,6 +51,10 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
     }
     
     func controllerLoaded() {
+        updateCategoryScreen()
+    }
+    
+    func updateCategoryScreen() {
         service.loadCategories { [weak self] result in
             switch result {
             case .success(let categories):
@@ -68,7 +72,8 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
         }
     }
     
-    func didTapBarButton() {
+    func addNewCategory() {
+        router.openSetupCategoryScreen(delegate: self)
     }
     
     func actionButtonDidTap() {
@@ -100,5 +105,11 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
         categories.map { category in
             categoryViewModelFactory.produce(from: category)
         }
+    }
+}
+
+extension CategorySelectionPresenter: SetupCategoryPresenterDelegateProtocol {    
+    func categoryCreated() {
+        updateCategoryScreen()
     }
 }

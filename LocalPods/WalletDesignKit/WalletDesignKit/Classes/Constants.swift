@@ -25,3 +25,16 @@ public let BalanceCardSwipeInfoSize = 105
 public let ExitButtonSize = 15
 public let SmallButtonHeight = 30
 public let SmallButtonWidth = 95
+public let MediumInteritemSpacing = 20
+public let SmallInteritemSpacing = 20
+public let SmallCollectionItemTopInset = 10
+public let SmallCollectionItemBottomInset = 10
+public let MediumCollectionItemTopInset = 20
+
+public struct SetupCategoryIconImages {
+    public static let icons: [String] = ["airplane", "fork.knife", "cart", "figure.walk", "bus", "pills.fill", "fuelpump.fill" , "house.fill", "sun.max.fill", "cup.and.saucer.fill", "pawprint.fill", "network", "gift.fill", "banknote.fill", "music.note", "iphone.homebutton", "paintbrush.pointed.fill", "trash.fill", "paperclip", "star.fill", "graduationcap.fill", "snowflake", "creditcard", "display", "bitcoinsign.circle.fill", "bed.double.fill", "paintpalette.fill", "tram", "text.book.closed.fill", "ticket", "flame.fill", "tshirt.fill", "hammer.fill", "theatermasks.fill", "cpu.fill", "cross.fill", "car", "ferry.fill", "scooter", "bicycle", "camera.macro", "gamecontroller.fill"]
+}
+
+public struct SetupCategoryIconColors {
+    public static let colors: [String] = ["#7765C0", "#339FEE", "#994747", "#EE33BA", "#16DC71", "#EEA333", "#91397D", "#EEDB33"]
+}
