@@ -30,13 +30,13 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
         
         // set default user currency (probably get from user account request)
         operationType = .income
-        currency = Currency(id: 0, shortName: "RUB", longName: "Российский рубль")
+        currency = Currency(id: 1, shortName: "RUB", longName: "Российский рубль")
         amount = 0
         
         let timestamp = Date().timeIntervalSince1970
         let myTimeInterval = TimeInterval(timestamp)
         date = Date(timeIntervalSince1970: TimeInterval(myTimeInterval))
-        category = Category(id: 0, name: "Кафе и рестораны", iconName: "fork.knife", iconColor: "#7765C0")
+        category = Category(id: 1, name: "Кафе и рестораны", iconName: "fork.knife", iconColor: "#7765C0")
     }
     
     func viewLoaded() {
@@ -85,9 +85,11 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
             income: operationType == .income
         )
         
+        print(createOperationModel)
+        
         service.createOperation(data: createOperationModel, walletId: walletId) {  [weak self] result in
             switch result {
-            case .success(_):
+            case .success:
                 DispatchQueue.main.async {
                     self?.view?.updateActionButtonState(state: .inactive)
                     self?.router.closeCreateOperationScreen()
