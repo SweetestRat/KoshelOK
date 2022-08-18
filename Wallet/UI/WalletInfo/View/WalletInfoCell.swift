@@ -10,9 +10,17 @@ import UIKit
 import WalletDesignKit
 
 class WalletInfoCell: UITableViewCell {
-    var icon: UIView = {
+    var iconView: UIView = {
         let view = UIView()
+        view.layer.cornerRadius = CGFloat(IconSize / 2)
         return view
+    }()
+    
+    var iconImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.tintColor = .lightTextPrimaryColor
+        return imageView
     }()
     
     lazy var category: UILabel = {
@@ -57,8 +65,9 @@ class WalletInfoCell: UITableViewCell {
     }
     
     private func addSubviews() {
+        iconView.addSubview(iconImageView)
         [
-            icon,
+            iconView,
             category,
             infoStackView
         ].forEach { addSubview($0) }
@@ -69,14 +78,19 @@ class WalletInfoCell: UITableViewCell {
     }
     
     private func setConstraints() {
-        icon.snp.makeConstraints { make in
+        iconView.snp.makeConstraints { make in
             make.size.equalTo(IconSize)
             make.centerY.equalToSuperview()
             make.leading.equalTo(contentView).inset(MediumPadding)
         }
         
+        iconImageView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.edges.equalToSuperview().inset(SmallPadding)
+        }
+        
         category.snp.makeConstraints { make in
-            make.leading.equalTo(icon.snp.trailing).offset(SmallPadding)
+            make.leading.equalTo(iconView.snp.trailing).offset(SmallPadding)
             make.centerY.equalToSuperview()
             make.trailing.equalTo(infoStackView.snp.leading).offset(-SmallPadding)
         }
@@ -99,17 +113,9 @@ class WalletInfoCell: UITableViewCell {
         
         let color = operation.category.iconColor
         let imageName = operation.category.iconName
-        icon.backgroundColor = UIColor(hex: color)
-        let config = UIImage.SymbolConfiguration(scale: .large)
-        let image = UIImageView(image: UIImage(systemName: imageName, withConfiguration: config))
-        image.tintColor = .lightTextPrimaryColor
-        icon.addSubview(image)
-        
-        icon.layer.cornerRadius = CGFloat(IconSize / 2)
-        
-        image.snp.makeConstraints {make in
-            make.center.equalToSuperview()
-        }
+        iconView.backgroundColor = UIColor(hex: color)
+        iconImageView.image = UIImage(systemName: imageName)
+        selectionStyle = .none
         backgroundColor = .background
     }
 }

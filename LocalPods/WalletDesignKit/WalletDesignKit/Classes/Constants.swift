@@ -10,6 +10,7 @@ import Foundation
 public let StrokeHeight = 2
 public let ExtraSmallPadding = 4
 public let SmallPadding = 8
+public let IconInsetSize = 12
 public let MediumPadding = 16
 public let LargePadding = 24
 public let IconSize = 40

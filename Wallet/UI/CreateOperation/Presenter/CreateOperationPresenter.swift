@@ -85,8 +85,6 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
             income: operationType == .income
         )
         
-        print(createOperationModel)
-        
         service.createOperation(data: createOperationModel, walletId: walletId) {  [weak self] result in
             switch result {
             case .success:
