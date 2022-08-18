@@ -18,7 +18,8 @@ class CategoriesService: CategoriesServiceProtocol {
     }
     
     func loadCategories(completion: @escaping (Result<[Category], Error>) -> Void) {
-        let request: CategoryRequestType = .loadCategories
+        guard let id = UserSettings.userDefaults.userId else { return }
+        let request: CategoryRequestType = .loadCategories(userId: id)
         
         networkManager.loadRequest(request: request) { result in
             switch result {

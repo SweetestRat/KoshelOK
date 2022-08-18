@@ -9,8 +9,8 @@ import Foundation
 import WalletNetworkKit
 
 enum CategoryRequestType {
-    case loadCategories
-    case createCategory(category: CreateCategoryModel)
+    case loadCategories(userId: Int)
+    case createCategory(category: CreateCategoryModel, userId: Int)
 }
 
 struct CreateCategoryModel: Encodable {
@@ -38,8 +38,15 @@ extension CategoryRequestType: NetworkRequestProtocol {
         switch self {
         case .loadCategories:
             return nil
-        case .createCategory(let category):
+        case .createCategory(let category, _):
             return try? JSONEncoder().encode(category)
+        }
+    }
+    
+    var headers: [String : String]? {
+        switch self {
+        case .loadCategories(let userId), .createCategory(_, let userId):
+            return ["userId": "\(userId)"]
         }
     }
 }
