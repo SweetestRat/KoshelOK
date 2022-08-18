@@ -235,7 +235,7 @@ class WalletsScreenView: UIView {
         exitButton.addTarget(target, action: action, for: controlEvents)
     }
     
-    func changeLoadingIndicatorState(state: loadingIndicatorState) {
+    func changeLoadingIndicatorState(state: LoadingIndicatorState) {
         switch state {
         case .loading:
             loadingIndicator.isHidden = false

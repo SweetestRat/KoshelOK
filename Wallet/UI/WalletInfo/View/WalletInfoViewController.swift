@@ -82,7 +82,7 @@ class WalletInfoViewController: UIViewController, WalletInfoViewProtocol {
         // TODO: show error allert
     }
     
-    func changeLoadingIndicatorState(state: loadingIndicatorState) {
+    func changeLoadingIndicatorState(state: LoadingIndicatorState) {
         walletInfoView.changeLoadingIndicatorState(state: state)
     }
     

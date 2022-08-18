@@ -77,7 +77,7 @@ class WalletsListViewController: UIViewController, WalletsListControllerProtocol
         screenView.addrefreshControllTarget(self, action: #selector(pulledToRefresh), for: .valueChanged)
     }
     
-    func changeLoadingIndicatorState(state: loadingIndicatorState) {
+    func changeLoadingIndicatorState(state: LoadingIndicatorState) {
         screenView.changeLoadingIndicatorState(state: state)
     }
     
