@@ -30,4 +30,5 @@ public extension NetworkRequestProtocol {
     var baseUrl: String { "http://34.116.166.170:9090" }
     var body: Data? { nil }
     var headers: [String: String]? { nil }
+    var path: String { "" }
 }

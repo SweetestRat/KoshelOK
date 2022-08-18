@@ -9,8 +9,14 @@ import Foundation
 import UIKit
 import WalletDesignKit
 
+protocol WalletInfoViewDelegate: AnyObject {
+    func getOperation(row: Int, section: Int) -> OperationViewModel?
+    func getNumberOfRowsInSection(section: Int) -> Int?
+    func getNumberOfSections() -> Int
+}
+
 class WalletInfoView: UIView {
-    private var walletInfo: [WalletViewModel]?
+    weak var delegate: WalletInfoViewDelegate?
     
     private lazy var walletCardView: UIView = {
         let view = UIView()
@@ -22,7 +28,7 @@ class WalletInfoView: UIView {
     
     private lazy var walletNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Кошелек 1"
+        label.text = "Name"
         label.font = .SFProMedium16
         label.textColor = .lightTextPrimaryColor
         label.alpha = 0.8
@@ -31,7 +37,7 @@ class WalletInfoView: UIView {
     
     private lazy var commonBalanceValue: UILabel = {
         let label = UILabel()
-        label.text = "118 000 $"
+        label.text = "0,00"
         label.font = .SFProSemiBold32
         label.textColor = .lightTextPrimaryColor
         return label
@@ -41,7 +47,7 @@ class WalletInfoView: UIView {
     
     private lazy var commonIncomeValue: UILabel = {
         let label = UILabel()
-        label.text = "130 000 $"
+        label.text = "0,00"
         label.font = .SFProMedium16
         label.textColor = .lightTextPrimaryColor
         return label
@@ -51,7 +57,7 @@ class WalletInfoView: UIView {
     
     private lazy var commonExpansesValue: UILabel = {
         let label = UILabel()
-        label.text = "12 000 $"
+        label.text = "0,00"
         label.font = .SFProMedium16
         label.textColor = .lightTextPrimaryColor
         return label
@@ -76,19 +82,6 @@ class WalletInfoView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        let balance = BalanceViewModel(value: 125,
-                                       currency: CurrencyViewModel(symbol: "RUB",
-                                                                   fullName: "Russian")
-        )
-        
-        walletInfo = Array(repeating:
-                        WalletViewModel(name: "Wallet Name",
-                                        balance:balance,
-                                        income: balance,
-                                        expanse: balance), count: 12)
-        
-        walletsTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
 
         addSubviews()
         setConstraints()
@@ -167,6 +160,17 @@ class WalletInfoView: UIView {
     public func addButtonTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
         actionButton.addTarget(target, action: action, for: controlEvents)
     }
+    
+    func updateOperationsList() {
+        walletsTableView.reloadData()
+    }
+    
+    func updateBalances(wallet: WalletViewModel) {
+        commonBalanceValue.text = wallet.balance.toString()
+        commonIncomeValue.text = wallet.income.toString()
+        commonExpansesValue.text = wallet.expanse.toString()
+        walletNameLabel.text = wallet.name
+    }
 }
 
 extension WalletInfoView: UITableViewDelegate {
@@ -175,11 +179,12 @@ extension WalletInfoView: UITableViewDelegate {
 
 extension WalletInfoView: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return delegate?.getNumberOfSections() ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        guard let numberOfRows = delegate?.getNumberOfRowsInSection(section: section) else { return 0 }
+        return numberOfRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -187,9 +192,8 @@ extension WalletInfoView: UITableViewDataSource {
             return WalletInfoCell()
         }
         
-        cell.title.text = walletInfo?[indexPath.row].name
-        cell.balance.text = walletInfo?[indexPath.row].balance.toString()
-        cell.backgroundColor = .background
+        guard let operation = delegate?.getOperation(row: indexPath.row, section: indexPath.section) else { return cell }
+        cell.configurate(operation: operation)
         
         return cell
     }
@@ -199,10 +203,7 @@ extension WalletInfoView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "Сегодня"
-        } else {
-            return "Вчера"
-        }
+        let section = delegate?.getOperation(row: 0, section: section)
+        return section?.date
     }
 }
