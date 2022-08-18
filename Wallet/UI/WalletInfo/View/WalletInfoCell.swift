@@ -94,7 +94,9 @@ class WalletInfoCell: UITableViewCell {
     
     func configurate(operation: OperationViewModel) {
         category.text = operation.category.name
-        balance.text = operation.balance.toString()
+        balance.text = operation.isIncome ? operation.balance.toString() : "-\(operation.balance.toString())"
+        balance.textColor = operation.isIncome ? UIColor.incomeColor : UIColor.designRedColor
+        
         let color = operation.category.iconColor
         let imageName = operation.category.iconName
         icon.backgroundColor = UIColor(hex: color)
