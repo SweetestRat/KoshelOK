@@ -10,7 +10,7 @@ import WalletNetworkKit
 
 struct CreateWalletModel: Encodable {
     let name: String
-    let currencyId: Int
+    let currencyDto: Currency
 }
 
 struct CreateWalletRequest: NetworkRequestProtocol {
