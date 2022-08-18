@@ -25,9 +25,9 @@ class WalletsListRouter: WalletsListRouterProtocol {
         UserSettings.userDefaults.exitFromAccount()
         vc.navigationController?.setViewControllers([nextvc], animated: false)
     }
-    
-    func openWalletInfo(walletId: Int) {
-        let nextvc = WalletInfoAssembly().assembly()
+
+    func openWalletInfo(walletId: Int, walletName: String) {
+        let nextvc = WalletInfoAssembly().assembly(walletId: walletId, walletName: walletName)
         guard let vc = view as? UIViewController else { return }
         
         vc.navigationController?.interactivePopGestureRecognizer?.isEnabled = true

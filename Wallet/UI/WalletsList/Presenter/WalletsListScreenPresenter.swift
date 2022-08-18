@@ -24,7 +24,8 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
     }
     
     func controllerLoaded() {
-        service.getAllWallets(userId: 5) { [weak self] result in
+        guard let id = UserSettings.userDefaults.userId else { return }
+        service.getAllWallets(userId: id) { [weak self] result in
             switch result {
             case .success(let wallets):
                 self?.wallets = self?.mapWallets(wallets: wallets)
@@ -56,11 +57,11 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
     }
     
     func didTapWallet(at row: Int) {
-        let selectedWalletName = wallets?[row].name
-        guard let walletId = service.getWalletsModels()?.first (where: { wallet in
+        guard let selectedWalletName = wallets?[row].name,
+              let walletId = service.getWalletsModels()?.first (where: { wallet in
             wallet.name == selectedWalletName
         })?.id else { return }
-        router.openWalletInfo(walletId: walletId)
+        router.openWalletInfo(walletId: walletId, walletName: selectedWalletName)
     }
     
     private func updateBalances() {
@@ -89,22 +90,22 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
                 balance: BalanceViewModel(
                     value: Int(wallet.balance.amount) ?? 0,
                     currency: CurrencyViewModel(
-                        symbol: wallet.balance.currency.shortName,
-                        fullName: wallet.balance.currency.longName
+                        symbol: wallet.balance.currencyDto.shortName,
+                        fullName: wallet.balance.currencyDto.longName
                     )
                 ),
                 income: BalanceViewModel(
                     value: Int(wallet.income.amount) ?? 0,
                     currency: CurrencyViewModel(
-                        symbol: wallet.income.currency.shortName,
-                        fullName: wallet.income.currency.longName
+                        symbol: wallet.income.currencyDto.shortName,
+                        fullName: wallet.income.currencyDto.longName
                     )
                 ),
                 expanse: BalanceViewModel(
-                    value: Int(wallet.expanse.amount) ?? 0,
+                    value: Int(wallet.expense.amount) ?? 0,
                     currency: CurrencyViewModel(
-                        symbol: wallet.expanse.currency.shortName,
-                        fullName: wallet.expanse.currency.longName
+                        symbol: wallet.expense.currencyDto.shortName,
+                        fullName: wallet.expense.currencyDto.longName
                     )
                 )
             )

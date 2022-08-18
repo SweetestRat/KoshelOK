@@ -8,6 +8,6 @@
 import Foundation
 
 struct Balance: Decodable {
-    let currency: Currency
+    let currencyDto: Currency
     let amount: String
 }

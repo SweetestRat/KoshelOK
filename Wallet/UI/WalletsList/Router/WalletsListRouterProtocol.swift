@@ -9,6 +9,6 @@ import Foundation
 
 protocol WalletsListRouterProtocol {
     func openCreateWallet()
-    func openWalletInfo(walletId: Int)
     func exitFromWallet()
+    func openWalletInfo(walletId: Int, walletName: String)
 }
