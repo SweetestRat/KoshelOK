@@ -58,10 +58,15 @@ class WalletInfoViewController: UIViewController, WalletInfoViewProtocol {
     
     private func addTargets() {
         walletInfoView.addButtonTarget(self, action: #selector(createOperationButtonDidTap), for: .touchUpInside)
+        walletInfoView.addrefreshControllTarget(self, action: #selector(pulledToRefresh), for: .valueChanged)
     }
     
     @objc private func createOperationButtonDidTap() {
         presenter.createOperationButtonDidTap()
+    }
+    
+    @objc private func pulledToRefresh() {
+        presenter.controllerLoaded()
     }
     
     func updateOperationsList() {
@@ -74,6 +79,14 @@ class WalletInfoViewController: UIViewController, WalletInfoViewProtocol {
     
     func loadingError(error: String) {
         // TODO: show error allert
+    }
+    
+    func changeLoadingIndicatorState(state: operationsLoadingIndicatorState) {
+        walletInfoView.changeLoadingIndicatorState(state: state)
+    }
+    
+    func changeWalletOperations(isEmpty: Bool) {
+        walletInfoView.changeWalletOperations(isEmpty: isEmpty)
     }
 }
 

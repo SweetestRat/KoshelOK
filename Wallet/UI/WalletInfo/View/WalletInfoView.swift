@@ -9,6 +9,11 @@ import Foundation
 import UIKit
 import WalletDesignKit
 
+enum operationsLoadingIndicatorState {
+    case loading
+    case stopped
+}
+
 protocol WalletInfoViewDelegate: AnyObject {
     func getOperation(row: Int, section: Int) -> OperationViewModel?
     func getNumberOfRowsInSection(section: Int) -> Int?
@@ -17,6 +22,19 @@ protocol WalletInfoViewDelegate: AnyObject {
 
 class WalletInfoView: UIView {
     weak var delegate: WalletInfoViewDelegate?
+    
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControll = UIRefreshControl()
+        refreshControll.tintColor = .inputPlaceholderColor
+        return refreshControll
+    }()
+    
+    private lazy var loadingIndicator: UIActivityIndicatorView = {
+        let activityIndicatorView = UIActivityIndicatorView()
+        activityIndicatorView.isHidden = true
+        activityIndicatorView.color = .darkTextPrimaryColor
+        return activityIndicatorView
+    }()
     
     private lazy var walletCardView: UIView = {
         let view = UIView()
@@ -66,6 +84,7 @@ class WalletInfoView: UIView {
     private lazy var emptyWalletLabel: UILabel = {
         let label = UILabel()
         label.text = "У вас пока нет созданных операций"
+        label.isHidden = true
         label.font = .SFProRegular16
         label.textColor = .darkTextPrimaryColor
         return label
@@ -90,6 +109,7 @@ class WalletInfoView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .background
 
         addSubviews()
         setConstraints()
@@ -101,6 +121,7 @@ class WalletInfoView: UIView {
     
     private func addSubviews() {
         [
+            loadingIndicator,
             emptyWalletLabel,
             walletsTableView,
             actionButton,
@@ -114,6 +135,7 @@ class WalletInfoView: UIView {
             commonExpansesLabel,
             commonExpansesValue
         ].forEach { walletCardView.addSubview($0) }
+        walletsTableView.addSubview(refreshControl)
     }
     
     private func setConstraints() {
@@ -130,6 +152,10 @@ class WalletInfoView: UIView {
         }
         
         emptyWalletLabel.snp.makeConstraints { make in
+            make.center.equalTo(walletsTableView.snp.center)
+        }
+        
+        loadingIndicator.snp.makeConstraints { make in
             make.center.equalTo(walletsTableView.snp.center)
         }
         
@@ -170,18 +196,38 @@ class WalletInfoView: UIView {
         }
     }
     
+    public func addrefreshControllTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
+        refreshControl.addTarget(target, action:action, for: controlEvents)
+    }
+    
     public func addButtonTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
         actionButton.addTarget(target, action: action, for: controlEvents)
     }
     
     func updateOperationsList() {
         walletsTableView.reloadData()
+        refreshControl.endRefreshing()
     }
     
     func updateBalances(wallet: WalletViewModel) {
         commonBalanceValue.text = wallet.balance.toString()
         commonIncomeValue.text = wallet.income.toString()
         commonExpansesValue.text = wallet.expanse.toString()
+    }
+    
+    func changeLoadingIndicatorState(state: operationsLoadingIndicatorState) {
+        switch state {
+        case .loading:
+            loadingIndicator.isHidden = false
+            loadingIndicator.startAnimating()
+        case .stopped:
+            loadingIndicator.isHidden = true
+            loadingIndicator.stopAnimating()
+        }
+    }
+    
+    func changeWalletOperations(isEmpty: Bool) {
+        emptyWalletLabel.isHidden = isEmpty ? false : true
     }
 }
 

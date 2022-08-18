@@ -41,12 +41,19 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
     func controllerLoaded() {
         guard let id = UserSettings.userDefaults.userId else { return }
         
+        view?.changeLoadingIndicatorState(state: .loading)
         operationService.getWalletOperations(userId: id, walletId: walletId) { [weak self] result in
             switch result {
             case .success(let operations):
                 self?.mapOperations(operations: operations)
                 DispatchQueue.main.sync {
-                    self?.view?.updateOperationsList()
+                    self?.view?.changeLoadingIndicatorState(state: .stopped)
+                    if let walletOperations = self?.operations, !walletOperations.isEmpty {
+                        self?.view?.changeWalletOperations(isEmpty: false)
+                        self?.view?.updateOperationsList()
+                    } else {
+                        self?.view?.changeWalletOperations(isEmpty: true)
+                    }
                 }
             case .failure(let error):
                 self?.view?.loadingError(error: error.localizedDescription)
