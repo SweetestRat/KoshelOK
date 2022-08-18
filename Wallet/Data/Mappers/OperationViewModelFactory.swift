@@ -22,6 +22,7 @@ class OperationViewModelFactory {
         return OperationViewModel(
             category: categoryFactory.produce(from: from.categoryDto),
             balance: balanceFactory.produce(from: from.balanceDto),
+            isIncome: from.isIncome,
             date: date,
             time: time
         )
