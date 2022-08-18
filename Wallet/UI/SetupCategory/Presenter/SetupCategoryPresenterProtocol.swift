@@ -11,7 +11,6 @@ protocol SetupCategoryPresenterProtocol: AnyObject {
     func createButtonDidTap()
     func openCategorySelection()
     func textFieldDidChanchedValue(text: String?)
-    func controllerLoaded()
     func setSelectedRowColor(row: Int)
     func setSelectedRowCategory(row: Int)
     func getSelectedRowForColor() -> Int

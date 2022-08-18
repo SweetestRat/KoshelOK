@@ -75,25 +75,4 @@ class SetupCategoryPresenter: SetupCategoryPresenterProtocol {
     func getSelectedRowForCategory() -> Int {
         selectedRowCategory
     }
-    
-    func controllerLoaded() {
-        
-        //  view?.updateCurrency(currency: currency)
-    }
-    
 }
-
-//extension CreateWalletPresenter: CurrencySelectionDelegateProtocol {
-//    func updateSelectedCurrency(currency: Currency) {
-//        self.currency = currency
-//        view?.updateCurrency(currency: currency)
-//    }
-//
-//    func getSelectedRow() -> Int {
-//        return currencySeletedRow ?? 0
-//    }
-//
-//    func saveSelectedRow(row: Int) {
-//        currencySeletedRow = row
-//    }
-//}
