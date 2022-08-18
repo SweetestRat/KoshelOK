@@ -10,8 +10,8 @@ import UIKit
 class WalletsListRouter: WalletsListRouterProtocol {
     weak var view: WalletsListControllerProtocol?
     
-    func openCreateWallet() {
-        let nextvc = CreateWalletAssembly().assembly()
+    func openCreateWallet(delegate: CreateWalletPresenterDelegateProtocol) {
+        let nextvc = CreateWalletAssembly().assembly(delegate: delegate)
         guard let vc = view as? UIViewController else { return }
         
         vc.navigationController?.interactivePopGestureRecognizer?.isEnabled = true

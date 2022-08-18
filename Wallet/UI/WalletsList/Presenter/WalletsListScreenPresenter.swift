@@ -24,6 +24,10 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
     }
     
     func controllerLoaded() {
+        updateScreenData()
+    }
+    
+    private func updateScreenData() {
         guard let id = UserSettings.userDefaults.userId else { return }
         
         service.getAllWallets(userId: id) { [weak self] result in
@@ -56,7 +60,7 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
     }
     
     func createWalletClicked() {
-        router.openCreateWallet()
+        router.openCreateWallet(delegate: self)
     }
     
     func createExitFromWallet() {
@@ -117,5 +121,12 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
                 )
             )
         }
+    }
+}
+
+
+extension WalletsListScreenPresenter: CreateWalletPresenterDelegateProtocol {
+    func walletCreated() {
+        updateScreenData()
     }
 }

@@ -39,6 +39,10 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
     }
     
     func controllerLoaded() {
+        updateScreenData()
+    }
+    
+    private func updateScreenData() {
         guard let id = UserSettings.userDefaults.userId else { return }
         
         operationService.getWalletOperations(userId: id, walletId: walletId) { [weak self] result in
@@ -91,7 +95,7 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
     }
     
     func createOperationButtonDidTap() {
-        router.openCreateOperation(walletId: walletId)
+        router.openCreateOperation(walletId: walletId, delegate: self)
     }
     
     func getWalletName() -> String {
@@ -119,5 +123,11 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
         }
         
         self.operations?.append(sectionOperations)
+    }
+}
+
+extension WalletInfoPresenter: CreateOperationPresenterDelegateProtocol {
+    func operationCreated() {
+        updateScreenData()
     }
 }
