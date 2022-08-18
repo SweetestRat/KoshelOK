@@ -21,10 +21,14 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
     
     private var listOfCategories: [CategoryViewModel] = []
     
+    private let categoryViewModelFactory: CategoryViewModelFactory
+    
     init(service: CategoriesServiceProtocol, category: Category, router: CategorySelectionRouterProtocol) {
         self.service = service
         self.category = category
         self.router = router
+        
+        self.categoryViewModelFactory = CategoryViewModelFactory()
     }
     
     func getSelectedRow() -> Int? {
@@ -50,9 +54,7 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
         service.loadCategories { [weak self] result in
             switch result {
             case .success(let categories):
-                let categoriesViewModels = categories.map { category -> CategoryViewModel in
-                    CategoryViewModel(name: category.name, iconName: category.iconName, iconColor: category.iconColor)
-                }
+                guard let categoriesViewModels = self?.mapCategories(categories: categories) else { return }
                 self?.listOfCategories = categoriesViewModels
                 self?.selectedIndexPathRow = self?.listOfCategories.firstIndex(where: { category in
                     category.name == self?.category.name
@@ -92,5 +94,11 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
     
     func getCategory(index: Int) -> CategoryViewModel {
         listOfCategories[index]
+    }
+    
+    private func mapCategories(categories: [Category]) -> [CategoryViewModel] {
+        categories.map { category in
+            categoryViewModelFactory.produce(from: category)
+        }
     }
 }
