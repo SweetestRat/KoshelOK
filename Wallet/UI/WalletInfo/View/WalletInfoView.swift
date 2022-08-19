@@ -98,7 +98,7 @@ class WalletInfoView: UIView {
         tableView.delegate = self
         tableView.backgroundColor = nil
         tableView.contentInsetAdjustmentBehavior = .never
-        tableView.contentInset = UIEdgeInsets(top: CGFloat(MediumPadding), left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: CGFloat(MediumPadding), left: 0, bottom: CGFloat(MediumPadding), right: 0)
         tableView.separatorStyle = .none
         return tableView
     }()
@@ -149,7 +149,7 @@ class WalletInfoView: UIView {
         walletsTableView.snp.makeConstraints { make in
             make.top.equalTo(walletCardView.snp.bottom).offset(-MediumPadding)
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(actionButton.snp.centerY)
+            make.bottom.equalTo(actionButton.snp.top).offset(MediumPadding)
         }
         
         emptyWalletLabel.snp.makeConstraints { make in
@@ -236,6 +236,7 @@ class WalletInfoView: UIView {
     }
     
     func changeWalletOperations(isEmpty: Bool) {
+        refreshControl.endRefreshing()
         emptyWalletLabel.isHidden = isEmpty ? false : true
     }
 }

@@ -127,6 +127,7 @@ class WalletsScreenView: UIView {
         view.dataSource = self
         view.delegate = self
         view.backgroundColor = .background
+        view.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: CGFloat(MediumPadding), right: 0)
         return view
     }()
     
@@ -250,6 +251,7 @@ class WalletsScreenView: UIView {
     }
     
     func changeWalletsList(isEmpty: Bool) {
+        refreshControl.endRefreshing()
         emptyWalletsListLabel.isHidden = isEmpty ? false : true
     }
 }
