@@ -40,6 +40,7 @@ class WalletsListCell: UITableViewCell {
     lazy var balance: UILabel = {
         let view = UILabel()
         view.font = .SFProRegular16
+        view.textAlignment = .right
         return view
     }()
     
