@@ -113,6 +113,7 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
         
         if operations?[indexPath.section].isEmpty == true {
             operationService.deleteTransactionSection(section: indexPath.section)
+            operations?.remove(at: indexPath.section)
             view?.removeSection(section: indexPath.section)
         } else {
             view?.removeRow(indexPath: indexPath)
