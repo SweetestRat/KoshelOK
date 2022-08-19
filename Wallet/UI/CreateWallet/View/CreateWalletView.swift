@@ -109,6 +109,10 @@ class CreateWalletView: UIView {
     func changeLoadingState(state: BaseButtonState) {
         nextButton.actionState = state
     }
+    
+    public func setTextFieldFocus() {
+        nameTextField.becomeFirstResponder()
+    }
 }
 
 extension CreateWalletView: UITextFieldDelegate {

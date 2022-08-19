@@ -42,6 +42,7 @@ class AuthorizationView: UIView {
     private lazy var nameTextField: BaseInputTextField = {
         let textField = BaseInputTextField(placeholder: "username@koshelok.ru")
         textField.returnKeyType = .done
+        textField.keyboardType = .emailAddress
         textField.delegate = self
         return textField
     }()
@@ -126,6 +127,10 @@ class AuthorizationView: UIView {
     
     func changeLoadingState(state: BaseButtonState) {
         actionButton.actionState = state
+    }
+    
+    public func setTextFieldFocus() {
+        nameTextField.becomeFirstResponder()
     }
 }
 
