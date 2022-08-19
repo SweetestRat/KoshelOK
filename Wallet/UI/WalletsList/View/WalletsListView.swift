@@ -21,6 +21,8 @@ protocol WalletsScreenViewDelegate: AnyObject {
 class WalletsScreenView: UIView {
     weak var delegate: WalletsScreenViewDelegate?
     
+    private var currentPoint: CGFloat = 0
+    
     private lazy var refreshControl: UIRefreshControl = {
         let refreshControll = UIRefreshControl()
         refreshControll.tintColor = .inputPlaceholderColor
@@ -48,6 +50,12 @@ class WalletsScreenView: UIView {
         button.setImage(iconImage, for: .normal)
         
         return button
+    }()
+    
+    private lazy var pageControl: UIPageControl = {
+        let control = UIPageControl()
+        control.currentPage = 0
+        return control
     }()
     
     private lazy var headerView: UIView = {
@@ -162,10 +170,12 @@ class WalletsScreenView: UIView {
         commonIncomeValue.text = income.toString()
         commonExpansesValue.text = expanse.toString()
         
+        pageControl.numberOfPages = delegate?.getNumberOfBalanceRows() ?? 0
         swipeCollectionView.reloadData()
     }
     
     private func addSubviews() {
+        headerView.addSubview(pageControl)
         [
             loadingIndicator,
             walletsListView,
@@ -209,7 +219,12 @@ class WalletsScreenView: UIView {
         headerView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.top.equalToSuperview()
-            make.bottom.equalTo(swipeCollectionView.snp.bottom).offset(MediumPadding)
+            make.bottom.equalTo(pageControl.snp.bottom).offset(SmallPadding)
+        }
+        
+        pageControl.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(swipeCollectionView.snp.bottom).offset(SmallPadding)
         }
         
         walletsListView.snp.makeConstraints { make in
@@ -316,5 +331,12 @@ extension WalletsScreenView: UICollectionViewDataSource, UICollectionViewDelegat
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         delegate?.pageDidChange()
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        for cell in swipeCollectionView.visibleCells {
+            let indexPath = swipeCollectionView.indexPath(for: cell)
+            pageControl.currentPage = indexPath?.row ?? 0
+        }
     }
 }
