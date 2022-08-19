@@ -13,7 +13,7 @@ protocol CreateOperationPresenterDelegateProtocol: AnyObject {
 
 class CreateOperationPresenter: CreateOperationPresenterProtocol {
     private let maxAmountValue: Double = 999999999.00
-    private var currency: Currency
+    private var currency : Currency
     private var date: Date
     private var operationType: OperationType
     private var category: Category
@@ -27,7 +27,8 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
     init(
         service: CreateOperationServiceProtocol,
         router: CreateOperationRouterProtocol,
-        walletId: Int
+        walletId: Int,
+        currency: Currency
     ) {
         self.service = service
         self.router = router
@@ -35,9 +36,8 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
         
         // set default user currency (probably get from user account request)
         operationType = .income
-        currency = Currency(id: 1, shortName: "RUB", longName: "Российский рубль")
         amount = 0
-        
+        self.currency = currency
         let timestamp = Date().timeIntervalSince1970
         let myTimeInterval = TimeInterval(timestamp)
         date = Date(timeIntervalSince1970: TimeInterval(myTimeInterval))

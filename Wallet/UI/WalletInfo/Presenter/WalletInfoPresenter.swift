@@ -102,7 +102,8 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
     }
     
     func createOperationButtonDidTap() {
-        router.openCreateOperation(walletId: walletId, delegate: self)
+        let currencyVM = wallet?.balance.currency
+        router.openCreateOperation(currency: Currency(id: currencyVM?.hashValue ?? 1, shortName: currencyVM?.symbol ?? "RUB", longName: currencyVM?.fullName ?? "Российский рубль"), walletId: walletId, delegate: self)
     }
     
     func getWalletName() -> String {
@@ -146,7 +147,7 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
             let date = dMMMDateFormatter.instance.format(timeStamp: operation.date)
             
             let viewModel = operationViewModelFactory.produce(from: operation)
-            
+        
             if date == sectionDate {
                 sectionOperations.append(viewModel)
             } else {
