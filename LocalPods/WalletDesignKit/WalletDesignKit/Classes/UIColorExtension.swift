@@ -48,6 +48,11 @@ public extension UIColor {
         return .init(named: "InactiveButtonBackground", in: bundle, compatibleWith: nil)
     }
     
+    static var activeTouchButtonBackground: UIColor? {
+        let bundle = Bundle.walletDesignKit
+        return .init(named: "ActiveTouchButtonBackground", in: bundle, compatibleWith: nil)
+    }
+    
     static var lightTextPrimaryColor: UIColor? {
         let bundle = Bundle.walletDesignKit
         return .init(named: "ActiveTextPrimaryColor", in: bundle, compatibleWith: nil)

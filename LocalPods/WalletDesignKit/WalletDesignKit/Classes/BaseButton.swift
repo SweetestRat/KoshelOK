@@ -27,7 +27,15 @@ public class BaseButton: UIButton {
             }
         }
     }
-    
+    override public var isHighlighted: Bool {
+        didSet {
+            if isHighlighted {
+                self.backgroundColor = .activeTouchButtonBackground
+            } else {
+                self.backgroundColor = .activeButtonBackground
+            }
+        }
+    }
     public var actionState: BaseButtonState {
         didSet {
             switch actionState {

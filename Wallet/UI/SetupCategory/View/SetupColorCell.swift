@@ -50,8 +50,7 @@ class SetupColorCell: UICollectionViewCell {
     func configurate(iconName: String, iconColor: String) {
         
         self.iconColor = iconColor
-        let config = UIImage.SymbolConfiguration(scale: .large)
-        let image = UIImageView(image: UIImage(systemName: "checkmark", withConfiguration: config))
+        let image = UIImageView(image: UIImage(named: "check"))
         image.tintColor = .lightTextPrimaryColor
         icon.addSubview(image)
         icon.subviews.last?.isHidden = true
