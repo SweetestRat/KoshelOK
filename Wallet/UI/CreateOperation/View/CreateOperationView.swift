@@ -306,7 +306,6 @@ class CreateOperationView: UIView {
     @objc func dateChanged() {
         delegate?.dateDidChanged(date: datePicker.date)
     }
-    
 }
 
 extension CreateOperationView: UITextFieldDelegate {

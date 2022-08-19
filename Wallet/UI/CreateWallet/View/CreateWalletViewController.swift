@@ -41,6 +41,11 @@ class CreateWalletViewController: UIViewController, CreateWalletViewProtocol {
         presenter.controllerLoaded()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        createWalletView.setTextFieldFocus()
+    }
+    
     private func setup() {
         self.view.addSubview(createWalletView)
         

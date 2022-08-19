@@ -44,6 +44,11 @@ class AuthorizationViewController: UIViewController, AuthorizationViewProtocol {
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        mainView.setTextFieldFocus()
+    }
+    
     @objc private func actionButtonDidTap() {
         mainView.changeLoadingState(state: .loading)
         presenter.actionButtonDidTap()
