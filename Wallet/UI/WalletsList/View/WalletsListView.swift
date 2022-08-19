@@ -15,6 +15,7 @@ protocol WalletsScreenViewDelegate: AnyObject {
     func getNumberOfBalanceRows() -> Int?
     func getBalance(row: Int) -> CurrencyBalanceViewModel?
     func pageDidChange()
+    func deleteWallet(at row: Int)
 }
 
 class WalletsScreenView: UIView {
@@ -121,10 +122,11 @@ class WalletsScreenView: UIView {
     
     private lazy var walletsListView: UITableView = {
         let view = UITableView()
+        view.separatorStyle = .none
         view.register(WalletsListCell.self, forCellReuseIdentifier: "WalletsListCell")
         view.dataSource = self
         view.delegate = self
-        view.backgroundColor = nil
+        view.backgroundColor = .background
         return view
     }()
     
@@ -145,6 +147,10 @@ class WalletsScreenView: UIView {
         refreshControl.endRefreshing()
     }
     
+    func removeRow(indexPath: IndexPath) {
+        walletsListView.deleteRows(at: [indexPath], with: .middle)
+    }
+    
     func updateBalances(commonBalance: BalanceViewModel?, income: BalanceViewModel?, expanse: BalanceViewModel?) {
         // We shold update all values per update
         guard let common = commonBalance,
@@ -161,8 +167,8 @@ class WalletsScreenView: UIView {
     private func addSubviews() {
         [
             loadingIndicator,
-            emptyWalletsListLabel,
             walletsListView,
+            emptyWalletsListLabel,
             actionButton,
             headerView
         ].forEach { self.addSubview($0) }
@@ -272,6 +278,16 @@ extension WalletsScreenView: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+            let deleteAction = UIContextualAction(style: .destructive, title:  "Delele", handler: { [weak self] (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+                self?.delegate?.deleteWallet(at: indexPath.row)
+                success(true)
+            })
+            deleteAction.backgroundColor = .designRedColor
+            return UISwipeActionsConfiguration(actions: [deleteAction])
+        }
+        
     
 }
 
