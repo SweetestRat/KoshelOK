@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import WalletDesignKit
 
 protocol SetupCategoryViewProtocol: AnyObject {
-    func updateActionButtonState(isActive: Bool)
+    func updateActionButtonState(actionState: BaseButtonState)
     func getCategoryName() -> String?
     func getIconName() -> String?
     func getIconColor() -> String?

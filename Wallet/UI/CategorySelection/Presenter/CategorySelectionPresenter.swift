@@ -109,7 +109,8 @@ class CategorySelectionPresenter: CategorySelectionPresenterProtocol {
 }
 
 extension CategorySelectionPresenter: SetupCategoryPresenterDelegateProtocol {    
-    func categoryCreated() {
+    func categoryCreated(category: Category) {
+        self.category = category
         updateCategoryScreen()
     }
 }
