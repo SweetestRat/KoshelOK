@@ -11,6 +11,7 @@ import WalletDesignKit
 
 class AuthorizationViewController: UIViewController, AuthorizationViewProtocol {
     private let presenter: AuthorizationPresenterProtocol
+    private let impactFeedbackgenerator = UINotificationFeedbackGenerator()
     
     private lazy var mainView: AuthorizationView = {
         let view = AuthorizationView()
@@ -50,7 +51,6 @@ class AuthorizationViewController: UIViewController, AuthorizationViewProtocol {
     }
     
     @objc private func actionButtonDidTap() {
-        mainView.changeLoadingState(state: .loading)
         presenter.actionButtonDidTap()
     }
     
@@ -90,16 +90,12 @@ class AuthorizationViewController: UIViewController, AuthorizationViewProtocol {
         }
     }
     
-    func stopLoading() {
-        mainView.changeLoadingState(state: .inactive)
-    }
-    
     func updateEmailValidationState(isValid: Bool) {
         mainView.updateEmailValidationState(isValid: isValid)
     }
     
-    func updateActionButtonState(isEnabled: Bool) {
-        mainView.updateActionButtonState(isEnabled: isEnabled)
+    func updateActionButtonState(baseButtonState: BaseButtonState) {
+        mainView.updateActionButtonState(baseButtonState: baseButtonState)
     }
     
     func userCreationFailed(error: String) {
@@ -110,5 +106,9 @@ class AuthorizationViewController: UIViewController, AuthorizationViewProtocol {
 extension AuthorizationViewController: AuthorizationViewDelegateProtocol {
     func emailDidChange(email: String) {
         presenter.emailDidChange(email: email)
+    }
+    
+    func incorrectEmailPassed() {
+        impactFeedbackgenerator.notificationOccurred(.error)
     }
 }

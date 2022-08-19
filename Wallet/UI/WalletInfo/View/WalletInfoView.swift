@@ -262,7 +262,6 @@ extension WalletInfoView: UITableViewDataSource {
         
         guard let operation = delegate?.getOperation(row: indexPath.row, section: indexPath.section) else { return cell }
         cell.configurate(operation: operation)
-        
         return cell
     }
     

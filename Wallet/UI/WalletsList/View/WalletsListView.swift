@@ -259,6 +259,7 @@ class WalletsScreenView: UIView {
 extension WalletsScreenView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         delegate?.didTapWallet(at: indexPath.row)
     }
     

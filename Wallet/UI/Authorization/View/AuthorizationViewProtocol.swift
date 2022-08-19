@@ -6,10 +6,10 @@
 //
 
 import Foundation
+import WalletDesignKit
 
 protocol AuthorizationViewProtocol: AnyObject {
     func userCreationFailed(error: String)
     func updateEmailValidationState(isValid: Bool)
-    func updateActionButtonState(isEnabled: Bool)
-    func stopLoading()
+    func updateActionButtonState(baseButtonState: BaseButtonState)
 }

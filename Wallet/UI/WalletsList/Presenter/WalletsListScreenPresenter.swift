@@ -131,7 +131,6 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
         
         currencyBalances = []
         fillUserCurrencies()
-        print(userCurrencies)
         
         var currentCurrency = ""
         var incomeValue = 0
