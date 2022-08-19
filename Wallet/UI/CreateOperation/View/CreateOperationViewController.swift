@@ -58,6 +58,11 @@ class CreateOperationViewController: UIViewController, CreateOperationViewProtoc
         createOperationView.addGestureRecognizer(tap)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        createOperationView.setAmountFieldFocus()
+    }
+    
     private func setup() {
         self.view.addSubview(createOperationView)
         
@@ -133,5 +138,9 @@ extension CreateOperationViewController: CreateOperationViewDelegate {
     
     func dateDidChanged(date: Date) {
         presenter.dateDidChanged(date: date)
+    }
+    
+    func getMaxAmountValue() -> Double {
+        presenter.getMaxAmountValue()
     }
 }

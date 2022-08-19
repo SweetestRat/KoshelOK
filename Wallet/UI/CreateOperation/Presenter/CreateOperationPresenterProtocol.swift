@@ -18,4 +18,5 @@ protocol CreateOperationPresenterProtocol: CurrencySelectionDelegateProtocol {
     func amountDidChange(amount: String)
     func incomeDidSelected()
     func expanseDidSelected()
+    func getMaxAmountValue() -> Double
 }
