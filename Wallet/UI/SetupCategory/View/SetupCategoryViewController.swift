@@ -85,8 +85,8 @@ class SetupCategoryViewController: UIViewController, SetupCategoryViewProtocol {
         view.endEditing(true)
     }
     
-    func updateActionButtonState(isActive: Bool) {
-        setupCategoryView.updateActionButtonState(isActive: isActive)
+    func updateActionButtonState(actionState: BaseButtonState) {
+        setupCategoryView.updateActionButtonState(actionState: actionState)
     }
     
     func getCategoryName() -> String? {

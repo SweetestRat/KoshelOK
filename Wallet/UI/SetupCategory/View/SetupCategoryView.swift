@@ -147,8 +147,8 @@ class SetupCategoryView: UIView {
     }
     
        
-    public func updateActionButtonState(isActive: Bool) {
-        actionButton.isEnabled = isActive
+    public func updateActionButtonState(actionState: BaseButtonState) {
+        actionButton.actionState = actionState
     }
 }
 

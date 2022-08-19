@@ -9,7 +9,7 @@ import Foundation
 import WalletDesignKit
 
 protocol SetupCategoryPresenterDelegateProtocol: AnyObject {
-    func categoryCreated()
+    func categoryCreated(category: Category)
 }
 
 class SetupCategoryPresenter: SetupCategoryPresenterProtocol {
@@ -33,14 +33,19 @@ class SetupCategoryPresenter: SetupCategoryPresenterProtocol {
         let iconColor = SetupCategoryIconColors.colors[selectedRowColor]
         
         let setupCategoryModel = SetupCategoryModel(name: categoryName, iconName: iconName, iconColor: iconColor)
+        view?.updateActionButtonState(actionState: .loading)
         service.setupCategory(data: setupCategoryModel) { [weak self] result in
             switch result {
-            case .success(_):
-                self?.delegate?.categoryCreated()
+            case .success(let category):
+                self?.delegate?.categoryCreated(category: category)
                 DispatchQueue.main.async {
+                    self?.view?.updateActionButtonState(actionState: .inactive)
                     self?.router.openCategorySelection()
                 }
             case .failure(_):
+                DispatchQueue.main.async {
+                    self?.view?.updateActionButtonState(actionState: .active)
+                }
                 break
             }
         }
@@ -53,11 +58,10 @@ class SetupCategoryPresenter: SetupCategoryPresenterProtocol {
     
     func textFieldDidChanchedValue(text: String?) {
         if text != "" {
-            isButtonEnabled = true
+            view?.updateActionButtonState(actionState: .active)
         } else {
-            isButtonEnabled = false
+            view?.updateActionButtonState(actionState: .inactive)
         }
-        view?.updateActionButtonState(isActive: isButtonEnabled)
     }
     
     func setSelectedRowColor(row: Int) {
