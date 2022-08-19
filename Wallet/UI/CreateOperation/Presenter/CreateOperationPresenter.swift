@@ -55,9 +55,7 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
         router.openCategorySelection(delegate: self, currentCategory: category)
     }
     
-    func selectCurrency() {
-        router.openCurrencySelection(delegate: self)
-    }
+    func selectCurrency() {}
     
     func selectDate() {
         router.openDateSelection(delegate: self, currentDate: date)
