@@ -80,7 +80,7 @@ class WalletsListViewController: UIViewController, WalletsListControllerProtocol
     
     private func setupNavigationBar() {
         navigationItem.title = "Кошельки"
-        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.tintColor = .darkTextPrimaryColor
     }
     
     private func addTargets() {

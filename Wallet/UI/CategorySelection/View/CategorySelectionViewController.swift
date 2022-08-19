@@ -53,7 +53,7 @@ class CategorySelectionViewController: UIViewController, CategorySelectionViewPr
     
     private func setupNavigationBar() {
         let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButton))
-        add.tintColor = .black
+        add.tintColor = .darkTextPrimaryColor
         navigationItem.rightBarButtonItem = add
         navigationItem.title = "Выбор категории"
     }

@@ -85,7 +85,7 @@ class WalletsScreenView: UIView {
         let view = UILabel()
         view.text = "Общий баланс"
         view.font = .SFProMedium16
-        view.textColor = .lightTextPrimaryColor
+        view.textColor = .staticMilkTextColor
         view.alpha = 0.8
         return view
     }()
@@ -94,7 +94,7 @@ class WalletsScreenView: UIView {
         let view = UILabel()
         view.text = "0,00"
         view.font = .SFProSemiBold32
-        view.textColor = .lightTextPrimaryColor
+        view.textColor = .staticMilkTextColor
         view.isHidden = true
         return view
     }()
@@ -105,7 +105,7 @@ class WalletsScreenView: UIView {
         let view = UILabel()
         view.text = "0,00"
         view.font = .SFProMedium16
-        view.textColor = .lightTextPrimaryColor
+        view.textColor = .staticMilkTextColor
         return view
     }()
     
@@ -115,7 +115,7 @@ class WalletsScreenView: UIView {
         let view = UILabel()
         view.text = "0,00"
         view.font = .SFProMedium16
-        view.textColor = .lightTextPrimaryColor
+        view.textColor = .staticMilkTextColor
         return view
     }()
     

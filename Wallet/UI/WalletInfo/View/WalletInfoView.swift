@@ -49,7 +49,7 @@ class WalletInfoView: UIView {
           let label = UILabel()
           label.text = "Общий баланс"
           label.font = .SFProMedium16
-          label.textColor = .lightTextPrimaryColor
+          label.textColor = .staticMilkTextColor
           label.alpha = 0.8
           return label
       }()
@@ -58,7 +58,7 @@ class WalletInfoView: UIView {
         let label = UILabel()
         label.text = "0,00"
         label.font = .SFProSemiBold32
-        label.textColor = .lightTextPrimaryColor
+        label.textColor = .staticMilkTextColor
         return label
     }()
     
@@ -68,7 +68,7 @@ class WalletInfoView: UIView {
         let label = UILabel()
         label.text = "0,00"
         label.font = .SFProMedium16
-        label.textColor = .lightTextPrimaryColor
+        label.textColor = .staticMilkTextColor
         return label
     }()
     
@@ -78,7 +78,7 @@ class WalletInfoView: UIView {
         let label = UILabel()
         label.text = "0,00"
         label.font = .SFProMedium16
-        label.textColor = .lightTextPrimaryColor
+        label.textColor = .staticMilkTextColor
         return label
     }()
     

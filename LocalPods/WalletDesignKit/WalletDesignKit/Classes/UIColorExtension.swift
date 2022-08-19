@@ -53,14 +53,29 @@ public extension UIColor {
         return .init(named: "ActiveTouchButtonBackground", in: bundle, compatibleWith: nil)
     }
     
+    static var staticMilkTextColor: UIColor? {
+        let bundle = Bundle.walletDesignKit
+        return .init(named: "StaticMilkColor", in: bundle, compatibleWith: nil)
+    }
+    
+    static var buttonTextInactiveColor: UIColor? {
+        let bundle = Bundle.walletDesignKit
+        return .init(named: "ButtonTextInactiveColor", in: bundle, compatibleWith: nil)
+    }
+    
+    static var buttonTextActiveColor: UIColor? {
+        let bundle = Bundle.walletDesignKit
+        return .init(named: "ButtonTextActiveColor", in: bundle, compatibleWith: nil)
+    }
+    
     static var lightTextPrimaryColor: UIColor? {
         let bundle = Bundle.walletDesignKit
-        return .init(named: "ActiveTextPrimaryColor", in: bundle, compatibleWith: nil)
+        return .init(named: "LightTextColor", in: bundle, compatibleWith: nil)
     }
     
     static var darkTextPrimaryColor: UIColor? {
         let bundle = Bundle.walletDesignKit
-        return .init(named: "InactiveTextPrimaryColor", in: bundle, compatibleWith: nil)
+        return .init(named: "DarkTextColor", in: bundle, compatibleWith: nil)
     }
     
     static var incomeColor: UIColor? {

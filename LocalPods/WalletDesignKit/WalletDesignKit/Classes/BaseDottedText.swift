@@ -16,7 +16,7 @@ public func BaseDottedText(color: UIColor?, text: String, textFont: UIFont) -> U
     dot.layer.cornerCurve = .continuous
     dot.layer.cornerRadius = CGFloat(SmallPadding) / 4
     
-    textView.textColor = .lightTextPrimaryColor
+    textView.textColor = .staticMilkTextColor
     textView.text = text
     textView.font = textFont
     textView.alpha = 0.8

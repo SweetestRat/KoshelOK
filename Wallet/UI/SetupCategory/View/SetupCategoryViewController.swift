@@ -43,7 +43,7 @@ class SetupCategoryViewController: UIViewController, SetupCategoryViewProtocol {
     }
     
     private func setupNavigationBar() {
-        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.tintColor = .darkTextPrimaryColor
     }
     
     private func setup() {

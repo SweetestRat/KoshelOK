@@ -26,8 +26,8 @@ class CreateWalletViewController: UIViewController, CreateWalletViewProtocol {
         return view
     }()
     
-    public func updateActionButtonState(isActive: Bool) {
-        createWalletView.updateActionButtonState(isActive: isActive)
+    public func updateActionButtonState(actionState: BaseButtonState) {
+        createWalletView.updateActionButtonState(actionState: actionState)
     }
     
     override func viewDidLoad() {
