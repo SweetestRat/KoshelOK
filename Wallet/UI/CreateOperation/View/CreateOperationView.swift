@@ -51,7 +51,6 @@ class CreateOperationView: UIView {
     private lazy var scrollView = UIScrollView()
     private lazy var parametersLabelCell = labelCell(text: "Параметры")
     private lazy var categorySelector = BaseTextCellWithSelection(title: "Категория", buttonDescriontion: "...")
-    private lazy var currencySelector = BaseTextCellWithSelection(title: "Валюта", buttonDescriontion: "...")
     private lazy var dateSelector = BaseTextCellWithSelection(title: "Дата", buttonDescriontion: "...")
     private lazy var dateSmallSelectorLabel: UILabel = {
         let view = UILabel()
@@ -92,7 +91,6 @@ class CreateOperationView: UIView {
     
     public func updateCurrency(currency: Currency) {
         currencySymbol.text = currency.shortName
-        currencySelector.rightButtonDescription.text = currency.longName
     }
     
     public func updateDate(date: Date) {
@@ -168,8 +166,7 @@ class CreateOperationView: UIView {
             incomeButton,
             expanseButton,
             parametersLabelCell,
-            categorySelector,
-            currencySelector
+            categorySelector
         ].forEach { scrollView.addSubview($0) }
         
         if #available(iOS 14.0, *) {
@@ -222,17 +219,13 @@ class CreateOperationView: UIView {
             make.leading.trailing.equalTo(safeAreaLayoutGuide)
         }
         categorySelector.snp.makeConstraints { make in
-            make.top.equalTo(parametersLabelCell.snp.bottom).offset(MediumPadding)
-            make.leading.trailing.equalTo(safeAreaLayoutGuide)
-        }
-        currencySelector.snp.makeConstraints { make in
-            make.top.equalTo(categorySelector.snp.bottom).offset(MediumPadding)
+            make.top.equalTo(parametersLabelCell.snp.bottom).offset(SmallPadding)
             make.leading.trailing.equalTo(safeAreaLayoutGuide)
         }
         
         if #available(iOS 14.0, *) {
             dateSmallSelectorLabel.snp.makeConstraints { make in
-                make.top.equalTo(currencySelector.snp.bottom).offset(LargePadding)
+                make.top.equalTo(categorySelector.snp.bottom).offset(LargePadding)
                 make.leading.equalTo(safeAreaLayoutGuide).offset(MediumPadding)
                 make.bottom.equalToSuperview().offset(-LargePadding)
             }
@@ -243,7 +236,7 @@ class CreateOperationView: UIView {
             }
         } else {
             dateSelector.snp.makeConstraints { make in
-                make.top.equalTo(currencySelector.snp.bottom).offset(MediumPadding)
+                make.top.equalTo(categorySelector.snp.bottom).offset(MediumPadding)
                 make.leading.trailing.equalTo(safeAreaLayoutGuide)
                 make.bottom.equalToSuperview().offset(-LargePadding)
             }
@@ -257,7 +250,6 @@ class CreateOperationView: UIView {
     
     private func addTargets() {
         amountTextField.addTarget(self, action: #selector(textFieldDidChangeValue), for: .editingChanged)
-        currencySelector.addTarget(self, action: #selector(createOperationViewDidSelectCurrency), for: .touchUpInside)
         categorySelector.addTarget(self, action: #selector(createOperationViewDidSelectCategory), for: .touchUpInside)
         dateSelector.addTarget(self, action: #selector(createOperationViewDidSelectDate), for: .touchUpInside)
         incomeButton.addTarget(self, action: #selector(createOperationViewDidSelectIncome), for: .touchUpInside)
