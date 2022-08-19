@@ -14,4 +14,5 @@ protocol WalletOperationsServiceProtocol {
     func getOperations() -> [[Operation]]
     func setOperations(operations: [[Operation]])
     func deleteTransaction(section: Int, row: Int)
+    func deleteTransactionSection(section: Int)
 }
