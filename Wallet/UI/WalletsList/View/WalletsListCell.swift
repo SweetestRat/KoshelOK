@@ -32,6 +32,7 @@ class WalletsListCell: UITableViewCell {
     
     lazy var title: UILabel = {
         let view = UILabel()
+        view.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         view.font = .SFProRegular16
         return view
     }()
@@ -63,6 +64,7 @@ class WalletsListCell: UITableViewCell {
         
         title.snp.makeConstraints { make in
             make.leading.equalTo(icon.snp.trailing).offset(MediumPadding)
+            make.trailing.equalTo(balance.snp.leading).offset(-SmallPadding)
             make.centerY.equalToSuperview()
         }
         

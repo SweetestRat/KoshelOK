@@ -25,6 +25,7 @@ class WalletInfoCell: UITableViewCell {
     
     lazy var category: UILabel = {
         let label = UILabel()
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         label.font = .SFProRegular16
         label.textColor = .darkTextPrimaryColor
         return label

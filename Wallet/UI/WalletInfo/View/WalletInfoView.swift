@@ -123,8 +123,8 @@ class WalletInfoView: UIView {
     private func addSubviews() {
         [
             loadingIndicator,
-            emptyWalletLabel,
             walletsTableView,
+            emptyWalletLabel,
             actionButton,
             walletCardView
         ].forEach { addSubview($0) }
