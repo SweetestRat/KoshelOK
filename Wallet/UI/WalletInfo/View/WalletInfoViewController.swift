@@ -113,6 +113,8 @@ extension WalletInfoViewController: WalletInfoViewDelegate {
     }
     
     func removeOperation(indexPath: IndexPath) {
-        presenter.removeOperation(indexPath: indexPath)
+        exitWaletAlert(title: "Вы уверены, что хотите удалить операцию?", leftButtonTitle: "Да", rightButtonTitle: "Нет") { [weak self] _ in
+            self?.presenter.removeOperation(indexPath: indexPath)
+        }
     }
 }

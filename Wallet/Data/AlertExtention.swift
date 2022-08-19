@@ -9,10 +9,10 @@ import Foundation
 import UIKit
 
 extension UIViewController {
-    func exitWaletAlert(handler: ((UIAlertAction) -> Void)? = nil) {
-        let alert = UIAlertController(title: "Уверены, что хотите выйти из аккаунта?", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Да", style: .destructive, handler: handler))
-        alert.addAction(UIAlertAction(title: "Нет", style: .default))
+    func exitWaletAlert(title: String, leftButtonTitle: String, rightButtonTitle: String, handler: ((UIAlertAction) -> Void)? = nil) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: leftButtonTitle, style: .destructive, handler: handler))
+        alert.addAction(UIAlertAction(title: rightButtonTitle, style: .default))
         
         present(alert, animated: true)
     }
