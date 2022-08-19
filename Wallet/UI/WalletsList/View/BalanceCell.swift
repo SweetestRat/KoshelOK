@@ -12,7 +12,7 @@ class BalanceCell: UICollectionViewCell {
     private lazy var commonBalanceValue: UILabel = {
         let view = UILabel()
         view.font = .SFProSemiBold32
-        view.textColor = .lightTextPrimaryColor
+        view.textColor = .staticMilkTextColor
         return view
     }()
     
@@ -21,7 +21,7 @@ class BalanceCell: UICollectionViewCell {
     private lazy var commonIncomeValue: UILabel = {
         let view = UILabel()
         view.font = .SFProMedium16
-        view.textColor = .lightTextPrimaryColor
+        view.textColor = .staticMilkTextColor
         return view
     }()
     
@@ -30,7 +30,7 @@ class BalanceCell: UICollectionViewCell {
     private lazy var commonExpansesValue: UILabel = {
         let view = UILabel()
         view.font = .SFProMedium16
-        view.textColor = .lightTextPrimaryColor
+        view.textColor = .staticMilkTextColor
         return view
     }()
     

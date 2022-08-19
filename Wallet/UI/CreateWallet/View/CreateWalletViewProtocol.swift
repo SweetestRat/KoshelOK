@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import WalletDesignKit
 
 protocol CreateWalletViewProtocol: AnyObject {
     func updateCurrency(currency: Currency)
-    func updateActionButtonState(isActive: Bool)
+    func updateActionButtonState(actionState: BaseButtonState)
     func getWalletName() -> String?
     func walletCreationFailed(error: String)
     func stopLoading()

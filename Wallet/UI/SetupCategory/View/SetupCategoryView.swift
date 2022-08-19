@@ -26,7 +26,7 @@ class SetupCategoryView: UIView {
     
     private lazy var actionButton: BaseButton = {
         let button = BaseButton(title: "Создать")
-        button.isEnabled = false
+        button.actionState = .inactive
         return button
     }()
     

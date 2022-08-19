@@ -36,8 +36,9 @@ class CreateWalletView: UIView {
         return button
     }()
     
-    public func updateActionButtonState(isActive: Bool) {
-        nextButton.isEnabled = isActive
+    public func updateActionButtonState(actionState: BaseButtonState) {
+        print(actionState)
+        nextButton.actionState = actionState
     }
     
     override init(frame: CGRect) {

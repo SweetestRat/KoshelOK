@@ -64,6 +64,12 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
             }
         }
         
+        updateBalance(userId: id, walletId: walletId)
+    }
+    
+    func updateBalance(userId: Int, walletId: Int) {
+        guard let id = UserSettings.userDefaults.userId else { return }
+        
         walletInfoService.getWalletInfo(userId: id, walletId: walletId) { [weak self] result in
             switch result {
             case .success(let wallet):
@@ -125,6 +131,8 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
                 print("successfully deleted")
             case .failure(let error):
                 self?.view?.loadingError(error: error.localizedDescription)
+                guard let walletId = self?.walletId else { return }
+                self?.updateBalance(userId: id, walletId: walletId)
             }
         }
     }

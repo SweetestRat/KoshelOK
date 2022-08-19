@@ -70,7 +70,7 @@ public class BaseButton: UIButton {
     
     let activeBackgroundColor = UIColor.activeButtonBackground
     let inactiveBackgroundColor = UIColor.inactiveButtonBackground
-    let activeTextColor = UIColor.lightTextPrimaryColor
+    let activeTextColor = UIColor.staticMilkTextColor
     let inactiveTextColor = UIColor.darkTextPrimaryColor
 
     public init(title: String? = nil) {

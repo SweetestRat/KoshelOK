@@ -53,12 +53,11 @@ class CreateWalletPresenter: CreateWalletPresenterProtocol {
     }
     
     func textFieldDidChanchedValue(text: String?) {
-        if text != "" {
-            isButtonEnabled = true
+        if text == "" {
+            view?.updateActionButtonState(actionState: .inactive)
         } else {
-            isButtonEnabled = false
+            view?.updateActionButtonState(actionState: .active)
         }
-        view?.updateActionButtonState(isActive: isButtonEnabled)
     }
     
     func controllerLoaded() {
