@@ -32,8 +32,18 @@ class WalletsListViewController: UIViewController, WalletsListControllerProtocol
         screenView.updateWalletsList()
     }
     
+    func removeRow(indexPath: IndexPath) {
+        screenView.removeRow(indexPath: indexPath)
+    }
+    
     func updateBalances(commonBalance: BalanceViewModel?, income: BalanceViewModel?, expanse: BalanceViewModel?) {
         screenView.updateBalances(commonBalance: commonBalance, income: income, expanse: expanse)
+    }
+    
+    func deleteWallet(at row: Int) {
+        exitWaletAlert(title: "Вы уверены, что хотите удалить кошелек?", leftButtonTitle: "Да", rightButtonTitle: "Нет") { [weak self] _ in
+            self?.presenter.deleteWallet(at: row)
+        }
     }
     
     func changeWalletsList(isEmpty: Bool) {

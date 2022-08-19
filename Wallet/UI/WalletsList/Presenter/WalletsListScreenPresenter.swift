@@ -105,6 +105,24 @@ class WalletsListScreenPresenter: WalletsListPresenterProtocol {
         router.openWalletInfo(walletId: walletId, walletName: selectedWalletName)
     }
     
+    func deleteWallet(at row: Int) {
+        guard let id = UserSettings.userDefaults.userId else { return }
+        guard let wallet = service.getWalletsModels()?[row] else { return }
+        wallets?.remove(at: row)
+        view?.removeRow(indexPath: IndexPath(row: row, section: 0))
+        DispatchQueue.main.async {
+            self.view?.updateWalletsList()
+        }
+        service.deleteWallet(userId: id, data: wallet) { [weak self] result in
+            switch result {
+            case .success(_):
+                self?.updateScreenData()
+            case .failure(let error):
+                self?.view?.walletsLoadingError(error: error.localizedDescription)
+            }
+        }
+    }
+    
     private func updateBalances() {
         guard
             let wallets = wallets,

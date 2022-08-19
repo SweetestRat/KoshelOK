@@ -33,4 +33,18 @@ class WalletsListService: WalletsListServiceProtocol {
             }
         }
     }
+    
+    func deleteWallet(userId: Int, data: Wallet, completion: @escaping (Result<NoReply, Error>) -> Void) {
+        let request = DeleteWalletRequest(userId: userId, walletId: data.id)
+        
+        networkManager.loadRequest(request: request) { result in
+            switch result {
+            case .success(let result):
+                completion(.success(result))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+            
+        }
+    }
 }

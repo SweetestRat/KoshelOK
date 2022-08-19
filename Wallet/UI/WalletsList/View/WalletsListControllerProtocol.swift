@@ -13,4 +13,5 @@ protocol WalletsListControllerProtocol: AnyObject {
     func walletsLoadingError(error: String)
     func changeLoadingIndicatorState(state: LoadingIndicatorState)
     func changeWalletsList(isEmpty: Bool)
+    func removeRow(indexPath: IndexPath)
 }
