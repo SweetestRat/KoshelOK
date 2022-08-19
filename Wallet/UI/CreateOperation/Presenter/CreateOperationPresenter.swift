@@ -12,6 +12,7 @@ protocol CreateOperationPresenterDelegateProtocol: AnyObject {
 }
 
 class CreateOperationPresenter: CreateOperationPresenterProtocol {
+    private let maxAmountValue: Double = 999999999.00
     private var currency: Currency
     private var date: Date
     private var operationType: OperationType
@@ -23,7 +24,6 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
     private let router: CreateOperationRouterProtocol
     weak var view: CreateOperationViewProtocol?
     weak var delegate: CreateOperationPresenterDelegateProtocol?
-    
     init(
         service: CreateOperationServiceProtocol,
         router: CreateOperationRouterProtocol,
@@ -77,6 +77,10 @@ class CreateOperationPresenter: CreateOperationPresenterProtocol {
     
     func amountDidChange(amount: String) {
         self.amount = Int(amount) ?? self.amount
+    }
+    
+    func getMaxAmountValue() -> Double {
+        maxAmountValue
     }
     
     func createDidTap() {

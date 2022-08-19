@@ -18,11 +18,13 @@ protocol CreateOperationViewDelegate: AnyObject {
     func createOperationViewDidTapCreate()
     func createOperationViewAmountDidChange(amount: String)
     func dateDidChanged(date: Date)
+    func getMaxAmountValue() -> Double
 }
 
 class CreateOperationView: UIView {
     weak var delegate: CreateOperationViewDelegate?
     private var bottomConstraint: Constraint?
+    private let separators: Set = [",", "."]
     
     private lazy var amountTextField: UITextField = {
         let textField = UITextField()
@@ -122,6 +124,10 @@ class CreateOperationView: UIView {
         createButton.actionState = state
     }
     
+    public func setAmountFieldFocus() {
+        amountTextField.becomeFirstResponder()
+    }
+    
     private func labelCell(text: String) -> UIView {
         let cell = UIView()
         let label = UILabel()
@@ -182,7 +188,6 @@ class CreateOperationView: UIView {
     }
     
     private func setConstraints() {
-        
         scrollView.snp.makeConstraints { make in
             make.leading.trailing.top.equalTo(safeAreaLayoutGuide)
             make.bottom.equalTo(createButton.snp.top)
@@ -261,10 +266,6 @@ class CreateOperationView: UIView {
         delegate?.createOperationViewAmountDidChange(amount: amountTextField.text ?? "")
         if let text = amountTextField.text, !text.isEmpty {
             createButton.actionState = .active
-            
-            if text.count > 8 {
-                amountTextField.deleteBackward()
-            }
         } else {
             createButton.actionState = .inactive
         }
@@ -313,4 +314,23 @@ extension CreateOperationView: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if (separators.contains(string) && textField.text == "") {
+            textField.text = "0"
+            return true
+        }
+        if (string == "") { return true }
+        let resultString = ((textField.text ?? "") + string).replacingOccurrences(of: ",", with: ".")
+        guard
+            !(textField.text == "0" && !separators.contains(string)),
+            resultString != "00",
+            let castedDouble = Double(resultString)
+        else { return false }
+
+        let numberParts = resultString.split(separator: ".")
+        let isFractionalPartValid = numberParts.count < 2 || numberParts[1].count <= 4
+        return castedDouble < delegate?.getMaxAmountValue() ?? 0 && isFractionalPartValid
+    }
 }
+
