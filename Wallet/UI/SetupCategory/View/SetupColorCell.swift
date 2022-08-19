@@ -50,7 +50,6 @@ class SetupColorCell: UICollectionViewCell {
     func configurate(iconName: String, iconColor: String) {
         
         self.iconColor = iconColor
-        //let config = UIImage.SymbolConfiguration(scale: .small)
         let image = UIImageView(image: UIImage(named: "check"))
         image.tintColor = .lightTextPrimaryColor
         icon.addSubview(image)
