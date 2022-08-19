@@ -35,10 +35,15 @@ class SetupCategoryViewController: UIViewController, SetupCategoryViewProtocol {
         super.viewDidLoad()
         setObservers()
         setup()
+        setupNavigationBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    private func setupNavigationBar() {
+        navigationController?.navigationBar.tintColor = .black
     }
     
     private func setup() {

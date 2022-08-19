@@ -54,7 +54,7 @@ class SetupCategoryCell: UICollectionViewCell {
         image?.removeFromSuperview()
         
         self.iconColor = iconColor
-        let config = UIImage.SymbolConfiguration(scale: .large)
+        let config = UIImage.SymbolConfiguration(scale: .medium)
         image = UIImageView(image: UIImage(systemName: iconName, withConfiguration: config))
         image?.tintColor = .lightTextPrimaryColor
         guard let image = image else { return }
