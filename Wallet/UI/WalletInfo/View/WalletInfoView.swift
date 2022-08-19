@@ -18,6 +18,7 @@ protocol WalletInfoViewDelegate: AnyObject {
     func getOperation(row: Int, section: Int) -> OperationViewModel?
     func getNumberOfRowsInSection(section: Int) -> Int?
     func getNumberOfSections() -> Int
+    func removeOperation(indexPath: IndexPath)
 }
 
 class WalletInfoView: UIView {
@@ -209,6 +210,14 @@ class WalletInfoView: UIView {
         refreshControl.endRefreshing()
     }
     
+    func removeRow(indexPath: IndexPath) {
+        walletsTableView.deleteRows(at: [indexPath], with: .top)
+    }
+    
+    func removeSection(section: Int) {
+        walletsTableView.deleteSections([section], with: .top)
+    }
+    
     func updateBalances(wallet: WalletViewModel) {
         commonBalanceValue.text = wallet.balance.toString()
         commonIncomeValue.text = wallet.income.toString()
@@ -263,5 +272,14 @@ extension WalletInfoView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let section = delegate?.getOperation(row: 0, section: section)
         return section?.date
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title:  "Delele", handler: { [weak self] (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            self?.delegate?.removeOperation(indexPath: indexPath)
+            success(true)
+        })
+        deleteAction.backgroundColor = .designRedColor
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 }

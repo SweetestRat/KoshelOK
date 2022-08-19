@@ -74,6 +74,14 @@ class WalletInfoViewController: UIViewController, WalletInfoViewProtocol {
         walletInfoView.updateOperationsList()
     }
     
+    func removeRow(indexPath: IndexPath) {
+        walletInfoView.removeRow(indexPath: indexPath)
+    }
+    
+    func removeSection(section: Int) {
+        walletInfoView.removeSection(section: section)
+    }
+    
     func updateBalances(wallet: WalletViewModel) {
         walletInfoView.updateBalances(wallet: wallet)
     }
@@ -102,5 +110,11 @@ extension WalletInfoViewController: WalletInfoViewDelegate {
     
     func getNumberOfRowsInSection(section: Int) -> Int? {
         return presenter.getNumberOfRowsInSection(section: section)
+    }
+    
+    func removeOperation(indexPath: IndexPath) {
+        exitWaletAlert(title: "Вы уверены, что хотите удалить операцию?", leftButtonTitle: "Да", rightButtonTitle: "Нет") { [weak self] _ in
+            self?.presenter.removeOperation(indexPath: indexPath)
+        }
     }
 }

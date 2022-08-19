@@ -93,7 +93,7 @@ class WalletsListViewController: UIViewController, WalletsListControllerProtocol
     
     @objc private func screenViewExitButtonDidTap() {
         
-        exitWaletAlert { [weak self] _ in
+        exitWaletAlert(title: "Вы уверены, что хотите выйти из аккаунта?", leftButtonTitle: "Да", rightButtonTitle: "Нет") { [weak self] _ in
             self?.presenter.createExitFromWallet()
         }
     }
