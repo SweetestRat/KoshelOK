@@ -15,6 +15,8 @@ public enum RequestMethod: String {
     case delete
 }
 
+public struct NoReply: Decodable {}
+
 public protocol NetworkRequestProtocol {
     associatedtype Model: Decodable
     

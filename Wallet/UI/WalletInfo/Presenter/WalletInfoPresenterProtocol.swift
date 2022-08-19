@@ -15,4 +15,5 @@ protocol WalletInfoPresenterProtocol: AnyObject {
     func getNumberOfSections() -> Int
     func controllerLoaded()
     func getWalletName() -> String
+    func removeOperation(indexPath: IndexPath)
 }

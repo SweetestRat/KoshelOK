@@ -13,4 +13,6 @@ protocol WalletInfoViewProtocol: AnyObject {
     func loadingError(error: String)
     func changeLoadingIndicatorState(state: LoadingIndicatorState)
     func changeWalletOperations(isEmpty: Bool)
+    func removeRow(indexPath: IndexPath)
+    func removeSection(section: Int)
 }

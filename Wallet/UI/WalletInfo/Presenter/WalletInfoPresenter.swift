@@ -49,6 +49,7 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
             switch result {
             case .success(let operations):
                 self?.mapOperations(operations: operations)
+                self?.setOperations(operations: operations)
                 DispatchQueue.main.sync {
                     self?.view?.changeLoadingIndicatorState(state: .stopped)
                     if let walletOperations = self?.operations, !walletOperations.isEmpty {
@@ -102,6 +103,30 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
         walletName
     }
     
+    func removeOperation(indexPath: IndexPath) {
+        guard let id = UserSettings.userDefaults.userId else { return }
+        let transactions = operationService.getOperations()
+        let transactionId = transactions[indexPath.section][indexPath.row].id
+        
+        operationService.deleteTransaction(section: indexPath.section, row: indexPath.row)
+        operations?[indexPath.section].remove(at: indexPath.row)
+        if operations?[indexPath.section].isEmpty == true {
+            operations?.remove(at: indexPath.section)
+            view?.removeSection(section: indexPath.section)
+        } else {
+            view?.removeRow(indexPath: indexPath)
+        }
+        
+        operationService.deleteOperation(userId: id, walletId: walletId, transactionId: transactionId) { [weak self] result in
+            switch result {
+            case .success(_):
+                print("successfully deleted")
+            case .failure(let error):
+                self?.view?.loadingError(error: error.localizedDescription)
+            }
+        }
+    }
+    
     private func mapOperations(operations: [Operation]) {
         guard !operations.isEmpty else { return }
         self.operations = []
@@ -123,6 +148,29 @@ class WalletInfoPresenter: WalletInfoPresenterProtocol {
         }
         
         self.operations?.append(sectionOperations)
+    }
+    
+    private func setOperations(operations: [Operation]) {
+        guard !operations.isEmpty else { return }
+        var operationsArray: [[Operation]] = []
+        var sectionDate = dMMMDateFormatter.instance.format(timeStamp: operations[0].date)
+        var sectionOperations: [Operation] = []
+        
+        operations.forEach { operation in
+            let date = dMMMDateFormatter.instance.format(timeStamp: operation.date)
+            
+            if date == sectionDate {
+                sectionOperations.append(operation)
+            } else {
+                sectionDate = date
+                operationsArray.append(sectionOperations)
+                sectionOperations = []
+                sectionOperations.append(operation)
+            }
+        }
+        
+        operationsArray.append(sectionOperations)
+        operationService.setOperations(operations: operationsArray)
     }
 }
 
