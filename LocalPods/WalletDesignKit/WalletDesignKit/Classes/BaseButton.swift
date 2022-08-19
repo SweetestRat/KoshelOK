@@ -30,6 +30,7 @@ public class BaseButton: UIButton {
     
     public var actionState: BaseButtonState {
         didSet {
+            print(actionState)
             switch actionState {
             case .loading:
                 titleLabel?.layer.opacity = 0

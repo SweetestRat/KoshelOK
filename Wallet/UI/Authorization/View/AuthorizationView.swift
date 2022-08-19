@@ -11,6 +11,7 @@ import SnapKit
 
 protocol AuthorizationViewDelegateProtocol: AnyObject {
     func emailDidChange(email: String)
+    func incorrectEmailPassed()
 }
 
 class AuthorizationView: UIView {
@@ -43,6 +44,8 @@ class AuthorizationView: UIView {
         let textField = BaseInputTextField(placeholder: "username@koshelok.ru")
         textField.returnKeyType = .done
         textField.delegate = self
+        textField.font = .SFProMedium16
+        textField.keyboardType = .emailAddress
         return textField
     }()
     
@@ -111,8 +114,8 @@ class AuthorizationView: UIView {
         bottomConstraint?.update(inset: valueInset)
     }
     
-    func updateActionButtonState(isEnabled: Bool) {
-        actionButton.isEnabled = isEnabled
+    func updateActionButtonState(baseButtonState: BaseButtonState) {
+        actionButton.actionState = baseButtonState
     }
     
     func updateEmailValidationState(isValid: Bool) {
@@ -120,6 +123,8 @@ class AuthorizationView: UIView {
             nameTextField.stroke.backgroundColor = .inactiveButtonBackground
         } else {
             nameTextField.stroke.backgroundColor = .designRedColor
+            delegate?.incorrectEmailPassed()
+            nameTextField.startShakeAnimation()
         }
         incorrectMailLabel.isHidden = isValid
     }
@@ -133,5 +138,9 @@ extension AuthorizationView: UITextFieldDelegate {
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return string != " "
     }
 }
