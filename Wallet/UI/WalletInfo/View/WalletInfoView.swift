@@ -212,10 +212,12 @@ class WalletInfoView: UIView {
     
     func removeRow(indexPath: IndexPath) {
         walletsTableView.deleteRows(at: [indexPath], with: .top)
+        walletsTableView.reloadData()
     }
     
     func removeSection(section: Int) {
         walletsTableView.deleteSections([section], with: .top)
+        walletsTableView.reloadData()
     }
     
     func updateBalances(wallet: WalletViewModel) {

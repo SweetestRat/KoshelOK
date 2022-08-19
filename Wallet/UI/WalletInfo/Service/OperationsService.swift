@@ -54,4 +54,8 @@ class OperationService: WalletOperationsServiceProtocol {
     func deleteTransaction(section: Int, row: Int) {
         operations[section].remove(at: row)
     }
+    
+    func deleteTransactionSection(section: Int) {
+        operations.remove(at: section)
+    }
 }
