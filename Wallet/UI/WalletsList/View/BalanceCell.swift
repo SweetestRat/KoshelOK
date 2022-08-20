@@ -85,6 +85,6 @@ class BalanceCell: UICollectionViewCell {
     func configure(balance: CurrencyBalanceViewModel) {
         commonBalanceValue.text = balance.valueToString()
         commonIncomeValue.text = balance.incomeToString()
-        commonExpansesValue.text = "-\(balance.expanseToString())"
+        commonExpansesValue.text = balance.expanseToString()
     }
 }

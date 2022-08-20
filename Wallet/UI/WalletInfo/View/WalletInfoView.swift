@@ -221,7 +221,7 @@ class WalletInfoView: UIView {
     func updateBalances(wallet: WalletViewModel) {
         commonBalanceValue.text = wallet.balance.toString()
         commonIncomeValue.text = wallet.income.toString()
-        commonExpansesValue.text = "-\(wallet.expanse.toString())"
+        commonExpansesValue.text = wallet.expanse.toString()
     }
     
     func changeLoadingIndicatorState(state: LoadingIndicatorState) {

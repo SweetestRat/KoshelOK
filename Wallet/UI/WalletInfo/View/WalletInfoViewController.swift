@@ -42,10 +42,8 @@ class WalletInfoViewController: UIViewController, WalletInfoViewProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let button = UIBarButtonItem(image: UIImage(systemName: "gearshape"), landscapeImagePhone: nil, style: .plain, target: self, action: #selector(settingsDidTap))
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        navigationItem.rightBarButtonItem = button
     }
     
     private func setupNavigationBar() {
